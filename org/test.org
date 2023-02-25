@@ -1,0 +1,9 @@
+#+property: header-args:python :results output :noweb yes :session *Python*
+#+begin_src python 
+  print("hello, world")
+#+end_src
+
+#+RESULTS:
+: hello, world
+
+
