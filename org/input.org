@@ -1,0 +1,59 @@
+#+startup: overview hideblocks indent inlineimages 
+#+options: toc:nil num:nil ^:nil
+#+property: header-args:python :python python3 :session *Python* :results output :exports both :tangle yes
+#+property: header-args:bash :results output :exports both
+* Input test
+
+Create input file:
+#+begin_src bash
+    echo "Marcus" > ../data/input
+    echo "59" >> ../data/input
+    cat ../data/input
+#+end_src
+
+#+RESULTS:
+: Marcus
+: 59
+
+This program says hello it asks for your name and age it returns name,
+length of name, and age next year.
+#+begin_src python :cmdline < ../data/input :tangle t.py
+  print('hello world')
+  print('what is your name?')
+  myName = input()
+  print('Good to meet you, ' + myName)
+  print('Your name has, ', len(myName), ' characters')
+  print('What is your age?')
+  myAge = input()
+  print('You will be ' + str(int(myAge) + 1) + ' in a year')
+#+end_src
+
+#+RESULTS:
+#+begin_example
+hello world
+what is your name?
+Good to meet you, 
+Your name has,  0  characters
+What is your age?
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/tmp/babel-duJP7A/python-j8cDMg", line 8, in <module>
+    print('You will be ' + str(int(myAge) + 1) + ' in a year')
+ValueError: invalid literal for int() with base 10: ''
+#+end_example
+
+#+begin_src python :results file graphics :file ../img/plot.png
+import matplotlib, numpy
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+fig=plt.figure(figsize=(4,2))
+x=numpy.linspace(-15,15)
+plt.plot(numpy.sin(x)/x)
+fig.tight_layout()
+plt.savefig('../img/python-matplot-fig.png')
+#+end_src
+
+#+RESULTS:
+[[file:../img/plot.png]]
+
+
