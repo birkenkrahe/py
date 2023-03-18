@@ -25,24 +25,18 @@ length of name, and age next year.
   print('Your name has, ', len(myName), ' characters')
   print('What is your age?')
   myAge = input()
-  print('You will be ' + str(int(myAge) + 1) + ' in a year')
+  #print('You will be ' + str(int(myAge) + 1) + ' in a year')
 #+end_src
 
 #+RESULTS:
-#+begin_example
-hello world
-what is your name?
-Good to meet you, 
-Your name has,  0  characters
-What is your age?
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "/tmp/babel-duJP7A/python-j8cDMg", line 8, in <module>
-    print('You will be ' + str(int(myAge) + 1) + ' in a year')
-ValueError: invalid literal for int() with base 10: ''
-#+end_example
+: hello world
+: what is your name?
+: Good to meet you, 
+: Your name has,  0  characters
+: What is your age?
 
-#+begin_src python :results file graphics :file ../img/plot.png
+
+#+begin_src python :results file graphics :file plot1.png :tangle plt.py
 import matplotlib, numpy
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -50,10 +44,10 @@ fig=plt.figure(figsize=(4,2))
 x=numpy.linspace(-15,15)
 plt.plot(numpy.sin(x)/x)
 fig.tight_layout()
-plt.savefig('../img/python-matplot-fig.png')
+#plt.savefig('../img/python-matplot-fig.png')
 #+end_src
 
 #+RESULTS:
-[[file:../img/plot.png]]
+[[file:plot1.png]]
 
-
+file:../img/plt.png
