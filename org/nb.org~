@@ -1,0 +1,24 @@
+#+startup: overview hideblocks indent inlineimages 
+#+options: toc:nil num:nil ^:nil
+#+property: header-args:python :session *Python* :results output :exports both :tangle yes 
+#+property: header-args:bash :results output :exports both
+* Input test
+
+This program says hello.
+#+begin_src python :cmdline < ../data/input :tangle hello.py :session *Python*
+  print('hello world')
+#+end_src
+
+This program draws a plot.
+#+begin_src python :results file graphics :file ../img/plot.png :tangle plot.py
+  import pandas as pd
+  from matplotlib import pyplot as plt
+  import matplotlib.pyplot as plt
+
+  # pandas load our data
+  df = pd.read_csv('random.csv')
+
+  # matplotlib plots and displays
+  plt.plot(df.letters, df.frequency)
+  plt.show()
+#+end_src
