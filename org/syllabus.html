@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-04-23 Sun 16:20 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Introduction to Programming with Python</title>
+<meta name="author" content="Marcus Birkenkrahe (birkenkrahe@lyon.edu)" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Introduction to Programming with Python
+<br />
+<span class="subtitle">Lyon College, Summer term I 2023, CSC 109</span>
+</h1>
+<p>
+This four-week course is designed to provide students with a
+comprehensive introduction to programming in Python, covering
+fundamental concepts and practical applications of the language. Using
+"Python Crash Course" by Eric Matthes as the textbook, students will
+learn how to install Python and an IDE, and get started with basic
+data types, control flow statements, functions, files, and
+exceptions. They will also gain hands-on experience with more advanced
+topics such as object-oriented programming, modules and packages,
+testing and debugging, and data analysis and visualization.
+</p>
+
+<p>
+The second half of the course will focus on game development with the
+Pygame library, starting with basic game framework development and
+gradually building up to a fully functional "space invaders" game. In
+addition, students will learn how to use Matplotlib and Seaborn to
+create visualizations for data analysis, and how to use Pandas to
+manipulate and analyze data.
+</p>
+
+<p>
+Throughout the course, students will have ample opportunity to
+practice their programming skills with a variety of exercises and
+projects. They will also receive guidance and feedback from the
+instructor on their progress and final projects. By the end of the
+course, students should have a solid foundation in Python programming
+and be able to apply their skills to a wide range of projects, from
+game development to data analysis and visualization. This course is
+ideal for anyone with little or no programming experience who wants to
+learn Python or for those who have some experience in programming and
+want to learn more advanced concepts and practical applications.
+</p>
+
+<div id="outline-container-org05769c6" class="outline-3">
+<h3 id="org05769c6">Week 1</h3>
+<div class="outline-text-3" id="text-org05769c6">
+</div>
+<div id="outline-container-org2abcf98" class="outline-4">
+<h4 id="org2abcf98">Day 1 (2 hours)</h4>
+<div class="outline-text-4" id="text-org2abcf98">
+<ul class="org-ul">
+<li>Introductions</li>
+<li>Overview of course and expectations</li>
+<li>Installing Python and IDE (Integrated Development Environment)</li>
+<li>Getting started with Python interpreter and basic data types</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7f8523d" class="outline-4">
+<h4 id="org7f8523d">Day 2 (2 hours)</h4>
+<div class="outline-text-4" id="text-org7f8523d">
+<ul class="org-ul">
+<li>Review of Python syntax and data types</li>
+<li>Introduction to control flow statements (if/else, while, for)</li>
+<li>Exercises using control flow statements</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbbfade5" class="outline-4">
+<h4 id="orgbbfade5">Day 3 (2 hours)</h4>
+<div class="outline-text-4" id="text-orgbbfade5">
+<ul class="org-ul">
+<li>Review of control flow statements</li>
+<li>Introduction to functions and parameters</li>
+<li>Exercises using functions and parameters</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7153e2d" class="outline-4">
+<h4 id="org7153e2d">Day 4 (2 hours)</h4>
+<div class="outline-text-4" id="text-org7153e2d">
+<ul class="org-ul">
+<li>Review of functions and parameters</li>
+<li>Introduction to files and exceptions</li>
+<li>Exercises using files and exceptions</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgec58d6c" class="outline-4">
+<h4 id="orgec58d6c">Day 5 (2 hours)</h4>
+<div class="outline-text-4" id="text-orgec58d6c">
+<ul class="org-ul">
+<li>Review of files and exceptions</li>
+<li>Introduction to lists</li>
+<li>Exercises using lists</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org6e9fe97" class="outline-3">
+<h3 id="org6e9fe97">Week 2</h3>
+<div class="outline-text-3" id="text-org6e9fe97">
+</div>
+<div id="outline-container-orgedaa4de" class="outline-4">
+<h4 id="orgedaa4de">Day 6 (2 hours)</h4>
+<div class="outline-text-4" id="text-orgedaa4de">
+<ul class="org-ul">
+<li>Review of lists</li>
+<li>Introduction to dictionaries</li>
+<li>Exercises using dictionaries</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org717910b" class="outline-4">
+<h4 id="org717910b">Day 7 (2 hours)</h4>
+<div class="outline-text-4" id="text-org717910b">
+<ul class="org-ul">
+<li>Review of dictionaries</li>
+<li>Introduction to tuples</li>
+<li>Exercises using tuples</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org46abf70" class="outline-4">
+<h4 id="org46abf70">Day 8 (2 hours)</h4>
+<div class="outline-text-4" id="text-org46abf70">
+<ul class="org-ul">
+<li>Review of tuples</li>
+<li>Introduction to classes and objects</li>
+<li>Exercises using classes and objects</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga249a8f" class="outline-4">
+<h4 id="orga249a8f">Day 9 (2 hours)</h4>
+<div class="outline-text-4" id="text-orga249a8f">
+<ul class="org-ul">
+<li>Review of classes and objects</li>
+<li>Introduction to inheritance</li>
+<li>Exercises using inheritance</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3e7c3aa" class="outline-4">
+<h4 id="org3e7c3aa">Day 10 (2 hours)</h4>
+<div class="outline-text-4" id="text-org3e7c3aa">
+<ul class="org-ul">
+<li>Review of inheritance</li>
+<li>Introduction to modules and packages</li>
+<li>Exercises using modules and packages</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org7a3cc00" class="outline-3">
+<h3 id="org7a3cc00">Week 3</h3>
+<div class="outline-text-3" id="text-org7a3cc00">
+</div>
+<div id="outline-container-orge8217fd" class="outline-4">
+<h4 id="orge8217fd">Day 11 (2 hours)</h4>
+<div class="outline-text-4" id="text-orge8217fd">
+<ul class="org-ul">
+<li>Review of modules and packages</li>
+<li>Introduction to testing and debugging</li>
+<li>Exercises using testing and debugging techniques</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc2e4dd3" class="outline-4">
+<h4 id="orgc2e4dd3">Day 12 (2 hours)</h4>
+<div class="outline-text-4" id="text-orgc2e4dd3">
+<ul class="org-ul">
+<li>Review of testing and debugging</li>
+<li>Introduction to data visualization with Python</li>
+<li>Exercises using Matplotlib to create visualizations</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org07904f9" class="outline-4">
+<h4 id="org07904f9">Day 13 (2 hours)</h4>
+<div class="outline-text-4" id="text-org07904f9">
+<ul class="org-ul">
+<li>Review of data visualization with Python</li>
+<li>Introduction to Pygame library</li>
+<li>Exercises using Pygame to build a basic game framework</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org405292e" class="outline-4">
+<h4 id="org405292e">Day 14 (2 hours)</h4>
+<div class="outline-text-4" id="text-org405292e">
+<ul class="org-ul">
+<li>Review of Pygame library</li>
+<li>Introduction to game sprites and animation</li>
+<li>Exercises using game sprites and animation to develop a basic game</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc15988c" class="outline-4">
+<h4 id="orgc15988c">Day 15 (2 hours)</h4>
+<div class="outline-text-4" id="text-orgc15988c">
+<ul class="org-ul">
+<li>Review of game development with Pygame</li>
+<li>Introduction to game logic and event handling</li>
+<li>Exercises using game logic and event handling to develop a simple "space invaders" game</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfeb5fb0" class="outline-3">
+<h3 id="orgfeb5fb0">Week 4</h3>
+<div class="outline-text-3" id="text-orgfeb5fb0">
+</div>
+<div id="outline-container-orgb7cc250" class="outline-4">
+<h4 id="orgb7cc250">Day 16 (2 hours)</h4>
+<div class="outline-text-4" id="text-orgb7cc250">
+<ul class="org-ul">
+<li>Review of "space invaders" game development</li>
+<li>Introduction to debugging and optimization techniques for games</li>
+<li>Exercises using debugging and optimization techniques to improve the
+"space invaders" game</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org31d2265" class="outline-4">
+<h4 id="org31d2265">Day 17 (2 hours)</h4>
+<div class="outline-text-4" id="text-org31d2265">
+<ul class="org-ul">
+<li>Review of game development with Pygame</li>
+<li>Introduction to advanced data visualization with Python</li>
+<li>Exercises using Seaborn to create more complex visualizations</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org64a3ae7" class="outline-4">
+<h4 id="org64a3ae7">Day 18 (2 hours)</h4>
+<div class="outline-text-4" id="text-org64a3ae7">
+<ul class="org-ul">
+<li>Review of advanced data visualization with Python</li>
+<li>Introduction to data analysis with Python</li>
+<li>Exercises using Pandas to manipulate and analyze data</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga94808d" class="outline-4">
+<h4 id="orga94808d">Day 19 (2 hours)</h4>
+<div class="outline-text-4" id="text-orga94808d">
+<ul class="org-ul">
+<li>Review of data analysis with Python</li>
+<li>Final project development</li>
+<li>Discussion and review of final project progress</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9ab82a3" class="outline-4">
+<h4 id="org9ab82a3">Day 20 (2 hours)</h4>
+<div class="outline-text-4" id="text-org9ab82a3">
+<ul class="org-ul">
+<li>Final project presentation</li>
+<li>Review and feedback on final projects</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga05d191" class="outline-2">
+<h2 id="orga05d191">Standard and course policies</h2>
+<div class="outline-text-2" id="text-orga05d191">
+<ul class="org-ul">
+<li><b>Standard Lyon College Policies</b> are incorporated into this syllabus
+and can be found at: <a href="http://www.lyon.edu/standard-course-policies">lyon.edu/standard-course-policies</a>.</li>
+
+<li>The <b>Assignments and Honor Code</b> and the <b>Attendance Policy</b> are
+incorporated into this syllabus also and can be found at:
+<a href="https://tinyurl.com/LyonPolicy">tinyurl.com/LyonPolicy</a>.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb8f73ab" class="outline-2">
+<h2 id="orgb8f73ab">DataCamp</h2>
+<div class="outline-text-2" id="text-orgb8f73ab">
+<p>
+The course includes a free subscription to the DataCamp classroom at
+<code>datacamp.com</code> for assignments, and the opportunity to earn a
+certificate.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Marcus Birkenkrahe (birkenkrahe@lyon.edu)</p>
+<p class="date">Created: 2023-04-23 Sun 16:20</p>
+</div>
+</body>
+</html>
