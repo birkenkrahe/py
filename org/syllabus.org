@@ -22,14 +22,15 @@ manipulate and analyze data.
 
 Throughout the course, students will have ample opportunity to
 practice their programming skills with a variety of exercises and
-projects. They will also receive guidance and feedback from the
-instructor on their progress and final projects. By the end of the
-course, students should have a solid foundation in Python programming
-and be able to apply their skills to a wide range of projects, from
-game development to data analysis and visualization. This course is
-ideal for anyone with little or no programming experience who wants to
-learn Python or for those who have some experience in programming and
-want to learn more advanced concepts and practical applications.
+projects using the Google Colaboratory and DataCamp platforms. They
+will also receive guidance and feedback from the instructor on their
+progress and final projects. By the end of the course, students should
+have a solid foundation in Python programming and be able to apply
+their skills to a wide range of projects, from game development to
+data analysis and visualization. This course is ideal for anyone with
+little or no programming experience who wants to learn Python or for
+those who have some experience in programming and want to learn more
+advanced concepts and practical applications.
 
 ** Week 1
 *** Day 1 (2 hours)
@@ -151,5 +152,20 @@ want to learn more advanced concepts and practical applications.
 * DataCamp
 
 The course includes a free subscription to the DataCamp classroom at
-~datacamp.com~ for assignments, and the opportunity to earn a
+[[https://datacamp.com/][datacamp.com]] for assignments, and the opportunity to earn a
 certificate.
+
+* Google Colaboratory
+
+Google Colab ([[https://colab.research.google.com/][colab.research.google.com/]]) is a (free) online platform
+to create, edit and run interactive notebooks in R or Python. This
+enables students to learn literate programming techniques. All
+code-along and practice exercises for this class will be on Google
+Colab.
+
+* GitHub
+
+All course materials are available as ~ipynb~, ~org~ and ~pdf~ files in a
+GitHub repository ([[https://github.com/birkenkrahe/py][github.com/birkenkrahe/py]]). GitHub is the premier
+online platform for software development.
+
