@@ -1,6 +1,7 @@
 #+title: Introduction to Programming with Python 
 #+author: Marcus Birkenkrahe (birkenkrahe@lyon.edu)
 #+subtitle: Lyon College, Summer term I 2023, CSC 109
+#+subtitle: Derby Science Center Room 209, Mon-Fri 1pm-3pm
 #+startup: overview hideblocks inlineimages indent
 #+options: toc:nil num:nil
 This four-week course is designed to provide students with a
@@ -31,7 +32,6 @@ data analysis and visualization. This course is ideal for anyone with
 little or no programming experience who wants to learn Python or for
 those who have some experience in programming and want to learn more
 advanced concepts and practical applications.
-
 ** Week 1
 *** Day 1 (2 hours)
 
@@ -168,4 +168,11 @@ Colab.
 All course materials are available as ~ipynb~, ~org~ and ~pdf~ files in a
 GitHub repository ([[https://github.com/birkenkrahe/py][github.com/birkenkrahe/py]]). GitHub is the premier
 online platform for software development.
+
+* Sources
+
+The original course introduction and schedule were created by OpenAI's
+ChatGPT (chat.openai.com), Mar 23 Version, using instructor's input.
+
+
 
