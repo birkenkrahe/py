@@ -163,15 +163,6 @@ Desired output:
 : I ♥ Python's <standard library>.
 #+end_example
 
-* Random numbers
-
-Source: Kinser (2022):3
-
-
-
-
-
-
 * References
 
 - Paul Barry (2016). Head First Python (2e). O'Reilly.
