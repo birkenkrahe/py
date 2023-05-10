@@ -1,0 +1,10 @@
+#+begin_src python :results output
+  '''
+  This program is not interesting
+  but it has a big comment header
+  '''
+  print('hello')  # and a short comment
+#+end_src
+
+#+RESULTS:
+: hello
