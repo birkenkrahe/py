@@ -30,5 +30,5 @@
 
 * History
 
-   First offered @Lyon: Summer term I, 2023 (Undergrad). Might replace
-   CSC 100, which I teach every spring, because it's more data science-y.
+   First offered @Lyon: Summer term I, 2023 (Undergrad). More data
+   science oriented than CSC 100 (C/C++) or CSC 115 (Java).
