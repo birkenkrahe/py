@@ -1,0 +1,9 @@
+#+title: python automate the boring stuff
+#+startup: overview hideblocks indent inlineimages
+#+property: header-args:python :results output :session *Python* :tangle yes
+* README
+
+Source: Automate The Boring Stuff With Python (4e)
+- [[https://www.udemy.com/course/automate/learn/lecture/3309062#content][Udemy course (2018-2023)]]
+- [[https://automatetheboringstuff.com/][Access to the free online book]]
+

@@ -1,0 +1,16 @@
+#+TITLE: Agenda - Introduction to programming in Python
+#+AUTHOR: Marcus Birkenkrahe
+#+SUBTITLE: Lyon College, Summer school 2023
+#+STARTUP:overview hideblocks indent inlineimages
+#+OPTIONS: toc:nil num:nil ^:nil
+#+property: header-args:python :results output :noweb yes :tangle yes :session *Python*
+#+property: header-args:R :results output :noweb yes :session *R* :exports both
+* Week 1 - Course overview & introduction
+#+attr_html: :width 400px
+[[../img/cover.jpg]]
+
+1) [ ] Entry *survey* - [[https://docs.google.com/forms/d/1yz2EtuSin3r54zMG1d_JCnnVAGb0XI8cP-Yvr7FmZbo/edit#responses][review of your responses]]
+2) [ ] Course *overview* - assignments, grading, topics, platforms
+3) [ ] 
+4) [ ] *Practice:* 
+
