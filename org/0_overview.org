@@ -3,18 +3,17 @@
 #+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
 #+STARTUP: overview hideblocks indent
 #+attr_latex: :width 400px
-#+caption: Young boy fishing (flickr.com)
-[[../img/cover.jpg]]
 * Who is your lecturer?
 #+attr_latex: :width 400px
 #+caption: Photo of Poppy as a puppy
-[[../img/0_poppy.png]]
+[[../img/monty_python.png]]
 
-- Not cats OR dogs, but [[https://drive.google.com/file/d/1z-0cbqfXPA_6HMgIxb043CN5qCUJLEYz/view?usp=sharing][cats AND dogs]]
-- Physicist by training ([[https://images.nature.com/original/magazine-assets/d41586-022-01388-6/d41586-022-01388-6_20499086.jpg][making sense of this]])
-- Teacher by profession ([[https://m.media-amazon.com/images/I/91UJz-ti6BL.jpg][making sense of this]])
-- Data scientist by choice ([[https://media.wired.com/photos/601c6246898afb612573ad4c/master/w_960,c_limit/BLACK%20SUN%20#34.jpg][making sense of this]])
-- Lyon College since 2021 ([[https://www.visitberlin.de/system/files/styles/visitberlin_hero_visitberlin_desktop_2x/private/image/eberswalderstrasse26_c_visitBerlin_Foto_Dagmar_Schwelle_web.jpg?h=1c9b88c9&itok=xMVdiKwM][from Berlin, Germany]])
+- ~not~ cats ~or~ dogs, but [[https://drive.google.com/file/d/1z-0cbqfXPA_6HMgIxb043CN5qCUJLEYz/view?usp=sharing][cats ~and~ dogs]]
+- Physicist by training ([[https://images.nature.com/original/magazine-assets/d41586-022-01388-6/d41586-022-01388-6_20499086.jpg][Particle smash and grab]])
+- Teacher by profession ([[https://m.media-amazon.com/images/I/91UJz-ti6BL.jpg]["Automatic transmission for ideas"]] - Lisa)
+- Data scientist by choice ([[https://media.wired.com/photos/601c6246898afb612573ad4c/master/w_960,c_limit/BLACK%20SUN%20#34.jpg]["Master patterner"]] - LeGuin)
+- Lyon College since 2021 ([[https://www.visitberlin.de/system/files/styles/visitberlin_hero_visitberlin_desktop_2x/private/image/eberswalderstrasse26_c_visitBerlin_Foto_Dagmar_Schwelle_web.jpg?h=1c9b88c9&itok=xMVdiKwM][Migrated from Berlin, Germany]])
+
 * My first programming languages
 #+attr_latex: :width 400px
 #+caption: Texas Instruments TI-99/4 16-bit microcomputer, 1979
@@ -25,7 +24,7 @@
   2) FORTRAN - FORMula TRANslator (1985)
   3) C++ (1989)
 
-- [X] How many programming languages are there today?
+- How many programming languages are there today?[fn:2]
 
 * The importance of infrastructure
 #+attr_latex: :width 400px
@@ -231,6 +230,10 @@ Let's set Emacs up, write and run a first "literate" C program!
 - King K N (2008). C Programming - A Modern Approach. Norton.
 
 * Footnotes
+[fn:2]The [[https://hopl.info/][Online Historical Encyclopedia of Programming Languages]]
+lists over 9,000 programming languages (that is a couple thousand more
+than natural languages known) - of which only about 700 are in active
+use.
 
 [fn:1] A command line prompt is the place in the CLI where you type
 commands for the computer. It typically includes text that indicates a
