@@ -3,6 +3,7 @@
 #+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
 #+STARTUP: overview hideblocks indent
 #+attr_latex: :width 400px
+[[../img/trust.jpeg]]
 * Who is your lecturer?
 #+attr_latex: :width 400px
 #+caption: Photo of Poppy as a puppy
