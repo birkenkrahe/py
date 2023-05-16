@@ -24,7 +24,7 @@
   2) FORTRAN - FORMula TRANslator (1985)
   3) C++ (1989)
 
-- How many programming languages are there today?
+- How many programming languages are there today?[fn:1]
 
 * The importance of infrastructure
 #+attr_latex: :width 400px
@@ -85,7 +85,7 @@ do this (without you noticing) is written in C.
 
 - [[https://github.com/birkenkrahe/org/blob/master/FAQ.org][GNU Emacs]] (literate programming environment)
 
-- [[https://en.wikipedia.org/wiki/Command-line_interface][Command line interface]] / interpreter - (shell / replit.com)
+- [[https://en.wikipedia.org/wiki/Command-line_interface][Command line interface]] / interpreter - (shell / replit.com)[fn:2]
 
 * The Canvas LMS
 #+attr_latex: :width 400px
