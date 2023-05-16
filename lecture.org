@@ -24,7 +24,7 @@
   2) FORTRAN - FORMula TRANslator (1985)
   3) C++ (1989)
 
-- How many programming languages are there today?[fn:2]
+- How many programming languages are there today?
 
 * The importance of infrastructure
 #+attr_latex: :width 400px
@@ -85,7 +85,7 @@ do this (without you noticing) is written in C.
 
 - [[https://github.com/birkenkrahe/org/blob/master/FAQ.org][GNU Emacs]] (literate programming environment)
 
-- [[https://en.wikipedia.org/wiki/Command-line_interface][Command line interface]] / interpreter - (shell / replit.com)[fn:1]
+- [[https://en.wikipedia.org/wiki/Command-line_interface][Command line interface]] / interpreter - (shell / replit.com)
 
 * The Canvas LMS
 #+attr_latex: :width 400px
@@ -230,11 +230,12 @@ Let's set Emacs up, write and run a first "literate" C program!
 - King K N (2008). C Programming - A Modern Approach. Norton.
 
 * Footnotes
-[fn:2]The [[https://hopl.info/][Online Historical Encyclopedia of Programming Languages]]
+
+[fn:1] The [[https://hopl.info/][Online Historical Encyclopedia of Programming Languages]]
 lists over 9,000 programming languages (that is a couple thousand more
 than natural languages known) - of which only about 700 are in active
 use.
 
-[fn:1] A command line prompt is the place in the CLI where you type
+[fn:2] A command line prompt is the place in the CLI where you type
 commands for the computer. It typically includes text that indicates a
 location on your computer, e.g. ~c:/Users/birkenkrahe>~
