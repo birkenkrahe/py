@@ -5,14 +5,17 @@
 #+OPTIONS: toc:nil num:nil ^:nil
 #+property: header-args:python :results output :noweb yes :tangle yes :session *Python*
 #+property: header-args:R :results output :noweb yes :session *R* :exports both
-* Day 1: Course overview & introduction
+* Day 1: Course overview & infrastructure practice
 #+attr_html: :width 400px
-[[../img/cover.jpg]]
+[[../img/0_highways.jpg]]
 
-1) [ ] Entry *survey* - [[https://docs.google.com/forms/d/1yz2EtuSin3r54zMG1d_JCnnVAGb0XI8cP-Yvr7FmZbo/edit#responses][review of your responses]]
-2) [ ] Course *overview* - assignments, grading, topics, platforms
-3) [ ] 
-4) [ ] *Practice:* 
+1) [ ] Entry *survey* - [[https://docs.google.com/forms/d/1yz2EtuSin3r54zMG1d_JCnnVAGb0XI8cP-Yvr7FmZbo/edit#responses][review of your responses]].
+2) [ ] Course *overview* - assignments, grading, topics, platforms.
+3) [ ] *Practice:* a first (literate) Python program & platforms.
+4) [ ] First *assignment*: "Getting started in Python" DataCamp.
+
+** Summary:
+
 * Day 2:
 * Day 3
 * Day 4
