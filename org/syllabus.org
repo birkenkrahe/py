@@ -113,11 +113,6 @@ For *important dates*, see the 2022-2023 Academic Calendar at:
 - try and except statement
 - exceptions
 
-** Writing a complete program: Guess the number
-- Pseudocode
-- Coding
-- Testing
-  
 ** Lists
 - List data type
 - For loops with lists, multiple assignment and augmented operators
@@ -128,7 +123,7 @@ For *important dates*, see the 2022-2023 Academic Calendar at:
  - Dictionary data type
  - Data structures
    
-** More about strings
+** Manipulating strings
 - Advanced string syntax
 - String methods
 - String formatting
@@ -138,14 +133,14 @@ For *important dates*, see the 2022-2023 Academic Calendar at:
 - Character classes and methods
 - Regex example program: phone and email scraper
 
-** Files
+** Files and file management
 - Filenames and absolute/relative paths
 - Reading and writing plaintext files
 - Copying and moving files and folders
 - Deleting files
 - Walking a directory tree
 
-** Debugging
+** Debugging and error messages
 - Raise and assert statements
 - Logging data
 - Using the debugger
@@ -167,7 +162,7 @@ For *important dates*, see the 2022-2023 Academic Calendar at:
 - Selecting columns and rows
 - Logical testing
 
-** GUI Automation
+** GUI Automation: image recognition
 - Controlling the mouse from Python
 - Controlling the keyboard from Python
 - Screenshots and image recognition
@@ -176,8 +171,14 @@ For *important dates*, see the 2022-2023 Academic Calendar at:
 - Creating line plots and adding text
 - Scatter plots and bar charts
 - Histograms
-
+** Machine learning: building a spam filter
+- Supervised learning with Naive Bayes
+- Data cleaning and bag-of-words text mining
+- Training, testing and improving a spamfilter
 ** Project presentations
+- Individual project presentations
+- Interactive practice with participants
+- In-class discussions and reflection
 * DataCamp
 
 The course includes a free subscription to the DataCamp classroom at
@@ -217,6 +218,7 @@ to be offered again: fall 2023/2024 (Batesville High School), summer
 - Python Crash Course (3e) by E Matthes (NoStarch, 2023).
 - Python Workout by R Lerner (Manning, 2020).
 - Whirlwind Tour of Python by J VanderPlas (O'Reilly, 2016). [[https://jakevdp.github.io/WhirlwindTourOfPython/][URL]]
+
 * Standard and course policies
 
 - *Standard Lyon College Policies* are incorporated into this syllabus

@@ -1,0 +1,21 @@
+#+title: Python Course Overview Practice Assignments
+#+author: Marcus Birkenkrahe
+#+subtitle: Introduction to Programming in Python - Summer I 2023 - Lyon College
+#+startup: overview hideblocks indent
+#+options: toc:nil num:nil ^:nil
+#+property: header-args:python :session *Python* :results output :exports both
+* Practice: a first "literate" Python program!
+#+attr_latex: :width 400px
+#+caption: Books aren't the only way to be "literate" in programming!
+[[../img/0_books.png]]
+
+(You can find a [[https://github.com/birkenkrahe/cc/blob/piHome/pdf/first_org_print.pdf][PDF]] and a Org version of this file on GitHub)
+
+Objectives:
+- Understand the "literate programming concept"
+- Find Python on your computer
+- Find Python for download to your PC on the web
+- Options for creating and running Python scripts 
+- Understand when we're using Colab + IDLE + replit.com
+- Starting and using Google Colab, IDLE and replit.com
+- Creating and running our first ever Python script
