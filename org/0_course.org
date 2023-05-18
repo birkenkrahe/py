@@ -142,6 +142,21 @@ Infrastructure that separates you from just getting on with it:
   3) Working and visualizing tabular data
   4) Machine learning: spam filter
 
+- Part 3: Course Projects, e.g.
+  1) [[https://learn.birdbraintechnologies.com/slpage/python-installation-for-finch/][Program the Finch 2.0 robot with Python]] - move / draw
+  2) Run machine learning on my [[https://coral.ai/docs/accelerator/get-started/][Google Coral Edge TPU]]
+  3) [[https://databot.us.com/setup/][Set my databot 2.0 up]] - extract data and visualize with Python
+  4) Set up and program my [[https://mycroft.ai/][Mycroft MKII]] (open source voice assistant)
+  5) Identify your own research problem and use Python to solve it
+  6) Program the classic Pong in Python with the Turtle module
+  7) Program another 2D or 3D game in Python (e.g. with PyGame, using
+     any of Sweigart's games [[https://inventwithpython.com/invent4thed/][in his 2016 book]]).
+  8) Analyse and demo use of any of our course tools in your field of
+     interest or expertise
+  9) Create a literature (and practice) overview of Python in your field
+  10) Something completely different related to introduction to
+      programming (not necessarily with Python)
+
 * How will you be evaluated?
 #+attr_latex: :width 400px
 #+caption: From the course syllabus (Canvas, GitHub)
@@ -152,51 +167,131 @@ Infrastructure that separates you from just getting on with it:
 - No final exam but 4 weekly graded tests
 - Programming assignments are home assignments
 - In-class practices are "literate programming" exercises
-- You are expected to code along 
+- You are expected to code along
 
-* Which tools are you going to use?
+* Which tools are we going to use?
 #+attr_latex: :width 400px
 #+caption: Unsplash, workshop
 [[../img/0_tools.jpg]]
 
-- [[https://lyon.instructure.com/][Canvas]] (learning management system)
+1) [[https://lyon.instructure.com/][Canvas]] (learning management system)
 
-- [[https://github.com/birkenkrahe/cc][GitHub repository]] (all course materials except tests)
+2) [[https://github.com/birkenkrahe/cc][GitHub repository]] (all course materials except tests)
 
-- [[https://colab.research.google.com][Google Colaboratory]] (online interative notebook)
+3) [[https://colab.research.google.com][Google Colaboratory]] (online interative notebook / Literate IDE)
 
-- [[https://replit.com][Command line interface]] interpreter - (shell / REPL at replit.com)
+4) [[https://replit.com][Command line interface]] interpreter - (shell / REPL at replit.com)
 
-- [[https://youtu.be/WIlQukiXs-E][Python Interactive Development Learning Environment]] (IDLE)
+5) [[https://youtu.be/WIlQukiXs-E][Python Interactive Development Learning Environment]] (IDLE)
 
-- [[https://datacamp.com/][DataCamp]] (data science online learning for Python, R, SQL)
+6) [[https://datacamp.com/][DataCamp]] (data science online learning for Python, R, SQL)
 
-* Static: the Canvas LMS
+7) AI ([[https://chat.openai.com/chat][OpenAI ChatGPT]], [[https://bard.google.com/u/1/][Google Bard]], [[https://github.com/github-copilot/free_signup][GitHub CoPilot]] w/editor)
+
+ANY OF THESE TOOLS CAN BE THE BASIS OF YOUR COURSE PROJECT!
+
+* The Canvas LMS
 #+attr_latex: :width 400px
 #+caption: Canvas
-[[../img/0_canvas.png]]
+[[../img/0_canvas.png]] [[../img/0_canvas_quiz.png]]
 
 - Course announcements (notifications via email)
-- Assignments for submission and online tests 
+- Assignments for submission and online tests
 - Zoom links (participate remotely/cloud recording)
 - Course links (GitHub, GDrive Whiteboard, DataCamp invite link)
 - Gradebook (weekly updates)
 
-* Static: the GitHub platform
+* The GitHub platform
 #+attr_latex: :width 400px
 #+caption: My GitHub dashboard - close to 4,000 commits in 2022 (100,000 lines of code?)
-[[../img/0_github.png]]
+[[../img/0_github.png]] [[../img/0_colab_py.png]]
 
 - [[https://github.com/birkenkrahe][GitHub]] is the most popular software development platform.
-
+- The 'Git' in the name is a version control software by Torvalds
 - It also contains Gists (code snippets), Issues, and CoPilot (AI)
-
 - Here for you: all course materials, and the general course FAQ
+- No registration required
 
-* Dynamic: IDLE
-* Dynamic: Google Colaboratory
-* Dynamic: replit.com
-* Dynamic: DataCamp
+* IDLE (Integrated Devevelopment Learning Environment
+#+attr_latex: :width 300px
+#+caption: IDLE shell, file editor and turtle demo
+[[../img/0_idle.png]] [[../img/0_turtle.png]]
+
+- Built-in Python shell for interactive experimentation
+- Includes file editor and turtle graphics
+- Local and private to your computer
+- No registration required
+
+More:
+- Video: [[https://youtu.be/WIlQukiXs-E][What is Python IDLE and How to Use the IDLE Shell]] (6')
+- Tutorial: [[Getting Started With Python IDLE][Getting Started with Python IDLE]] + [[https://realpython.com/courses/starting-python-idle/][video lessons]] (25')
+- Interactive Shell also available as [[https://chrome.google.com/webstore/detail/python-shell/gdiimmpmdoofmahingpgabiikimjgcia?hl=en][Google Chrome extension]]
+
+* Google Colaboratory IPython Notebooks
+#+attr_latex: :width 300px
+#+caption: colab.research.google.com dashboard and overview
+[[../img/0_colab_dashboard.png]] [[../img/0_colab_light.png]] 
+
+- Free interactive notebook: text + code + output
+- Upload to Lyon GDrive and/or GitHub/Gist
+- Linux Docker container (virtual OS)
+- Shell only with upgrade
+- Primary collaborative tool in this course
+- No registration required (unless you want to save notebooks)
+- Online alternative to Emacs + Org-mode or VS Code cloud (vscode.dev)
+
+* replit.com REPL + console + templates
+#+attr_latex: :width 300px
+#+caption: replit.com dashboard for Python 
+[[../img/0_replit_dashboard.png]] [[../img/0_replit_light.png]]
+
+- Free REPL (Read-Eval-Print-Loop) + Python console + Shell
+- Templates for many programming languages to choose from
+- Cool data science and AI project templates
+- Easy to share code publicly
+- Alternative to IDLE (though can be slow to respond at times)
+- Registration required
+
+* DataCamp lessons + projects + workspace
+#+attr_latex: :width 300px
+#+caption: DataCamp dashboard
+[[../img/0_datacamp.png]] [[../img/0_workspace.png]]
+
+*DataCamp:*
+- Free online data science learning platform (Python, R, SQL)
+- Each course is 4 hours long and leads to a certificate
+- Many guided and unguided projects (ca 1 hour per project)
+- Mobile app and practice exercises for each course
+- Jupyter Lab available as part of DataCamp workspaces
+- Registration with Lyon email required
+
+*Alternatives worth checking out (first course is free):*
+- freeCodeCamp.org, esp. [[https://youtu.be/nLRL_NcnK-4][Harvard's CS50]] (video and tutorials only)
+- [[https://www.dataquest.io/path/introduction-to-python-programming-skill/][dataquest.io]] (looked at the first lesson - more demanding)
+- [[https://www.codecademy.com/learn/learn-python-3][codeacademy.com]] (very beginner friendly, programmer-focused)
+- [[https://www.w3schools.com/python/python_intro.asp][w3schools.com]] (low entry, nice integrated workspace)
+
+* Can we use AI coding assistants?
+#+attr_latex: :width 400px
+#+caption: Hieronymus Bosch, The Concert in the Egg/Ship of Fools (1561)
+[[../img/0_egg.jpeg]]
+
+- Yes, you may as long as you document it meticulously and diligently
+- I frequently use [[https://chat.openai.com/chat][OpenAI ChatGPT]], and I tried [[https://bard.google.com/u/1/][Google Bard]]
+- [[https://github.com/github-copilot/free_signup][GitHub CoPilot]] only works as an editor extension
+- Google Colab will soon introduce [[https://blog.google/technology/developers/google-colab-ai-coding-features/][Google Codey]]
+- AI assistance will take lots of time if you use them well
+
+A typical workflow for me looks like this:
+1) My question: "How can I get pi in Python?"
+2) ChatGPT spits out explanation with code snippet
+3) I check the text and the code
+4) I create an exercise or two around the question
+5) If I received chatbot help, I reference the software
+#+attr_latex: :width 400px
+#+caption: Hieronymus Bosch, The Concert in the Egg/Ship of Fools (1561)
+[[../img/0_chatgpt.png]]
+
 * When are the first assignments due?
 #+attr_latex: :width 400px
 #+caption: Four monks by Claudio Rinaldi (1852-1909)
@@ -205,55 +300,122 @@ Infrastructure that separates you from just getting on with it:
 First home assignment, first test and in-class assignments are due a
 week from now, on Monday, 28 May, by 12 pm (so that I can check 'em).
 
-* TODO What are you looking forward to?
+* Will you need to buy any books for this course?
 #+attr_latex: :width 400px
-[[../img/0_package.jpg]]
+#+caption: Python book titles
+[[../img/0_py_books.png]]
 
-* Next / Any questions?
+Nope. The main textbook that I used is available to read online for
+free: Al Sweigart, [[https://automatetheboringstuff.com/][Automate the Boring Stuff with Python (4e)]] (2020),
+there's also a course by the author [[https://www.udemy.com/course/automate/][on Udemy ($12.99 until tomorrow)]].
+
+You could just read (a) book(s) to learn Python (that's what I do) but
+you do need to put in the time to reflect, refactor and code anyway.
+
+The Python online documentation recommends both [[https://wiki.python.org/moin/PythonBooks][books]] and [[https://wiki.python.org/moin/Courses][courses]].
+
+* TODO Infinite skills
+#+attr_latex: :width 400px
+[[../img/0_perl.png]]
+Image: [[https://www.explainxkcd.com/wiki/index.php/519:_11th_Grade][xkcd]] (Randall Munroe, robotics engineer at NASA)
+#+begin_quote
+»...And the ten minutes striking up a conversation with that strange
+kid in homeroom sometimes matters more than every other part of high
+school combined.«
+#+end_quote
+
+- *Infinite Skills*: come up with three programs you would create if you
+  had "infinite programming skills" and if you could build anything
+  you wanted using the computer and the Python language.
+
+- One example from everyone!
+  
+* TODO Next / Any questions? / Review questions
 #+attr_latex: :width 200px
-#+caption: Introduction to Python Basics
-[[../img/0_python.png]]
-Python Basics!
+#+caption: Introduction to literate Python scripting infrastructure
+[[../img/0_python.png]] [[../img/0_highways.jpg]]
 
-* TODO Practice: a first "literate" Python program!
+- Next up: Literate Python scripting infrastructure basics!
+
+- Before we go on:
+  1) What's the difference between "Python", "python3", and "IPython"?
+     #+begin_quote
+     - "*Python*" is the name for the programming language
+     - "*python3*" is the executable for Python's version 3
+     - "*IPython*" is a Python shell or console for interactive
+       computing, it's also the basis of Jupyter notebooks (Google
+       Colab) and Jupyter lab (DataCamp workspace).
+     #+end_quote
+  2) What's the difference between "IDLE", "Colab", "replit" and
+     "DataCamp"?
+     #+begin_quote
+     - "*IDLE*" (Interactive Development Learning Environment) is an IDE
+       that comes with your Python installation (on Windows and macOS)
+       and has a console + a file editor + a debugger.
+     - "*Colab*" (Google Colaboratory) is an online interactive notebook
+       (or "literary") development environment based on Jupyter lab.
+     - "*replit*" (replit.com), named after REPL (Read-Eval-Print-Loop)
+       is an online platform to learn many different languages, and it
+       provides a file editor, a console and a shell.
+     #+end_quote
+  3) Why are there so many *technical terms* (and lingo) around learning
+     Python? I thought it was an easy language suited for beginners?
+     #+attr_latex: :width 400px
+     #+caption: "Python environment" by xkcd - https://xkcd.com/1987
+     [[../img/0_xkcd.png]]
+     #+begin_quote
+     Python is supposedly easy for beginners but it is also part of a
+     huge, mixed commercial/open/free technological ecosystem, and as
+     a programming language it requires infrastructure (both hardware
+     and software), which changes continuously.
+     #+end_quote
+  4) A *7-year old* asks you what you're doing while you're working on
+     the Python shell to complete an assignment. What would you reply?
+     
+* TODO Practice: Python scripting infrastructure
 #+attr_latex: :width 400px
-#+caption: Books aren't the only way to be "literate" in programming!
-[[../img/0_books.png]]
+#+caption: 
+[[../img/0_highways.jpg]]
 
-(You can find a [[https://github.com/birkenkrahe/cc/blob/piHome/pdf/first_org_print.pdf][PDF of this exercise]] on GitHub)
+([[https://github.com/birkenkrahe/py/][PDF and an Org-mode version of this exercise]] on GitHub)
 
 Objectives:
-- Understand the "literate programming concept"
 - Find Python on your computer
 - Find Python for download to your PC on the web
-- Options for creating and running Python scripts 
+- Starting and using Google Colab, IDLE, DataCamp and replit.com
+- Understand the "literate programming concept"
 - Understand when we're using Colab + IDLE + replit.com
-- Starting and using Google Colab, IDLE and replit.com
+- Options for creating and running Python scripts
 - Creating and running our first ever Python script
-  
+
 * Glossary
 
-| TERM                  | MEANING                                       |
-|-----------------------+-----------------------------------------------|
-| Meta data             | Data about data (e.g. layout instructions)    |
-| Infrastructure        | Computing roadworks: hardware and software    |
-| Editor                | Program to write programs in                  |
-| Compiler              | Program to turn source into machine code      |
-| Python                | High-level, procedural, OOP language          |
-| Source code           | Code for humans to read and edit (~.c~)         |
-| Machine code          | Code for machines to execute (~.exe~)           |
-| [[https://en.wikipedia.org/wiki/Git][Git]] (as in GitHub)    | Software version control system (2005)        |
-| [[https://www.gnu.org/software/emacs/][Emacs]]                 | Extensible editor written in Lisp (1985)      |
-| FOSS                  | Free and Open Source Software                 |
-| IDLE                  | IDE bundled with Python
-| [[https://en.wikipedia.org/wiki/Linux][Linux]]                 | FOSS operating system (1991)                  |
-| Windows, MacOS        | Commercial OS (Microsoft, Apple)              |
-| Command line          | Terminal, shell program to talk to the OS     |
-| Prompt                | Location on your computer, e.g. ~C:\User\~      |
-| ~cd~                    | Command to change directory                   |
-| Literate pgm          | Doc + code + output for humans and machines   |
+| TERM                 | MEANING                                     |
+|----------------------+---------------------------------------------|
+| Meta data            | Data about data (e.g. layout instructions)  |
+| Infrastructure       | Computing roadworks: hardware and software  |
+| Editor               | Program to write programs in                |
+| Compiler             | Program to turn source into machine code    |
+| Python               | High-level, procedural, OOP language        |
+| Source code          | Code for humans to read and edit (~.c~)       |
+| Machine code         | Code for machines to execute (~.exe~)         |
+| [[https://en.wikipedia.org/wiki/Git][Git]] (as in GitHub)   | Software version control system (2005)      |
+| [[https://www.gnu.org/software/emacs/][Emacs]]                | Extensible editor written in Lisp (1985)    |
+| FOSS                 | Free and Open Source Software               |
+| IDLE                 | IDE bundled with Python                     |
+| [[https://en.wikipedia.org/wiki/Linux][Linux]]                | FOSS operating system (1991)                |
+| Windows, MacOS       | Commercial OS (Microsoft, Apple)            |
+| Command line         | Terminal, shell program to talk to the OS   |
+| Prompt               | Location on your computer, e.g. ~C:\User\~    |
+| Literate programming | Doc + code + output for humans and machines |
 
 * References
 
-- King K N (2008). C Programming - A Modern Approach. Norton.
-
+- Neary M (Nov 13, 2019). Getting Started With Python IDLE. URL:
+  [[https://realpython.com/python-idle/][realpython.com]].
+- Real Python (Jan 20, 2022). What is Python IDLE and How to Use the
+  IDLE Shell. URL: [[https://youtu.be/WIlQukiXs-E][youtube.com]].
+- Python 3.11.1. (Oct 24, 2022). Python Software Foundation. URL:
+  [[https://www.python.org/][python.org]].
+- Images (public domain/no known copyright restrictions):
+  Unsplash.com, Flickr.com
