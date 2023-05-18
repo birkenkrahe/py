@@ -3,17 +3,16 @@
 #+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
 #+STARTUP: overview hideblocks indent
 #+attr_latex: :width 400px
-[[../img/trust.jpeg]]
+[[../img/cover.jpg]]
 * Who is your lecturer?
 #+attr_latex: :width 400px
 #+caption: Photo of Poppy as a puppy
 [[../img/monty_python.png]]
 
-- ~not~ cats ~or~ dogs, but [[https://drive.google.com/file/d/1z-0cbqfXPA_6HMgIxb043CN5qCUJLEYz/view?usp=sharing][cats ~and~ dogs]]
-- Physicist by training ([[https://images.nature.com/original/magazine-assets/d41586-022-01388-6/d41586-022-01388-6_20499086.jpg][Particle smash and grab]])
-- Teacher by profession ([[https://m.media-amazon.com/images/I/91UJz-ti6BL.jpg]["Automatic transmission for ideas"]] - Lisa)
-- Data scientist by choice ([[https://media.wired.com/photos/601c6246898afb612573ad4c/master/w_960,c_limit/BLACK%20SUN%20#34.jpg]["Master patterner"]] - LeGuin)
-- Lyon College since 2021 ([[https://www.visitberlin.de/system/files/styles/visitberlin_hero_visitberlin_desktop_2x/private/image/eberswalderstrasse26_c_visitBerlin_Foto_Dagmar_Schwelle_web.jpg?h=1c9b88c9&itok=xMVdiKwM][Migrated from Berlin, Germany]])
+- Monty Python used to be one of my favorite shows:
+  1) British humor (I went to school in London)
+  2) Anarchic and irreverent (I was young once)
+  3) MUDs (First online programming class)
 
 * My first programming languages
 #+attr_latex: :width 400px
@@ -25,29 +24,101 @@
   2) FORTRAN - FORMula TRANslator (1985)
   3) C++ (1989)
 
-- How many programming languages are there today?[fn:1]
+- How many programming languages are there today?
 
-* The importance of infrastructure
+* Why Python? Why not?
 #+attr_latex: :width 400px
-#+caption: Layers between you and a document on your computer
-[[../img/0_infrastructure.jpg]]
+#+caption: Why is Python so popular (Ozgon, 2021)
+[[../img/0_why_python.png]]
 
-The image shows eight layers that your computing infrastructure has to
-manage (there are more in fact) - most of the software enabling you to
-do this (without you noticing) is written in C.
+- Why Python?
+  #+begin_quote
+  1) Readability and simplicity ~**~
+  2) Versatility and applicability ~**~
+  3) Large and active community
+  4) Cross-platform compatibility
+  5) Abundance of libraries and frameworks ~*~
+  6) Data science and machine learning ~***~
+  7) Automation and scripting ~***~
+  8) Career opportunities ~*~
+  #+end_quote
+
+- Why not Python?
+  #+begin_quote
+  1) Specific platform requirements
+  2) Performance-critical applications ~***~
+  3) One-paradigm language (cp. R, Haskell, C/C++, SQL) ~**~
+  4) Industry demand ~*~
+  5) You might just not like significant indentation ~*~
+  #+end_quote
+
+* Natural vs. programming languages
+
+- C/C++ is like Latin
+  #+attr_latex: :width 150px
+  #+Caption: "C/C++ is like Latin"
+  [[../img/0_cpp.png]]
+- SQL is like English
+  #+attr_latex: :width 200px
+  #+Caption: "SQL is like English"
+  [[../img/0_sqlite.png]]
+
+- Lisp is like French
+  #+attr_latex: :width 150px
+  #+Caption: "Lisp is like French"
+  [[../img/0_lisp.png]]
+
+- R is like Italian
+  #+attr_latex: :width 150px
+  #+Caption: "R is like Italian"
+  [[../img/0_rlogo.png]]
+
+- Snap! is like Russian
+  #+attr_latex: :width 150px
+  #+Caption: "Snap! is like Russian"
+  [[../img/0_snap.png]]
+
+- Python is like Spanish
+  #+attr_latex: :width 150px
+  #+Caption: "Python is like Spanish"
+  [[../img/0_python.png]]
+
+- FORTRAN is like Hebrew
+  #+attr_latex: :width 150px
+  #+Caption: "FORTRAN is like Hebrew"
+  [[../img/0_fortran.png]]
+
+- HTML is like Gaelic
+  #+attr_latex: :width 150px
+  #+Caption: "HTML is like Gaelic"
+  [[../img/0_html.jpg]]
+
+* The importance of (understanding) infrastructure
+#+attr_latex: :width 400px
+#+caption: Photo by Landon Martin on Unsplash
+[[../img/0_nesting.jpg]]
+
+Infrastructure that separates you from just getting on with it:
+
+1. Network server / network
+2. Keyboard / Screen
+3. Operating system (OS)
+4. OS shell / terminal / console
+5. Python shell / console
+6. File system
+7. Compiler/interpreter
+8. Editor
+9. Middleware and meta data
+10. Graphical user interface
+
+(Most of these infrastructure components are written in C/C++.)
 
 * What do you expect from this course?
 #+attr_latex: :width 400px
 #+caption: Dandelion in the grass, by Aaron Burden, @Unsplash
 [[../img/0_expectations.jpg]]
 
-- I would like to make a website
-- I want to learn as many languages as I can
-- I may need it (formally) for my Math major
-- I want to make video games
-- I want to get better at computing because of math/eng
-- I want to become a software developer
-- I want to see if computing may be in my future
+[[https://docs.google.com/forms/d/1YItHX4fru4TiNvmzJQDh-DG9t2C69dLQNWw0uIc_vmE/edit#responses][Google Forms survey]]: responses
 
 * What careers do our students have?
 #+attr_latex: :width 400px
@@ -55,25 +126,33 @@ do this (without you noticing) is written in C.
 [[../img/0_careers.png]]
 
 * What will you do in this course?
-#+attr_latex: :width 300px
-#+caption: Syllabus, Canvas (lyon.instructure.com) or GitHub (github.com/birkenkrahe/ds2)
-[[../img/0_schedule.png]]
+#+attr_latex: :width 400px
++caption: Tad Dickerson (Bob's Flying Service) with AgNav system (Flickr.com)
+[[../img/0_course.jpg]]
 
-- We have a *textbook* - King, C Programming - A modern approach (2008)
-- We have an *operating system* - Linux (maybe) or Windows/MacOS
-- We have (more than) an *editor* - Emacs + Org-mode
-- We have a *compiler* - GCC ([[https://raw.githubusercontent.com/birkenkrahe/cc/piHome/img/0_gcc_mac.png][also on a Mac]])
+- Part 1: Basics
+  1) Input and Output
+  2) Flow control
+  3) Functions
+  4) Lists and dictionaries
+
+- Part 2: Applications
+  1) Strings and regular expressions
+  2) Webscraping and file manipulation
+  3) Working and visualizing tabular data
+  4) Machine learning: spam filter
 
 * How will you be evaluated?
 #+attr_latex: :width 400px
-#+caption: Source: syllabus, Canvas (lyon.instructure.com) or GitHub (github.com/birkenkrahe/ml)
+#+caption: From the course syllabus (Canvas, GitHub)
 [[../img/0_grades.png]]
 
 - All course requirements have deadlines
 - Late submissions will be penalized (loss of points)
-- Final exam will be sourced by term test questions
+- No final exam but 4 weekly graded tests
 - Programming assignments are home assignments
 - In-class practices are "literate programming" exercises
+- You are expected to code along 
 
 * Which tools are you going to use?
 #+attr_latex: :width 400px
@@ -84,120 +163,74 @@ do this (without you noticing) is written in C.
 
 - [[https://github.com/birkenkrahe/cc][GitHub repository]] (all course materials except tests)
 
-- [[https://github.com/birkenkrahe/org/blob/master/FAQ.org][GNU Emacs]] (literate programming environment)
+- [[https://colab.research.google.com][Google Colaboratory]] (online interative notebook)
 
-- [[https://en.wikipedia.org/wiki/Command-line_interface][Command line interface]] / interpreter - (shell / replit.com)[fn:2]
+- [[https://replit.com][Command line interface]] interpreter - (shell / REPL at replit.com)
 
-* The Canvas LMS
+- [[https://youtu.be/WIlQukiXs-E][Python Interactive Development Learning Environment]] (IDLE)
+
+- [[https://datacamp.com/][DataCamp]] (data science online learning for Python, R, SQL)
+
+* Static: the Canvas LMS
 #+attr_latex: :width 400px
 #+caption: Canvas
 [[../img/0_canvas.png]]
 
-- Announcements
-- Assignments (Programming assignments and in-class practice)
-- Zoom links (participate/cloud recording)
-- Course links (GitHub, Whiteboard)
-- Gradebook
+- Course announcements (notifications via email)
+- Assignments for submission and online tests 
+- Zoom links (participate remotely/cloud recording)
+- Course links (GitHub, GDrive Whiteboard, DataCamp invite link)
+- Gradebook (weekly updates)
 
-* The (popular) GitHub platform
+* Static: the GitHub platform
 #+attr_latex: :width 400px
 #+caption: My GitHub dashboard - close to 4,000 commits in 2022 (100,000 lines of code?)
 [[../img/0_github.png]]
 
 - [[https://github.com/birkenkrahe][GitHub]] is the most popular software development platform.
 
-- It's now owned by Microsoft (which is becoming a problem)
+- It also contains Gists (code snippets), Issues, and CoPilot (AI)
 
-- Here for you: all course materials, and the course FAQ
+- Here for you: all course materials, and the general course FAQ
 
-* DONE Practice: first "literate" C program!
+* Dynamic: IDLE
+* Dynamic: Google Colaboratory
+* Dynamic: replit.com
+* Dynamic: DataCamp
+* When are the first assignments due?
+#+attr_latex: :width 400px
+#+caption: Four monks by Claudio Rinaldi (1852-1909)
+[[../img/0_monks.png]]
+
+First home assignment, first test and in-class assignments are due a
+week from now, on Monday, 28 May, by 12 pm (so that I can check 'em).
+
+* TODO What are you looking forward to?
+#+attr_latex: :width 400px
+[[../img/0_package.jpg]]
+
+* Next / Any questions?
+#+attr_latex: :width 200px
+#+caption: Introduction to Python Basics
+[[../img/0_python.png]]
+Python Basics!
+
+* TODO Practice: a first "literate" Python program!
 #+attr_latex: :width 400px
 #+caption: Books aren't the only way to be "literate" in programming!
 [[../img/0_books.png]]
 
 (You can find a [[https://github.com/birkenkrahe/cc/blob/piHome/pdf/first_org_print.pdf][PDF of this exercise]] on GitHub)
 
-Let's set Emacs up, write and run a first "literate" C program!
-
-1) Open the command line terminal with ~CMD~ in the search field
-
-2) At the prompt, type ~gcc --version~
-
-3) Open https://github.com/birkenkrahe/org/ in a browser
-
-4) Navigate to the repository ~emacs~ in GitHub
-
-5) Click on the file name ~.emacs~ to open it
-
-6) Open the ~Raw~ version of this file (there's a button)
-
-7) Right click to ~Save as~ and save file as ~emacs.txt~ in ~/Downloads~
-
-8) Open a terminal by entering ~CMD~ in the Windows search bar
-
-9) Pin the terminal to your taskbar
-
-10) At the prompt, enter ~DIR emacs.txt~ - you should see the file
-
-11) At the prompt, enter ~emacs --version~
-
-12) Enter ~emacs -nw -l emacs.txt~
-
-13) Inside Emacs, click ~<F10>~ and ~ENTER~ to open a new file
-
-14) At the prompt at the bottom of the screen, enter ~first.org~
-
-15) Enter the following text (replace ~yourname~ with your own name):
-    #+attr_latex: :width 400px
-    [[../img/0_first.png]]
-
-16) Run the program by putting the cursor anywhere on the code block
-    and typing ~CTRL-c CTRL-c~ (or ~C-c C-c~)
-
-17) Tangle the code with ~C-c C-v t~ (or ~M-x org-babel-tangle~)
-    #+attr_latex: :width 400px
-    #+caption: What happens when you tangle or weave a literate program
-    [[../img/0_litprog1.png]]
-
-18) Open a shell (terminal program) with ~ALT-x eshell~
-
-19) At the prompt, enter ~ls -l first*~ - you should see ~first.C~
-
-20) Enter ~gcc first.C -o hello~
-
-21) Enter ~hello~ to run the program.
-
-22) Upload ~first.org~ as your first in-class assignment [[https://lyon.instructure.com/courses/1041/assignments/5889][to Canvas!]]
-
-* When is the first assignment due?
-#+attr_latex: :width 400px
-#+caption: Four monks by Claudio Rinaldi (1852-1909)
-[[../img/0_monks.png]]
-
-- The first in-class assignment (~first.org~, see Canvas) is due on
-  Friday, January 27. For late submissions, you lose 1 point per day
-  (out of 10 possible points)
-
-- The first home assignment (~Emacs tutorial~, see Canvas) is due on
-  Monday, January 27. For late submissions, you lose 1 point per day
-  (out of 10 possible points)
+Objectives:
+- Understand the "literate programming concept"
+- Find Python on your computer
+- Find Python for download to your PC on the web
+- Options for creating and running Python scripts 
+- Understand when we're using Colab + IDLE + replit.com
+- Starting and using Google Colab, IDLE and replit.com
+- Creating and running our first ever Python script
   
-- We'll write the first weekly multiple-choice test on January 23,
-  covering all of the material that was covered until then.
-
-* What are you looking forward to?
-#+attr_latex: :width 400px
-[[../img/0_package.jpg]]
-
-* Next
-#+attr_latex: :width 400px
-#+caption: Introduction to C programming
-[[../img/0_gnuemacs.png]]
-
-#+attr_latex: :width 400px
-#+caption: Introduction to C programming
-[[../img/0_cprogramming.png]]
-
 * Glossary
 
 | TERM                  | MEANING                                       |
@@ -206,37 +239,21 @@ Let's set Emacs up, write and run a first "literate" C program!
 | Infrastructure        | Computing roadworks: hardware and software    |
 | Editor                | Program to write programs in                  |
 | Compiler              | Program to turn source into machine code      |
-| ~gcc~                   | The GNU C compiler                            |
+| Python                | High-level, procedural, OOP language          |
 | Source code           | Code for humans to read and edit (~.c~)         |
 | Machine code          | Code for machines to execute (~.exe~)           |
-| [[https://en.wikipedia.org/wiki/Git][Git]]                   | Software version control system (2005)        |
+| [[https://en.wikipedia.org/wiki/Git][Git]] (as in GitHub)    | Software version control system (2005)        |
 | [[https://www.gnu.org/software/emacs/][Emacs]]                 | Extensible editor written in Lisp (1985)      |
 | FOSS                  | Free and Open Source Software                 |
+| IDLE                  | IDE bundled with Python
 | [[https://en.wikipedia.org/wiki/Linux][Linux]]                 | FOSS operating system (1991)                  |
 | Windows, MacOS        | Commercial OS (Microsoft, Apple)              |
-| Android               | Linux for smartphones (Google)                |
-| iOS                   | MacOS for Apple smartphones                   |
 | Command line          | Terminal, shell program to talk to the OS     |
 | Prompt                | Location on your computer, e.g. ~C:\User\~      |
-| Raw file              | No control characters for syntax highlighting |
-| Syntax highlighting   | Making programming language visible           |
-| ~DIR~                   | Windows command to list files                 |
 | ~cd~                    | Command to change directory                   |
 | Literate pgm          | Doc + code + output for humans and machines   |
-| Org-mode              | Plugin for Emacs to edit Org files (~.org~)     |
-| Dunning-Kruger effect | Illustrating ignorance of your own ignorance  |
 
 * References
 
 - King K N (2008). C Programming - A Modern Approach. Norton.
 
-* Footnotes
-
-[fn:1] The [[https://hopl.info/][Online Historical Encyclopedia of Programming Languages]]
-lists over 9,000 programming languages (that is a couple thousand more
-than natural languages known) - of which only about 700 are in active
-use.
-
-[fn:2] A command line prompt is the place in the CLI where you type
-commands for the computer. It typically includes text that indicates a
-location on your computer, e.g. ~c:/Users/birkenkrahe>~
