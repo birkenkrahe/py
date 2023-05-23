@@ -1,7 +1,7 @@
 #+title: Practice: Python Scripting Infrastructure
 #+author: Marcus Birkenkrahe
 #+subtitle: Programming in Python - Summer I 2023 - Lyon College
-#+startup: overview hideblocks indent
+#+startup: overview hideblocks indent inlineimages
 #+options: toc:nil num:nil ^:nil
 #+property: header-args:python :session *Python* :results output :exports both
 * README
@@ -57,7 +57,7 @@ I will also print practice files for you if I find the time to do so.)
 command prompt, absolute/relative path, root directory, Python
 shell/console, exiting Python, executable, ~whoami~, ~cd~, ~python~.
 
-* Getting started with Python's IDLE
+* Getting started with Python's ~IDLE~
 
 1) Open the Windows search bar again and type ~IDLE~. You should see at
    least one app[lication] - pin it to the taskbar and open it.
@@ -73,8 +73,7 @@ shell/console, exiting Python, executable, ~whoami~, ~cd~, ~python~.
 4) You're now on the ~help~ shell (which is a shell within a shell
    within a shell): at the ~help>~ prompt, type ~keywords~. This is a list
    of all reserved words or commands. Type ~symbols~ to see a list of
-   all the reserved symbols. Now you've seen Python's dictionary, more
-   or less.
+   all the reserved symbols. This is Python's (basic) dictionary.
 
 5) To try the /keyboard interrupt/ command, enter ~modules~ at the ~help>~
    prompt. On my PC, this leads to an infinite process (~infinity~ is
@@ -160,7 +159,7 @@ FAQ, ~help()~.
 code, machine code, ~HOME~ directory, ~.py~, "hello world" program,
 traceback.
    
-* TODO Getting started with Google Colaboratory
+* Getting started with ~Google Colaboratory~
 
 - Log into your Lyon Google account ~[yourname]@lyon.edu~
 
@@ -169,16 +168,18 @@ traceback.
 - On the landing page, you find a lot of information about Colab - you
   can look at it later on your own. For now, enter ~CTRL + ALT + n~
 
-- A ~Scratch cell~ opens. This is a cell for code. Enter some Python
-  code:
+- A ~Scratch cell~ opens. This is a cell for code. Drag the cell over
+  the text and/or close the Table of Contencts. Then enter this code:
   #+begin_src python
     print("Hello, world!")
   #+end_src
 
-- Then click on the play button on the left side of the cell:
-  [[./img/py_colab_scratch.png]]
+- Click on the play button on the left side of the cell:
+  [[../img/py_colab_scratch.png]]
 
-- You can optiona
+- You can also run a cell with ~Shift + Enter~ (~Tools> Keyboard
+  shortcuts~ is not working for me): delete the output (click on the ~X~
+  next to it) and run it with the keyboard shortcut again.
   
 - Open the menu above the cell and select ~Copy cell~.
 
@@ -191,13 +192,17 @@ traceback.
 - In the title at the top, replace ~Untitled1~ by ~hello_world~. The file
   that is saved in GDrive is now ~hello_world.ipynb~.
 
-- ~ipynb~ is the file extension for IPython Jupyter notebooks, an shell
+- Open your GDrive to make sure this has happened. There will be a new
+  directory ~Colab Notebooks~ where all notebooks are to be found.
+
+- ~.ipynb~ is the file extension for IPython Jupyter notebooks, an shell
   environment for interactive literature Python programming.
 
-- IPython's features include:
+- Colab/IPython has a lot more features. The most important ones:
   1. Tab-completion: In IPython, you can press the "Tab" key to
      autocomplete variable names, function names, and file names,
-     making it easier to write code without making typos.
+     making it easier to write code without making typos. (This is
+     automatic in Colab - ~Tab~ instead inserts a tab).
   2. History: IPython keeps a history of all the commands you've
      typed, so you can easily access previous commands and reuse them.
   3. Magic commands: IPython provides a number of "magic" commands
@@ -209,11 +214,13 @@ traceback.
   5. Integration with other tools: IPython can be used with other
      tools like Matplotlib for data visualization, NumPy for numerical
      computing, and Pandas for data analysis.
-  
-* TODO Interactive notebooks / literate programming
+
+- 
+
+* "Literate" programming w/interactive notebooks
 #+attr_latex: :width 400px
 #+caption: Carl Spitzweg (1839) Der arme Poet (Neue Pinakothek, München)
-[[./img/der_arme_poet.jpg]]
+[[../img/der_arme_poet.jpg]]
 
 - The Google Colaboratory ('Colab') notebook is a browser-based tool
   for interactive (= real-time) authoring of documents, which combine
@@ -238,12 +245,12 @@ traceback.
   #+end_src
 
 - An R example with graphics (using an ~*R*~ console):
-  #+begin_src R :results graphics file :file ./img/nileplot.png
+  #+begin_src R :results graphics file :file ../img/nileplot.png
     plot(Nile)
   #+end_src
 
   #+RESULTS:
-  [[file:./img/nileplot.png]]
+  [[file:../img/nileplot.png]]
 
 - A C example (using the ~gcc~ compiler):
   #+begin_src C :main yes :includes <stdio.h> :results output
@@ -274,7 +281,7 @@ traceback.
   background:
   #+attr_latex: :width 400px
   #+caption: GNU Emacs buffer list with shell/console applications
-  [[./img/py_notebook.png]]
+  [[../img/py_notebook.png]]
 
 - Unlike GNU Emacs' [[https://orgmode.org/][Org-mode]], Google Colab (and Jupyter notebooks in
   general) are limited to either Python + SQL or R + SQL as
@@ -290,7 +297,7 @@ traceback.
 - If you want to get started with GNU Emacs, talk to me. I'm a fanatic
   supporter of FOSS in general, GNU and Emacs in particular.
 
-* TODO Exploring Google Colab
+* Exploring ~Google Colab~ further
 
 - Return to your first Colab notebook ~hello_world.ipynb~.
 
@@ -301,91 +308,64 @@ traceback.
   a description of the code:
   #+attr_latex: :width 400px
   #+caption: Colab text cell in edit mode
-  [[./img/py_colab_text.png]]
+  [[../img/py_colab_text.png]]
 
 - Then move the text cell above the code cell using the up arrow in
   the menu right above the text cell:
   #+attr_latex: :width 400px
   #+caption: Colab code + text cell
-  [[./img/py_colab_code_text.png]]
+  [[../img/py_colab_code_text.png]]
 
 - You can save copies of your file to GDrive or to GitHub in an
   existing repository or as a GitHub "gist" (code snippet):
   #+attr_latex: :width 400px
   #+caption: GitHub gist with Colab notebook
-  [[./img/py_colab_gist.png]]
+  [[../img/py_colab_gist.png]]
 
 - You can see (and access) all the files that you created in your
   Colab dashboard at colab.research.google.com:
   #+attr_latex: :width 400px
   #+caption: Google colab recent file listing
-  [[./img/py_colab_list.png]]
+  [[../img/py_colab_list.png]]
 
 - Open the first tab in the left side bar (~Table of contents~), and
   add a new ~section~, then enter ~First Python Program~ after the ~#~:
   #+attr_latex: :width 400px
   #+caption: Add new section in the Colab TOC
-  [[./img/py_colab_toc.png]]
+  [[../img/py_colab_toc.png]]
 
 - Move the headline above the text cell. Note that you can hide
-  sections below headlines:
+  sections below headlines to make your document more compact:
   #+attr_latex: :width 400px
   #+caption: Section headings can hide cells in the section
-  [[./img/py_colab_hidden.png]]
+  [[../img/py_colab_hidden.png]]
 
 - Open the search field below the TOC and search for ~print~:
   #+attr_latex: :width 400px
   #+caption: Find + replace menu
-  [[./img/py_colab_search.png]]
+  [[../img/py_colab_search.png]]
 
 - The folder symbol hides the file tree: navigate one level up to see
   the Linux (container) file tree: to get access to the terminal/shell
   application, you need a Google Colab Pro license ($9.99/month).
   #+attr_latex: :width 400px
   #+caption: Find + replace menu
-  [[./img/py_console_linux.png]]
+  [[../img/py_console_linux.png]]
 
 - Explore the rest of the functions on your own. You have access to an
   alternative (equivalent) notebook application via DataCamp including
-  a terminal at [[https://workspace.datacamp.com][workspace.datacamp.com]], or at replit.com.
+  a terminal at [[https://workspace.datacamp.com][workspace.datacamp.com]], or at replit.com (more later).
 
 - The workspace at DataCamp is actually a "[[https://jupyter.org/install][Jupyter Lab]]". You can get
   that on your PC with ~pip install jupyterlab~ and start it with
   ~jupyter-lab~ - the app opens in your browser (locally hosted):
   #+attr_latex: :width 400px
-  [[./img/py_jupyterlab.png]]
+  [[../img/py_jupyterlab.png]]
 
 - [[https://youtu.be/p01wt-WB84c][Here is a short (8 min) video]] explaining the difference between
   notebook and lab and how to work with it (Lerner, 2022).
 
-- From Lerner's introduction:
-  #+begin_src python
-    for i in range(10):
-        print(f'Hello,{i}')
-  #+end_src
-
-  #+RESULTS:
-  #+begin_example
-  Hello,0
-  Hello,1
-  Hello,2
-  Hello,3
-  Hello,4
-  Hello,5
-  Hello,6
-  Hello,7
-  Hello,8
-  Hello,9
-  #+end_example
-
-- In the lab, you can create Python files
-  #+begin_src python :tangle ./src/hello_lab.py
-    #!/usr/bin/env python3
-    name = input('Enter your name: ').strip()
-    print(f'Hello,{name}!')
-  #+end_src
-
-* TODO Hello world with ~DataCamp workspace~
+* Hello world with ~DataCamp workspace~
 
 - With your DataCamp subscription comes free access to a ~Jupyter Lab~
   installation, which includes the best of Colab and replit.com:
@@ -394,8 +374,49 @@ traceback.
   3) a terminal (available in Colab only with upgrade)
   4) a file editor
   #+attr_latex: :width 400px
-  [[./img/py_workspace.png]]
-      
+  [[../img/py_workspace.png]]
+
+- Go to Canvas now and activate your free DataCamp subscription:
+  1) register with DataCamp using your ~*lyon.edu*~ account
+  2) click on the invite link in ~Canvas > Pages > Course links~
+  3) check that you can see the ~Assignments~ for this course
+  #+attr_latex: :width 400px
+  #+caption: DataCamp assignments for CSC 109 Summer I 2023
+  [[../img/datacamp.png]]
+
+- Open DataCamp workspaces at: ~workspace.datacamp.com~
+
+- Click on ~Create workspace~ and create a ~Python + SQL~ workspace titled
+  "Hello_World".
+
+- Under ~Files~ you can upload your ~.ipynb~ notebooks.
+
+- Under ~Integrations~ you get access to many sample databases
+  (e.g. pre-loaded so that you can complete a project online).
+
+- Under ~Environment~ you can see the multitude of pre-installed Python
+  packages.
+
+- Under ~View~ you can ~Switch to JupyterLab~, which shows you the
+  familiar IPython interface.
+
+- Add a new tab to see the Selection "Python 3", "Terminal", etc.
+
+- Open a ~Python file~ window. Enter the code to print "Hello, world!".
+
+- Rename the file to ~hello_world.py~.
+
+- Add a new tab and pick ~Terminal~.
+
+- In the terminal, enter ~ll~. This brings up all your files. One should
+  be ~hello_world.py~.
+
+- Enter ~which python3~ to find the location of the Python 3 executable.
+
+- Run the Python script with ~python3 hello_world.py~.
+
+- You can close the window. Everything will be saved automatically.
+
 * TODO REPL and Python scripts with replit.com
 
 - We want the option of creating files and run them, not just
@@ -408,24 +429,24 @@ traceback.
   scripts:
   #+attr_latex: :width 400px
   #+caption: Customizable replit.com profile page
-  [[./img/py_replit.png]]
+  [[../img/py_replit.png]]
 
 - Create a new public REPL and name it ~hello_world~:
   #+attr_latex: :width 400px
   #+caption: Create new REPL and name it hello_world
-  [[./img/py_create_repl.png]]
+  [[../img/py_create_repl.png]]
 
 - Once the REPL is booted (= installed for you), you have access to a
   file editor, a Python console, and a Linux (container) shell:
   #+attr_latex: :width 400px
   #+caption: REPL tools including file editor, console and shell
-  [[./img/py_repl.png]]
+  [[../img/py_repl.png]]
   
 - Enter the Python code to print "Hello, world!" in the ~main.py~
   partition after the line number 1: 
   #+attr_latex: :width 400px
   #+caption: Run the "hello world" program in the REPL
-  [[./img/py_repl_print.png]]
+  [[../img/py_repl_print.png]]
 
 - Disregard the information that appears for now, and run the program
   ~main.py~ with the green play button at the top: the string appears in
@@ -435,7 +456,7 @@ traceback.
   ~python --version~ in the ~Shell~ window:
   #+attr_latex: :width 400px
   #+caption: Python script, Console (REPL window) and Linux shell
-  [[./img/py_repl_windows.png]]
+  [[../img/py_repl_windows.png]]
   
 - The "Shell" is an interface to the operating system (Linux). The
   "Console" is a REPL, an interactive Python shell, and the script is
@@ -454,6 +475,8 @@ traceback.
   command ~history~ will be deleted when you close the browser window).
   
 * TODO Summary
+
+
 
 * Footnotes
 [fn:2]It means that anything you did in the shell before is now wiped

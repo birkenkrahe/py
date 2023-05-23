@@ -1,7 +1,7 @@
 #+TITLE:COURSE OVERVIEW
 #+AUTHOR: Marcus Birkenkrahe
 #+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
-#+STARTUP: overview hideblocks indent
+#+STARTUP: overview hideblocks indent inlineimages
 #+attr_latex: :width 400px
 [[../img/cover.jpg]]
 * Who is your lecturer?
@@ -12,7 +12,7 @@
 - Monty Python used to be one of my favorite shows:
   1) British humor (I went to school in London)
   2) Anarchic and irreverent (I was young once)
-  3) MUDs (First online programming class)
+  3) MUDs (First online programming class)[fn:1]
 
 * My first programming languages
 #+attr_latex: :width 400px
@@ -31,7 +31,7 @@
 #+caption: Why is Python so popular (Ozgon, 2021)
 [[../img/0_why_python.png]]
 
-- Why Python?
+- WHY PYTHON?[fn:2]
   #+begin_quote
   1) Readability and simplicity ~**~
   2) Versatility and applicability ~**~
@@ -43,9 +43,9 @@
   8) Career opportunities ~*~
   #+end_quote
 
-- Why not Python?
+- WHY NOT PYTHON?
   #+begin_quote
-  1) Specific platform requirements
+  1) Specific platform requirements ~**~
   2) Performance-critical applications ~***~
   3) One-paradigm language (cp. R, Haskell, C/C++, SQL) ~**~
   4) Industry demand ~*~
@@ -58,6 +58,7 @@
   #+attr_latex: :width 150px
   #+Caption: "C/C++ is like Latin"
   [[../img/0_cpp.png]]
+
 - SQL is like English
   #+attr_latex: :width 200px
   #+Caption: "SQL is like English"
@@ -67,7 +68,7 @@
   #+attr_latex: :width 150px
   #+Caption: "Lisp is like French"
   [[../img/0_lisp.png]]
-
+  
 - R is like Italian
   #+attr_latex: :width 150px
   #+Caption: "R is like Italian"
@@ -77,11 +78,6 @@
   #+attr_latex: :width 150px
   #+Caption: "Snap! is like Russian"
   [[../img/0_snap.png]]
-
-- Python is like Spanish
-  #+attr_latex: :width 150px
-  #+Caption: "Python is like Spanish"
-  [[../img/0_python.png]]
 
 - FORTRAN is like Hebrew
   #+attr_latex: :width 150px
@@ -93,12 +89,17 @@
   #+Caption: "HTML is like Gaelic"
   [[../img/0_html.jpg]]
 
+- Python is like Spanish
+  #+attr_latex: :width 150px
+  #+Caption: "Python is like Spanish"
+  [[../img/0_python.png]]
+
 * The importance of (understanding) infrastructure
 #+attr_latex: :width 400px
 #+caption: Photo by Landon Martin on Unsplash
 [[../img/0_nesting.jpg]]
 
-Infrastructure that separates you from just getting on with it:
+Some infrastructure that separates you from just "getting on" with it:
 
 1. Network server / network
 2. Keyboard / Screen
@@ -118,7 +119,9 @@ Infrastructure that separates you from just getting on with it:
 #+caption: Dandelion in the grass, by Aaron Burden, @Unsplash
 [[../img/0_expectations.jpg]]
 
-[[https://docs.google.com/forms/d/1YItHX4fru4TiNvmzJQDh-DG9t2C69dLQNWw0uIc_vmE/edit#responses][Google Forms survey]]: responses
+See also responses in the [[https://docs.google.com/forms/d/1YItHX4fru4TiNvmzJQDh-DG9t2C69dLQNWw0uIc_vmE/edit#responses][Google Forms survey]].
+
+What's your single most important personal goal?
 
 * What careers do our students have?
 #+attr_latex: :width 400px
@@ -127,47 +130,50 @@ Infrastructure that separates you from just getting on with it:
 
 * What will you do in this course?
 #+attr_latex: :width 400px
-+caption: Tad Dickerson (Bob's Flying Service) with AgNav system (Flickr.com)
+#+caption: Tad Dickerson (Bob's Flying Service) with AgNav system (Flickr.com)
 [[../img/0_course.jpg]]
 
-- Part 1: Basics
+- *Part 1: Basics*
   1) Input and Output
   2) Flow control
   3) Functions
   4) Lists and dictionaries
 
-- Part 2: Applications
+- *Part 2: Applications*
   1) Strings and regular expressions
-  2) Webscraping and file manipulation
+  2) Webscraping and file manipulation 
   3) Working and visualizing tabular data
   4) Machine learning: spam filter
 
-- Part 3: Course Projects, e.g.
-  1) [[https://learn.birdbraintechnologies.com/slpage/python-installation-for-finch/][Program the Finch 2.0 robot with Python]] - move / draw
-  2) Run machine learning on my [[https://coral.ai/docs/accelerator/get-started/][Google Coral Edge TPU]]
-  3) [[https://databot.us.com/setup/][Set my databot 2.0 up]] - extract data and visualize with Python
+- *Part 3: Capstone Project*, e.g.
+  1) [[https://learn.birdbraintechnologies.com/slpage/python-installation-for-finch/][Program the Finch 2.0 robot (microbit) with Python]] - move / draw.
+  2) Setup and demonstrate machine learning on [[https://coral.ai/docs/accelerator/get-started/][Google Coral Edge TPU.]]
+  3) [[https://databot.us.com/setup/][Set my databot 2.0 up]] - extract data and visualize with Python.
   4) Set up and program my [[https://mycroft.ai/][Mycroft MKII]] (open source voice assistant)
   5) Identify your own research problem and use Python to solve it
-  6) Program the classic Pong in Python with the Turtle module
-  7) Program another 2D or 3D game in Python (e.g. with PyGame, using
-     any of Sweigart's games [[https://inventwithpython.com/invent4thed/][in his 2016 book]]).
-  8) Analyse and demo use of any of our course tools in your field of
-     interest or expertise
-  9) Create a literature (and practice) overview of Python in your field
-  10) Something completely different related to introduction to
-      programming (not necessarily with Python)
+  6) Program another 2D or 3D game in Python (e.g. with PyGame, using
+     any of Sweigart's games [[https://inventwithpython.com/invent4thed/][in his 2016 book]], or with Turtle).
+  7) Analyse and demo use of any of our course tools in your field of
+     interest or expertise (GitHub, DataCamp, Colab, CLI or
+     AI). E.g. complete and document (in Colab) an unguided DataCamp
+     Python [[https://www.datacamp.com/blog/introducing-unguided-projects-the-worlds-first-interactive-code-along-exercises][project]] (link to [[https://app.datacamp.com/learn/projects?technologies=Python&hasUnguided=true&sort=relevance][unguided relevant Python projects]]).
+  8) Create a literature (and practice) overview of Python in your
+     field of professional or personal interest.
+  9) Something completely different related to introduction to
+     programming (not necessarily with Python).
+  10) Take a topic from my GitHub issues list: [[https://github.com/birkenkrahe/py/issues][birkenkrahe/py/issues]].
 
 * How will you be evaluated?
 #+attr_latex: :width 400px
 #+caption: From the course syllabus (Canvas, GitHub)
 [[../img/0_grades.png]]
 
-- All course requirements have deadlines
+- All course requirements have deadlines (strict)
 - Late submissions will be penalized (loss of points)
-- No final exam but 4 weekly graded tests
-- Programming assignments are home assignments
+- No final exam but 4 weekly tests (graded)
+- DataCamp/programming assignments are home assignments
 - In-class practices are "literate programming" exercises
-- You are expected to code along
+- You are expected to code along using Google Colab and/or IDLE
 
 * Which tools are we going to use?
 #+attr_latex: :width 400px
@@ -176,7 +182,7 @@ Infrastructure that separates you from just getting on with it:
 
 1) [[https://lyon.instructure.com/][Canvas]] (learning management system)
 
-2) [[https://github.com/birkenkrahe/cc][GitHub repository]] (all course materials except tests)
+2) [[https://github.com/birkenkrahe/py][GitHub repository]] (all course materials except tests)
 
 3) [[https://colab.research.google.com][Google Colaboratory]] (online interative notebook / Literate IDE)
 
@@ -210,7 +216,7 @@ ANY OF THESE TOOLS CAN BE THE BASIS OF YOUR COURSE PROJECT!
 - The 'Git' in the name is a version control software by Torvalds
 - It also contains Gists (code snippets), Issues, and CoPilot (AI)
 - Here for you: all course materials, and the general course FAQ
-- No registration required
+- No registration required but recommended (watch/fork/collaborate)
 
 * IDLE (Integrated Devevelopment Learning Environment
 #+attr_latex: :width 300px
@@ -218,11 +224,11 @@ ANY OF THESE TOOLS CAN BE THE BASIS OF YOUR COURSE PROJECT!
 [[../img/0_idle.png]] [[../img/0_turtle.png]]
 
 - Built-in Python shell for interactive experimentation
-- Includes file editor and turtle graphics
+- Includes file editor and "Turtle" graphics
 - Local and private to your computer
 - No registration required
 
-More:
+*More information*:
 - Video: [[https://youtu.be/WIlQukiXs-E][What is Python IDLE and How to Use the IDLE Shell]] (6')
 - Tutorial: [[Getting Started With Python IDLE][Getting Started with Python IDLE]] + [[https://realpython.com/courses/starting-python-idle/][video lessons]] (25')
 - Interactive Shell also available as [[https://chrome.google.com/webstore/detail/python-shell/gdiimmpmdoofmahingpgabiikimjgcia?hl=en][Google Chrome extension]]
@@ -232,12 +238,12 @@ More:
 #+caption: colab.research.google.com dashboard and overview
 [[../img/0_colab_dashboard.png]] [[../img/0_colab_light.png]] 
 
-- Free interactive notebook: text + code + output
+- Free interactive (literate) notebook: text + code + output
 - Upload to Lyon GDrive and/or GitHub/Gist
 - Linux Docker container (virtual OS)
-- Shell only with upgrade
+- Access to shell only with upgrade
 - Primary collaborative tool in this course
-- No registration required (unless you want to save notebooks)
+- Registration required to save your notebooks for submission
 - Online alternative to Emacs + Org-mode or VS Code cloud (vscode.dev)
 
 * replit.com REPL + console + templates
@@ -250,7 +256,7 @@ More:
 - Cool data science and AI project templates
 - Easy to share code publicly
 - Alternative to IDLE (though can be slow to respond at times)
-- Registration required
+- Registration required to create your own REPL
 
 * DataCamp lessons + projects + workspace
 #+attr_latex: :width 300px
@@ -259,18 +265,18 @@ More:
 
 *DataCamp:*
 - Free online data science learning platform (Python, R, SQL)
-- Each course is 4 hours long and leads to a certificate
+- Each course is 3-4 hours long and leads to a certificate
 - Many guided and unguided projects (ca 1 hour per project)
 - Mobile app and practice exercises for each course
 - Jupyter Lab available as part of DataCamp workspaces
-- Registration with Lyon email required
+- Registration *with Lyon email* required
 
 *Alternatives worth checking out (first course is free):*
 - freeCodeCamp.org, esp. [[https://youtu.be/nLRL_NcnK-4][Harvard's CS50]] (video and tutorials only)
 - [[https://www.dataquest.io/path/introduction-to-python-programming-skill/][dataquest.io]] (looked at the first lesson - more demanding)
 - [[https://www.codecademy.com/learn/learn-python-3][codeacademy.com]] (very beginner friendly, programmer-focused)
 - [[https://www.w3schools.com/python/python_intro.asp][w3schools.com]] (low entry, nice integrated workspace)
-
+  
 * Can we use AI coding assistants?
 #+attr_latex: :width 400px
 #+caption: Hieronymus Bosch, The Concert in the Egg/Ship of Fools (1561)
@@ -278,12 +284,12 @@ More:
 
 - Yes, you may as long as you document it meticulously and diligently
 - I frequently use [[https://chat.openai.com/chat][OpenAI ChatGPT]], and I tried [[https://bard.google.com/u/1/][Google Bard]]
-- [[https://github.com/github-copilot/free_signup][GitHub CoPilot]] only works as an editor extension
+- [[https://github.com/github-copilot/free_signup][GitHub CoPilot]] only works as an editor extension (haven't tried it)
 - Google Colab will soon introduce [[https://blog.google/technology/developers/google-colab-ai-coding-features/][Google Codey]]
 - AI assistance will take lots of time if you use them well
 
-A typical workflow for me looks like this:
-1) My question: "How can I get pi in Python?"
+My typical workflow looks like this:
+1) My question: "How can I get \pi in Python?"
 2) ChatGPT spits out explanation with code snippet
 3) I check the text and the code
 4) I create an exercise or two around the question
@@ -297,8 +303,12 @@ A typical workflow for me looks like this:
 #+caption: Four monks by Claudio Rinaldi (1852-1909)
 [[../img/0_monks.png]]
 
-First home assignment, first test and in-class assignments are due a
-week from now, on Monday, 28 May, by 12 pm (so that I can check 'em).
+- The first home assignment, first test and in-class assignments are
+  due a week from now, on Monday, 28 May, by 12 pm (so that I can
+  check 'em).
+
+- All DataCamp assignments are due by Friday, June 23rd (so that I can
+  grade them): Three courses to be completed in your own time.
 
 * Will you need to buy any books for this course?
 #+attr_latex: :width 400px
@@ -314,6 +324,17 @@ you do need to put in the time to reflect, refactor and code anyway.
 
 The Python online documentation recommends both [[https://wiki.python.org/moin/PythonBooks][books]] and [[https://wiki.python.org/moin/Courses][courses]].
 
+*My typical workflow with programming books:*
+1) I start reading a book chapter (paper copy).
+2) I get antsy to try things out and throw the book away.
+3) I code on my own until my fingers bleed.
+4) I get lost and must return to the book.
+5) I vow to stay with the book and open the digital version.
+6) ~continue~ with (2). No ~break~.
+7) Years later, I find the book in my library.
+8) I realize that my copy is completely out of date.
+9) I order the latest edition as paper and digital copy.
+10) ~continue~ with (1).
 * TODO Infinite skills
 #+attr_latex: :width 400px
 [[../img/0_perl.png]]
@@ -326,9 +347,9 @@ school combined.«
 
 - *Infinite Skills*: come up with three programs you would create if you
   had "infinite programming skills" and if you could build anything
-  you wanted using the computer and the Python language.
+  you wanted *using a[ny] computer* and the *Python programming language*.
 
-- One example from everyone!
+- One example from everyone! Now!
   
 * TODO Next / Any questions? / Review questions
 #+attr_latex: :width 200px
@@ -370,7 +391,7 @@ school combined.«
      and software), which changes continuously.
      #+end_quote
   4) A *7-year old* asks you what you're doing while you're working on
-     the Python shell to complete an assignment. What would you reply?
+     the *Python shell* to complete an assignment. What would you reply?
      
 * TODO Practice: Python scripting infrastructure
 #+attr_latex: :width 400px
@@ -415,7 +436,18 @@ Objectives:
   [[https://realpython.com/python-idle/][realpython.com]].
 - Real Python (Jan 20, 2022). What is Python IDLE and How to Use the
   IDLE Shell. URL: [[https://youtu.be/WIlQukiXs-E][youtube.com]].
-- Python 3.11.1. (Oct 24, 2022). Python Software Foundation. URL:
-  [[https://www.python.org/][python.org]].
 - Images (public domain/no known copyright restrictions):
   Unsplash.com, Flickr.com
+- PyCon (2020). Digging MUD in Python by Samuel Regandell. URL:
+  [[https://youtu.be/WLfJ-zqMmuA][YouTube.com]].
+- Python 3.11.1. (Oct 24, 2022). Python Software Foundation. URL:
+  [[https://www.python.org/][python.org]].
+
+* Footnotes
+[fn:2] These lists are the answers of ChatGPT ([[https://chat.openai.com/][May 12 version]]). The
+number of ~*~ indicate my level of agreement.
+
+[fn:1] As an alternative to Lisp (the original AI language and also
+the first choice for MUD programming), you can use Python ([[https://youtu.be/WLfJ-zqMmuA][PyCon,
+2020]]). Regarding the connection between Monty Python and MUD: see
+the [[https://youtu.be/t2c-X8HiBng][mud scene from The Holy Grail]] (1975).
