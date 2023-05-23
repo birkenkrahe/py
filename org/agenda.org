@@ -16,7 +16,7 @@
   - What is the command line and why is it important?
   - Which languages do you already know (10!): FORTRAN, Visual BASIC,
     SQL, R, Stata, Java, C#, Python,C,Lua
-  - Topics wanted: 1) *webscraping*, 2) *Excel*, 3) ML, 4) Cybersec[fn:1]
+  - Topics wanted: 1) *webscraping*, 2) *Machine learning*, 3) Cybersecurity[fn:1]
   - Tools: VS Code/Emacs IDEs known
   - Terror: I will never show up drunk (in class or anywhere)
   - Time: 120 min in class, 180 min outside of class (per day)
@@ -55,7 +55,6 @@
 
 * Footnotes
 
-[fn:1]Webscraping and Excel manipulation are already part of my plan,
-machine learning could become part of the course, but cybersecurity is
-currently not included (except indirectly through the command line and
-string manipulation skills).
+[fn:1]Webscraping Excel manipulation and Machine Learning are already
+part of my plan, but cybersecurity is currently not included (except
+indirectly through the command line and string manipulation skills).
