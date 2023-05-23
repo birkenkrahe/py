@@ -230,7 +230,7 @@ ANY OF THESE TOOLS CAN BE THE BASIS OF YOUR COURSE PROJECT!
 
 *More information*:
 - Video: [[https://youtu.be/WIlQukiXs-E][What is Python IDLE and How to Use the IDLE Shell]] (6')
-- Tutorial: [[Getting Started With Python IDLE][Getting Started with Python IDLE]] + [[https://realpython.com/courses/starting-python-idle/][video lessons]] (25')
+- Tutorial: [[https://realpython.com/python-idle/][Getting Started with Python IDLE]] + [[https://realpython.com/courses/starting-python-idle/][video lessons]] (25')
 - Interactive Shell also available as [[https://chrome.google.com/webstore/detail/python-shell/gdiimmpmdoofmahingpgabiikimjgcia?hl=en][Google Chrome extension]]
 
 * Google Colaboratory IPython Notebooks
