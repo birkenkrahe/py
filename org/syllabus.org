@@ -4,11 +4,21 @@
 #+subtitle: Derby Science Center Room 209, Mon-Fri 1pm-3pm
 #+startup: overview hideblocks inlineimages indent
 #+options: toc:nil num:nil
-* Overview
+* General information
 
 This four-week course is designed to provide students with a
 comprehensive introduction to programming in Python, covering
 fundamental concepts and practical applications of the language.
+
+- Meeting Times: Monday through Friday, 13:00-15:00 
+- Home work: Monday through Friday, ca. 3 hrs
+- Meeting place: Derby Science Building Computer Lab 209
+- Professor: Marcus Birkenkrahe
+- Office: Derby Science Building room 210
+- Phone: (870) 307-7254 (office) / (501) 422-4725 (private)
+- Office hours: Monday through Friday, 15-15:30 
+- Textbook: Sweigart, Al (2020), Automate the Boring Stuff with Python
+  (2e), NoStarch Press. Online: [[https://automatetheboringstuff.com/2e/][automatetheboringstuff.com/2e/]]
 
 * Objectives
 
@@ -80,7 +90,7 @@ This table is used to convert completion rates into letter grades.
 |   49-0 | F (failed)                |
 |--------+---------------------------|
 
-* Tentative schedule and session content
+* Schedule and session content
 
 For *important dates*, see the 2022-2023 Academic Calendar at:
 [[https://catalog.lyon.edu/202223-academic-calendar][catalog.lyon.edu/202223-academic-calendar]]
@@ -179,6 +189,16 @@ For *important dates*, see the 2022-2023 Academic Calendar at:
 - Individual project presentations
 - Interactive practice with participants
 - In-class discussions and reflection
+
+* Learning management system
+
+- We use Lyon's Canvas installation for this course.
+- The course home page is at [[https://lyon.instructure.com/courses/1700][lyon.instructure.com/courses/1700]]
+- The home page contains: assignments, grades, pages, people,
+  syllabus, quizzes, Google Drive, Course evaluation and Zoom.
+- The Zoom page includes cloud recordings of all past sessions.
+- Recorded sessions will be deleted after the last class.
+
 * DataCamp
 
 The course includes a free subscription to the DataCamp classroom at
