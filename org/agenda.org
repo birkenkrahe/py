@@ -7,14 +7,30 @@
 #+property: header-args:R :results output :noweb yes :session *R* :exports both
 * Day 1: Course overview & infrastructure practice
 #+attr_html: :width 400px
-[[../img/0_highways.jpg]]
+[[../img/dataScientistIn50days.jpg]]
 
-1) [ ] Entry *survey* - [[https://docs.google.com/forms/d/1yz2EtuSin3r54zMG1d_JCnnVAGb0XI8cP-Yvr7FmZbo/edit#responses][review of your responses]].
-2) [ ] Course *overview* - assignments, grading, topics, platforms.
-3) [ ] *Practice:* a first (literate) Python program & platforms.
-4) [ ] First *assignment*: "Getting started in Python" DataCamp.
+- [ ] Go to Canvas ([[https://lyon.instructure.com/courses/1700][lyon.instructure.com]])
+- [ ] Open Zoom ([[https://lyon-edu.zoom.us/j/85828233316][lyon-edu.zoom.us/j/85828233316]])
+- [ ] Entry *survey* - [[https://docs.google.com/forms/d/1yz2EtuSin3r54zMG1d_JCnnVAGb0XI8cP-Yvr7FmZbo/edit#responses][review of your responses]].
+  - What is the OS and why is it relevant to programming?
+  - What is the command line and why is it important?
+  - Which languages do you already know (10!): FORTRAN, Visual BASIC,
+    SQL, R, Stata, Java, C#, Python,C,Lua
+  - Topics wanted: 1) *webscraping*, 2) *Excel*, 3) ML, 4) Cybersec[fn:1]
+  - Tools: VS Code/Emacs IDEs known
+  - Terror: I will never show up drunk (in class or anywhere)
+  - Time: 120 min in class, 180 min outside of class (per day)
+    1) class: 15 min check in and review
+    2) class: 90 min lecture + practice
+    3) class: 15 min summary, questions, outlook
+    4) home: 30-90 min DataCamp + 60-120 min revision/assignments
+- [ ] Course *overview* - assignments, grading, topics, platforms.
+- [ ] *Practice:* a first (literate) Python program & platforms.
+- [ ] First *assignment*: "Getting started in Python" @DataCamp.
 
-** Summary:
+** TODO In-class summary:
+
+** TODO Homework:
 
 * Day 2:
 * Day 3
@@ -37,3 +53,9 @@
 * Day 20: Project presentations
 * Outlook
 
+* Footnotes
+
+[fn:1]Webscraping and Excel manipulation are already part of my plan,
+machine learning could become part of the course, but cybersecurity is
+currently not included (except indirectly through the command line and
+string manipulation skills).
