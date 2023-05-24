@@ -5,13 +5,13 @@
 #+OPTIONS: toc:nil num:nil ^:nil
 #+property: header-args:python :results output :noweb yes :tangle yes :session *Python*
 #+property: header-args:R :results output :noweb yes :session *R* :exports both
-* Day 1: Course overview & infrastructure practice
+* Day 1: Entry survey analysis and course overview 
 #+attr_html: :width 400px
 [[../img/dataScientistIn50days.jpg]]
 
-- [ ] Go to Canvas ([[https://lyon.instructure.com/courses/1700][lyon.instructure.com]])
-- [ ] Open Zoom ([[https://lyon-edu.zoom.us/j/85828233316][lyon-edu.zoom.us/j/85828233316]])
-- [ ] Entry *survey* - [[https://docs.google.com/forms/d/1yz2EtuSin3r54zMG1d_JCnnVAGb0XI8cP-Yvr7FmZbo/edit#responses][review of your responses]].
+- [X] Go to Canvas ([[https://lyon.instructure.com/courses/1700][lyon.instructure.com]])
+- [X] Open Zoom ([[https://lyon-edu.zoom.us/j/85828233316][lyon-edu.zoom.us/j/85828233316]])
+- [X] Entry *survey* - [[https://docs.google.com/forms/d/1yz2EtuSin3r54zMG1d_JCnnVAGb0XI8cP-Yvr7FmZbo/edit#responses][review of your responses]].
   - What is the OS and why is it relevant to programming?
   - What is the command line and why is it important?
   - Which languages do you already know (10!): FORTRAN, Visual BASIC,
@@ -28,11 +28,31 @@
 - [ ] *Practice:* a first (literate) Python program & platforms.
 - [ ] First *assignment*: "Getting started in Python" @DataCamp.
 
-** TODO In-class summary:
+** In-class summary
 
-** TODO Homework:
+- The terminal allows the user to communicate with the OS.
+- Python comes in different versions.
+- Python (and all apps) need to be built/compiled for an OS.
+- Microsoft (and others) combines technical and commercial interests.
+- Python [the interpreter] is written in C.
+- There are (many) different layers of software between user and
+  machine (which leads to greater usability/lower performance).
 
-* Day 2:
+** Homework
+- Register with GitHub, DataCamp, replit.com
+- Get access to Canvas for materials and for Zoom
+
+* Day 2: Python scripting infrastructure practice
+#+attr_html: :width 400px
+[[../img/0_highways.jpg]]
+
+
+
+
+** In-class summary
+
+** Homework
+
 * Day 3
 * Day 4
 * Day 5
