@@ -54,16 +54,31 @@ advanced concepts and practical applications.
 You should be able to see your current grade at any time using the
 Canvas gradebook for the course.
 
-| REQUIREMENT             | UNITS | PPU | TOTAL | % of TOTAL |
-|-------------------------+-------+-----+-------+------------|
-| Programming assignments |     4 |  25 |   100 |        25. |
-| Class participation     |    20 |   5 |   100 |        25. |
-| Multiple-choice tests   |     4 |  25 |   100 |        25. |
-| Capstone project        |     1 | 100 |   100 |        25. |
-|-------------------------+-------+-----+-------+------------|
-| TOTAL                   |       |     |   400 |       100. |
-|-------------------------+-------+-----+-------+------------|
+| REQUIREMENT           | UNITS | PPU | TOTAL | % of TOTAL |
+|-----------------------+-------+-----+-------+------------|
+| Home assignments      |    20 |   5 |   100 |        25. |
+| Class participation   |    20 |   5 |   100 |        25. |
+| Multiple-choice tests |     4 |  25 |   100 |        25. |
+| Capstone project      |     1 | 100 |   100 |        25. |
+|-----------------------+-------+-----+-------+------------|
+| TOTAL                 |       |     |   400 |       100. |
+|-----------------------+-------+-----+-------+------------|
 #+TBLFM: @2$4=$2*$3::@2$5=(@2$4/@6$4)*100::@3$4=$2*$3::@3$5=(@3$4/@6$4)*100::@4$4=$2*$3::@4$5=(@4$4/@6$4)*100::@5$4=$2*$3::@5$5=(@5$4/@6$4)*100::@6$4=vsum(@2..@5)::@6$5=vsum(@2..@5)
+
+*Home assignments include:*
+- 15 DataCamp lessons over 3 courses (Intro to Python, Intermediate
+  Python, and Intro to downloading data with Python)
+- 5 weekly programming assignments 
+
+*Class participation includes:*
+- Active participation
+- Completing practice exercises in class
+- Uploading practice files or links
+
+*Capstone project includes:*
+- Project proposal (mid-course)
+- Project presentation (last week)
+- Submission of project materials (by June 23rd)
 
 * Grading table
 
