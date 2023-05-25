@@ -56,6 +56,16 @@
 
 [[https://lyon.instructure.com/courses/1700/discussion_topics/4347][Canvas announcement]]
 
+- A math app that you cannot cheat with - an honor math app
+- A resource matching app: e.g. match labor supply with demand (really
+  efficiently), possibly including a market and negotiation engine
+- A game where the world generates itself as soon as you reach the end
+  of it including quest lines, NPCs
+- An Internet Wayback machine without the snags where you can retrieve
+  a version of a website fast and very granularly
+- A script that can reach into SQL and pull values out of a column to
+  monitor daily changes in the columns, e.g. money
+
 #+begin_quote
 My infinite skills Python projects:
 1. An application that lets students know which remote or in-person
@@ -121,7 +131,7 @@ weekly multiple-choice tests, i.e. you can use this to prepare./
    #+end_quote
 
 7) What's the difference between a compiled language (for example C)
-   vs. an interpreted language (for example for Python or R)?
+   vs. an interpreted language (for example Python or R)?
    #+begin_quote
    - Compiler: Human-readable source code is compiled to a
      machine-readable file that needs to be executed for results.
@@ -148,6 +158,8 @@ weekly multiple-choice tests, i.e. you can use this to prepare./
 #+attr_html: :width 400px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
+
+
 
 ** NEXT Homework: first assignment
 #+attr_html: :width 300px
