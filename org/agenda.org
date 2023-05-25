@@ -6,7 +6,7 @@
 #+property: header-args:python :results output :noweb yes :tangle yes :session *Python*
 #+property: header-args:R :results output :noweb yes :session *R* :exports both
 * Day 1: Entry survey analysis and course overview 
-#+attr_html: :width 400px
+#+attr_latex: :width 300px
 [[../img/dataScientistIn50days.jpg]]
 
 - [X] Go to Canvas ([[https://lyon.instructure.com/courses/1700][lyon.instructure.com]])
@@ -44,14 +44,14 @@
 - Get access to Canvas for materials and for Zoom
 - "Infinite skills" exercise
 
-* Day 2: Python scripting infrastructure practice
-#+attr_html: :width 400px
+* Day 2: Python scripting infrastructure practice I
+#+attr_latex: :width 300px
 [[../img/0_highways.jpg]]
 
 (A [[https://github.com/birkenkrahe/py/][PDF and an Org-mode version of this exercise]] are on GitHub)
 
 ** Infinite skills - infinite resources
-#+attr_html: :width 200px
+#+attr_latex: :width 200px
 [[../img/infinite.jpg]]
 
 [[https://lyon.instructure.com/courses/1700/discussion_topics/4347][Canvas announcement]]
@@ -88,7 +88,7 @@ My infinite skills Python projects:
 #+end_quote
 
 ** Day review (and test preview)
-#+attr_html: :width 400px
+#+attr_latex: :width 300px
 #+caption: Family packing fruit, Sydneay 1911 (Flickr.com)
 [[../img/review.jpg]]
 
@@ -142,7 +142,7 @@ weekly multiple-choice tests, i.e. you can use this to prepare./
    #+end_quote
 
 ** Practice
-#+attr_html: :width 400px
+#+attr_latex: :width 300px
 #+caption: RAAF crew woring on newly arrived Lockheed aircraft (1940)
 [[../img/practice.jpg]]
 
@@ -154,17 +154,33 @@ weekly multiple-choice tests, i.e. you can use this to prepare./
 - Options for creating and running Python scripts
 - Creating and running our first ever Python script
 
-** TODO In-class summary - what did we discuss today?
-#+attr_html: :width 400px
+** In-class summary - what did we discuss today?
+#+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
 
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+- Practice file as PDF ([[https://github.com/birkenkrahe/py/blob/main/pdf/0_course_practice.pdf][class handout]])
+- Windows' Command Line Interface: finding and opening the terminal,
+  prompt, absolute/relative path, root and file tree, CLI commands and
+  options; ~cd~, ~python~, ~ls~, ~whoami~.
+- Python's IDLE: interactive shell ~>>>~, getting ~help()~ and finding
+  documentation; Python keywords, symbols and modules (libraries).
+- Python's file editor: printing a greeting in Python (hello world)
+  with ~print~. Default arguments. Comments (~#~), ~.py~ file types,
+  debugger and traceback. Keyboard interrupt (~CTRL + c~).
+- Literate programming: weaving documentation and tangling source code
+  from a literate file that contains text + code + output. With Emacs:
+  one document with code in < 44 languages.
+- Google's Colab: code and text cells, scratch cell, GDrive backup,
+  GitHub gist export, auto-completion, interactive notebooks with
+  IPython (~.ipynb~), ~matplotlib~ and ~numpy~ modules. ~import~, lineplot
+  with ~pyplot~. Colab dashboard. Markdown with ~#~ (headline).
 
-
-** NEXT Homework: first assignment
-#+attr_html: :width 300px
+** Homework: first assignment
+#+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
-[[../img/woodcarving.jpg]]
+[[../img/homework.jpg]]
 
 - The problem: [[https://lyon.instructure.com/courses/1700/assignments/14493][word count]].
 - Requirements:
@@ -175,8 +191,8 @@ weekly multiple-choice tests, i.e. you can use this to prepare./
   5) Printing numeric output as string with ~str~
   6) Bonus: nesting functions
 
-* Day 3: Expressions, Variables, Statements
-* Day 4
+* Day 3: Infrastructure practice II: DataCamp, REPL
+* Day 4: Expressions, Variables, Statements
 * Day 5
 * Day 6
 * Day 7 
