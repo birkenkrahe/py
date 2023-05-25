@@ -237,8 +237,11 @@ Any questions, you know where to find me!
 Cheers
 
 * Day 4: Expressions, Variables, Statements
+#+attr_latex: :width 400px
+#+caption: Thirteen men doing acrobatics (LOC)
+[[../img/acrobats.jpg]]
 
-** Adding the course calendar to Google calendar
+** TODO Adding the course calendar to Google calendar
 #+attr_latex: :width 400px
 #+caption: Canvas calendar with course events
 [[../img/calendar.png]]
@@ -248,7 +251,30 @@ Cheers
 - Click ~Calendar Feed~ (lower right)
 - Import URL in Google calendar
 
+** TODO Using Python chat in GMail outside class
+#+attr_latex: :width 400px
+#+caption: Google Python chat space members
+[[../img/space.png]]
 
+** TODO Day review (and test preview)
+#+attr_latex: :width 300px
+#+caption: Family packing fruit, Sydneay 1911 (Flickr.com)
+[[../img/review.jpg]]
+
+/We review yesterday's material. These questions will resurface in the
+weekly multiple-choice tests, i.e. you can use this to prepare./
+
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework: 
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
 
 * Day 5
 * Day 6
