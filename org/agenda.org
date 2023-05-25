@@ -192,6 +192,50 @@ weekly multiple-choice tests, i.e. you can use this to prepare./
   6) Bonus: nesting functions
 
 * Day 3: Infrastructure practice II: DataCamp, REPL
+#+attr_latex: :width 400px
+#+caption: Obituary page for Jason Anderson (willisfs.com)
+[[../img/jason.png]]
+
+Change of plans: *We will *not meet in class on Thursday, 24 May*. I'd
+like to be able to attend both the visitation and the memorial service
+for Jason Anderson ([[https://www.willisfs.com/obituary/Jason-Anderson][†]]) myself tomorrow from 1 pm - 3 pm (Brown
+Chapel).
+
+Instead, please work through the remainder of the practice file
+(handout and [[https://github.com/birkenkrahe/py/blob/main/pdf/0_course_practice.pdf][here on GitHub]]) *on your own*. Both sessions can be done
+online from the comfort of your home:
+1) Open a browser with two windows, and work through the exercises for
+   replit.com and DataCamp workspaces line by line.
+2) Essentially, both environments offer file editor + interactive
+   Python shell + OS shell in one window.
+3) Replit.com is more like IDLE, while the DataCamp workspace is an
+   interactive notebook like Colab.
+4) Python-wise, this is essentially "hello world" again.
+
+This shouldn't take more than an hour. Use the remaining time to get
+started with your [[https://app.datacamp.com/groups/lyon-college-data-science-spring-2023/assignments][DataCamp assignments]] (15 chapters in total,
+requiring no less than 15 hours of practice).
+
+In the middle of our taking off for flight, it might be worthwhile
+highlighting some logistics to help you review past sessions if you so
+choose:
+
+1) You can find the *session review/test preview* information, and a
+   summary of the last session in the agenda file here in GitHub
+   ([[https://github.com/birkenkrahe/py/blob/main/pdf/agenda.pdf][PDF]] or [[https://github.com/birkenkrahe/py/blob/main/org/agenda.org][HTML]]).
+2) You can find all *practice and lecture files* in the PDF directory
+   here in GitHub ([[https://github.com/birkenkrahe/py/tree/main/pdf][PDF]] or [[https://github.com/birkenkrahe/py/tree/main/org][HTML]]): I just went through it myself to
+   review today.
+3) Lastly, photos of the *whiteboard* writings and drawings are
+   available [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][here in GDrive]].
+
+I'm looking forward to seeing you on Friday to cover Python
+expressions, variables and statements with more practice exercises.
+
+Any questions, you know where to find me!
+
+Cheers
+
 * Day 4: Expressions, Variables, Statements
 * Day 5
 * Day 6
