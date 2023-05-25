@@ -237,6 +237,19 @@ Any questions, you know where to find me!
 Cheers
 
 * Day 4: Expressions, Variables, Statements
+
+** Adding the course calendar to Google calendar
+#+attr_latex: :width 400px
+#+caption: Canvas calendar with course events
+[[../img/calendar.png]]
+
+- Find ~Calendar~ in leftmost Canvas sidebar
+- Check "Introduction to Programming in Python"
+- Click ~Calendar Feed~ (lower right)
+- Import URL in Google calendar
+
+
+
 * Day 5
 * Day 6
 * Day 7 
