@@ -160,7 +160,8 @@ traceback.
    
 * Getting started with ~Google Colaboratory~
 
-- Log into your Lyon Google account ~[yourname]@lyon.edu~
+- Open a browser and log into your Lyon Google account
+  ~[yourname]@lyon.edu~
 
 - Open the Google Colaboratory landing page [[https://colab.research.google.com][colab.research.google.com]].
   
@@ -235,7 +236,7 @@ traceback.
     plt.plot(xpoints, ypoints)
     plt.show()
   #+end_src
-
+  
 * "Literate" programming w/interactive notebooks
 #+attr_html: :width 400px
 #+caption: Carl Spitzweg (1839) Der arme Poet (Neue Pinakothek, München)
@@ -269,25 +270,40 @@ traceback.
     print("hello, world")
   #+end_src
 
+  #+RESULTS:
+  : hello, world
+
 - An R example with graphics (using an ~*R*~ console):
   #+begin_src R :results graphics file :file ../img/nileplot.png
     plot(Nile)
   #+end_src
 
+  #+RESULTS:
+  [[file:../img/nileplot.png]]
+
 - A C example (using the ~gcc~ compiler):
   #+begin_src C :main yes :includes <stdio.h> :results output
     puts("Hello, world");
   #+end_src
+
+  #+RESULTS:
+  : Hello, world
   
 - A shell example (using the ~bash(1)~ shell):
   #+begin_src sh :results output
     echo "hello, world"
   #+end_src
 
+  #+RESULTS:
+  : hello, world
+
 - A SQLite example (using the ~sqlite3~ console):
   #+begin_src sqlite :db ../data/test.db
     SELECT "Hello, world";
   #+end_src
+
+  #+RESULTS:
+  : "Hello, world"
 
 - In the [[https://www.gnu.org/software/emacs/][GNU Emacs]] environment that I'm using, you can see the
   different console applications as buffers that exist in the
