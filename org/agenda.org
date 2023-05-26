@@ -319,6 +319,11 @@ courses amount to 60% of the home assignment grade. The remaining
 points will come from 8 programming assignments (like "word count").
 
 ** TODO Lecture/practice: Python Basics
+
+- Expressions
+- Variables
+- Statements
+
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
