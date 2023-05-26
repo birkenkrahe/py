@@ -241,7 +241,7 @@ Cheers
 #+caption: Thirteen men doing acrobatics (LOC)
 [[../img/acrobats.jpg]]
 
-** TODO Adding the course calendar to Google calendar
+** Adding the course calendar to Google calendar
 #+attr_latex: :width 400px
 #+caption: Canvas calendar with course events
 [[../img/calendar.png]]
@@ -251,12 +251,12 @@ Cheers
 - Click ~Calendar Feed~ (lower right)
 - Import URL in Google calendar
 
-** TODO Using Python chat in GMail outside class
+** Using Python chat in GMail outside class
 #+attr_latex: :width 400px
 #+caption: Google Python chat space members
 [[../img/space.png]]
 
-** TODO Day review (and test preview)
+** Day review (and test preview)
 #+attr_latex: :width 300px
 #+caption: Family packing fruit, Sydneay 1911 (Flickr.com)
 [[../img/review.jpg]]
@@ -267,15 +267,16 @@ weekly multiple-choice tests, i.e. you can use this to prepare./
 1) What's the difference between an absolute and a relative path?
    #+begin_quote
    Answer: The *absolute* path always begins at the root directory, the
-   origin of the file tree (e.g. ~C:\~), while the *relative* path
-   specifies a location relative to your current directory (~PWD~).
+   origin of the file tree (e.g. ~C:\~ on Windows, or ~/~ on Linux), while
+   the *relative* path specifies a location relative to your current
+   directory (~PWD~).
    #+end_quote
 
 2) You know 4 different Python shells already - which are they?
    #+begin_quote
-   - The interactive Python shell in IDLE
-   - The IPython code cell in Google Colab
-   - The console in replit.com
+   - The interactive Python shell in IDLE (~>>>~)
+   - The IPython code cell in Google Colab (~[1]~)
+   - The console in replit.com ~>~
    - The shell opened in a terminal with the ~python~ command
    #+end_quote
    
@@ -305,9 +306,10 @@ weekly multiple-choice tests, i.e. you can use this to prepare./
     - Interactive Python console
     - Python file editor
     - Interactive Jupyter notebook
+    - plus a few JupyterLab gadgets (launcher)
    #+end_quote
 
-** TODO DataCamp lessons / practice
+** DataCamp lessons / practice
 #+attr_html: :width 200px
 [[../img/datacamp_practice.png]] [[../img/datacamp_practice1.png]] [[../img/datacamp_practice2.png]] [[../img/datacamp_practice3.png]]
 
@@ -318,12 +320,32 @@ Please note the (new) [[https://lyon.instructure.com/courses/1700/assignments][d
 courses amount to 60% of the home assignment grade. The remaining
 points will come from 8 programming assignments (like "word count").
 
-** TODO Lecture/practice: Python Basics
+** Lecture/practice: Python Basics
+#+attr_latex: :width 300px
+#+caption: Lecture renversante by Totoffff (Flickr.com)
+[[../img/lecture.jpg]]
 
 - Expressions
 - Variables
 - Statements
 
+** In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- An instruction that evaluates to a single value is an
+  *expression*. An instruction that doesn't is a *statement*.
+- Data types are: integer (~int~), floating-point (~float~), string (~str~)
+- Strings hold text and begin and end with quotes: ~‘Hello world!'~
+- Strings can be concatenated (~+~) and replicated (~*~)
+- Values can be stored in variables: ~spam = 42~
+- Variables can be used anywhere where values can be used in
+  expressions: ~spam + 1~
+- Variable names: one word, letters, numbers (not at beginning),
+  underscore only
+
+* Day 5
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
@@ -336,7 +358,6 @@ points will come from 8 programming assignments (like "word count").
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-* Day 5
 * Day 6
 * Day 7 
 * Day 8

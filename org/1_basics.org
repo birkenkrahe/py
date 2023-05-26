@@ -8,12 +8,13 @@
 - Python is a rich high-level programming language (like C or R) with
   many features. To master it takes a long time (5-10 years).
 
-- To write handy little programs that automate boring tasks, you only
-  need some basics:
-  1) statements
-  2) data types
-  3) variables
-  4) debugging
+- To write handy little programs that automate 'boring' tasks, you
+  only need some basics:
+  1) expressions 2 + 2
+  2) data types  integer
+  3) variables  spam
+  4) statements spam = 1
+  5) debugging dealing with errors
 
 - When I lecture, you should always keep Python open to code along:
   1) Google Colab notebook
@@ -21,7 +22,7 @@
   3) ~python~ on the command line
   4) Console in replit.com or DataCamp workspace
 
-- A code summary will be available as GitHub gists and in ~ipynb~ 
+- The code is available as [[https://gist.github.com/birkenkrahe/445237c66cb015ca243c3c5fe40f9888][GitHub gist]] and in the ~ipynb~ directory.
 
 * Expressions: values and operators ([[https://gist.github.com/birkenkrahe/6fc1fca1e9021e0837175d41972bcb29][gist]])
 
@@ -110,26 +111,28 @@
 - A data type is a category for values: every value belongs to exactly
   one data type.
 
+- Variables in Python do not need to be declared but they are
+  dynamically typed, i.e. at runtime.
+
 - Common data types are listed in this table:
   #+attr_latex: :width 400px
   #+caption: Common data types (Source: Sweigart, 2019)
   [[../img/1_data_types.png]]
 
-- Variables in Python do not need to be declared but they are
-  dynamically typed, i.e. at runtime.
-
 - Python's names for these data types are: ~int~, ~float~ and ~str~.
 
 - The ~type~ function reveals a value's or a variable's data type:
-  #+begin_src python
+  #+begin_example python
     type(-2)
     type(2)
     type(1.25)
     type('a')
     type('name')
     type(a)
-  #+end_src
+  #+end_example
 
+- Why does ~type(a)~ give a "Name Error"? Because Python expects a
+  variable named ~a~.
 * String concatenation and replication
 
 - The meaning of an operator may change based on the data types of its
@@ -172,22 +175,22 @@
 - When a variable is assigned a new value, the old value is forgotten.
 
 - To visualize this, open ~pythontutor.com~ and enter this code:
-  #+begin_src python
+  #+begin_example python
     spam = 40
     eggs = 2
     spam + eggs
     spam + eggs + spam
     spam = spam + eggs
     print(spam)
-  #+end_src
+  #+end_example
 
 - Similarly for strings:
-  #+begin_src python
+  #+begin_example python
     spam = 'Hello'
     print(spam)
     spam = 'Goodbye'
     print(spam)
-  #+end_src
+  #+end_example
 
 * Variable names
 #+attr_latex: :width 400px
@@ -199,245 +202,14 @@
   3. It can't begin with a number
 
 - You should not use Python keywords, symbols, function or module
-  names as your variables.
+  names as your variables (though you may be allowed to).
 
 - Variables in Python are case-sensitive.
 
 - Some people prefer camel-case for variable names instead of
   underscores: ~helloWorld~ instead of ~hello_world~. Either is OK.
 
-* Writing our first program
-
-- We want to write a program that
-  1) Says 'Hello world!'
-  2) Asks for your name
-  3) Greets you with your name
-  4) Tells you how many characters your name has
-  5) Asks for your age
-  6) Tells you how old you're going to be in one year
-
-- Python will start at the first line of the program and work its way
-  down line by line, skipping comments and /whitespace/.
-
-- Version 1: separate ~print~ and ~input~ functions and comment (~#~)
-  #+begin_src python :tangle ./src/hello1.py :results none
-    # Say "Hello, world!"
-    print("Hello, world!")
-    # Ask for your `name`
-    print("What is your name?")
-    name = input()
-    # Greet you with your `name`
-    print("Good to meet you, " + name)
-    # Tells you how many characters your `name` has
-    print("Your name has ", len(name), " characters")
-    # Asks for your `age`
-    print("What is your age?")
-    age = input()
-    # Tell how old you're going to be in one year
-    print("You're going to be " + str(int(age) + 1) + " years old")
-  #+end_src
-
-- Version 2: code only, no comments, print question in ~input~
-  #+begin_src python :tangle ./src/hello2.py :results none
-    print("Hello world!")
-    name = input("What is your name? ")
-    print("Good to meet you, " + name)
-    print("Your name has ", len(name), " characters")
-    age = input("What is your age? ")
-    print("You're going to be " + str(int(age) + 1) + " years old")
-  #+end_src
-
-- Version 3: code only, no comments, input two variables at once
-  #+begin_src python :tangle ./src/hello3.py :results none
-    print("Hello world!")
-    input_data = input("Enter name and age separated by a space: ")
-    name, age = input_data.split()
-    print("Good to meet you, " + name)
-    print("Your name has ", len(name), " characters")
-    print("You're going to be " + str(int(age) + 1) + " years old")
-  #+end_src
-
-- Python programs have the file extension ~.py~ - In Emacs, I can /tangle/
-  the /source code/ from the code blocks and create files ~hello*.py~
-  #+begin_src sh :results output
-    ls ./src/hello*.py
-  #+end_src
-
-  #+RESULTS:
-  : ./src/hello.py
-  : ./src/hello_lab.py
-  : ./src/hello1.py
-  : ./src/hello2.py
-  : ./src/hello3.py
-
-- I can run the files on the command line shell with the ~python~
-  command (the input file ~name_age.txt~ contains my name and age:
-  #+begin_src sh
-    cd src
-    python hello3.py < ../data/name_age.txt
-  #+end_src
-
-  #+RESULTS:
-  : Hello world!
-  : Enter name and age separated by a space: Good to meet you, Marcus
-  : Your name has  6  characters
-  : You're going to be 60 years old
-
-- Functions in your code are like mini programs. Six functions are
-  being /called/: ~print~, ~input~, ~len~, ~int~, ~str~, ~split~:
-  1) ~print~ prints its arguments but can also evaluate:
-     #+begin_src python
-       print("Hi")
-       print(5 + 5)
-     #+end_src
-
-     #+RESULTS:
-     : Hi
-     : 10
-  2) ~input~ takes input from the keyboard or from the command line
-     (input stream ~stdin~) and either prints it or
-     lets you assign it to a variable (output stream ~stdout~):
-     #+begin_example python
-       input("What's your name? ") # prints and waits for input
-     #+end_example
-  3) ~len~ computes the length of its (string) argument and returns an
-     integer:
-     #+begin_src python
-       print(len("Birkenkrahe"))
-       var = 'Dampfschiffahrtsgesellschaftskapitän'
-       print(len(var))  # with the len() function
-       print(var.__len__())  # with the str.__len__ method
-     #+end_src
-
-     #+RESULTS:
-     : 11
-     : 37
-     : 37
-  4) ~str~ returns its value as a string:
-     #+begin_src python
-       print(str(1000) + " random numbers")
-       print(str('1000') + " random numbers")
-     #+end_src
-
-     #+RESULTS:
-     : 1000 random numbers
-     : 1000 random numbers
-  5) ~split~ returns a list of words that can be split up among
-     different variables:
-     #+begin_src python
-       name = "Marcus Birkenkrahe"
-       print(name.split())
-       first, last = name.split()
-       print(first,last)
-       print(first + last)
-     #+end_src
-
-     #+RESULTS:
-     : ['Marcus', 'Birkenkrahe']
-     : Marcus Birkenkrahe
-     : MarcusBirkenkrahe
-
-- So what does ~str(int(age) + 1)~ do?
-  1) ~age~ is string ~input~
-  2) ~int(age)~ converts the string to a number - you cannot do that
-     with any character like "a". To convert characters to their
-     Unicode standard, you need to use ~ord~:
-     #+begin_src python
-       print(int("25"))
-       print(ord("a"))
-       print(ord("A"))
-     #+end_src
-
-     #+RESULTS:
-     : 25
-     : 97
-     : 65
-  3) ~int(age) + 1~ adds 1 to whatever number ~int(age)~ evaluates to:
-     #+begin_src python
-       age = "25"
-       print(age)
-       print(age + " years old")
-       print(int(age))
-       print(int(age)+1)
-     #+end_src
-
-     #+RESULTS:
-     : 25
-     : 25 years old
-     : 25
-     : 26
-  4) ~str(int(age) + 1)~ converts the result to a string:
-     #+begin_src python
-       age = "25"
-       print(age)
-       print(age + " years old")
-       print(int(age))
-       print(int(age)+1)
-       print(str(int(age)+1))
-       print(str(int(age)+1) + " years old")
-     #+end_src
-
-     #+RESULTS:
-     : 25
-     : 25 years old
-     : 25
-     : 26
-     : 26
-     : 26 years old
-
-- [[https://automatetheboringstuff.com/eval/3-4.html][Here is an HTML animation to illustrate these steps]] (Sweigart, 2019)
-
-- Like ~int~ and ~str~, ~float~ is also a conversion function:
-  #+begin_src python
-    age = "25"
-    print(age)
-    age = float(age)
-    age = 25
-    age = float(age)
-    print(age)
-  #+end_src
-
-  #+RESULTS:
-  : 25
-  : 25.0
-
-- ~split(sep=None,maxsplit=-1)~ is actually a /method/ with two optional
-  (defaulted) arguments - it returns list of words in the string using
-  ~sep~ as the delimiter, at most ~maxsplit~ splits are done: elements
-  (note the implicit arguments):
-  #+begin_src python
-    print('1,2,3'.split(','))
-    print('1,2,3'.split(',',0))
-    print('1,2,3'.split(',',1))
-    print('1,2,3'.split(',',2))
-    print('1,2,3'.split(',',3))
-  #+end_src
-
-- Coercion: implicit conversion
-  #+begin_src python
-    print(6. + 2.)
-    print(6. + 2)
-    print(6 + 2)
-  #+end_src
-
-  #+RESULTS:
-  : 8.0
-  : 8.0
-  : 8
-
-- Although the string value of a number is considered a completely
-  different value from the integer or floating-point version, an
-  integer can be equal to a floating-point:
-  #+begin_src python
-    print(42 == '42')
-    print(42 == 42.0)
-    print(42.0 == 0042.000)
-  #+end_src
-
-  #+RESULTS:
-  : False
-  : True
-  : True
+* TODO Back to 'hello world'
 
 * TODO Summary
 
@@ -449,8 +221,15 @@
 - Values can be stored in variables: ~spam = 42~
 - Variables can be used anywhere where values can be used in
   expressions: ~spam + 1~
+- Variable names: one word, letters, numbers (not at beginning),
+  underscore only
 
 * TODO Glossary
+
+| TERM/COMMAND | MEANING |
+|--------------+---------|
+|              |         |
+
 * References
 
 - Sweigart, A. (2016). Invent your own computer games with
