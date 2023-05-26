@@ -1,0 +1,531 @@
+#+TITLE:PYTHON BASICS
+#+AUTHOR: Marcus Birkenkrahe
+#+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
+#+STARTUP: overview hideblocks indent inlineimages
+* Python Basics
+
+- Python is a rich high-level programming language (like C or R) with
+  many features. To master it takes a long time (5-10 years).
+
+- To write handy little programs that automate boring tasks, you only
+  need some basics:
+  1) statements
+  2) data types
+  3) variables
+  4) debugging
+
+- When I lecture, you should always keep Python open to code along:
+  1) Google Colab notebook
+  2) IDLE interactive shell
+  3) ~python~ on the command line
+  4) Console in replit.com or DataCamp workspace
+
+- A code summary will be available as a Colab notebook in GitHub.
+
+* Entering expressions into the interactive shell
+
+- Open an interactive Python shell. I have changed the default
+  settings in Colab to open with a "scratchpad".
+
+- Enter the classic formula ~2 + 2~ at the prompt and press ~RET~ (Enter)
+  to (hopefully) get the classic answer ~4~.
+
+- In Colab, if you run your code with ~SHIFT + ENTER~, you get a new
+  code cell right away. If you us ~CTRL + ENTER~ you get nothing but now
+  you can add a text cell below with ~CTRL + ALT + t~
+
+- ~2 + 2~ is called an /expression/, a basic programming instruction.
+
+- An expression consist of /values/ (such as ~2~) in computer memory, and
+  /operators/ (such as the binary operator ~+~), which are /functions/.
+
+- Expressions can always /evaluate/ i.e. reduce to a single value - so
+  you can e.g. use ~2+2~ anywhere instead of ~4~ because you know it's
+  going to be reduced to ~4~.
+
+- Examples:
+  1) use ~2+2~ as the /argument/ of a ~print~ function.
+  2) use ~2+2~ as the argument of a ~str~ function.
+
+- A single value like ~2~ is also an expression (it doesn't express
+  anything else but itself) and evaluates to itself.
+
+- When Python cannot evaluate an expression, it "throws" an
+  error. Here is [[http://inventwithpython.com/appendixd.html][list of common error messages]] in Python with a plain
+  English explanation (Sweigart, 2023).
+
+- The table shows a lit of all math operators in Python. They are
+  listed from highest to lowest precedence:
+  #+attr_latex: :width 400px
+  [[../img/py_ops.png]]
+
+- The precedence is the order of operations: when Python gets an
+  expression with more than one operator, it evaluates from left to
+  right in this order (unless you add parentheses).
+
+- For example, the expression ~-2+24/8~ is evaluated as ~1~ and not as
+  ~2.75~ because ~(24/8)=3~ and ~3-2=1~.
+
+- So-called "whitespace" (empty space) between symbols does not
+  matter, so ~24/8~ is evaluated identically to ~24 / 8~. However, a
+  specialty of Python is that the /indentation/ at the beginning of the
+  line matters greatly.
+
+- Enter the following expressions into the interactive shell:
+  #+begin_example python
+  2 + 3 * 6
+  (2 + 3) * 6
+  48565857 * 578453
+  2 ** 8
+  23 / 7
+  23 // 7
+  2      +     2
+  (5 - 1) * ((7 + 1 ) / (3 - 1))
+  #+end_example
+
+- You should get this result:
+  #+attr_latex: :width 400px
+  #+caption: Expressions in the interactive Python shell (in Emacs)
+  [[../img/py_ops_example.png]]
+
+- The next diagram shows how Python ruthlessly evaluates parts of the
+  expression until it has reached a single value:
+  #+attr_latex: :width 250px
+  #+caption: Evaluation of composite expression to a single value
+  [[../img/py_ops_example1.png]]
+
+- When evaluating expressions, the Python interpreter /parses/ the code,
+  expecting that it follows correct syntax rules.
+
+- If the rules are broken, gibberish ensues, just like in natural
+  human language. Compare these two sentences:
+  #+begin_example
+  This is a grammatically correct English sentence.
+  This grammatically is sentence not English correct a.
+  #+end_example
+
+- If you break the Python rules, you get a /SyntaxError/:
+  #+attr_latex: :width 250px
+  #+caption: Evaluation of composite expression to a single value
+  [[../img/py_syntax_error.png]]
+
+- If you're in doubt, go to the interactive shell to try stuff out.
+
+* Basic Terminology (video)
+** IDLE - Interactive Development Learning Environment
+- Bundled with Python: interactive shell and file editor
+- Alternatives: Jupyter notebook, replit.com, PyCharm, Sublime, Emacs
+- Focus on the interactive shell first
+
+** Expressions
+- Expressions always evaluate to a single value
+- There is an order of operations (PEMDAS):
+  1) Parentheses
+  2) Exponentiation
+  3) Multiplication/Division
+  4) Addition/Subtraction
+- Syntax errors
+** Variables
+- Variables have data types: int, float, string
+- Variables are memory like boxes to store stuff in
+- Variables can be overwritten endlessly
+** Statements
+- Expressions that don't evaluate are called statements
+- Generic expression for all of these is 'code' or 'commands'
+** Summary
+- An instruction that evaluates to a single value is an
+  expression. An instruction that doesn't is a statement.
+- IDLE is an editor.
+- The interactive shell window has the >>> prompt.
+- The file editor window is where you enter code for complete
+  programs.
+- Data types: int, float, string
+- Strings hold text and begin and end with quotes: ‘Hello world!'
+- Strings can be concatenated (+) and replicated (*)
+- Values can be stored in variables: spam = 42
+- Variables can be used anywhere values can be used in expressions:
+  spam + 1
+** Variable names (book)
+#+attr_latex: :width 400px
+[[../img/py_variable_names.png]]
+
+You can name a variable anything as long as it obeys these rules:
+- It can be only one word with no spaces
+- It can only use letters, numbers and the underscore character (_)
+- It can't begin with a number
+
+** Writing our first program (video)
+
+- We want to write a program that
+  1) Says 'Hello world!'
+  2) Asks for your name
+  3) Greets you with your name
+  4) Tells you how many characters your name has
+  5) Asks for your age
+  6) Tells you how old you're going to be in one year
+
+- Python will start at the first line of the program and work its way
+  down line by line, skipping comments and /whitespace/.
+
+- Version 1: separate ~print~ and ~input~ functions and comment (~#~)
+  #+begin_src python :tangle ./src/hello1.py :results none
+    # Say "Hello, world!"
+    print("Hello, world!")
+    # Ask for your `name`
+    print("What is your name?")
+    name = input()
+    # Greet you with your `name`
+    print("Good to meet you, " + name)
+    # Tells you how many characters your `name` has
+    print("Your name has ", len(name), " characters")
+    # Asks for your `age`
+    print("What is your age?")
+    age = input()
+    # Tell how old you're going to be in one year
+    print("You're going to be " + str(int(age) + 1) + " years old")
+  #+end_src
+
+- Version 2: code only, no comments, print question in ~input~
+  #+begin_src python :tangle ./src/hello2.py :results none
+    print("Hello world!")
+    name = input("What is your name? ")
+    print("Good to meet you, " + name)
+    print("Your name has ", len(name), " characters")
+    age = input("What is your age? ")
+    print("You're going to be " + str(int(age) + 1) + " years old")
+  #+end_src
+
+- Version 3: code only, no comments, input two variables at once
+  #+begin_src python :tangle ./src/hello3.py :results none
+    print("Hello world!")
+    input_data = input("Enter name and age separated by a space: ")
+    name, age = input_data.split()
+    print("Good to meet you, " + name)
+    print("Your name has ", len(name), " characters")
+    print("You're going to be " + str(int(age) + 1) + " years old")
+  #+end_src
+
+- Python programs have the file extension ~.py~ - In Emacs, I can /tangle/
+  the /source code/ from the code blocks and create files ~hello*.py~
+  #+begin_src sh :results output
+    ls ./src/hello*.py
+  #+end_src
+
+  #+RESULTS:
+  : ./src/hello.py
+  : ./src/hello_lab.py
+  : ./src/hello1.py
+  : ./src/hello2.py
+  : ./src/hello3.py
+
+- I can run the files on the command line shell with the ~python~
+  command (the input file ~name_age.txt~ contains my name and age:
+  #+begin_src sh
+    cd src
+    python hello3.py < ../data/name_age.txt
+  #+end_src
+
+  #+RESULTS:
+  : Hello world!
+  : Enter name and age separated by a space: Good to meet you, Marcus
+  : Your name has  6  characters
+  : You're going to be 60 years old
+
+- Functions in your code are like mini programs. Six functions are
+  being /called/: ~print~, ~input~, ~len~, ~int~, ~str~, ~split~:
+  1) ~print~ prints its arguments but can also evaluate:
+     #+begin_src python
+       print("Hi")
+       print(5 + 5)
+     #+end_src
+
+     #+RESULTS:
+     : Hi
+     : 10
+  2) ~input~ takes input from the keyboard or from the command line
+     (input stream ~stdin~) and either prints it or
+     lets you assign it to a variable (output stream ~stdout~):
+     #+begin_example python
+       input("What's your name? ") # prints and waits for input
+     #+end_example
+  3) ~len~ computes the length of its (string) argument and returns an
+     integer:
+     #+begin_src python
+       print(len("Birkenkrahe"))
+       var = 'Dampfschiffahrtsgesellschaftskapitän'
+       print(len(var))  # with the len() function
+       print(var.__len__())  # with the str.__len__ method
+     #+end_src
+
+     #+RESULTS:
+     : 11
+     : 37
+     : 37
+  4) ~str~ returns its value as a string:
+     #+begin_src python
+       print(str(1000) + " random numbers")
+       print(str('1000') + " random numbers")
+     #+end_src
+
+     #+RESULTS:
+     : 1000 random numbers
+     : 1000 random numbers
+  5) ~split~ returns a list of words that can be split up among
+     different variables:
+     #+begin_src python
+       name = "Marcus Birkenkrahe"
+       print(name.split())
+       first, last = name.split()
+       print(first,last)
+       print(first + last)
+     #+end_src
+
+     #+RESULTS:
+     : ['Marcus', 'Birkenkrahe']
+     : Marcus Birkenkrahe
+     : MarcusBirkenkrahe
+
+- So what does ~str(int(age) + 1)~ do?
+  1) ~age~ is string ~input~
+  2) ~int(age)~ converts the string to a number - you cannot do that
+     with any character like "a". To convert characters to their
+     Unicode standard, you need to use ~ord~:
+     #+begin_src python
+       print(int("25"))
+       print(ord("a"))
+       print(ord("A"))
+     #+end_src
+
+     #+RESULTS:
+     : 25
+     : 97
+     : 65
+  3) ~int(age) + 1~ adds 1 to whatever number ~int(age)~ evaluates to:
+     #+begin_src python
+       age = "25"
+       print(age)
+       print(age + " years old")
+       print(int(age))
+       print(int(age)+1)
+     #+end_src
+
+     #+RESULTS:
+     : 25
+     : 25 years old
+     : 25
+     : 26
+  4) ~str(int(age) + 1)~ converts the result to a string:
+     #+begin_src python
+       age = "25"
+       print(age)
+       print(age + " years old")
+       print(int(age))
+       print(int(age)+1)
+       print(str(int(age)+1))
+       print(str(int(age)+1) + " years old")
+     #+end_src
+
+     #+RESULTS:
+     : 25
+     : 25 years old
+     : 25
+     : 26
+     : 26
+     : 26 years old
+
+- [[https://automatetheboringstuff.com/eval/3-4.html][Here is an HTML animation to illustrate these steps]] (Sweigart, 2023)
+
+- Like ~int~ and ~str~, ~float~ is also a conversion function:
+  #+begin_src python
+    age = "25"
+    print(age)
+    age = float(age)
+    age = 25
+    age = float(age)
+    print(age)
+  #+end_src
+
+  #+RESULTS:
+  : 25
+  : 25.0
+
+- ~split(sep=None,maxsplit=-1)~ is actually a /method/ with two optional
+  (defaulted) arguments - it returns list of words in the string using
+  ~sep~ as the delimiter, at most ~maxsplit~ splits are done: elements
+  (note the implicit arguments):
+  #+begin_src python
+    print('1,2,3'.split(','))
+    print('1,2,3'.split(',',0))
+    print('1,2,3'.split(',',1))
+    print('1,2,3'.split(',',2))
+    print('1,2,3'.split(',',3))
+  #+end_src
+
+- Coercion: implicit conversion
+  #+begin_src python
+    print(6. + 2.)
+    print(6. + 2)
+    print(6 + 2)
+  #+end_src
+
+  #+RESULTS:
+  : 8.0
+  : 8.0
+  : 8
+
+- Although the string value of a number is considered a completely
+  different value from the integer or floating-point version, an
+  integer can be equal to a floating-point:
+  #+begin_src python
+    print(42 == '42')
+    print(42 == 42.0)
+    print(42.0 == 0042.000)
+  #+end_src
+
+  #+RESULTS:
+  : False
+  : True
+  : True
+
+** Summary
+
+- Type programs into the file editor (not in the interactive shell
+  window with the >>> prompt)
+- The execution starts at the top and moves down.
+- Comments begin with a # character and are ignored by Python; they
+  are notes & reminders for the programmer.
+- Functions are like mini-programs in your program.
+- The print() function displays the value passed to it.
+- The input() function lets users type in a value.
+- The len() function takes a string value and returns an integer value
+  of the string's length.
+- The int(), str(), and float() functions can be used to convert
+  values' data type.
+
+** Quiz 1 (video)
+
+1) Which window in IDLE has the ~>>>~ prompt?
+   - [X] The interactive shell window (to experiment with one-liners)
+   - [ ] The file editor window (to write programs)
+2) ~2 + 2~ is what kind of Python instruction?
+   - [X] An expression
+   - [ ] A statement
+   - [ ] A data type
+   - [ ] An operator
+3) The value ~42~ has what data type?
+   - [X] An integer (or "int")
+   - [ ] A string
+   - [ ] A floating point number (or "float")
+   - [ ] The value ~42~ does not have a data type
+4) The value ~'42'~ has what data type?
+   - [X] A string
+   - [ ] An integer (or "int")
+   - [ ] A floating point number (or "float")
+   - [ ] The value ~42~ does not have a data type
+5) The value ~42.0~ has what data type?
+   - [X] A floating point number (or "float")
+   - [ ] A string
+   - [ ] An integer (or "int")
+   - [ ] The value ~42~ does not have a data type
+6) Which of these Python instructions is an example of string
+   concatenation?
+   - [X] ~'Hello,' + ' world!'~
+   - [ ] ~2 + 2~
+   - [ ] ~'Hello' * 3~
+   - [ ] ~spam = 'Hello'~
+7) Let's say we run the following code in the interactive shell:
+   #+begin_example python
+   >>> spam = 2
+   >>> spam = 'Hello'
+   >>> spam * 3
+   #+end_example
+   What does the last instruction display in the interactive shell?
+   - [ ] ~'HelloHelloHello'~
+   - [ ] ~6~
+   - [ ] ~'Hello'~
+   - [ ] ~2~
+
+** Practice questions (book)
+
+1) Which of the following are operators, and which are values?
+   | operators | values          |
+   |-----------+-----------------|
+   | * - / +   | 'hello' -88.8 5 |
+2) Which of the following is a variable and which is a string?
+   #+begin_quote
+   ~spam~: variable
+   ~'spam'~: string
+   #+end_quote
+3) Name three data types
+   #+begin_quote
+   ~int~, ~float~, ~str~
+   #+end_quote
+4) What is an expression made of? What do all expressions do?
+   #+begin_quote
+   Expressions are made of values. All expressions evaluate to a
+   single value.
+   #+end_quote
+5) What is the difference between and expression and a statement?
+   #+begin_quote
+   Statements do not evaluate to a single value and contain variables.
+   #+end_quote
+6) What does the variable ~bacon~ contain after the code runs:
+   #+begin_src python
+     bacon = 20
+     bacon + 1
+     print(bacon)
+   #+end_src
+7) What should the following two expressions evaluate to?
+   #+begin_src python
+     print('spam' + 'spamspam')
+     print('spam' * 3)
+   #+end_src
+
+   #+RESULTS:
+   : spamspamspam
+   : spamspamspam
+8) Why is ~eggs~ a valid variable name while ~100~ is invalid?
+   #+begin_quote
+   Variable names cannot begin with a number but they can be any words
+   that are not reserved Python words.
+   #+end_quote
+9) What three functions can be used to get the integer, floating-point
+   number, or string version of a value?
+   #+begin_quote
+   - integer: ~int~
+   - floating-point: ~float~
+   - string: ~str~
+   #+end_quote
+10) Why does this expression cause an error, and how can you fix it?
+    #+begin_example python
+      'I have eaten ' + 99 + ' burritos'
+    #+end_example
+    Fix:
+    #+begin_src python
+      print('I have eaten ' + str(99) + ' burritos')
+    #+end_src
+
+    #+RESULTS:
+    : I have eaten99 burritos
+
+*Extra credit:* Search online for the Python documentation for the ~len()~
+function ([[https://docs.python.org/3/library/functions.html?highlight=len#len][link]]). It will be on a web page titled “Built-in Functions.”
+Skim the list of other functions Python has, look up what the ~round()~
+function does ([[https://docs.python.org/3/library/functions.html?highlight=round#round][link]]), and experiment with it in the interactive shell.
+#+begin_src python
+  # len() raises OverflowError on lengths larger than sys.maxsize such as
+  # range(2**100)
+  print(len(range(2**100)))
+  # OverflowError: Python int too large to convert to C ssize_t
+#+end_src
+#+begin_src python
+  # round(number, ndigits=None)
+  print(round(2.4))
+  print(round(2.455, ndigits=1))
+  print(round(2.455, ndigits=2))
+#+end_src
+
+#+RESULTS:
+: 2
+: 2.5
+: 2.46

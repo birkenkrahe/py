@@ -264,6 +264,61 @@ Cheers
 /We review yesterday's material. These questions will resurface in the
 weekly multiple-choice tests, i.e. you can use this to prepare./
 
+1) What's the difference between an absolute and a relative path?
+   #+begin_quote
+   Answer: The *absolute* path always begins at the root directory, the
+   origin of the file tree (e.g. ~C:\~), while the *relative* path
+   specifies a location relative to your current directory (~PWD~).
+   #+end_quote
+
+2) You know 4 different Python shells already - which are they?
+   #+begin_quote
+   - The interactive Python shell in IDLE
+   - The IPython code cell in Google Colab
+   - The console in replit.com
+   - The shell opened in a terminal with the ~python~ command
+   #+end_quote
+   
+3) Which features does the IPython shell (e.g. in a Colab code cell)
+   have?
+   #+begin_quote
+   - Auto-completion of keywords like ~print~ and user-defined variables
+   - Integration of pre-installed modules like ~matplotlib~ for plotting
+   #+end_quote
+   
+4) Are your Google Colab notebooks saved anywhere?
+   #+begin_quote
+   Yes, they are automatically saved in the ~Colab Notebooks~ directory
+   in your Google drive (~w:\My Drive\~ on Windows @Lyon).
+   #+end_quote
+
+5) What can you do with the ~#~ symbol?
+   #+begin_quote
+   - Comment lines in a ~.py~ Python file
+   - Comment on the interactive Python shell
+   - Create headlines in a Colab text cell ("markdown markup")
+   #+end_quote
+
+6) What does DataCamp workspace offer?
+   #+begin_quote
+    - Linux shell
+    - Interactive Python console
+    - Python file editor
+    - Interactive Jupyter notebook
+   #+end_quote
+
+** TODO DataCamp lessons / practice
+#+attr_html: :width 200px
+[[../img/datacamp_practice.png]] [[../img/datacamp_practice1.png]] [[../img/datacamp_practice2.png]] [[../img/datacamp_practice3.png]]
+
+Some questions for test 1 will come from the "Python Basics" chapter
+of the "Introduction to Python" course on DataCamp (you can practice).
+
+Please note the (new) [[https://lyon.instructure.com/courses/1700/assignments][deadlines for the three DataCamp courses]]. These
+courses amount to 60% of the home assignment grade. The remaining
+points will come from 8 programming assignments (like "word count").
+
+** TODO Lecture/practice: Python Basics
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
