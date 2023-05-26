@@ -2,6 +2,7 @@
 #+AUTHOR: Marcus Birkenkrahe
 #+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
 #+STARTUP: overview hideblocks indent inlineimages
+#+PROPERTY: header-args:python :results output :exports both :session *Python*
 * Python Basics
 
 - Python is a rich high-level programming language (like C or R) with
@@ -20,12 +21,12 @@
   3) ~python~ on the command line
   4) Console in replit.com or DataCamp workspace
 
-- A code summary will be available as a Colab notebook in GitHub.
+- A code summary will be available as GitHub gists and in ~ipynb~ 
 
-* Entering expressions into the interactive shell
+* Expressions: values and operators ([[https://gist.github.com/birkenkrahe/6fc1fca1e9021e0837175d41972bcb29][gist]])
 
 - Open an interactive Python shell. I have changed the default
-  settings in Colab to open with a "scratchpad".
+  settings in Colab to open with a "scratchpad" (not saved!).
 
 - Enter the classic formula ~2 + 2~ at the prompt and press ~RET~ (Enter)
   to (hopefully) get the classic answer ~4~.
@@ -50,26 +51,36 @@
 - A single value like ~2~ is also an expression (it doesn't express
   anything else but itself) and evaluates to itself.
 
+* Error messages
+
 - When Python cannot evaluate an expression, it "throws" an
   error. Here is [[http://inventwithpython.com/appendixd.html][list of common error messages]] in Python with a plain
-  English explanation (Sweigart, 2023).
+  English explanation (Sweigart, 2019).
+
+- Let's create a couple of error messages using wrong expressions:
+  1) Enter ~2 +~
+  2) Enter ~2 + '2'~
+  3) Enter ~2~ and then on the next line enter ~2~ again in the 2nd column
+  4) Enter ~2 + ++ 2~ then change the first ~+~ to a ~-~
+
+* Operators
 
 - The table shows a lit of all math operators in Python. They are
   listed from highest to lowest precedence:
   #+attr_latex: :width 400px
   [[../img/py_ops.png]]
-
+     
 - The precedence is the order of operations: when Python gets an
   expression with more than one operator, it evaluates from left to
-  right in this order (unless you add parentheses).
+  right (you can force execution with parentheses).
 
 - For example, the expression ~-2+24/8~ is evaluated as ~1~ and not as
-  ~2.75~ because ~(24/8)=3~ and ~3-2=1~.
+  ~2.75~ because ~(24/8)=3~ and ~3-2=1~:
+  1) Enter ~-2 + 24 / 8~
+  2) Enter ~(-2 + 24) / 8~
 
 - So-called "whitespace" (empty space) between symbols does not
-  matter, so ~24/8~ is evaluated identically to ~24 / 8~. However, a
-  specialty of Python is that the /indentation/ at the beginning of the
-  line matters greatly.
+  matter, so ~24/8~ is evaluated identically to ~24 / 8~.
 
 - Enter the following expressions into the interactive shell:
   #+begin_example python
@@ -87,74 +98,115 @@
   #+attr_latex: :width 400px
   #+caption: Expressions in the interactive Python shell (in Emacs)
   [[../img/py_ops_example.png]]
-
+  
 - The next diagram shows how Python ruthlessly evaluates parts of the
   expression until it has reached a single value:
   #+attr_latex: :width 250px
   #+caption: Evaluation of composite expression to a single value
   [[../img/py_ops_example1.png]]
 
-- When evaluating expressions, the Python interpreter /parses/ the code,
-  expecting that it follows correct syntax rules.
+* Variables
 
-- If the rules are broken, gibberish ensues, just like in natural
-  human language. Compare these two sentences:
-  #+begin_example
-  This is a grammatically correct English sentence.
-  This grammatically is sentence not English correct a.
-  #+end_example
+- A data type is a category for values: every value belongs to exactly
+  one data type.
 
-- If you break the Python rules, you get a /SyntaxError/:
-  #+attr_latex: :width 250px
-  #+caption: Evaluation of composite expression to a single value
-  [[../img/py_syntax_error.png]]
+- Common data types are listed in this table:
+  #+attr_latex: :width 400px
+  #+caption: Common data types (Source: Sweigart, 2019)
+  [[../img/1_data_types.png]]
 
-- If you're in doubt, go to the interactive shell to try stuff out.
+- Variables in Python do not need to be declared but they are
+  dynamically typed, i.e. at runtime.
 
-* Basic Terminology (video)
-** IDLE - Interactive Development Learning Environment
-- Bundled with Python: interactive shell and file editor
-- Alternatives: Jupyter notebook, replit.com, PyCharm, Sublime, Emacs
-- Focus on the interactive shell first
+- Python's names for these data types are: ~int~, ~float~ and ~str~.
 
-** Expressions
-- Expressions always evaluate to a single value
-- There is an order of operations (PEMDAS):
-  1) Parentheses
-  2) Exponentiation
-  3) Multiplication/Division
-  4) Addition/Subtraction
-- Syntax errors
-** Variables
-- Variables have data types: int, float, string
-- Variables are memory like boxes to store stuff in
-- Variables can be overwritten endlessly
-** Statements
-- Expressions that don't evaluate are called statements
-- Generic expression for all of these is 'code' or 'commands'
-** Summary
-- An instruction that evaluates to a single value is an
-  expression. An instruction that doesn't is a statement.
-- IDLE is an editor.
-- The interactive shell window has the >>> prompt.
-- The file editor window is where you enter code for complete
-  programs.
-- Data types: int, float, string
-- Strings hold text and begin and end with quotes: ‘Hello world!'
-- Strings can be concatenated (+) and replicated (*)
-- Values can be stored in variables: spam = 42
-- Variables can be used anywhere values can be used in expressions:
-  spam + 1
-** Variable names (book)
+- The ~type~ function reveals a value's or a variable's data type:
+  #+begin_src python
+    type(-2)
+    type(2)
+    type(1.25)
+    type('a')
+    type('name')
+    type(a)
+  #+end_src
+
+* String concatenation and replication
+
+- The meaning of an operator may change based on the data types of its
+  operands.
+
+- Enter the following examples in separate code cells (otherwise you
+  only get the last result - or you have to add ~print~).
+
+- Examples:
+  1) ~'Alice' + 'Bob'~
+  2) ~'Alice' + 42~
+
+- Python can only concatenate numbers or strings. You have to
+  explicitly convert the 2nd argument to a string:
+  1) ~'Alice' + str(42)~
+  2) ~'Alice' + str(Bob)~
+
+- Unless ~Bob~ is initialized as an integer, this will not work:
+  1) ~Bob = 42~
+  2) ~'Alice' + str(Bob)~
+
+- The ~*~ operator can be used with one string and one integer value for
+  replication:
+  1) ~'Alice' * 'Bob'~
+  2) ~'Alice' * 5.0~
+  3) ~'Alice' * 5~
+  4) ~'Alice' * int(5.0)~
+
+* Assignments: storing values in variables
+
+- A /variable/ is like a box in the computer's memory where you can
+  store a single value.
+
+- You store values in variables with an ~assignment statement~,
+  consisting of: a variable name, the ~=~ operator, and the value.
+
+- A variable is initialized or created the first time a value is
+  stored in it.
+
+- When a variable is assigned a new value, the old value is forgotten.
+
+- To visualize this, open ~pythontutor.com~ and enter this code:
+  #+begin_src python
+    spam = 40
+    eggs = 2
+    spam + eggs
+    spam + eggs + spam
+    spam = spam + eggs
+    print(spam)
+  #+end_src
+
+- Similarly for strings:
+  #+begin_src python
+    spam = 'Hello'
+    print(spam)
+    spam = 'Goodbye'
+    print(spam)
+  #+end_src
+
+* Variable names
 #+attr_latex: :width 400px
 [[../img/py_variable_names.png]]
 
-You can name a variable anything as long as it obeys these rules:
-- It can be only one word with no spaces
-- It can only use letters, numbers and the underscore character (_)
-- It can't begin with a number
+- You can name a variable anything as long as it obeys these rules:
+  1. It can be only one word with no spaces
+  2. It can only use letters, numbers and the underscore character (~_~)
+  3. It can't begin with a number
 
-** Writing our first program (video)
+- You should not use Python keywords, symbols, function or module
+  names as your variables.
+
+- Variables in Python are case-sensitive.
+
+- Some people prefer camel-case for variable names instead of
+  underscores: ~helloWorld~ instead of ~hello_world~. Either is OK.
+
+* Writing our first program
 
 - We want to write a program that
   1) Says 'Hello world!'
@@ -333,7 +385,7 @@ You can name a variable anything as long as it obeys these rules:
      : 26
      : 26 years old
 
-- [[https://automatetheboringstuff.com/eval/3-4.html][Here is an HTML animation to illustrate these steps]] (Sweigart, 2023)
+- [[https://automatetheboringstuff.com/eval/3-4.html][Here is an HTML animation to illustrate these steps]] (Sweigart, 2019)
 
 - Like ~int~ and ~str~, ~float~ is also a conversion function:
   #+begin_src python
@@ -387,145 +439,21 @@ You can name a variable anything as long as it obeys these rules:
   : True
   : True
 
-** Summary
+* TODO Summary
 
-- Type programs into the file editor (not in the interactive shell
-  window with the >>> prompt)
-- The execution starts at the top and moves down.
-- Comments begin with a # character and are ignored by Python; they
-  are notes & reminders for the programmer.
-- Functions are like mini-programs in your program.
-- The print() function displays the value passed to it.
-- The input() function lets users type in a value.
-- The len() function takes a string value and returns an integer value
-  of the string's length.
-- The int(), str(), and float() functions can be used to convert
-  values' data type.
+- An instruction that evaluates to a single value is an
+  *expression*. An instruction that doesn't is a *statement*.
+- Data types are: integer (~int~), floating-point (~float~), string (~str~)
+- Strings hold text and begin and end with quotes: ~‘Hello world!'~
+- Strings can be concatenated (~+~) and replicated (~*~)
+- Values can be stored in variables: ~spam = 42~
+- Variables can be used anywhere where values can be used in
+  expressions: ~spam + 1~
 
-** Quiz 1 (video)
+* TODO Glossary
+* References
 
-1) Which window in IDLE has the ~>>>~ prompt?
-   - [X] The interactive shell window (to experiment with one-liners)
-   - [ ] The file editor window (to write programs)
-2) ~2 + 2~ is what kind of Python instruction?
-   - [X] An expression
-   - [ ] A statement
-   - [ ] A data type
-   - [ ] An operator
-3) The value ~42~ has what data type?
-   - [X] An integer (or "int")
-   - [ ] A string
-   - [ ] A floating point number (or "float")
-   - [ ] The value ~42~ does not have a data type
-4) The value ~'42'~ has what data type?
-   - [X] A string
-   - [ ] An integer (or "int")
-   - [ ] A floating point number (or "float")
-   - [ ] The value ~42~ does not have a data type
-5) The value ~42.0~ has what data type?
-   - [X] A floating point number (or "float")
-   - [ ] A string
-   - [ ] An integer (or "int")
-   - [ ] The value ~42~ does not have a data type
-6) Which of these Python instructions is an example of string
-   concatenation?
-   - [X] ~'Hello,' + ' world!'~
-   - [ ] ~2 + 2~
-   - [ ] ~'Hello' * 3~
-   - [ ] ~spam = 'Hello'~
-7) Let's say we run the following code in the interactive shell:
-   #+begin_example python
-   >>> spam = 2
-   >>> spam = 'Hello'
-   >>> spam * 3
-   #+end_example
-   What does the last instruction display in the interactive shell?
-   - [ ] ~'HelloHelloHello'~
-   - [ ] ~6~
-   - [ ] ~'Hello'~
-   - [ ] ~2~
-
-** Practice questions (book)
-
-1) Which of the following are operators, and which are values?
-   | operators | values          |
-   |-----------+-----------------|
-   | * - / +   | 'hello' -88.8 5 |
-2) Which of the following is a variable and which is a string?
-   #+begin_quote
-   ~spam~: variable
-   ~'spam'~: string
-   #+end_quote
-3) Name three data types
-   #+begin_quote
-   ~int~, ~float~, ~str~
-   #+end_quote
-4) What is an expression made of? What do all expressions do?
-   #+begin_quote
-   Expressions are made of values. All expressions evaluate to a
-   single value.
-   #+end_quote
-5) What is the difference between and expression and a statement?
-   #+begin_quote
-   Statements do not evaluate to a single value and contain variables.
-   #+end_quote
-6) What does the variable ~bacon~ contain after the code runs:
-   #+begin_src python
-     bacon = 20
-     bacon + 1
-     print(bacon)
-   #+end_src
-7) What should the following two expressions evaluate to?
-   #+begin_src python
-     print('spam' + 'spamspam')
-     print('spam' * 3)
-   #+end_src
-
-   #+RESULTS:
-   : spamspamspam
-   : spamspamspam
-8) Why is ~eggs~ a valid variable name while ~100~ is invalid?
-   #+begin_quote
-   Variable names cannot begin with a number but they can be any words
-   that are not reserved Python words.
-   #+end_quote
-9) What three functions can be used to get the integer, floating-point
-   number, or string version of a value?
-   #+begin_quote
-   - integer: ~int~
-   - floating-point: ~float~
-   - string: ~str~
-   #+end_quote
-10) Why does this expression cause an error, and how can you fix it?
-    #+begin_example python
-      'I have eaten ' + 99 + ' burritos'
-    #+end_example
-    Fix:
-    #+begin_src python
-      print('I have eaten ' + str(99) + ' burritos')
-    #+end_src
-
-    #+RESULTS:
-    : I have eaten99 burritos
-
-*Extra credit:* Search online for the Python documentation for the ~len()~
-function ([[https://docs.python.org/3/library/functions.html?highlight=len#len][link]]). It will be on a web page titled “Built-in Functions.”
-Skim the list of other functions Python has, look up what the ~round()~
-function does ([[https://docs.python.org/3/library/functions.html?highlight=round#round][link]]), and experiment with it in the interactive shell.
-#+begin_src python
-  # len() raises OverflowError on lengths larger than sys.maxsize such as
-  # range(2**100)
-  print(len(range(2**100)))
-  # OverflowError: Python int too large to convert to C ssize_t
-#+end_src
-#+begin_src python
-  # round(number, ndigits=None)
-  print(round(2.4))
-  print(round(2.455, ndigits=1))
-  print(round(2.455, ndigits=2))
-#+end_src
-
-#+RESULTS:
-: 2
-: 2.5
-: 2.46
+- Sweigart, A. (2016). Invent your own computer games with
+  Python. NoStarch. URL: [[http://inventwithpython.com/][inventwithpython.com]].
+- Sweigart, A. (2019). Automate the boring stuff with
+  Python. NoStarch. URL: [[http://automatetheboringstuff.com][automatetheboringstuff.com]].
