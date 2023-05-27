@@ -3,7 +3,6 @@
 #+SUBTITLE: Lyon College, Summer school 2023
 #+STARTUP:overview hideblocks indent inlineimages
 #+OPTIONS: toc:nil num:nil ^:nil
-#+property: header-args:python :results output :noweb yes :tangle yes :session *Python*
 #+property: header-args:R :results output :noweb yes :session *R* :exports both
 * Day 1: Entry survey analysis and course overview 
 #+attr_latex: :width 300px
@@ -345,7 +344,36 @@ points will come from 8 programming assignments (like "word count").
 - Variable names: one word, letters, numbers (not at beginning),
   underscore only
 
-* Day 5
+* Day 5: Flow control and flow visualization
+#+attr_latex: :width 400px
+#+caption: Roman Guy, Against the Flow (Flickr.com)
+[[../img/flow.jpg]]
+
+** TODO It's a wrap: ~'hello world' * 3~
+
+
+
+** TODO The caret ~^~ operator in Python
+
+- Use ~**~ for exponentiation and not ~^~ (as in R). In Python, the caret
+  operator ~^~ is the binary ~XOR~ operator: it compares two binary
+  numbers and returns a binary with bits set to 1 where the
+  corresponding bits of the operations differ:
+#+begin_src python :results output 
+  print(2**4)
+  print(2^4)
+  print('binary: ', bin(2)[2:])
+  print('binary: ', bin(4)[2:])
+  print('binary: ', bin(6)[2:])
+#+end_src
+
+#+RESULTS:
+: 16
+: 6
+: binary:  10
+: binary:  100
+: binary:  110
+
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
@@ -378,7 +406,6 @@ points will come from 8 programming assignments (like "word count").
 * Day 23: Project presentations
 * Day 24: Project presentations / Summary / Outlook
 * Footnotes
-
 [fn:1]Webscraping Excel manipulation and Machine Learning are already
 part of my plan, but cybersecurity is currently not included (except
 indirectly through the command line and string manipulation skills).
