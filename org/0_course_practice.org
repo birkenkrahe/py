@@ -116,6 +116,9 @@ FAQ, ~help()~.
    print('Hello, world!')
    #+end_src
 
+   #+RESULTS:
+   : Hello, world!
+
 3) What you should have noticed: as you finish typing ~print(~, a pop-up
    says (unhelpfully)
    #+begin_example
