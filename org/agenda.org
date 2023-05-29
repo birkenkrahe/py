@@ -4,7 +4,7 @@
 #+STARTUP:overview hideblocks indent inlineimages
 #+OPTIONS: toc:nil num:nil ^:nil
 #+property: header-args:R :results output :noweb yes :session *R* :exports both
-* Day 1: Entry survey analysis and course overview 
+* Day 1: Entry survey analysis and course overview
 #+attr_latex: :width 300px
 [[../img/dataScientistIn50days.jpg]]
 
@@ -117,7 +117,7 @@ weekly multiple-choice tests, i.e. you can use this to prepare./
    Answer: for nothing. We use the Canvas learning management system,
    GitHub, DataCamp, replit.com, IDLE and Google Colaboratory.
    #+end_quote
-   
+
 5) What's our policy regarding the use of AI coding assistants?
    #+begin_quote
    Answer: it's allowed as long as you reference and document your
@@ -278,14 +278,14 @@ weekly multiple-choice tests, i.e. you can use this to prepare./
    - The console in replit.com ~>~
    - The shell opened in a terminal with the ~python~ command
    #+end_quote
-   
+
 3) Which features does the IPython shell (e.g. in a Colab code cell)
    have?
    #+begin_quote
    - Auto-completion of keywords like ~print~ and user-defined variables
    - Integration of pre-installed modules like ~matplotlib~ for plotting
    #+end_quote
-   
+
 4) Are your Google Colab notebooks saved anywhere?
    #+begin_quote
    Yes, they are automatically saved in the ~Colab Notebooks~ directory
@@ -301,11 +301,11 @@ weekly multiple-choice tests, i.e. you can use this to prepare./
 
 6) What does DataCamp workspace offer?
    #+begin_quote
-    - Linux shell
-    - Interactive Python console
-    - Python file editor
-    - Interactive Jupyter notebook
-    - plus a few JupyterLab gadgets (launcher)
+   - Linux shell
+   - Interactive Python console
+   - Python file editor
+   - Interactive Jupyter notebook
+   - plus a few JupyterLab gadgets (launcher)
    #+end_quote
 
 ** DataCamp lessons / practice
@@ -344,14 +344,14 @@ points will come from 8 programming assignments (like "word count").
 - Variable names: one word, letters, numbers (not at beginning),
   underscore only
 
-* Day 5: Flow control and flow visualization
-#+attr_latex: :width 400px
-#+caption: Roman Guy, Against the Flow (Flickr.com)
-[[../img/flow.jpg]]
+* Day 5: Three sample problems and three times 'hello'
+#+attr_latex: :width 300px
+#+caption: Women on a tandem bicycle, 28 September 1938 (Flickr.com)
+[[../img/three.png]]
 
-** TODO It's a wrap: ~'hello world' * 3~
-
-
+- [ ] The caret operator in Python and the binary function
+- [ ] Three problems: string replication, splitting, math constants
+- [ ] User interaction: Keyboard input, error and output
 
 ** TODO The caret ~^~ operator in Python
 
@@ -359,42 +359,99 @@ points will come from 8 programming assignments (like "word count").
   operator ~^~ is the binary ~XOR~ operator: it compares two binary
   numbers and returns a binary with bits set to 1 where the
   corresponding bits of the operations differ:
-  #+begin_src python :results output 
-  print(2**4)
-  print(2^4)
-  print('binary: ', bin(2)[2:])
-  print('binary: ', bin(4)[2:])
-  print('binary: ', bin(6)[2:])
+  #+begin_src python :results output
+    print(2**4)   # prints 16
+    print(2^4)    # prints 6...?
+    print('binary: ', bin(2)[2:])   # binary for 2
+    print('binary: ', bin(4)[2:])   # binary for 4
+    print('binary: ', bin(6)[2:])   # binary for 6
   #+end_src
 
-  #+RESULTS:
-  : 16
-  : 6
-  : binary:  10
-  : binary:  100
-  : binary:  110
-
 ** TODO In-class summary
+
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
 
 - [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
 
-** TODO Homework: 
+** TODO Homework
 #+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-* Day 6
-* Day 7 
-* Day 8
-* Day 9
-* Day 10 
-* Day 11 
-* Day 12 
-* Day 13 
-* Day 14 
+*** (Bonus) Star Wars: A New Hope
+#+attr_latex: :width 200px
+#+caption: 15th anniversary poster of Star Wars (1992)
+[[../img/starwars.png]]
+
+*Problem:* Repeat the word ~far~ exactly ~N~ times in the following output
+format: ~A long time ago, in a galaxy far, far away...~
+
+Create a notebook ~newHope.ipynb~ and submit the URL:
+1) Problem
+2) Flow
+3) Variables
+4) Functions
+5) Implementation
+
+Original problem: "[[https://dmoj.ca/problem/wc15c2j1/pdf][A New Hope]]".
+
+Tip: the ~str.strip()~ function removes trailing characters from ~str~.
+
+* Day 6: Flow control and flow visualization
+#+attr_latex: :width 400px
+#+caption: Roman Guy, Against the Flow (Flickr.com)
+[[../img/flow.jpg]]
+
+* Day 7: Conditions and clauses
+* Day 8: Loops and breaks
+* Day 9: Importing modules
+** TODO In-class summary
+
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+*** Cone drill: using formulas and constants
+#+attr_latex: :width 400px
+#+caption: Ice cream bliss - LOC@Flickr.com
+[[../img/cone.jpg]]
+
+*Problem:* Compute the volume of a cone of radius r and height h.
+
+Create a notebook ~coneDrill.ipynb~:
+1) Problem
+2) Flow
+3) Variables
+4) Functions
+5) Implementation
+
+- The volume $V$ of a cone of radius $r$ and height $h$ is $V =
+  \frac{\pi r^2 h}{3}$.
+- To get \pi to a high accuracy, ~import math~. The value of \pi is
+  stored in ~math.pi~:
+  #+begin_src python :results output
+    import math
+    print(math.pi)
+  #+end_src
+
+Original problem: "[[https://dmoj.ca/problem/dmopc14c5p1/pdf][Cone Drill]]"
+
+
+
+* Day 10
+* Day 11
+* Day 12
+* Day 13
+* Day 14
 * Day 15
 * Day 16
 * Day 17
