@@ -56,10 +56,13 @@
   2. Disadvantages: dissociated from code; specifics are missing;
      subjective selection of elements; static (however: see process
      mining).
-  3. Neutrality: Python is considered to be so simple as to amount to
-     'pseudocode' (no syntax knowledge necessary). Not true: example.
   #+end_quote
 
+- Python is considered to be so simple as to amount to 'pseudocode'
+  (no syntax knowledge necessary) - really? [fn:5]
+  #+attr_latex: :width 400px
+  [[../img/2_complex.png]]
+  
 - To control process flow with Python code, we need a way to check if
   an event has happened or not, and a way to compare events.
 
@@ -70,7 +73,10 @@
 
 * TODO Exercise: BPMN model
 
-1) Model your first Python program as a BPMN model using ~bpmn.io~:
+1) Model our first Python program as a BPMN model using ~bpmn.io~:
+   #+attr_latex: :width 300px
+   [[../img/bpmn1.png]]  [[../img/bpmn2.png]]
+   
 2) Start with a pool and name it ~Computer~.
 3) Add suitable events and tasks connected by sequence flow.
 4) Take a screenshot. It should look [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/img/py_first.png][like this]].
@@ -78,6 +84,10 @@
 6) Connect the two pools with suitable (message) flow.
 7) Take another screenshot. It should look [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/img/py_first_user.png][like this]].
 8) Save your diagram as ~.bpmn~ and as ~.svg~ files.
+9) Add your diagram in a titled Colab text cell:
+   #+attr_latex: :width 400px
+    [[../img/2_colab_diagram.png]]
+10) Upload your diagram to GDrive and link to it in the text cell.
 
 Note: BPMN process diagram elements can be /overloaded/, i.e. given meta
 information, such as 'tasks accepts input' or 'task sends output' (see
@@ -379,6 +389,9 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
   [[https://bpmn.io/][bpmn.io]].
   
 * Footnotes
+[fn:5]The code example (from [[https://realpython.com/python-refactoring/][Shaw, 2019]]) has 'cyclomatic complexity'
+of 5, i.e. there are 5 independent code paths that the Python
+interpreter can follow to get to the end of the application.
 
 [fn:1]BPMN stands for "Business Process Model and Notation" and is a
 standardized, diagrammatic language especially suited to modeling
