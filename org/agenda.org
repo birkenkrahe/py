@@ -349,11 +349,12 @@ points will come from 8 programming assignments (like "word count").
 #+caption: Women on a tandem bicycle, 28 September 1938 (Flickr.com)
 [[../img/three.png]]
 
-- [ ] The caret operator in Python and the binary function
+- [X] User interaction: Keyboard input, error and output
+- [X] Functions: getting help, arguments, parameters
+- [X] The caret operator in Python and the binary function
 - [ ] Three problems: string replication, splitting, math constants
-- [ ] User interaction: Keyboard input, error and output
 
-** TODO The caret ~^~ operator in Python
+** DONE The caret ~^~ operator in Python
 
 - Use ~**~ for exponentiation and not ~^~ (as in R). In Python, the caret
   operator ~^~ is the binary ~XOR~ operator: it compares two binary
@@ -373,7 +374,18 @@ points will come from 8 programming assignments (like "word count").
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
 
-- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+[[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+- Three data streams: standard input, standard output, standard error
+- Difference between printing strings with ~+~ vs. ~,~
+- Overloading operators like ~+~ and ~*~
+- Getting keyboard input with/without prompt using ~input~
+- ~input(prompt='')~ is not the same as ~input(prompt=None)~
+- Downlading ~.py~ scripts from Colab
+- Multi-line comments with ~"""~
+- Getting a function's docstring with ~?~
+- Details on ~print~, ~len~, ~input, ~str~, ~int~ and ~split~
+- (Bonus) Home assignment with ~strip~
 
 ** TODO Homework
 #+attr_latex: :width 300px
@@ -447,12 +459,13 @@ Original problem: "[[https://dmoj.ca/problem/dmopc14c5p1/pdf][Cone Drill]]"
 
 
 
-* Day 10
+* Day 10: DATA STRUCTURES
 * Day 11
 * Day 12
 * Day 13
 * Day 14
-* Day 15
+
+* Day 15: APPLICATIONS
 * Day 16
 * Day 17
 * Day 18
@@ -460,6 +473,7 @@ Original problem: "[[https://dmoj.ca/problem/dmopc14c5p1/pdf][Cone Drill]]"
 * Day 20
 * Day 21
 * Day 22
+
 * Day 23: Project presentations
 * Day 24: Project presentations / Summary / Outlook
 * Footnotes
