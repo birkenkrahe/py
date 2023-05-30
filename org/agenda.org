@@ -344,7 +344,7 @@ points will come from 8 programming assignments (like "word count").
 - Variable names: one word, letters, numbers (not at beginning),
   underscore only
 
-* Day 5: Three sample problems and three times 'hello'
+* Day 5: Keyboard input and first look at functions
 #+attr_latex: :width 300px
 #+caption: Women on a tandem bicycle, 28 September 1938 (Flickr.com)
 [[../img/three.png]]

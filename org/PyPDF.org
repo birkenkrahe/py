@@ -1,0 +1,51 @@
+#+property: header-args:python :results output :session *Python* :exports both
+* PyPDF demo
+
+Install PyPDF4 library from terminal or in Colab with ~!~
+#+begin_example sh
+pip install PyPDF4
+#+end_example
+
+Import ~PyPDF4~ and ~re~ modules:
+#+begin_src python :results silent
+  import PyPDF4
+  import re
+  from os.path import exists
+#+end_src
+
+Specify the path to the downloaded PDF file:
+#+begin_src python :results silent
+  pdf_path = 'testFile.pdf'
+#+end_src
+
+Use ~PyPDF4~ to extract the text from the PDF:
+#+begin_src python :results output
+  pdf_file = open(pdf_path, 'rb')
+  pdf_reader = PyPDF4.PdfFileReader(pdf_file)
+  text = ''
+
+  for page_num in range(pdf_reader.numPages):
+      page = pdf_reader.getPage(page_num)
+      text += page.extractText()
+#+end_src
+
+Use regular expressions to find the title, author, and author
+affiliation information in the extracted text: this of course relies
+on the specific structure and formatting of the PDF.
+#+begin_src python :results silent
+  title_match = re.search(r'Title: (.+)', text)
+  title = title_match.group(1) if title_match else ''
+
+  author_match = re.search(r'Author: (.+)', text)
+  author = author_match.group(1) if author_match else ''
+
+  affiliation_match = re.search(r'Affiliation: (.+)', text)
+  affiliation = affiliation_match.group(1) if affiliation_match else ''
+#+end_src
+
+Print the extracted ifnormation as needed:
+#+begin_src python :results output
+  print('Title:', title)
+  print('Author:', author)
+  print('Affiliation:', affiliation)
+#+end_src
