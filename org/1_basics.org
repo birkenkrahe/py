@@ -462,7 +462,7 @@
     a, b = 'Marcus'.split()
     print(a,b)
   #+end_src
-
+  
 - Why?
   #+begin_src python :results output
     help(str.split)
