@@ -4,6 +4,7 @@
 #+STARTUP:overview hideblocks indent inlineimages
 #+OPTIONS: toc:nil num:nil ^:nil
 #+property: header-args:R :results output :noweb yes :session *R* :exports both
+#+property: header-args:python :results output :noweb yes :session *Python* :exports both
 * Day 1: Entry survey analysis and course overview
 #+attr_latex: :width 300px
 [[../img/dataScientistIn50days.jpg]]
@@ -368,14 +369,15 @@ points will come from 8 programming assignments (like "word count").
     print('binary: ', bin(6)[2:])   # binary for 6
   #+end_src
 
-** TODO In-class summary
-
+** In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
 
 [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
 
+- Scrum - agile project management (from: software engineering)
+- IMRaD - Introduction, Method, Results and Discussion (sci publish)
 - Three data streams: standard input, standard output, standard error
 - Difference between printing strings with ~+~ vs. ~,~
 - Overloading operators like ~+~ and ~*~
@@ -386,8 +388,12 @@ points will come from 8 programming assignments (like "word count").
 - Getting a function's docstring with ~?~
 - Details on ~print~, ~len~, ~input, ~str~, ~int~ and ~split~
 - (Bonus) Home assignment with ~strip~
-
-** TODO Homework
+  
+- *Project presentation:* completely free-form. If you code, you can use
+  Colab or anything else that lends itself to be presented easily. You
+  do not have to go out of your way to produce fancy powerpoints.
+  
+** Homework
 #+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
@@ -409,18 +415,154 @@ Create a notebook ~newHope.ipynb~ and submit the URL:
 
 Original problem: "[[https://dmoj.ca/problem/wc15c2j1/pdf][A New Hope]]".
 
-Tip: the ~str.strip()~ function removes trailing characters from ~str~.
+- Tip: the ~str.strip()~ function removes trailing characters from ~str~:
+  #+begin_src python :results output
+    stripped = '   green leaves    leaves green   '.strip()
+    print(stripped)
+  #+end_src
+
+  #+RESULTS:
+  : green leaves    leaves green
+
+- This is much like the problem 'spooky season' that we covered in
+  class.
+- If you submit a solution, I'll share my solution notebook with you.
 
 * Day 6: Flow control and flow visualization
 #+attr_latex: :width 400px
 #+caption: Roman Guy, Against the Flow (Flickr.com)
 [[../img/flow.jpg]]
 
-* Day 7: Conditions and clauses
-* Day 8: Loops and breaks
-* Day 9: Importing modules
 ** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
 
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+*** Cone drill: using formulas and constants
+#+attr_latex: :width 400px
+#+caption: Ice cream bliss - LOC@Flickr.com
+[[../img/cone.jpg]]
+
+*Problem:* Compute the volume of a cone of radius r and height h.
+
+Create a notebook ~coneDrill.ipynb~:
+1) Problem
+2) Flow
+3) Variables
+4) Functions
+5) Implementation
+
+- The volume $V$ of a cone of radius $r$ and height $h$ is $V =
+  \frac{\pi r^2 h}{3}$.
+- To get \pi to a high accuracy, ~import math~. The value of \pi is
+  stored in ~math.pi~:
+  #+begin_src python :results output
+    import math
+    print(math.pi)
+  #+end_src
+
+Original problem: "[[https://dmoj.ca/problem/dmopc14c5p1/pdf][Cone Drill]]"
+
+
+* Day 7: Conditions and clauses
+#+attr_latex: :width 400px
+#+caption: Radio station Children's Christomas Party 1936 (Flickr.com)
+[[../img/claus.jpg]]
+
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+*** Cone drill: using formulas and constants
+#+attr_latex: :width 400px
+#+caption: Ice cream bliss - LOC@Flickr.com
+[[../img/cone.jpg]]
+
+*Problem:* Compute the volume of a cone of radius r and height h.
+
+Create a notebook ~coneDrill.ipynb~:
+1) Problem
+2) Flow
+3) Variables
+4) Functions
+5) Implementation
+
+- The volume $V$ of a cone of radius $r$ and height $h$ is $V =
+  \frac{\pi r^2 h}{3}$.
+- To get \pi to a high accuracy, ~import math~. The value of \pi is
+  stored in ~math.pi~:
+  #+begin_src python :results output
+    import math
+    print(math.pi)
+  #+end_src
+
+Original problem: "[[https://dmoj.ca/problem/dmopc14c5p1/pdf][Cone Drill]]"
+
+
+* Day 8: Loops and breaks
+#+attr_latex: :width 400px
+#+caption: A Fokker looping (1915-20), Library of Congress@Flickr.com
+[[../img/loop.jpg]]
+
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+*** Cone drill: using formulas and constants
+#+attr_latex: :width 400px
+#+caption: Ice cream bliss - LOC@Flickr.com
+[[../img/cone.jpg]]
+
+*Problem:* Compute the volume of a cone of radius r and height h.
+
+Create a notebook ~coneDrill.ipynb~:
+1) Problem
+2) Flow
+3) Variables
+4) Functions
+5) Implementation
+
+- The volume $V$ of a cone of radius $r$ and height $h$ is $V =
+  \frac{\pi r^2 h}{3}$.
+- To get \pi to a high accuracy, ~import math~. The value of \pi is
+  stored in ~math.pi~:
+  #+begin_src python :results output
+    import math
+    print(math.pi)
+  #+end_src
+
+Original problem: "[[https://dmoj.ca/problem/dmopc14c5p1/pdf][Cone Drill]]"
+
+
+* Day 9: Importing modules
+#+attr_latex: :width 400px
+#+caption: Perier family in de Dion voiturette, c.1903 (Flickr.com)
+[[../img/import.jpg]]
+
+** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
