@@ -1,7 +1,7 @@
 #+TITLE:PYTHON BASICS
 #+AUTHOR: Marcus Birkenkrahe
 #+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
-#+STARTUP: overview hideblocks indent inlineimages
+#+STARTUP: overview hideblocks indent inlineimages entitiespretty
 #+PROPERTY: header-args:python :results output :exports both :session *Python*
 * Introduction
 #+attr_latex: :width 400px
@@ -85,9 +85,10 @@
 7) Take another screenshot. It should look [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/img/py_first_user.png][like this]].
 8) Save your diagram as ~.bpmn~ and as ~.svg~ files.
 9) Add your diagram in a titled Colab text cell:
-   #+attr_latex: :width 400px
-    [[../img/2_colab_diagram.png]]
 10) Upload your diagram to GDrive and link to it in the text cell.
+
+#+attr_latex: :width 400px
+[[../img/2_colab_diagram.png]]
 
 Note: BPMN process diagram elements can be /overloaded/, i.e. given meta
 information, such as 'tasks accepts input' or 'task sends output' (see
@@ -96,7 +97,7 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 * Boolean values
 
 - The Boolean[fn:4] data type only has the values ~True~ and ~False~ and
-  must be written in exactly this way. Try this in the shell:
+  must be written in exactly this way. Try this on a Python shell:
   #+begin_example python :
     ham = TRUE
     ham = True
@@ -104,11 +105,14 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
     spam = False
     spam
     true
-    True = 2 + 2
+    True = 2 + 2  
   #+end_example
-
+  
 - Boolean values are used in expressions and can be stored in
-  variables of type Boolean.
+  variables of type Boolean:
+  #+begin_src python :results output
+    print(type(True))
+  #+end_src
 
 * Comparison operators
 
@@ -116,7 +120,7 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
   right hand argument) and evaluate down to a single Boolean value:
   #+attr_latex :width 400px
   #+caption: Comparison operators (Source: Sweigart, 2020).
-  [[./img/py_comparison.png]]
+  [[../img/py_comparison.png]]
 
 - Let's try this in the shell - when you type each command, think
   about what the answer might be before you type ENTER:
@@ -124,26 +128,28 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
     42 == 42
     42 == 'Hello'
     42 == 41
-    2 !+ 1
+    2 != 1
     42 < 100
     42 >= 100
     42 < 42
     42 <= 42
+    0 == 1e-350
+    0 == 1e-300
   #+end_example
 
-- With variables:
+- With variables: comparisons are expressions and evaluate to a single
+  (Boolean) value no matter what:
   #+begin_example python
-    myAge = 59
-    myAge < 60
+    myAge = 59  # a statement
+    myAge < 60  # an expression
   #+end_example
 
-- Integers and strings (though they correspond to numbers) are *never*
-  equal to one another:
+- Integers and strings are never equal to one another:
   #+begin_src python
     print(42 == '42')
   #+end_src
 
-- Do you remember how to make this expression ~True~ (two ways)?
+- How can you get ~42 == '42'~ to evaluate to ~True~?
   #+begin_src python
     print(str(42) == '42')
     print(42 == int('42'))
@@ -155,12 +161,15 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
   #+end_src
 
 - However, the ~<~, ~>~, ~<=~, and ~>=~ operators only work properly with
-  integer and floating-point values on either side.
-
+  integer and floating-point values on either side:
+  #+begin_src python
+    print(42.0 < 42)
+    print(42.0 >= 42)
+  #+end_src
 * Boolean operators
 #+attr_latex :width 400px
 #+caption: Table with Boolean operators (Source: Sweigart, 2020).
-[[./img/py_and.png]]
+[[../img/py_and.png]]
 
 - The ~and~ and ~or~ operators are /binary/ (they take two values) like
   arithmetic operators, while the ~non~ operator is /unary/.
@@ -168,7 +177,7 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 - Test the ~and~ operator and the ~or~ operator in the shell.
   #+attr_latex :width 400px
   #+caption: Table with Boolean operators (Source: Sweigart, 2020).
-  [[./img/py_or.png]]
+  [[../img/py_or.png]]
 
 - The ~and~ operator only leads to ~True~ if both values are ~True~, while
   the ~or~ operator only leads to ~False~ if both values are ~False~.
@@ -176,7 +185,7 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 - The ~not~ operator evaluates to the opposite Boolean value:
   #+attr_latex :width 400px
   #+caption: Table with Boolean operators (Source: Sweigart, 2020).
-  [[./img/py_not.png]]
+  [[../img/py_not.png]]
 
 - In code:
   #+begin_src python
@@ -184,10 +193,19 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
     print(not(False))
   #+end_src
 
-- *Exercise:* Check if De Morgan's laws are implemented in Python:
+- *Exercise:* Open a Colab notebook and check if De Morgan's laws are
+  implemented in Python:
   #+attr_latex :width 400px
   #+caption: De Morgan's laws (Wikipedia).
-  [[./img/py_de_morgan.png]]
+  [[../img/py_de_morgan.png]]
+
+- Bonus: in a text cell, include the logic formula in $LaTeX$:
+  1) ~not~ is $\neg$
+  2) ~and~ is $\land$
+  3) ~or~ is $\lor$
+  4) ~==~ is $\Longleftrightarrow$
+
+- Remember that you can copy and paste whole text and code cells!
 
 - In Python code:
   #+begin_src python
@@ -203,30 +221,11 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
     print(not(False and False) == ((not(False)) or (not(False))))
   #+end_src
 
-- *Exercise:* earlier, you showed that De Morgan's laws hold in
-  Python. Now, instead of printing ~True~ after each statement,
+- *Bonus exercise (home):* in class, you showed that De Morgan's laws
+  hold in Python. Now, instead of printing ~True~ after each statement,
   1) print only the number of ~True~ statements at the end.
   2) print the final statement using string concatenation
   3) print the final statement using an f-string
-  #+begin_src python
-    count = 0
-    # NOT (P OR Q) <=> NOT(P) AND NOT(Q)
-    if not(True or True) == ((not(True)) and (not(True))): count+=1
-    if not(True or False) == ((not(True)) and (not(False))): count+=1
-    if not(False or True) == ((not(False)) and (not(True))): count+=1
-    if not(False or False) == ((not(False)) and (not(False))): count+=1
-    # NOT (P AND Q) <=> NOT(P) OR NOT(Q)
-    if not(True and True) == ((not(True)) or (not(True))): count+=1
-    if not(True and False) == ((not(True)) or (not(False))): count+=1
-    if not(False and True) == ((not(False)) or (not(True))): count+=1
-    if not(False and False) == ((not(False)) or (not(False))): count+=1
-    print(f"Number of {str(True)} statements: {str(count)}")
-    print("Number of " + str(True) + " statements: " + str(count))
-  #+end_src
-
-  #+RESULTS:
-  : Number of True statements: 8
-  : Number of True statements: 8
 
 - Operator order of precedence is crucial when defining compound
   logical operators - use parentheses to get what you want:
@@ -242,9 +241,9 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 - This combination of Boolean operators does that \forall Booleans p, q:
   #+attr_latex :width 400px
   #+caption: Exclusive OR operation (Wikipedia)
-  [[./img/py_xor.png]]
+  [[../img/py_xor.png]]
 
-- Test if this is implemented in Python:
+- You can test if this is implemented in Python as before:
   #+begin_src python
     print((True or True) and (not(True) or not(True)))  # A = B = True
     print((True or False) and (not(True) or not(False))) # A=True, B=False
@@ -252,25 +251,13 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
     print((False or False) and (not(False) or not(False))) # A = B = False
   #+end_src
 
-  #+RESULTS:
-  : False
-  : True
-  : True
-  : False
-
-- Fortunately, Python has an bit-wise XOR ('exclusive ~or~) operator:
+- Fortunately, Python has an bit-wise XOR ('exclusive ~or~) operator[fn:6]:
   #+begin_src python
     print(True ^ True)
     print(True ^ False)
     print(False ^ True)
     print(False ^ False)
   #+end_src
-
-  #+RESULTS:
-  : False
-  : True
-  : True
-  : False
 
 * Compound logical operators
 
@@ -389,6 +376,9 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
   [[https://bpmn.io/][bpmn.io]].
   
 * Footnotes
+
+[fn:6]This operator does something else if fed with binary numbers. 
+
 [fn:5]The code example (from [[https://realpython.com/python-refactoring/][Shaw, 2019]]) has 'cyclomatic complexity'
 of 5, i.e. there are 5 independent code paths that the Python
 interpreter can follow to get to the end of the application.
