@@ -349,6 +349,10 @@
        print("Hi")
        print(5 + 5)
      #+end_src
+
+     #+RESULTS:
+     : Hi
+     : 10
   2) ~input~ takes input from the keyboard or from the command line
      (input stream ~stdin~) and either prints it or
      lets you assign it to a variable (output stream ~stdout~):
@@ -363,20 +367,32 @@
        print(len(var))  # with the len() function
        print(var.__len__())  # with the str.__len__ method
      #+end_src
+
+     #+RESULTS:
+     : 11
+     : 37
+     : 37
   4) ~str~ returns its value as a string:
      #+begin_src python
        print(str(1000) + " random numbers")
        print(str('1000') + " random numbers")
      #+end_src
+
+     #+RESULTS:
+     : 1000 random numbers
+     : 1000 random numbers
   5) ~split~ returns a ~list~ of words that can be split up among
      different variables:
      #+begin_src python
-       name = "Marcus Birkenkrahe"
+       name = "Marcus 2  Birkenkrahe"
        print(name.split()) # default: split on whitespace, ignore ' '
        first, last = name.split()  # split name in two parts
        print(first,last)
        print(first + last)
      #+end_src
+
+     #+RESULTS:
+     : ['Marcus', '2', 'Birkenkrahe']
 
 * A few open questions
 

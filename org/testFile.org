@@ -1,0 +1,58 @@
+#+Title: A Journey To Nowhere
+#+Author: Speh, Marcus; Birkenkrahe, Marcus
+#+options: toc:nil
+Affiliation: Uni Hamburg; Lyon College
+
+* Abstract
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+aliquip ex ea commodo consequat. Duis aute irure dolor in
+reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim id est laborum.
+
+* Introduction
+At vero eos et accusamus et iusto odio dignissimos ducimus qui
+blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
+et quas molestias excepturi sint occaecati cupiditate non provident,
+similique sunt in culpa qui officia deserunt mollitia animi, id est
+laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
+distinctio. Nam libero tempore, cum soluta nobis est eligendi optio
+cumque nihil impedit quo minus id quod maxime placeat facere possimus,
+omnis voluptas assumenda est, omnis dolor repellendus. Temporibus
+autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe
+eveniet ut et voluptates repudiandae sint et molestiae non
+recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut
+reiciendis voluptatibus maiores alias consequatur aut perferendis
+doloribus asperiores repellat.
+
+* References
+  1) Adhikari, A., DeNero, J., & Jordan, M. I. (2021). Interleaving
+     Computational and Inferential Thinking: Data Science for
+     Undergraduates at Berkeley. Harvard Data Science Review,
+     3(2). https://doi.org/10.1162/99608f92.cb0fa8d2
+  2) Birkenkrahe, M. (2015) Building Graduate-Level, Gamified xMOOCs
+     in Moodle. In: Proceedings of EADTU, Hagen 29-30 October 2015:
+     pp. 57-73. ISBN/EAN 978-79730-17-9.
+  3) Davenport, T.H. and Patil, D.J. (2012). Data Scientist: The
+     Sexiest Job of the 21st Century. Harvard Business Review. URL:
+     hbr.org.
+  4) Davenport, T.H. and Patil, D.J. (July 15, 2022). Is Data
+     Scientist Still the Sexiest Job of the 21st Century? Harvard
+     Business Review. URL: hbr.org
+  5) Knuth, D.E. (1984) Literate programming. Comput. J (27)2: 97-111.
+  6) Li Y at al (July 2022). A Closer Look into Transformer-Based Code
+     Intelligence Through Code Transformation: Challenges and
+     Opportunities. Preprint,
+     https://doi.org/10.48550/arXiv.2207.04285.
+  7) Matloff, N. (5 April 2022). Teaching R in a Kinder, Gentler, More
+     Effective Manner: Use Base-R, Not the Tidyverse [article]. URL:
+     github.com.
+  8) Stavrou, Protesilaos (2022). Living in freedom with GNU Emacs
+     [video]. LibrePlanet 2022. URL: framatube.org
+  9) Yan, Z. (2021). The Impacts of Low/No-Code Development on Digital
+     Transformation and Software Development. arXiv preprint
+     arXiv:2112.14073. Preprint,
+     https://doi.org/10.48550/arXiv.2112.14073
+
