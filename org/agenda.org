@@ -433,6 +433,82 @@ Original problem: "[[https://dmoj.ca/problem/wc15c2j1/pdf][A New Hope]]".
 #+caption: Roman Guy, Against the Flow (Flickr.com)
 [[../img/flow.jpg]]
 
+** TODO Preview and review
+
+- What does the expression ~str(int(age) + 1)~ do?
+  #+begin_quote
+  [[https://automatetheboringstuff.com/eval/3-4.html][Here is an HTML animation]] (Sweigart, 2023)
+  #+end_quote
+  1) ~age~ is string ~input~
+  2) ~int(age)~ converts the string to a number - you cannot do that
+     with any character like "a": ~int("a")~ throws an error. To convert
+     characters to their Unicode standard, you need to use ~ord~:
+     #+begin_src python
+       print(int("25"))
+       print(ord("a"))
+       print(ord("A"))
+     #+end_src
+  3) ~int(age) + 1~ adds 1 to whatever number ~int(age)~ evaluates to:
+     #+begin_src python
+       age = "25"
+       print(age)
+       print(age + " years old")
+       print(int(age))
+       print(int(age)+1)
+     #+end_src
+
+     #+RESULTS:
+     : 25
+     : 25 years old
+     : 25
+     : 26
+  4) ~str(int(age) + 1)~ converts the result to a string:
+     #+begin_src python
+       age = "25"
+       print(age)
+       print(age + " years old")
+       print(int(age))
+       print(int(age)+1)
+       print(str(int(age)+1))
+       print(str(int(age)+1) + " years old")
+     #+end_src
+
+- What do you get when you type ~ord?~ on the Python console (~>>>~)?
+  #+begin_quote
+  A ~SyntaxError~ because ~?~ is an IPython shell command only.
+  #+end_quote
+
+- What does the dot-operator do, e.g. in ~str.split~?
+  #+begin_quote
+  The dot-operator ~.~ is an /accessor/: it allows you to access anything
+  that's stored inside an object, e.g. the /string/ class ~str~, or an
+  instance of that class, a particular string: e.g. ~'three'.count('')~
+  #+end_quote
+  #+begin_src python :results output
+    print('three'.count(' '))
+  #+end_src
+
+- What does ~'a'.split()~ return? 
+  #+begin_src python
+    result = 'a'.split()
+    print(result)
+    print(type(result))
+  #+end_src
+
+- How can you split ~'1-2-3'~?
+  #+begin_src python 
+    print('1-2-3'.split('-'))
+  #+end_src
+
+- How can you get 3 as a number from the keyboard and store it as an
+  integer variable ~num~?
+  #+begin_src python
+    num = input('Enter the number 3: ')
+    print('num is a string:', isinstance(num,str))
+    num = int(num)
+    print('num is a integer now:', isinstance(num,int))
+  #+end_src
+
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
@@ -445,36 +521,48 @@ Original problem: "[[https://dmoj.ca/problem/wc15c2j1/pdf][A New Hope]]".
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-*** Cone drill: using formulas and constants
-#+attr_latex: :width 400px
-#+caption: Ice cream bliss - LOC@Flickr.com
-[[../img/cone.jpg]]
+*** De Morgan's laws revisited
 
-*Problem:* Compute the volume of a cone of radius r and height h.
+- In class, you showed that De Morgan's laws hold in Python. Now,
+  instead of printing ~True~ after each statement,
+  1) print only the number of ~True~ statements at the end.
+  2) print the final statement using string concatenation
+  3) print the final statement using an f-string
 
-Create a notebook ~coneDrill.ipynb~:
-1) Problem
-2) Flow
-3) Variables
-4) Functions
-5) Implementation
+- Tip: Boolean conditions are the core of making decisions. They can
+  be put in an ~if~ statement like this:
+  #+begin_example python
+    if [condition]: [do_something]
+  #+end_example
 
-- The volume $V$ of a cone of radius $r$ and height $h$ is $V =
-  \frac{\pi r^2 h}{3}$.
-- To get \pi to a high accuracy, ~import math~. The value of \pi is
-  stored in ~math.pi~:
-  #+begin_src python :results output
-    import math
-    print(math.pi)
+- Tip: string concatenation relies on strings being 'added' with
+  ~+~. Boolean values ~True~, ~False~ are not strings and need to be
+  converted to be concatenated.
+
+- Tip: The f-string is recent addition to Python 3. A ~print~ argument
+  pre-fixed with an ~f~ can print variables without ~,~ or ~+~
+  operators. Instead, variables have to be enclosed in ~{ }~:
+  #+begin_src python
+    whoami = 'Marcus Birkenkrahe'
+    print(f"My name is {whoami}")
   #+end_src
 
-Original problem: "[[https://dmoj.ca/problem/dmopc14c5p1/pdf][Cone Drill]]"
-
+  #+RESULTS:
+  : My name is Marcus Birkenkrahe
 
 * Day 7: Conditions and clauses
 #+attr_latex: :width 400px
 #+caption: Radio station Children's Christomas Party 1936 (Flickr.com)
 [[../img/claus.jpg]]
+
+** TODO Preview and review
+
+- What's the difference between ~n=1~ and ~n==1~?
+  #+begin_quote
+  1. ~n=1~ is a statement while ~n==1~ is an expression
+  2. ~n=1~ stores 1 in an integer variable ~n~
+  3. ~n==1~ compares the value in ~n~ with the value 1
+  #+end_quote
 
 ** TODO In-class summary
 #+attr_latex: :width 300px
