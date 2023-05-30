@@ -209,7 +209,7 @@
 - Some people prefer camel-case for variable names instead of
   underscores: ~helloWorld~ instead of ~hello_world~. Either is OK.
 
-* NEXT Warming up: spooky season
+* Warming up: spooky season
 #+attr_latex: :width 400px
 #+caption: "spooky" by Tony Coates (flickr.com)
 [[../img/spooky.jpg]]
