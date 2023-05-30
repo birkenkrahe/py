@@ -1,7 +1,10 @@
-#+Title: A Journey To Nowhere
-#+Author: Speh, Marcus; Birkenkrahe, Marcus
 #+options: toc:nil
-Affiliation: Uni Hamburg; Lyon College
+
+Title: A Journey To Nowhere
+
+Author: Birkenkrahe, Marcus
+
+Affiliation: Lyon College
 
 * Abstract
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
