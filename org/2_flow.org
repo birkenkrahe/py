@@ -126,7 +126,7 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 
 - Comparison operators are binary operators (they have a left and a
   right hand argument) and evaluate down to a single Boolean value:
-  #+attr_latex :width 400px
+  #+attr_latex: :width 400px
   #+caption: Comparison operators (Source: Sweigart, 2020).
   [[../img/py_comparison.png]]
 
@@ -181,7 +181,7 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
   : True
 
 * Boolean operators
-#+attr_latex :width 400px
+#+attr_latex: :width 400px
 #+caption: Table with Boolean operators (Source: Sweigart, 2020).
 [[../img/py_and.png]]
 
@@ -189,7 +189,7 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
   arithmetic operators, while the ~non~ operator is /unary/.
 
 - Test the ~and~ operator and the ~or~ operator in a Python shell.
-  #+attr_latex :width 400px
+  #+attr_latex: :width 400px
   #+caption: Table with Boolean operators (Source: Sweigart, 2020).
   [[../img/py_or.png]]
 
@@ -197,7 +197,7 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
   the ~or~ operator only leads to ~False~ if both values are ~False~.
 
 - The ~not~ operator evaluates to the opposite Boolean value:
-  #+attr_latex :width 400px
+  #+attr_latex: :width 400px
   #+caption: Table with Boolean operators (Source: Sweigart, 2020).
   [[../img/py_not.png]]
 
@@ -226,7 +226,7 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 
 - *Exercise:* Open a Colab notebook and check if De Morgan's laws are
   implemented in Python:
-  #+attr_latex :width 400px
+  #+attr_latex: :width 400px
   #+caption: De Morgan's laws (Wikipedia).
   [[../img/py_de_morgan.png]]
 
@@ -279,7 +279,7 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
   either of the two values are ~True~, and ~False~ otherwise.
 
 - This combination of Boolean operators does that \forall Booleans p, q:
-  #+attr_latex :width 400px
+  #+attr_latex: :width 400px
   #+caption: Exclusive OR operation (Wikipedia)
   [[../img/py_xor.png]]
 
