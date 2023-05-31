@@ -181,9 +181,6 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
   : True
 
 * Boolean operators
-#+attr_latex: :width 400px
-#+caption: Table with Boolean operators (Source: Sweigart, 2020).
-[[../img/py_and.png]]
 
 - The ~and~ and ~or~ operators are /binary/ (they take two values) like
   arithmetic operators, while the ~non~ operator is /unary/.
