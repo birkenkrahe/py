@@ -5,53 +5,53 @@
 #+PROPERTY: header-args:python :results output :exports both :session *Python*
 * Introduction
 
-- Flow control statements consist of
-  1) a /condition/ (expression)
-  2) a /clause/ (block of code)
+  - Flow control statements consist of
+    1) a /condition/ (expression)
+    2) a /clause/ (block of code)
 
-- A /condition/ is an /expression/ that evaluates to a Boolean value and
-  determines if the program enters the /clause/ or not.
+  - A /condition/ is an /expression/ that evaluates to a Boolean value and
+    determines if the program enters the /clause/ or not.
 
-- Lines of Python code can be grouped into [indented] blocks:
-  1) Blocks begin when the indentation increases.
-  2) Blocks can contain other blocks.
-  3) Blocks end when the indentation decreases to zero or to the
-     indentation of a containing block.
+  - Lines of Python code can be grouped into [indented] blocks:
+    1) Blocks begin when the indentation increases.
+    2) Blocks can contain other blocks.
+    3) Blocks end when the indentation decreases to zero or to the
+       indentation of a containing block.
 
-- Example: what are the blocks in this small program?
-  #+begin_src python :tangle ~/Downloads/swordfish.py
-    name = 'Mary'
-    password = 'swordfish'
-    if name == 'Mary':
-        print('Hello, Mary')
-        if password == 'swordfish':
-            print('Access granted')
-        else:
-            print('Wrong password.')
-  #+end_src
+  - Example: what are the blocks in this small program?
+    #+begin_src python :tangle ~/Downloads/swordfish.py
+      name = 'Mary'
+      password = 'swordfish'
+      if name == 'Mary':
+          print('Hello, Mary')
+          if password == 'swordfish':
+              print('Access granted')
+          else:
+              print('Wrong password.')
+    #+end_src
 
-- In the image, the blocks are highlighted: each colon ~:~ marks the
-  beginning of a new block.
-  #+attr_latex: :width 300px
-  #+caption: Python code blocks with indentation
-  [[../img/py_blocks.png]]
+  - In the image, the blocks are highlighted: each colon ~:~ marks the
+    beginning of a new block.
+    #+attr_latex: :width 300px
+    #+caption: Python code blocks with indentation
+    [[../img/py_blocks.png]]
 
-- View the execution of this program at [[https://autbor.com/blocks/][autobor.com/blocks/]]:
-  1) Step through the program with ~Next~
-  2) The ~Frames/Objects~ area shows variables and their values
-  3) The ~Print output~ area shows the program output
+  - View the execution of this program at [[https://autbor.com/blocks/][autbor.com/blocks/]]:
+    1) Step through the program with ~Next~
+    2) The ~Frames/Objects~ area shows variables and their values
+    3) The ~Print output~ area shows the program output
 
-- Click on ~Edit this code~ and change ~password~ to ~''~ (empty string).
+  - Click on ~Edit this code~ and change ~password~ to ~''~ (empty string).
 
-- View the execution again and notice the differences.
+  - View the execution again and notice the differences.
 
-- An alternative to pythontutor.com is the built-in debugger ~pdb~: you
-  start it for a file ~file.py~ from the command line with:
-  #+begin_example sh
-  python -m pdb file.py
-  #+end_example
-  You can now step through the program with ~n~ and print variables with
-  ~print~.
+  - An alternative to pythontutor.com is the built-in debugger ~pdb~: you
+    start it for a file ~file.py~ from the command line with:
+    #+begin_example sh
+    python -m pdb file.py
+    #+end_example
+    You can now step through the program with ~n~ and print variables with
+    ~print~.
 
 * Code blocks in other languages
 
@@ -70,9 +70,9 @@
   #+begin_src python :tangle ../src/pdb.py :results output
     name = input('What is your name? ')
     if name:
-    print(f'Hello, {name}.')
+        print(f'Hello, {name}.')
     else:
-    print('Hello, stranger.')
+        print('Hello, stranger.')
   #+end_src  
 
 * If statements
@@ -104,6 +104,9 @@
     else:
         print('Hello, stranger.')
   #+end_src
+
+  #+RESULTS:
+  : Hello, stranger.
 
 - *Exercise:* Go to [[https://bpmn.io][bpmn.io]] to create a BPMN diagram for this process!
 

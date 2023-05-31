@@ -5,7 +5,7 @@
 #+OPTIONS: toc:nil num:nil ^:nil
 #+property: header-args:R :results output :noweb yes :session *R* :exports both
 #+property: header-args:python :results output :noweb yes :session *Python* :exports both
-* Day 1: Entry survey analysis and course overview
+* DONE Day 1: Entry survey analysis and course overview
 #+attr_latex: :width 300px
 [[../img/dataScientistIn50days.jpg]]
 
@@ -44,7 +44,7 @@
 - Get access to Canvas for materials and for Zoom
 - "Infinite skills" exercise
 
-* Day 2: Python scripting infrastructure practice I
+* DONE Day 2: Python scripting infrastructure practice I
 #+attr_latex: :width 300px
 [[../img/0_highways.jpg]]
 
@@ -191,7 +191,7 @@ weekly multiple-choice tests, i.e. you can use this to prepare./
   5) Printing numeric output as string with ~str~
   6) Bonus: nesting functions
 
-* Day 3: Infrastructure practice II: DataCamp, REPL
+* DONE Day 3: Infrastructure practice II: DataCamp, REPL
 #+attr_latex: :width 400px
 #+caption: Obituary page for Jason Anderson (willisfs.com)
 [[../img/jason.png]]
@@ -236,7 +236,7 @@ Any questions, you know where to find me!
 
 Cheers
 
-* Day 4: Expressions, Variables, Statements
+* DONE Day 4: Expressions, Variables, Statements
 #+attr_latex: :width 400px
 #+caption: Thirteen men doing acrobatics (LOC)
 [[../img/acrobats.jpg]]
@@ -379,7 +379,7 @@ script" I'd have to do some research first.) Hope this helps.
 - Variable names: one word, letters, numbers (not at beginning),
   underscore only
 
-* Day 5: Keyboard input and first look at functions
+* DONE Day 5: Keyboard input and first look at functions
 #+attr_latex: :width 300px
 #+caption: Women on a tandem bicycle, 28 September 1938 (Flickr.com)
 [[../img/three.png]]
@@ -472,7 +472,7 @@ Original problem: "[[https://dmoj.ca/problem/wc15c2j1/pdf][A New Hope]]".
   class.
 - If you submit a solution, I'll share my solution notebook with you.
 
-* Day 6: Flow control and flow visualization
+* DONE Day 6: Flow control and flow visualization
 #+attr_latex: :width 400px
 #+caption: Roman Guy, Against the Flow (Flickr.com)
 [[../img/flow.jpg]] 
@@ -641,7 +641,7 @@ Note: BPMN process diagram elements can be /overloaded/, i.e. given meta
 information, such as 'tasks accepts input' or 'task sends output' (see
 overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/img/py_first_overloaded.png][here]] and [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/img/py_first_user_overloaded.png][here]]). [[https://camunda.com/bpmn/reference/][More about BPMN from camunda.com.]]
 
-* Day 7: Boolean conditions and clauses
+* DONE Day 7: Boolean conditions and clauses
 #+attr_latex: :width 400px
 #+caption: Radio station Children's Christomas Party 1936 (Flickr.com)
 [[../img/claus.jpg]]
@@ -689,11 +689,15 @@ INFORMAL OPEN TOOL POLL:
    #+end_quote
 
 5) How can you get ~42 == '42'~ to evaluate to ~True~?
-   #+begin_src python
+   #+begin_src python :results output
      # By explicitly converting the data types
      print(str(42) == '42')
      print(42 == int('42'))
    #+end_src
+
+   #+RESULTS:
+   : True
+   : True
 
 6) What is ~42.0 == 42~?
    #+begin_src python
@@ -711,6 +715,9 @@ INFORMAL OPEN TOOL POLL:
      print(42 == 'meaning of life')
    #+end_src
 
+   #+RESULTS:
+   : False
+
 8) How can you turn a Unicode point into a character and vice versa?
    #+begin_src python
      # Courtesy Radek
@@ -718,15 +725,24 @@ INFORMAL OPEN TOOL POLL:
      print(ord('x'))
    #+end_src
 
+   #+RESULTS:
+   : x
+   : 120
+
 9) How can you check if a variable ~x~ is an integer, float or string?
-   #+begin_src python
+   #+begin_src python :results output
      x = 42.0
      # these functions check which object class x is an instance of
-     print(isinstance(num,float))
-     print(isinstance(int(num),int))
-     print(isinstance(str(num),str))
+     print(isinstance(x,float))
+     print(isinstance(int(x),int))
+     print(isinstance(str(x),str))
      # or you can use type(x)
    #+end_src
+
+   #+RESULTS:
+   : True
+   : True
+   : True
 
 10) How can you check if a value is in a list or not?
     #+begin_src python
@@ -737,12 +753,32 @@ INFORMAL OPEN TOOL POLL:
       print(0 in [1, 100, 0])     # etc.
     #+end_src
 
+    #+RESULTS:
+    : True
+    : False
+    : False
+    : True
+    : True
+
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
 
 - [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+- Programming in this "AI age" requires these skills: 1) modeling, 2)
+  navigating infrastructure, 3) documenting, 4) presenting, 5)
+  debugging own code, 6) debugging AI code, 7) coding, 8)
+  AI-prompting.
+- Boolean operators in mathematics, Python and LaTeX.
+- Minimal conditional statement ~if [condition]: [action]~ with keyword
+  (~if~),and ~separator~ (~:~).
+- Operator precedence: 1) (), 2) **,%,*/,+-, 3) <, <=, >, >=, in, not
+  in, 4) not, and, or.
+- Splitting a string without substrings, changing the separator (~sep~)
+- Checking data type with ~isinstance([var],[type])~
+- 
+
 
 ** TODO Homework
 #+attr_latex: :width 300px
@@ -787,7 +823,7 @@ INFORMAL OPEN TOOL POLL:
 #+attr_latex: :width 400px
 #+caption: A Fokker looping (1915-20), Library of Congress@Flickr.com
 [[../img/loop.jpg]]
-
+** TODO Review and preview
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
@@ -851,6 +887,7 @@ Original problem: "[[https://dmoj.ca/problem/dmopc14c5p1/pdf][Cone Drill]]"
 * Day 13
 * Day 14
 ** Test 3 is coming - includes Numpy (DataCamp)
+
 
 * Day 15: APPLICATIONS
 * Day 16
