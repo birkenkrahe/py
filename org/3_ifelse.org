@@ -19,7 +19,7 @@
      indentation of a containing block.
 
 - Example: what are the blocks in this small program?
-  #+begin_src python
+  #+begin_src python :tangle ~/Downloads/swordfish.py
     name = 'Mary'
     password = 'swordfish'
     if name == 'Mary':
@@ -40,9 +40,6 @@
   1) Step through the program with ~Next~
   2) The ~Frames/Objects~ area shows variables and their values
   3) The ~Print output~ area shows the program output
-  #+attr_latex: :width 400px
-  #+caption: pythontutor.com home page
-  [[../img/py_pythontutor.png]]
 
 - Click on ~Edit this code~ and change ~password~ to ~''~ (empty string).
 
@@ -66,18 +63,28 @@
 
 - Very few other languages but Python use indentation as a significant
   feature (Yunits, 2019). They include: Python, Haskell, COBOL,
-  markdown, org, yaml.
+  Markdown [Colab, GitHub], Org [Emacs], yaml ['Yet Another Markup
+  Language'].
+
+- Org-mode example: ~C-M-\~ to indent all lines, or ~<TAB>~ for one line:
+  #+begin_src python :tangle ../src/pdb.py :results output
+    name = input('What is your name? ')
+    if name:
+    print(f'Hello, {name}.')
+    else:
+    print('Hello, stranger.')
+  #+end_src  
 
 * If statements
 
-- Let's look at a simple example program with and its flow diagram:
+- Let's look at a simple example program with and its process diagram:
   #+begin_src python
     name = 'Alice'  # declare a variable `name`
     if name == 'Alice':
         print('Hi, Alice.')
   #+end_src
   #+attr_latex: :width 400px
-  [[./img/py_alice_1.png]]
+  [[../img/py_alice_1.png]]
 
 - Note the fact that (unlike in a flowchart) the gateway, once opened,
   needs to be closed again to mark the end of the logical
@@ -99,21 +106,23 @@
   #+end_src
 
 - *Exercise:* Go to [[https://bpmn.io][bpmn.io]] to create a BPMN diagram for this process!
+
+- Solution diagram:
   #+attr_latex: :width 400px
   #+caption: BPMN diagram for an if...else program
-  [[./img/py_alice_2.png]]
+  [[../img/py_alice_2.png]]
 
 - Contrast this result with a non-standard flow chart diagram:
   #+attr_latex: :width 400px
   #+caption: Flowchart for an else statement (Sweigart, 2019)
-  [[./img/py_flow.png]]
+  [[../img/py_flow.png]]
 
 * Comparison with C/C++ and R
 
 - In C/C++, a compiled language (that requires a compiler like ~gcc~
   to generate a machine code file that is then executed), the last
   program would look like this:
-  #+begin_src C :main no #includes: none :tangle ./src/alice.c
+  #+begin_src C :main no #includes: none :tangle ./src/alice.c :results output
     #include <stdio.h>
     #include <string.h>
 
@@ -127,6 +136,9 @@
       return 0;
     }
   #+end_src
+
+  #+RESULTS:
+  : Hi, Alice.
 
 - In R, another interpreted language (with a console that executes
   the code block), it would look like this:
@@ -179,7 +191,7 @@
   4) Here is the BPMN diagram for this program:
      #+attr_latex: :width 400px
      #+caption: BPMN diagram for an if...elif program
-     [[./img/py_alice_3.png]]
+     [[../img/py_alice_3.png]]
 
      The diagram shows: if neither of the conditions are fulfilled,
      then nothing will be printed.
@@ -205,7 +217,7 @@
 - The BPMN diagram looks like this:
   #+attr_latex: :width 400px
   #+caption: BPMN diagram for an expanded if...elif program
-  [[./img/py_alice_4.png]]
+  [[../img/py_alice_4.png]]
 
 - The order of the statements does matter: once a ~True~ condition has
   been found in one of the ~elif~ conditions, the rest of the clauses
@@ -228,7 +240,7 @@ program:
    does what the following BPMN diagram shows:
    #+attr_latex: :width 400px
    #+caption: BPMN diagram for the 'Alice' program with if, elif, else
-   [[./img/py_alice_5.png]]
+   [[../img/py_alice_5.png]]
 
 2) Test the code in your Colab notebook for ~name,age = ~'Carol',3000~.
 3) Copy and paste the code to PythonTutor and visualize the process.
@@ -239,6 +251,7 @@ program:
 
 - Decisions are modeled with conditions that evaluate to Boolean
   values (~True~, ~False~).
+
 - Decisions include what code to execute and what to skip (~if~, ~else~,
   ~elif~).
 
@@ -246,4 +259,12 @@ program:
 
 | TERM/COMMAND    | MEANING                                       |
 |-----------------+-----------------------------------------------|
+* References
+
+- Sweigart, A. (2019). Automate the Boring Stuff with
+  Python. NoStarch. URL: [[https://automatetheboringstuff.com/2e/chapter2/][automatetheboringstuff.com]]
+- Yunits, B. (2019). Which programming languages use indentation? URL:
+  [[https://pldb.com/posts/which-programming-languages-use-indentation.html#:~:text=abc%2C%20aldor%2C%20boo%2C%20buddyscript,%2C%20stylus%2C%20xl%2Dprogramming%2D][pldb.com]].
+
+* Footnotes
 

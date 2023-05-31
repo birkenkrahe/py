@@ -3,6 +3,10 @@
 #+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
 #+STARTUP: overview hideblocks indent inlineimages entitiespretty
 #+PROPERTY: header-args:python :results output :exports both :session *Python*
+* README
+
+An interactive notebook is available [[https://gist.github.com/birkenkrahe/9f152c84c3928ef02086a48af0c8b90e][on GitHub as a gist]].
+
 * Introduction
 #+attr_latex: :width 400px
 #+caption: Flowchart template from app.creately.com
@@ -402,8 +406,10 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 
 - Boolean operators (~and~, ~or~, ~not~) also evaluate to Boolean values.
 
-* TODO Glossary
-
+* Glossary
+#+attr_latex: :width 400px
+#+caption: Glossary of commands for flow control
+[[../img/2_glossary.png]]
 
 * References
 

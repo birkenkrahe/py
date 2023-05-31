@@ -658,68 +658,84 @@ INFORMAL OPEN TOOL POLL:
 
 ** TODO Preview and review
 
-- What is a 'Pythonista'? Are you one?
-  #+begin_quote
-  The term describes anyone who is enthusiastic about Python and
-  actively engages with the language and with its community. Your
-  call!
-  #+end_quote
-  
-- What's the difference between ~n=1~ and ~n==1~?
-  #+begin_quote
-  1. ~n=1~ is a statement while ~n==1~ is an expression
-  2. ~n=1~ stores 1 in an integer variable ~n~
-  3. ~n==1~ compares the value in ~n~ with the value 1
-  #+end_quote
+1) What is a 'Pythonista'? Are you one?
+   #+begin_quote
+   The term describes anyone who is enthusiastic about Python and
+   actively engages with the language and with its community. Your
+   call!
+   #+end_quote
+   
+2) Which diagrammatic languages for flow modeling do you know?
+   #+begin_quote
+   1. BPMN (Business Process Model and Notation)
+   2. UML (Unified Modeling Language)
+   3. Flow charts
+   #+end_quote
 
-- How can you get ~42 == '42'~ to evaluate to ~True~?
-  #+begin_src python
-    # By explicitly converting the data types
-    print(str(42) == '42')
-    print(42 == int('42'))
-  #+end_src
+3) What do you have to think of when adding a gateway to a process
+   model to model a decision point?
+   #+begin_quote
+   Unlike in a flowchart, the gateway, once opened, needs to be closed
+   again to mark the end of the logical operation. One practical effect
+   is that it is easier to remove decisions from processes because
+   their beginning and end is clear.
+   #+end_quote
 
-- What is ~42.0 == 42~?
-  #+begin_src python
-    # There is automatic type coercion from 42 to 42.0
-    print(42.0 == 42)
-  #+end_src
+4) What's the difference between ~n=1~ and ~n==1~?
+   #+begin_quote
+   1. ~n=1~ is a statement while ~n==1~ is an expression
+   2. ~n=1~ stores 1 in an integer variable ~n~
+   3. ~n==1~ compares the value in ~n~ with the value 1
+   #+end_quote
 
-  #+RESULTS:
-  : True
+5) How can you get ~42 == '42'~ to evaluate to ~True~?
+   #+begin_src python
+     # By explicitly converting the data types
+     print(str(42) == '42')
+     print(42 == int('42'))
+   #+end_src
 
-- What is ~42 == 'meaning of life'~?
-  #+begin_src python
-    # comparing an integer and a string will always be False
-    # since there is no automatic conversion between the two
-    print(42 == 'meaning of life')
-  #+end_src
+6) What is ~42.0 == 42~?
+   #+begin_src python
+     # There is automatic type coercion from 42 to 42.0
+     print(42.0 == 42)
+   #+end_src
 
-- How can you turn a Unicode point into a character and vice versa?
-  #+begin_src python
-    # Courtesy Radek
-    print(chr(120))
-    print(ord('x'))
-  #+end_src
+   #+RESULTS:
+   : True
 
-- How can you check if a variable ~x~ is an integer, float or string?
-  #+begin_src python
-    x = 42.0
-    # these functions check which object class x is an instance of
-    print(isinstance(num,float))
-    print(isinstance(int(num),int))
-    print(isinstance(str(num),str))
-    # or you can use type(x)
-  #+end_src
+7) What is ~42 == 'meaning of life'~?
+   #+begin_src python
+     # comparing an integer and a string will always be False
+     # since there is no automatic conversion between the two
+     print(42 == 'meaning of life')
+   #+end_src
 
-- How can you check if a value is in a list or not?
-  #+begin_src python
-    print('a' in ['a','b'])
-    print('a' not in ['a','b'])
-    print('a' in ['b','c'])
-    print('a' not in ['b','c'])
-    print(0 in [1, 100, 0])     # etc.
-  #+end_src
+8) How can you turn a Unicode point into a character and vice versa?
+   #+begin_src python
+     # Courtesy Radek
+     print(chr(120))
+     print(ord('x'))
+   #+end_src
+
+9) How can you check if a variable ~x~ is an integer, float or string?
+   #+begin_src python
+     x = 42.0
+     # these functions check which object class x is an instance of
+     print(isinstance(num,float))
+     print(isinstance(int(num),int))
+     print(isinstance(str(num),str))
+     # or you can use type(x)
+   #+end_src
+
+10) How can you check if a value is in a list or not?
+    #+begin_src python
+      print('a' in ['a','b'])
+      print('a' not in ['a','b'])
+      print('a' in ['b','c'])
+      print('a' not in ['b','c'])
+      print(0 in [1, 100, 0])     # etc.
+    #+end_src
 
 ** TODO In-class summary
 #+attr_latex: :width 300px
