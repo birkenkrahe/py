@@ -180,7 +180,7 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
   : False
   : True
 
-* NEXT Boolean operators
+* Boolean operators
 #+attr_latex :width 400px
 #+caption: Table with Boolean operators (Source: Sweigart, 2020).
 [[../img/py_and.png]]
@@ -259,6 +259,21 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
   2) print the final statement using string concatenation
   3) print the final statement using an 'f-string'
 
+- Demonstration of the f-string (formatted print):
+  #+begin_src python
+    whoami = 'Marcus Birkenkrahe'
+    print(whoami)  # plain string print
+    print('My name is', whoami) # plain string print w/text 
+    print('My name is ' + whoami) # concatenated string
+    print(f'My name is {whoami}') # f-string printing
+  #+end_src
+
+  #+RESULTS:
+  : Marcus Birkenkrahe
+  : My name is Marcus Birkenkrahe
+  : My name is Marcus Birkenkrahe
+  : My name is Marcus Birkenkrahe
+
 - The /exclusive/ gateway that you saw in the BPMN diagram earlier, is
   the result of a composite Boolean operation. It is only ~True~ if
   either of the two values are ~True~, and ~False~ otherwise.
@@ -276,6 +291,12 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
     print((False or False) and (not False or not False)) # A = B = False
   #+end_src
 
+  #+RESULTS:
+  : False
+  : True
+  : True
+  : False
+
 - Fortunately, Python has an bit-wise XOR ('exclusive ~or~) operator[fn:7]:
   #+begin_src python
     print(True ^ True)
@@ -289,9 +310,9 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 - Comparison and Boolean operators can be mixed to establish more
   complicated logical dependencies.
   #+begin_src python
-    print((4 < 5) and (5 < 6))
-    print((4 < 5) and (9 < 6))
-    print((1 == 2) or (2 == 2))
+    print(4 < 5 and 5 < 6)
+    print(4 < 5 and 9 < 6)
+    print(1 == 2 or 2 == 2)
   #+end_src
 
 - Here is the evaluation process of the computer:
@@ -303,6 +324,9 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
     result = 5 < 10 and 2 + 2 == 4 or not (3 >= 5)
     print(result)
   #+end_src  
+
+  #+RESULTS:
+  : True
 
 - Order or evaluation:
   #+begin_example python
@@ -362,6 +386,9 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
     print(age > 20 and pet == 'cat')
   #+end_src
 
+  #+RESULTS:
+  : True
+
 - Exercise! Let's say Joe is 20 and Jane is 24 years old, Joe has a
   dog, and Jane has a cat:
   1) Establish suitable variables for Joe and Jane
@@ -377,18 +404,24 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
   2) Is Joe younger or as old as Jane?
   3) Is Jane as old as Joe, and do they have different pets?
   4) Is Jane older than Joe, or is Jane's pet a dog?
-  #+begin_src python
+  #+begin_src python :results output
     # Does Jane have a dog?
     print(pet_jane == 'dog')
     # Is Joe younger or as old as Jane?
     print(age_joe <= age_jane)
     # Is Jane as old as Joe, and do they have different pets?
-    print((age_jane == age_joe) and (pet_jane != pet_joe))
+    print(age_jane == age_joe and pet_jane != pet_joe)
     # Is Jane older than Joe, or is Jane's pet a dog?
-    print((age_jane >= age_joe) or (pet_jane == 'dog'))
+    print(age_jane >= age_joe or pet_jane == 'dog')
   #+end_src
 
-- Lastly, check if 4 is 2+2 and 2*2, and 2+2 is not 5:
+  #+RESULTS:
+  : False
+  : True
+  : False
+  : True
+
+- Lastly, check if: 4 is 2+2 and 2*2, and 2+2 is not 5:
   #+begin_src python
     print(2 + 2 == 4 and 2 * 2 == 4 and not 2 + 2 == 5)
   #+end_src
