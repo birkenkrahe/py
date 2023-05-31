@@ -329,6 +329,40 @@ points will come from 8 programming assignments (like "word count").
 - Variables
 - Statements
 
+** Python chat
+*** Using Anaconda
+
+Jonathan Tucker: If you need a different Python version for running a
+program (that requires a specific version) what application would you
+use to create this? I need to be able to run the newest version of
+Python and switch between the older version seamlessly.  I'm looking
+at using Conda to give the program its own Python environment (with
+the correct version), does this make sense?
+
+Answer: Yes this does make sense. Anaconda may be overkill though -
+you ought to be aware of the bare metal alternative which is Python's
+virtualenv. The purpose is not so much to switch between versions fast
+but to have different environments for your production code. If you're
+a lone developer though why not just have different versions on your
+machine. I do that with R all the time (whenever I upgrade), and R (or
+Emacs) allow me to call upon any version when I want to. So I would
+probably give virtualenv a try if I had to. Currently, I have 3.11 and
+3.9 on Windows, 3.8 on Ubuntu, but all of them still on the same
+PC. Here is a recent comparison of the two:
+https://dataaspirant.com/anaconda-python-virtualenv/. Or what I would
+probably do is write a shell script that uses one command (python) and
+switches between different versions. If you use Conda, you will not
+understand how it's done. If you use virtualenv, you understand a
+little more (it requires knowledge of the file tree at least, and
+environment variables), and if you write your own scripts, you're tha
+master of the universe :-) (However, if you ask me "send me that
+script" I'd have to do some research first.) Hope this helps.
+
+*
+*
+
+*
+
 ** In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
@@ -369,6 +403,16 @@ points will come from 8 programming assignments (like "word count").
     print('binary: ', bin(6)[2:])   # binary for 6
   #+end_src
 
+** Python chat
+*** PDF scraping
+For those who are interested: following up from Radek's question about
+PDF meta data extraction (author, affiliation), I played around a
+little and came up with this:
+https://gist.github.com/birkenkrahe/8b958852165982daa8501014127c23d7 -
+I didn't find it easy (HTML is textual markup, not binary, and much
+more forgiving) but I learnt something. At the top there is a link to
+a book which I did not read or use (it's from 2018 and the package I
+used was PyPDF4 and not PyPDF2).
 ** In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
@@ -431,9 +475,9 @@ Original problem: "[[https://dmoj.ca/problem/wc15c2j1/pdf][A New Hope]]".
 * Day 6: Flow control and flow visualization
 #+attr_latex: :width 400px
 #+caption: Roman Guy, Against the Flow (Flickr.com)
-[[../img/flow.jpg]]
+[[../img/flow.jpg]] 
 
-** TODO Preview and review
+** Preview and review
 
 - What does the expression ~str(int(age) + 1)~ do?
   #+begin_quote
@@ -448,6 +492,12 @@ Original problem: "[[https://dmoj.ca/problem/wc15c2j1/pdf][A New Hope]]".
        print(ord("a"))
        print(ord("A"))
      #+end_src
+
+     #+RESULTS:
+     : 25
+     : 97
+     : 65
+
   3) ~int(age) + 1~ adds 1 to whatever number ~int(age)~ evaluates to:
      #+begin_src python
        age = "25"
@@ -485,8 +535,12 @@ Original problem: "[[https://dmoj.ca/problem/wc15c2j1/pdf][A New Hope]]".
   instance of that class, a particular string: e.g. ~'three'.count('')~
   #+end_quote
   #+begin_src python :results output
-    print('three'.count(' '))
+    print('three'.count(''))   # count empty spaces = characters
+    print('three'.count(' '))  # count empty spaces
   #+end_src
+
+  #+RESULTS:
+  : 6
 
 - What does ~'a'.split()~ return? 
   #+begin_src python
@@ -495,10 +549,17 @@ Original problem: "[[https://dmoj.ca/problem/wc15c2j1/pdf][A New Hope]]".
     print(type(result))
   #+end_src
 
+  #+RESULTS:
+  : ['a']
+  : <class 'list'>
+
 - How can you split ~'1-2-3'~?
   #+begin_src python 
-    print('1-2-3'.split('-'))
+    print('1-2-3'.split('-',3))
   #+end_src
+
+  #+RESULTS:
+  : ['1', '2', '3']
 
 - How can you get 3 as a number from the keyboard and store it as an
   integer variable ~num~?
@@ -507,6 +568,157 @@ Original problem: "[[https://dmoj.ca/problem/wc15c2j1/pdf][A New Hope]]".
     print('num is a string:', isinstance(num,str))
     num = int(num)
     print('num is a integer now:', isinstance(num,int))
+  #+end_src
+
+** In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+- Unicode standard used to represent a characters and symbols ([[https://docs.python.org/3/howto/unicode.html][doc]])
+- Strings are instances of the ~str~ class, which contains functions
+  like ~strip~, ~split~, ~count~ (enter ~dir(str)~ to see all of them.
+- To get any function (aka method) that lives 'inside' ~str~ (like a
+  tool in a toolbox), use the accessor dot-operator: ~str.split()~.
+- To test if a variable ~x~ is an integer or a string, you can use
+  ~isinstance(x, int)~ or ~isinstance(x, str)~ (returns Boolean).
+- Another way of describing 'object orientation' is to say that
+  'everything is an object' and 'objects exchange messages'.
+- Operator to convert characters to unicode and back: ~ord~ and ~chr~.
+- Building process models: flowcharts, BPMN, UML
+- BPMN elements {events, tasks, gateways, participants, flow}, and
+  rules {one start/end event per pool, only message flows between and
+  only sequence flows inside pools, complete gateway splits, no
+  hanging elements}.
+- Inserting images and links in Google Colab text cells
+- Flow control: Boolean values and operators, comparison operators
+- Advantages and disadvantages of diagrammatic models
+  
+** Python Chat
+*** Machine zero vs mathematical zero
+
+Here is really very nice visualization of the floating-point
+representation in computers, which we discussed today:
+https://fabiensanglard.net/floating_point_visually_explained/. The
+related section in the Python reference manual is here:
+https://docs.python.org/3/tutorial/floatingpoint.html.
+
+*** Unicode
+Here is the [[https://docs.python.org/3/howto/unicode.html][Unicode documentation]] from the Python reference
+manual. After a short, very readable explanation, you get a bunch of
+small examples. Some of the commands we haven't learnt yet (like
+~try~ ... ~except~ exception handling, but we'll get there).
+*** BPMN poster
+Here is the free BPMN poster from Signavio (that's professional BPMN
+software owned by SAP. I have a free academic license if anyone's
+interested, just let me know):
+https://www.signavio.com/downloads/short-reads/free-bpmn-2-0-poster/
+** Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+  
+- *Only if you did not finish this exercise in class:*
+  1) Model our first Python program as a BPMN model using ~bpmn.io~:
+   #+attr_latex: :width 300px
+   [[../img/bpmn1.png]]  [[../img/bpmn2.png]]   
+  2) Start with a pool and name it ~Computer~.
+  3) Add suitable events and tasks connected by sequence flow.
+  4) Take a screenshot. It should look [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/img/py_first.png][like this]].
+  5) Add another pool and name it ~User~.
+  6) Connect the two pools with suitable (message) flow.
+  7) Take another screenshot. It should look [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/img/py_first_user.png][like this]].
+  8) Save your diagram as ~.bpmn~ and as ~.svg~ files.
+  9) Add your ~.svg~ diagram in a titled Colab text cell:
+  10) Upload your diagram to a drive and link to it in the text cell.
+
+  #+attr_latex: :width 400px
+  [[../img/2_colab_diagram.png]]
+
+Note: BPMN process diagram elements can be /overloaded/, i.e. given meta
+information, such as 'tasks accepts input' or 'task sends output' (see
+overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/img/py_first_overloaded.png][here]] and [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/img/py_first_user_overloaded.png][here]]). [[https://camunda.com/bpmn/reference/][More about BPMN from camunda.com.]]
+
+* Day 7: Boolean conditions and clauses
+#+attr_latex: :width 400px
+#+caption: Radio station Children's Christomas Party 1936 (Flickr.com)
+[[../img/claus.jpg]]
+
+** TODO [[https://lyon.instructure.com/courses/1700/assignments][I shelved the 3rd DataCamp assignment!]]
+
+INFORMAL OPEN TOOL POLL:
+- Have you used the *DataCamp workspace* at this point?
+- Have you used the *REPL in replit.com* at all?
+- Have you used *Python's IDLE* outside of class?
+- Have you opened a *Python shell* ~>>>~ outside of class?
+- Are you satisfied with Colab as your only tool?
+- In case you want to try Emacs, talk to me.
+
+** TODO Preview and review
+
+- What is a 'Pythonista'? Are you one?
+  #+begin_quote
+  The term describes anyone who is enthusiastic about Python and
+  actively engages with the language and with its community. Your
+  call!
+  #+end_quote
+  
+- What's the difference between ~n=1~ and ~n==1~?
+  #+begin_quote
+  1. ~n=1~ is a statement while ~n==1~ is an expression
+  2. ~n=1~ stores 1 in an integer variable ~n~
+  3. ~n==1~ compares the value in ~n~ with the value 1
+  #+end_quote
+
+- How can you get ~42 == '42'~ to evaluate to ~True~?
+  #+begin_src python
+    # By explicitly converting the data types
+    print(str(42) == '42')
+    print(42 == int('42'))
+  #+end_src
+
+- What is ~42.0 == 42~?
+  #+begin_src python
+    # There is automatic type coercion from 42 to 42.0
+    print(42.0 == 42)
+  #+end_src
+
+  #+RESULTS:
+  : True
+
+- What is ~42 == 'meaning of life'~?
+  #+begin_src python
+    # comparing an integer and a string will always be False
+    # since there is no automatic conversion between the two
+    print(42 == 'meaning of life')
+  #+end_src
+
+- How can you turn a Unicode point into a character and vice versa?
+  #+begin_src python
+    # Courtesy Radek
+    print(chr(120))
+    print(ord('x'))
+  #+end_src
+
+- How can you check if a variable ~x~ is an integer, float or string?
+  #+begin_src python
+    x = 42.0
+    # these functions check which object class x is an instance of
+    print(isinstance(num,float))
+    print(isinstance(int(num),int))
+    print(isinstance(str(num),str))
+    # or you can use type(x)
+  #+end_src
+
+- How can you check if a value is in a list or not?
+  #+begin_src python
+    print('a' in ['a','b'])
+    print('a' not in ['a','b'])
+    print('a' in ['b','c'])
+    print('a' not in ['b','c'])
+    print(0 in [1, 100, 0])     # etc.
   #+end_src
 
 ** TODO In-class summary
@@ -529,17 +741,22 @@ Original problem: "[[https://dmoj.ca/problem/wc15c2j1/pdf][A New Hope]]".
   2) print the final statement using string concatenation
   3) print the final statement using an f-string
 
-- Tip: Boolean conditions are the core of making decisions. They can
+- The output could simply look like this:
+  #+begin_example org
+    Number of True statements: 8
+  #+end_example
+
+- *Tip:* Boolean conditions are the core of making decisions. They can
   be put in an ~if~ statement like this:
   #+begin_example python
     if [condition]: [do_something]
   #+end_example
 
-- Tip: string concatenation relies on strings being 'added' with
+- *Tip:* string concatenation relies on strings being 'added' with
   ~+~. Boolean values ~True~, ~False~ are not strings and need to be
   converted to be concatenated.
 
-- Tip: The f-string is recent addition to Python 3. A ~print~ argument
+- *Tip:* The f-string is recent addition to Python 3. A ~print~ argument
   pre-fixed with an ~f~ can print variables without ~,~ or ~+~
   operators. Instead, variables have to be enclosed in ~{ }~:
   #+begin_src python
@@ -549,58 +766,6 @@ Original problem: "[[https://dmoj.ca/problem/wc15c2j1/pdf][A New Hope]]".
 
   #+RESULTS:
   : My name is Marcus Birkenkrahe
-
-* Day 7: Conditions and clauses
-#+attr_latex: :width 400px
-#+caption: Radio station Children's Christomas Party 1936 (Flickr.com)
-[[../img/claus.jpg]]
-
-** TODO Preview and review
-
-- What's the difference between ~n=1~ and ~n==1~?
-  #+begin_quote
-  1. ~n=1~ is a statement while ~n==1~ is an expression
-  2. ~n=1~ stores 1 in an integer variable ~n~
-  3. ~n==1~ compares the value in ~n~ with the value 1
-  #+end_quote
-
-** TODO In-class summary
-#+attr_latex: :width 300px
-#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
-[[../img/summary.jpg]]
-
-- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
-
-** TODO Homework
-#+attr_latex: :width 300px
-#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
-[[../img/homework.jpg]]
-
-*** Cone drill: using formulas and constants
-#+attr_latex: :width 400px
-#+caption: Ice cream bliss - LOC@Flickr.com
-[[../img/cone.jpg]]
-
-*Problem:* Compute the volume of a cone of radius r and height h.
-
-Create a notebook ~coneDrill.ipynb~:
-1) Problem
-2) Flow
-3) Variables
-4) Functions
-5) Implementation
-
-- The volume $V$ of a cone of radius $r$ and height $h$ is $V =
-  \frac{\pi r^2 h}{3}$.
-- To get \pi to a high accuracy, ~import math~. The value of \pi is
-  stored in ~math.pi~:
-  #+begin_src python :results output
-    import math
-    print(math.pi)
-  #+end_src
-
-Original problem: "[[https://dmoj.ca/problem/dmopc14c5p1/pdf][Cone Drill]]"
-
 
 * Day 8: Loops and breaks
 #+attr_latex: :width 400px
@@ -619,37 +784,13 @@ Original problem: "[[https://dmoj.ca/problem/dmopc14c5p1/pdf][Cone Drill]]"
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-*** Cone drill: using formulas and constants
-#+attr_latex: :width 400px
-#+caption: Ice cream bliss - LOC@Flickr.com
-[[../img/cone.jpg]]
-
-*Problem:* Compute the volume of a cone of radius r and height h.
-
-Create a notebook ~coneDrill.ipynb~:
-1) Problem
-2) Flow
-3) Variables
-4) Functions
-5) Implementation
-
-- The volume $V$ of a cone of radius $r$ and height $h$ is $V =
-  \frac{\pi r^2 h}{3}$.
-- To get \pi to a high accuracy, ~import math~. The value of \pi is
-  stored in ~math.pi~:
-  #+begin_src python :results output
-    import math
-    print(math.pi)
-  #+end_src
-
-Original problem: "[[https://dmoj.ca/problem/dmopc14c5p1/pdf][Cone Drill]]"
-
-
 * Day 9: Importing modules
 #+attr_latex: :width 400px
 #+caption: Perier family in de Dion voiturette, c.1903 (Flickr.com)
 [[../img/import.jpg]]
 
+** TODO Test 2 is coming: with Python Lists (DataCamp)
+  
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
@@ -688,22 +829,22 @@ Create a notebook ~coneDrill.ipynb~:
 Original problem: "[[https://dmoj.ca/problem/dmopc14c5p1/pdf][Cone Drill]]"
 
 
-
 * Day 10: DATA STRUCTURES
 * Day 11
 * Day 12
 * Day 13
 * Day 14
+** Test 3 is coming - includes Numpy (DataCamp)
 
 * Day 15: APPLICATIONS
 * Day 16
 * Day 17
 * Day 18
 * Day 19
+** Test 4 is coming - includes "Intermediate R"
 * Day 20
 * Day 21
 * Day 22
-
 * Day 23: Project presentations
 * Day 24: Project presentations / Summary / Outlook
 * Footnotes

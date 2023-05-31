@@ -48,6 +48,10 @@
   syntactically correct BPMN diagrams can even be used to
   automatically create code[fn:3].
 
+- You can see the full language model in this cheat sheet (bpmb.de):
+  #+attr_latex: :width 400px
+  [[../img/2_bpmn_cheat_sheet.png]]
+  
 - What are advantages of such models? What are disadvantages?
   #+begin_quote
   1. Advantages: simulate changes visually without changing code;
@@ -59,7 +63,7 @@
   #+end_quote
 
 - Python is considered to be so simple as to amount to 'pseudocode'
-  (no syntax knowledge necessary) - really? [fn:5]
+  (no syntax knowledge necessary) - really?[fn:4]
   #+attr_latex: :width 400px
   [[../img/2_complex.png]]
   
@@ -71,7 +75,7 @@
   2) Comparison operators (to compare anything)
   3) Boolean operators (to compare Boolean values)
 
-* TODO Exercise: BPMN model
+* Exercise: BPMN model
 
 1) Model our first Python program as a BPMN model using ~bpmn.io~:
    #+attr_latex: :width 300px
@@ -84,8 +88,8 @@
 6) Connect the two pools with suitable (message) flow.
 7) Take another screenshot. It should look [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/img/py_first_user.png][like this]].
 8) Save your diagram as ~.bpmn~ and as ~.svg~ files.
-9) Add your diagram in a titled Colab text cell:
-10) Upload your diagram to GDrive and link to it in the text cell.
+9) Add your ~.svg~ diagram in a titled Colab text cell:
+10) Upload your diagram to a drive and link to it in the text cell.
 
 #+attr_latex: :width 400px
 [[../img/2_colab_diagram.png]]
@@ -96,7 +100,7 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 
 * Boolean values
 
-- The Boolean[fn:4] data type only has the values ~True~ and ~False~ and
+- The Boolean[fn:5] data type only has the values ~True~ and ~False~ and
   must be written in exactly this way. Try this on a Python shell:
   #+begin_example python :
     ham = TRUE
@@ -164,9 +168,15 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
   integer and floating-point values on either side:
   #+begin_src python
     print(42.0 < 42)
-    print(42.0 >= 42)
+    print(42.0 > 42)
   #+end_src
-* Boolean operators
+
+  #+RESULTS:
+  : False
+  : False
+  : True
+
+* NEXT Boolean operators
 #+attr_latex :width 400px
 #+caption: Table with Boolean operators (Source: Sweigart, 2020).
 [[../img/py_and.png]]
@@ -174,7 +184,7 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 - The ~and~ and ~or~ operators are /binary/ (they take two values) like
   arithmetic operators, while the ~non~ operator is /unary/.
 
-- Test the ~and~ operator and the ~or~ operator in the shell.
+- Test the ~and~ operator and the ~or~ operator in a Python shell.
   #+attr_latex :width 400px
   #+caption: Table with Boolean operators (Source: Sweigart, 2020).
   [[../img/py_or.png]]
@@ -189,8 +199,25 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 
 - In code:
   #+begin_src python
-    print(not(True))
-    print(not(False))
+    print(not True)
+    print(not False)
+  #+end_src
+
+  #+RESULTS:
+  : False
+  : True
+
+- The Boolean ~not~, ~and~, ~or~ operators have the lowest precedence of all
+  operators - what'll the output be of these expressions?
+  #+begin_src python
+    print(not True == False)    
+    print(not True == False + 1) 
+    print((not True == False) + 1)
+  #+end_src
+
+- What will the output be of this expression?[fn:6]
+  #+begin_src python
+    print(True == not True)
   #+end_src
 
 - *Exercise:* Open a Colab notebook and check if De Morgan's laws are
@@ -199,7 +226,8 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
   #+caption: De Morgan's laws (Wikipedia).
   [[../img/py_de_morgan.png]]
 
-- Bonus: in a text cell, include the logic formula in $LaTeX$:
+- ~Bonus:~ in a text cell, include the logic formula in $LaTeX$
+  ([[https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols][here is a list of mathematical LaTeX symbols]]):
   1) ~not~ is $\neg$
   2) ~and~ is $\land$
   3) ~or~ is $\lor$
@@ -207,32 +235,25 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 
 - Remember that you can copy and paste whole text and code cells!
 
-- In Python code:
+- Solution in Python code:
   #+begin_src python
     # NOT (P OR Q) <=> NOT(P) AND NOT(Q)
-    print(not(True or True) == ((not(True)) and (not(True))))
-    print(not(True or False) == ((not(True)) and (not(False))))
-    print(not(False or True) == ((not(False)) and (not(True))))
-    print(not(False or False) == ((not(False)) and (not(False))))
+    print(not(True or True) == (not True and not True))
+    print(not(True or False) == (not True and not False))
+    print(not(False or True) == (not False and not True))
+    print(not(False or False) == (not False and not False))
     # NOT (P AND Q) <=> NOT(P) OR NOT(Q)
-    print(not(True and True) == ((not(True)) or (not(True))))
-    print(not(True and False) == ((not(True)) or (not(False))))
-    print(not(False and True) == ((not(False)) or (not(True))))
-    print(not(False and False) == ((not(False)) or (not(False))))
+    print(not(True and True) == (not True or not True))
+    print(not(True and False) == (not True or not False))
+    print(not(False and True) == (not False or not True))
+    print(not(False and False) == (not False or not False))
   #+end_src
 
-- *Bonus exercise (home):* in class, you showed that De Morgan's laws
-  hold in Python. Now, instead of printing ~True~ after each statement,
+- *[[https://lyon.instructure.com/courses/1700/assignments/14732][Bonus exercise (home):]]* Instead of printing ~True~ after each
+  statement, show that De Morgan's laws hold, but this time:
   1) print only the number of ~True~ statements at the end.
   2) print the final statement using string concatenation
-  3) print the final statement using an f-string
-
-- Operator order of precedence is crucial when defining compound
-  logical operators - use parentheses to get what you want:
-  #+begin_example python
-    a == b and c == d # evaluated as (a==b) and (c==d)
-    a == not(b) and c # evaluated as (a == not(b)) and c
-  #+end_example
+  3) print the final statement using an 'f-string'
 
 - The /exclusive/ gateway that you saw in the BPMN diagram earlier, is
   the result of a composite Boolean operation. It is only ~True~ if
@@ -245,13 +266,13 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 
 - You can test if this is implemented in Python as before:
   #+begin_src python
-    print((True or True) and (not(True) or not(True)))  # A = B = True
-    print((True or False) and (not(True) or not(False))) # A=True, B=False
-    print((False or True) and (not(False) or not(True))) # A=False, B=True
-    print((False or False) and (not(False) or not(False))) # A = B = False
+    print((True or True) and (not True or not True))  # A = B = True
+    print((True or False) and (not True or not False)) # A=True, B=False
+    print((False or True) and (not False or not True)) # A=False, B=True
+    print((False or False) and (not False or not False)) # A = B = False
   #+end_src
 
-- Fortunately, Python has an bit-wise XOR ('exclusive ~or~) operator[fn:6]:
+- Fortunately, Python has an bit-wise XOR ('exclusive ~or~) operator[fn:7]:
   #+begin_src python
     print(True ^ True)
     print(True ^ False)
@@ -271,8 +292,25 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 
 - Here is the evaluation process of the computer:
   #+attr_latex: :width 150px
-  [[./img/py_compound.png]]
+  [[../img/py_compound.png]]
 
+- What will the output be? What's the order or precedence?
+  #+begin_src python
+    result = 5 < 10 and 2 + 2 == 4 or not (3 >= 5)
+    print(result)
+  #+end_src  
+
+- Order or evaluation:
+  #+begin_example python
+    2 + 2  # 4 (True)
+    5 < 10 # True
+    3 >= 5 # False
+    4 == 4 # True
+    not False  # True
+    True and True # True
+    True or True # True
+  #+end_example
+  
 - Compound logical expressions are common in database queries to
   filter records that satisfy several conditions for different
   features - here is an SQLite example:
@@ -310,24 +348,24 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 
   #+attr_latex: :width 400px
   #+caption: Nikola Tesla (1856-1943)
-  [[./img/py_tesla.jpg]]
+  [[../img/py_tesla.jpg]]
 
 - For example, to test if someone's age is both greater than 20 and if
   he owns a cat:
   #+begin_src python
     age = 22
     pet = 'cat'
-    age > 20 and pet == 'cat'
+    print(age > 20 and pet == 'cat')
   #+end_src
 
-- Let's say Joe is 20 and Jane is 24 years old, Joe has a dog, and
-  Jane has a cat:
+- Exercise! Let's say Joe is 20 and Jane is 24 years old, Joe has a
+  dog, and Jane has a cat:
   1) Establish suitable variables for Joe and Jane
   2) Assign the correct values to these variables
+  3) Assign ALL of these values on ONE line only
   #+begin_src python :results silent
     # Assign age and pet for Joe and Jane
-    age_joe, pet_joe = 20, 'dog'
-    age_jane, pet_jane = 24, 'cat'
+    age_joe, pet_joe, age_jane, pet_jane = 20, 'dog', 24, 'cat'
   #+end_src
 
 - Using these variables and their values, check:
@@ -346,9 +384,9 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
     print((age_jane >= age_joe) or (pet_jane == 'dog'))
   #+end_src
 
-- Lastly, check if 4 is (2+2) and (2*2) but (2+2) is not 5:
+- Lastly, check if 4 is 2+2 and 2*2, and 2+2 is not 5:
   #+begin_src python
-    print(2 + 2 == 4 and not 2 + 2
+    print(2 + 2 == 4 and 2 * 2 == 4 and not 2 + 2 == 5)
   #+end_src
 
 * Summary
@@ -366,22 +404,14 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 
 * TODO Glossary
 
-| TERM/COMMAND    | MEANING                                       |
-|-----------------+-----------------------------------------------|
 
 * References
 
 - IBM (2023). BPEL process. URL: [[https://www.ibm.com/docs/en/baw/22.x?topic=types-bpel-process][ibm.com]].
 - Camunda (2022). Web-based tooling for BPMN, DMN and Forms. URL:
   [[https://bpmn.io/][bpmn.io]].
-  
+
 * Footnotes
-
-[fn:6]This operator does something else if fed with binary numbers. 
-
-[fn:5]The code example (from [[https://realpython.com/python-refactoring/][Shaw, 2019]]) has 'cyclomatic complexity'
-of 5, i.e. there are 5 independent code paths that the Python
-interpreter can follow to get to the end of the application.
 
 [fn:1]BPMN stands for "Business Process Model and Notation" and is a
 standardized, diagrammatic language especially suited to modeling
@@ -397,6 +427,20 @@ also one of the textbooks for DSC 482.02 Data and Process Modeling
 [fn:3]IBM has developed a language called BPEL (Business Process
 Execution Language) that facilitates this process ([[https://www.ibm.com/docs/en/baw/22.x?topic=types-bpel-process][IBM, 2023]]).
 
-[fn:4]This type name is capitalized because it is named after the
+[fn:4] The code example (from [[https://realpython.com/python-refactoring/][Shaw, 2019]]) has 'cyclomatic complexity'
+of 5, i.e. there are 5 independent code paths that the Python
+interpreter can follow to get to the end of the application.
+
+[fn:5]This type name is capitalized because it is named after the
 mathematician [[https://en.wikipedia.org/wiki/George_Boole][George Boole]] (1815-1864) who found Boolean algebra,
 which can be used to design circuits in terms of logic gates.
+
+[fn:6]The ~not~ operator is a unary operator and requires an operand
+immediately after it - that's not what the computer sees here because
+it evaluates from left to right. Fixes:
+#+begin_example python
+  True == (not True)
+  not True == True
+#+end_example
+
+[fn:7]This operator does something else if fed with binary numbers.
