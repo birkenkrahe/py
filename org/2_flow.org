@@ -421,6 +421,18 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 - Lastly, check if: 4 is 2+2 and 2*2, and 2+2 is not 5:
   #+begin_src python
     print(2 + 2 == 4 and 2 * 2 == 4 and not 2 + 2 == 5)
+    print(2 + 2 == 4 and 2 * 2 == 4 and 2 + 2 != 5)
+  #+end_src
+
+  #+RESULTS:
+  : True
+  : True
+
+- Alternative with the ~assert~ statement to debug: the string "x is not
+  1" is printed to the screen if an ~AssertionError~ is raised.
+  #+begin_src python :results none
+    x = 2
+    assert x == 1, "x is not 1"
   #+end_src
 
 * Summary
