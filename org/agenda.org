@@ -646,17 +646,17 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 #+caption: Radio station Children's Christomas Party 1936 (Flickr.com)
 [[../img/claus.jpg]]
 
-** TODO [[https://lyon.instructure.com/courses/1700/assignments][I shelved the 3rd DataCamp assignment!]]
+** [[https://lyon.instructure.com/courses/1700/assignments][I shelved the 3rd DataCamp assignment!]]
 
 INFORMAL OPEN TOOL POLL:
-- Have you used the *DataCamp workspace* at this point?
-- Have you used the *REPL in replit.com* at all?
-- Have you used *Python's IDLE* outside of class?
-- Have you opened a *Python shell* ~>>>~ outside of class?
-- Are you satisfied with Colab as your only tool?
-- In case you want to try Emacs, talk to me.
+- Have you used the *DataCamp workspace* at this point? (Y)
+- Have you used the *REPL in replit.com* at all? (Y)
+- Have you used *Python's IDLE* outside of class? (Y) 
+- Have you opened a *Python shell* ~>>>~ outside of class? (Y)
+- Are you satisfied with Colab as your only tool? (N)
+- In case you want to try Emacs, talk to me. (?)
 
-** TODO Preview and review
+** Preview and review
 
 1) What is a 'Pythonista'? Are you one?
    #+begin_quote
@@ -724,7 +724,7 @@ INFORMAL OPEN TOOL POLL:
      print(chr(120))
      print(ord('x'))
    #+end_src
-
+   
    #+RESULTS:
    : x
    : 120
@@ -760,7 +760,7 @@ INFORMAL OPEN TOOL POLL:
     : True
     : True
 
-** TODO In-class summary
+** In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
@@ -771,16 +771,17 @@ INFORMAL OPEN TOOL POLL:
   debugging own code, 6) debugging AI code, 7) coding, 8)
   AI-prompting.
 - Boolean operators in mathematics, Python and LaTeX.
-- Minimal conditional statement ~if [condition]: [action]~ with keyword
-  (~if~),and ~separator~ (~:~).
 - Operator precedence: 1) (), 2) **,%,*/,+-, 3) <, <=, >, >=, in, not
   in, 4) not, and, or.
 - Splitting a string without substrings, changing the separator (~sep~)
 - Checking data type with ~isinstance([var],[type])~
-- 
+- Minimal conditional statement ~if [condition]: [action]~ with keyword
+  (~if~),and ~separator~ (~:~).
+- Clauses and indentation rules in Python.
+- Code blocks in other languages. If in C and R vs. Python.
+- Simple if-statement and if-else statement with BPMN process model.
 
-
-** TODO Homework
+** Homework
 #+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
@@ -819,11 +820,71 @@ INFORMAL OPEN TOOL POLL:
   #+RESULTS:
   : My name is Marcus Birkenkrahe
 
-* Day 8: Loops and breaks
+* Day 8: Loops and breaks (continue'd)
 #+attr_latex: :width 400px
 #+caption: A Fokker looping (1915-20), Library of Congress@Flickr.com
 [[../img/loop.jpg]]
-** TODO Review and preview
+
+** TODO Preview and review
+
+1) *Python chat:* ~pandas~ is a Python library for data frame creation and
+   manipulation. I've created [[https://colab.research.google.com/drive/1JaLBpbFTOuDZzITcYR5TNvsQwiqoFUiT?usp=sharing][this notebook]] to explain how to use it
+   to import CSV datasets via URL or as a file. We'll get back to
+   ~pandas~.
+
+2) What does a /flow control statement/ consist of?
+   #+begin_quote
+   - a /condition/ (expression), e.g. ~count == 1~
+   - a /clause/ (block of code), e.g. ~count = count + 1~
+   #+end_quote
+
+3) Is Python the only programming language with significant
+   indentation?
+   #+begin_quote
+   No. Haskell, COBOL are two other (obscure) high-level languages
+   that share this fate, as do many meta-languages (Markdown, Org,
+   YAML).
+   #+end_quote
+
+4) What are the elements of a conditional block?
+   #+begin_quote
+   1) Keyword ~if~
+   2) Conditional expression
+   3) Separator ~:~
+   4) Code block starting on the next line
+   #+end_quote
+   Example:
+   #+begin_src python
+     import datetime
+     now = datetime.datetime.now()
+     if now.strftime('%m-%d') == '06-01':
+         print('June is here')
+   #+end_src
+
+3) How would you get the docstring for the method ~now~?
+   #+begin_src python
+     help(datetime.datetime.now)
+   #+end_src
+   
+4) Now, travel back through time to the end of yesterday's session:
+   1. Create a code block with 3 lines of code.
+   2. Assign ~name~ and ~age~ to ~'Carol'~ and ~10~.
+   3. If ~name~ is 'Alice' then greet Alice.
+   4. Otherwise, greet a stranger.
+   5. This is the process you should have created:
+      #+attr_latex: :width 400px
+      [[../img/py_alice_2.png]]
+   6. Now, we'll generalize this to allow for more than one (exclusive)
+      alternative by introducing the ~elif~ clause.
+   7. Python code:
+      #+begin_src python
+      name, age = 'Carol', 10
+      if name == 'Alice': print('Hi, Alice')
+      else: print('Hello, stranger')
+      #+end_src
+      - If there's only a single statement, Python does not insist on
+      indentation! Indentation is for 'proper' blocks (multiline).
+
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
@@ -836,7 +897,10 @@ INFORMAL OPEN TOOL POLL:
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-* Day 9: Importing modules
+*** TODO Review ~if~, ~else~ and ~elif~ statements: spam or ham?
+*** TODO Simply loopy: building a truth table
+
+* Day 9: Importing modules and a game program
 #+attr_latex: :width 400px
 #+caption: Perier family in de Dion voiturette, c.1903 (Flickr.com)
 [[../img/import.jpg]]
