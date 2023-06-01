@@ -1,9 +1,12 @@
-#+TITLE:PYTHON BASICS
+#+TITLE:PYTHON BASICS - FLOW CONTROL
 #+AUTHOR: Marcus Birkenkrahe
 #+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
 #+STARTUP: overview hideblocks indent inlineimages entitiespretty
 #+PROPERTY: header-args:python :results output :exports both :session *Python*
 * README
+#+attr_latex: :width 400px
+#+caption: Roman Guy, Against the Flow (Flickr.com)
+[[../img/flow.jpg]] 
 
 An interactive notebook is available [[https://gist.github.com/birkenkrahe/9f152c84c3928ef02086a48af0c8b90e][on GitHub as a gist]].
 
