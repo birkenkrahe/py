@@ -1,0 +1,61 @@
+#+TITLE:PYTHON FUNCTIONS
+#+AUTHOR: Marcus Birkenkrahe
+#+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
+#+STARTUP: overview hideblocks indent inlineimages entitiespretty
+#+PROPERTY: header-args:python :results output :exports both :session *Python*
+* Introduction
+* Definition of a Function
+- A mini-program within a program.
+- Potential to reduce code duplication and increase readability.
+
+* def Statements with Parameters
+- The `def` statement defines (that is, creates) a function.
+- Example of a function with a parameter:
+  #+BEGIN_SRC python
+  def hello(name):
+      print('Hello, ' + name)
+  #+END_SRC
+  
+* Return Values and return Statements
+- The `return` statement causes the function to exit and hand back a value to its caller.
+- Example of a function with a return statement:
+  #+BEGIN_SRC python
+  def getAnswer(answerNumber):
+      if answerNumber == 42:
+          return 'The meaning of life, the universe, and everything.'
+  #+END_SRC
+
+* The None Value
+- In Python, there is a value called `None`, which represents the absence of a value.
+- `None` is the only value of the `NoneType` data type.
+
+* Keyword Arguments and ~print()~
+- Keyword arguments are often used for optional parameters.
+- Example with `print()` function:
+  #+BEGIN_SRC python
+  print('Hello', end='')
+  print('World')
+  #+END_SRC
+- The output will be `HelloWorld`.
+
+* Local and Global Scope
+- Parameters and variables that are assigned in a called function are said to exist in that function’s local scope.
+- Variables that are assigned outside all functions are said to exist in the global scope.
+
+* The ~global~ statement
+* Exception Handling
+- An error that happens inside a try block will cause execution to immediately move to the code in the except block.
+- Example of exception handling:
+  #+BEGIN_SRC python
+  def spam(divideBy):
+      try:
+          return 42 / divideBy
+      except ZeroDivisionError:
+          print('Error: Invalid argument.')
+  #+END_SRC
+
+* A Short Program: Zigzag
+* Summary
+* Glossary
+* References
+

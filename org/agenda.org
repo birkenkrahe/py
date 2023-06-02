@@ -389,7 +389,7 @@ script" I'd have to do some research first.) Hope this helps.
 - [X] The caret operator in Python and the binary function
 - [ ] Three problems: string replication, splitting, math constants
 
-** DONE The caret ~^~ operator in Python
+** The caret ~^~ operator in Python
 
 - Use ~**~ for exponentiation and not ~^~ (as in R). In Python, the caret
   operator ~^~ is the binary ~XOR~ operator: it compares two binary
@@ -432,11 +432,11 @@ used was PyPDF4 and not PyPDF2).
 - Getting a function's docstring with ~?~
 - Details on ~print~, ~len~, ~input, ~str~, ~int~ and ~split~
 - (Bonus) Home assignment with ~strip~
-  
+
 - *Project presentation:* completely free-form. If you code, you can use
   Colab or anything else that lends itself to be presented easily. You
   do not have to go out of your way to produce fancy powerpoints.
-  
+
 ** Homework
 #+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
@@ -475,100 +475,99 @@ Original problem: "[[https://dmoj.ca/problem/wc15c2j1/pdf][A New Hope]]".
 * DONE Day 6: Flow control and flow visualization
 #+attr_latex: :width 400px
 #+caption: Roman Guy, Against the Flow (Flickr.com)
-[[../img/flow.jpg]] 
+[[../img/flow.jpg]]
 
 ** Preview and review
 
-- What does the expression ~str(int(age) + 1)~ do?
-  #+begin_quote
-  [[https://automatetheboringstuff.com/eval/3-4.html][Here is an HTML animation]] (Sweigart, 2023)
-  #+end_quote
-  1) ~age~ is string ~input~
-  2) ~int(age)~ converts the string to a number - you cannot do that
-     with any character like "a": ~int("a")~ throws an error. To convert
-     characters to their Unicode standard, you need to use ~ord~:
-     #+begin_src python
-       print(int("25"))
-       print(ord("a"))
-       print(ord("A"))
-     #+end_src
+1) What does the expression ~str(int(age) + 1)~ do?
+   #+begin_quote
+   [[https://automatetheboringstuff.com/eval/3-4.html][Here is an HTML animation]] (Sweigart, 2023)
+   #+end_quote
+   1) ~age~ is string ~input~
+   2) ~int(age)~ converts the string to a number - you cannot do that
+      with any character like "a": ~int("a")~ throws an error. To convert
+      characters to their Unicode standard, you need to use ~ord~:
+      #+begin_src python
+        print(int("25"))
+        print(ord("a"))
+        print(ord("A"))
+      #+end_src
 
-     #+RESULTS:
-     : 25
-     : 97
-     : 65
+      #+RESULTS:
+      : 25
+      : 97
+      : 65
+   3) ~int(age) + 1~ adds 1 to whatever number ~int(age)~ evaluates to:
+      #+begin_src python
+        age = "25"
+        print(age)
+        print(age + " years old")
+        print(int(age))
+        print(int(age)+1)
+      #+end_src
 
-  3) ~int(age) + 1~ adds 1 to whatever number ~int(age)~ evaluates to:
-     #+begin_src python
-       age = "25"
-       print(age)
-       print(age + " years old")
-       print(int(age))
-       print(int(age)+1)
-     #+end_src
+      #+RESULTS:
+      : 25
+      : 25 years old
+      : 25
+      : 26
+   4) ~str(int(age) + 1)~ converts the result to a string:
+      #+begin_src python
+        age = "25"
+        print(age)
+        print(age + " years old")
+        print(int(age))
+        print(int(age)+1)
+        print(str(int(age)+1))
+        print(str(int(age)+1) + " years old")
+      #+end_src
 
-     #+RESULTS:
-     : 25
-     : 25 years old
-     : 25
-     : 26
-  4) ~str(int(age) + 1)~ converts the result to a string:
-     #+begin_src python
-       age = "25"
-       print(age)
-       print(age + " years old")
-       print(int(age))
-       print(int(age)+1)
-       print(str(int(age)+1))
-       print(str(int(age)+1) + " years old")
-     #+end_src
+2) What do you get when you type ~ord?~ on the Python console (~>>>~)?
+   #+begin_quote
+   A ~SyntaxError~ because ~?~ is an IPython shell command only.
+   #+end_quote
 
-- What do you get when you type ~ord?~ on the Python console (~>>>~)?
-  #+begin_quote
-  A ~SyntaxError~ because ~?~ is an IPython shell command only.
-  #+end_quote
+3) What does the dot-operator do, e.g. in ~str.split~?
+   #+begin_quote
+   The dot-operator ~.~ is an /accessor/: it allows you to access anything
+   that's stored inside an object, e.g. the /string/ class ~str~, or an
+   instance of that class, a particular string: e.g. ~'three'.count('')~
+   #+end_quote
+   #+begin_src python :results output
+     print('three'.count(''))   # count empty spaces = characters
+     print('three'.count(' '))  # count empty spaces
+   #+end_src
 
-- What does the dot-operator do, e.g. in ~str.split~?
-  #+begin_quote
-  The dot-operator ~.~ is an /accessor/: it allows you to access anything
-  that's stored inside an object, e.g. the /string/ class ~str~, or an
-  instance of that class, a particular string: e.g. ~'three'.count('')~
-  #+end_quote
-  #+begin_src python :results output
-    print('three'.count(''))   # count empty spaces = characters
-    print('three'.count(' '))  # count empty spaces
-  #+end_src
+   #+RESULTS:
+   : 6
 
-  #+RESULTS:
-  : 6
+4) What does ~'a'.split()~ return?
+   #+begin_src python
+     result = 'a'.split()
+     print(result)
+     print(type(result))
+   #+end_src
 
-- What does ~'a'.split()~ return? 
-  #+begin_src python
-    result = 'a'.split()
-    print(result)
-    print(type(result))
-  #+end_src
+   #+RESULTS:
+   : ['a']
+   : <class 'list'>
 
-  #+RESULTS:
-  : ['a']
-  : <class 'list'>
+5) How can you split ~'1-2-3'~?
+   #+begin_src python
+     print('1-2-3'.split('-',3))
+   #+end_src
 
-- How can you split ~'1-2-3'~?
-  #+begin_src python 
-    print('1-2-3'.split('-',3))
-  #+end_src
+   #+RESULTS:
+   : ['1', '2', '3']
 
-  #+RESULTS:
-  : ['1', '2', '3']
-
-- How can you get 3 as a number from the keyboard and store it as an
-  integer variable ~num~?
-  #+begin_src python
-    num = input('Enter the number 3: ')
-    print('num is a string:', isinstance(num,str))
-    num = int(num)
-    print('num is a integer now:', isinstance(num,int))
-  #+end_src
+6) How can you get 3 as a number from the keyboard and store it as an
+   integer variable ~num~?
+   #+begin_src python
+     num = input('Enter the number 3: ')
+     print('num is a string:', isinstance(num,str))
+     num = int(num)
+     print('num is a integer now:', isinstance(num,int))
+   #+end_src
 
 ** In-class summary
 #+attr_latex: :width 300px
@@ -595,7 +594,7 @@ Original problem: "[[https://dmoj.ca/problem/wc15c2j1/pdf][A New Hope]]".
 - Inserting images and links in Google Colab text cells
 - Flow control: Boolean values and operators, comparison operators
 - Advantages and disadvantages of diagrammatic models
-  
+
 ** Python Chat
 *** Machine zero vs mathematical zero
 
@@ -619,11 +618,11 @@ https://www.signavio.com/downloads/short-reads/free-bpmn-2-0-poster/
 #+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
-  
+
 - *Only if you did not finish this exercise in class:*
   1) Model our first Python program as a BPMN model using ~bpmn.io~:
-   #+attr_latex: :width 300px
-   [[../img/bpmn1.png]]  [[../img/bpmn2.png]]   
+     #+attr_latex: :width 300px
+     [[../img/bpmn1.png]]  [[../img/bpmn2.png]]
   2) Start with a pool and name it ~Computer~.
   3) Add suitable events and tasks connected by sequence flow.
   4) Take a screenshot. It should look [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/img/py_first.png][like this]].
@@ -651,7 +650,7 @@ overloaded diagrams [[https://github.com/birkenkrahe/admin/blob/main/RoamNotes/i
 INFORMAL OPEN TOOL POLL:
 - Have you used the *DataCamp workspace* at this point? (Y)
 - Have you used the *REPL in replit.com* at all? (Y)
-- Have you used *Python's IDLE* outside of class? (Y) 
+- Have you used *Python's IDLE* outside of class? (Y)
 - Have you opened a *Python shell* ~>>>~ outside of class? (Y)
 - Are you satisfied with Colab as your only tool? (N)
 - In case you want to try Emacs, talk to me. (?)
@@ -664,7 +663,7 @@ INFORMAL OPEN TOOL POLL:
    actively engages with the language and with its community. Your
    call!
    #+end_quote
-   
+
 2) Which diagrammatic languages for flow modeling do you know?
    #+begin_quote
    1. BPMN (Business Process Model and Notation)
@@ -724,7 +723,7 @@ INFORMAL OPEN TOOL POLL:
      print(chr(120))
      print(ord('x'))
    #+end_src
-   
+
    #+RESULTS:
    : x
    : 120
@@ -820,7 +819,7 @@ INFORMAL OPEN TOOL POLL:
   #+RESULTS:
   : My name is Marcus Birkenkrahe
 
-* Day 8: Loops and breaks (continue'd)
+* DONE Day 8: Loops and breaks (continue'd)
 #+attr_latex: :width 400px
 #+caption: A Fokker looping (1915-20), Library of Congress@Flickr.com
 [[../img/loop.jpg]]
@@ -861,12 +860,15 @@ INFORMAL OPEN TOOL POLL:
          print('June is here')
    #+end_src
 
-3) How would you get the docstring for the method ~now~?
+   #+RESULTS:
+   : June is here
+
+5) How would you get the docstring for the method ~now~?
    #+begin_src python
      help(datetime.datetime.now)
    #+end_src
-   
-4) Now, travel back through time to the end of yesterday's session:
+
+6) Now, travel back through time to the end of yesterday's session:
    1. Create a code block with 3 lines of code.
    2. Assign ~name~ and ~age~ to ~'Carol'~ and ~10~.
    3. If ~name~ is 'Alice' then greet Alice.
@@ -878,9 +880,9 @@ INFORMAL OPEN TOOL POLL:
       alternative by introducing the ~elif~ clause.
    7. Python code:
       #+begin_src python
-      name, age = 'Carol', 10
-      if name == 'Alice': print('Hi, Alice')
-      else: print('Hello, stranger')
+        name, age = 'Carol', 10
+        if name == 'Alice': print('Hi, Alice')
+        else: print('Hello, stranger')
       #+end_src
       - If there's only a single statement, Python does not insist on
       indentation! Indentation is for 'proper' blocks (multiline).
@@ -892,21 +894,128 @@ INFORMAL OPEN TOOL POLL:
 
 - [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
 
+- Using ~elif~ with conditional statement to add alternative clauses.
+- ~elif~ statements are sensitive to their position in the program.
+- The condition of a ~while~ loop needs to be ~True~ to enter the clause.
+- Production BPMN diagrams do not have any flow lines looping back.
+- ~break~ breaks out of its loop, ~continue~ goes back to the start.
+- Use non-Boolean truth values to control ~if~, and ~while~ conditions.
+- ~for~ and ~while~ loops are logically fully equivalent: you can always
+  turn a ~for~ loop into a ~while~ loop and vice versa.
+- The ~range~ function creates a sequence of integer values using its
+  ~start~, ~stop~ and ~step~ parameters.
+
 ** TODO Homework
 #+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
-
-*** TODO Review ~if~, ~else~ and ~elif~ statements: spam or ham?
-*** TODO Simply loopy: building a truth table
-
-* Day 9: Importing modules and a game program
 #+attr_latex: :width 400px
-#+caption: Perier family in de Dion voiturette, c.1903 (Flickr.com)
+#+caption: Some bonus programming assignments
+[[../img/bonus.png]]
+
+- This week's programs use all flow control structures that you know.
+- Let me know via 'Python Chat' if anything is unclear.
+- All of these are original, first-time exercises (likely with errors).
+
+* Day 9: Importing modules
+#+attr_latex: :width 400px
+#+caption: De Dion-Bouton tricycle towing a passenger (ca. 1919)
 [[../img/import.jpg]]
 
-** TODO Test 2 is coming: with Python Lists (DataCamp)
-  
+** TODO Review and preview (test 2 is coming soon)
+
+1) What's the template for an ~elif~ statement?
+   #+begin_quote
+   1) ~elif~ keyword
+   2) condition that evaluates to ~True~ or ~False~
+   3) separator ~:~
+   4) indented clause on the next line
+   #+end_quote
+2) Does it matter when an (alternative) ~elif~ statement occurs?
+   #+begin_quote
+   Yes, because the conditional ~if~ statement is left when the
+   condition is satisfied, and no further conditions are checked.
+   #+end_quote
+3) What type of conditional statement is this and how many conditions
+   are being tested?
+   #+attr_latex: :width 400px
+   [[../img/py_alice_5.png]]
+   #+begin_quote
+   The BPMN process model describes an ~if~, ~elif~, ~else~ logic that
+   tests two conditions:
+   1. Is the ~name~ 'Alice'? - if not, check:
+   2. Is the ~age~ greater than 12?
+   #+end_quote
+4) How could you check if the input ~name~ is 'Alice' and if she is not a
+   minor by ~age~?
+   #+begin_example python
+     if name == 'Alice' and int(age) > 18:
+   #+end_example
+5) When is the message "Get ready to host" below printed if the
+   variable ~guests~ is entered as keyboard input?
+   #+begin_example python
+     if int(guests):
+        print('Get ready to host')
+     else:
+        print('No guests')
+   #+end_example
+   #+begin_quote
+   - The condition needs to be ~True~ for the clause to be entered.
+   - For the condition ~int(guests)~ to be ~True~, ~guests~ must *not* be
+     '0'. (Empty ~''~ input or floating values raise an exception: ~int~
+     can only convert strings that represent integer numbers).
+   #+end_quote
+6) What type of data does a ~while~ conditions evaluate to?
+   #+begin_quote
+   A Boolean value, ~True~ or ~False~
+   #+end_quote
+7) What is the difference between ~break~ and ~continue~?
+   #+begin_quote
+   - ~break~ leaves the current (innermost) clause/loop
+   - ~continue~ goes back to the condition for another evaluation
+   #+end_quote
+8) The variable ~data~ is obtained as keyboard input below. When is the
+   ~data~ printed?
+   #+begin_src python :results output
+     while not data:
+         data = input("Data? ")
+         continue
+     print(data)
+   #+end_src
+   #+begin_quote
+   - The ~while~ condition will remain ~True~ until anything is entered.
+   - When anything but the empty string is entered, it is printed.
+   #+end_quote
+9) What is the difference between ~range(10)~, ~range(0, 10)~, ~range(0,
+   10, 1)~ and ~range(9,-1,-1) in a ~for~ loop?
+   #+begin_src python
+     # range(10) starts at 0 goes to 9
+     for i in range(10):
+         print(i,end=' ')
+     print()
+         # range(0,10) starts at 0 goes to 9
+     for i in range(0,10):
+         print(i,end=' ')
+     print()
+         # range(0,10,1) starts at 0 goes to 9
+     for i in range(0,10):
+         print(i,end=' ')
+     print()
+     for i in range(9,-1,-1):
+         print(i,end=' ')
+     print()
+   #+end_src
+
+10) How many Boolean operators can you use in a ~for~ loop with ~range~?
+    #+begin_quote
+    A ~for~ loop with ~range~ has no condition because the 'stop' condition
+    has been absorbed by the ~range~ function. If the 'stop' condition is
+    reached, the ~for~ loop is left:
+    #+attr_latex: :width 400px
+    [[../img/for_while.png]]
+    #+end_quote
+
+** TODO Finish ~range~, then: module ~import~, sample program
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
@@ -944,26 +1053,30 @@ Create a notebook ~coneDrill.ipynb~:
 
 Original problem: "[[https://dmoj.ca/problem/dmopc14c5p1/pdf][Cone Drill]]"
 
+[[https://lyon.instructure.com/courses/1700/assignments/14849][See Canvas]] for bonus questions: dealing with input exceptions and
+changing the format of the output.
 
-* Day 10: DATA STRUCTURES
-* Day 11
-* Day 12
-* Day 13
-* Day 14
+
+* TODO Day 10: FUNCTIONS
+* TODO Day 11
+* TODO Day 12
+* TODO Day 13
+* TODO Day 14
 ** Test 3 is coming - includes Numpy (DataCamp)
 
 
-* Day 15: APPLICATIONS
-* Day 16
-* Day 17
-* Day 18
-* Day 19
+* TODO Day 15: APPLICATIONS
+* TODO Day 16
+* TODO Day 17
+* TODO Day 18
+* TODO Day 19
 ** Test 4 is coming - includes "Intermediate R"
-* Day 20
-* Day 21
-* Day 22
-* Day 23: Project presentations
-* Day 24: Project presentations / Summary / Outlook
+
+* TODO Day 20
+* TODO Day 21
+* TODO Day 22
+* TODO Day 23: Project presentations
+* TODO Day 24: Project presentations / Summary / Outlook
 * Footnotes
 [fn:1]Webscraping Excel manipulation and Machine Learning are already
 part of my plan, but cybersecurity is currently not included (except
