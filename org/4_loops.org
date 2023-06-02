@@ -43,6 +43,9 @@
         spam = spam + 1
   #+end_src
 
+  #+RESULTS:
+  : Hello, world.
+
 - Replacing ~if~ by ~while~: when executed, this prints 'Hello, world.'
   five times.
   #+begin_src python
@@ -51,6 +54,13 @@
         print('Hello, world.')
         spam = spam + 1
   #+end_src
+
+  #+RESULTS:
+  : Hello, world.
+  : Hello, world.
+  : Hello, world.
+  : Hello, world.
+  : Hello, world.
 
 - Look at the BPMN process diagrams and the code side by side ([[https://docs.google.com/presentation/d/1B1eSv3pfQOCOoVl5dpuX6OcXsyXXPyvgAxUryBkGPL0/edit?usp=sharing][slide]]):
   #+attr_latex: :width 400px
@@ -78,7 +88,7 @@
     while name != 'your name':
         print('Please type your name')
         name = input()
-        print('Thank you!')
+    print('Thank you!')
   #+end_src
 
 - Run the file and try to understand what's going on:
@@ -179,6 +189,7 @@
 
 - [[https://pythontutor.com/visualize.html#code=while%20True%3A%0A%20%20%20%20name%20%3D%20input%28%22What's%20your%20name%3F%20%22%29%0A%20%20%20%20if%20name%20!%3D%20'Joe'%3A%0A%20%20%20%20%20%20%20%20continue%0A%20%20%20%20password%20%3D%20input%28%22What's%20the%20password%3F%20%22%29%0A%20%20%20%20if%20password%20%3D%3D%20'swordfish'%3A%0A%20%20%20%20%20%20%20%20break%0Aprint%28'Access%20granted'%29%0A&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%22Joe%22,%22salmon%22,%22Joe%22,%22swordfish%22%5D&textReferences=false][Solution (pythontutor.com)]]
 
+
 * Non-Boolean truth values
 
 - Recall: to the computer, when used in conditions, ~0~, ~0.0~ and ~''~
@@ -187,12 +198,12 @@
 - What does the following program do?
   #+begin_src python :tangle ./src/guest1.py
     name = ''
-    while not name:
+    while not name:    # until you enter a name!
         name = input('Enter your name: ')
         guests = input('How many guests will you have? ')
-    if int(guests):
+    if int(guests):    # if you have non-zero guests
         print('Make sure to have enough room')
-        print('Done')
+    print('Done')
   #+end_src
 
 - Try it in pythontutor: [[https://autbor.com/howmanyguests/][autbor.com/howmanyguests/]]
@@ -241,6 +252,14 @@
     for i in range(5):
         print('Jimmy Five Times (' + str(i) + ')')
   #+end_src
+
+  #+RESULTS:
+  : My name is
+  : Jimmy Five Times (0)
+  : Jimmy Five Times (1)
+  : Jimmy Five Times (2)
+  : Jimmy Five Times (3)
+  : Jimmy Five Times (4)
   
   #+attr_latex: :width 400px
   #+caption: For loop with range 5
@@ -262,7 +281,7 @@
     total = 0
     for i in range(101):
         total = total + i
-        print(total)
+    print(total)
   #+end_src
 
   #+RESULTS:
@@ -283,7 +302,7 @@
 - *Exercise*: rewrite ~fiveTimes.py~ as ~fiveTimes2.py~ with a ~while~ loop
   instead of a ~for~ loop.
 
-- Solution:  
+- Solution:
   #+begin_src python :tangle ./src/fiveTimes2.py
     print('My name is')
     i = 0
@@ -294,35 +313,13 @@
 
 - Once you're done, run the program at [[https://autbor.com/fivetimeswhile/][pythontutor.com]].
 
-* Starting, stopping and stepping with ~range~
+* NEXT Starting, stopping and stepping with ~range~
 
-- Unlike R, Python does not have a simple way of getting a list of all
-  parameters of a function with its default values: instead, you need
-  to check back with the reference manual often. The easiest way to do
-  this is on the Python console with ~help~ (followed by /methods/):
-  #+begin_example python
-  >>> help(range)
-  Help on class range in module builtins:
+- The shortest documentation can be head on the IPython shell with the
+  keyword (variable or function) ~?~
 
-  class range(object)
-  |  range(stop) -> range object
-  |  range(start, stop[, step]) -> range object
-  |
-  |  Return an object that produces a sequence of integers from start (inclusive)
-  |  to stop (exclusive) by step.  range(i, j) produces i, i+1, i+2, ..., j-1.
-  |  start defaults to 0, and stop is omitted!  range(4) produces 0, 1, 2, 3.
-  |  These are exactly the valid indices for a list of 4 elements.
-  |  When step is given, it specifies the increment (or decrement).
-  ...
-  #+end_example
-
-- The ~help~ information lists the methods with short definitions. For a
-  quick overview of these methods, use ~dir~, e.g. ~dir(range)~:
-  #+begin_src python
-    print(dir(range))
-  #+end_src
-
-- The ~range~ function ('constructor') e.g. is [[https://docs.python.org/3/library/stdtypes.html?highlight=range#range][documented here]] online:
+- The ~range~ function ('constructor') e.g. is documented online in the
+  [[https://docs.python.org/3/library/stdtypes.html?highlight=range#range][Python standard library]]:
   1) All parameters must be integers only, keywords are not allowed
   2) Only the ~stop~ parameter is mandatory: ~range(5)~
   3) The other paramaters: ~range(start, stop[, step])~ with defaults
@@ -346,21 +343,28 @@
         print(i)
   #+end_src
 
+- What ~type~ is ~range(5)~?
+  
 * Summary
 
-- Decisions are modeled with conditions that evaluate to Boolean
-  values (~True~, ~False~).
+- Code can be executed repeatedly in a loop while their conditions
+  evaluate to ~True~ using ~while~ or ~for~.
 
-- Decisions include what code to execute and what to skip (~if~, ~else~,
-  ~elif~).
+- The ~range~ function constructs a sequence of integers. Its parameters
+  are ~start~, ~stop~ and ~step~ values, with default ~start=0~, ~step=1~.
 
-* TODO Glossary
+- ~break~, ~continue~ and ~sys.exit~ can exit a loop, jump back to the
+  start, or terminate the execution.
 
-| TERM/COMMAND | MEANING                                 |
-|--------------+-----------------------------------------|
-| ~if~           | keyword before a condition (start)      |
-| ~elif~         | keyboard before a alternative condition |
-| ~else~         | keyword before a final condition        |
+* Glossary
+
+| TERM/COMMAND | MEANING                       |
+|--------------+-------------------------------|
+| ~while~        | Conditional loop              |
+| ~for~          | Conditional loop with counter |
+| ~range~        | Create sequence of integers   |
+| ~break~        | Exit loop                     |
+| ~continue~     | Go to start of loop           |
 
 * References
 

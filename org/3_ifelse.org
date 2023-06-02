@@ -171,11 +171,11 @@
                                                   paste("Hello, stranger.")  }
   #+end_src
 
-* NEXT Elif statements
+* Elif statements
 
 - If you want one of many possible clauses to execute, you can use an
   "else if" statement called ~elif~ in Python.
-
+  
 - An ~elif~ statement consists of:
   1) The ~elif~ keyword
   2) A condition that evaluates to ~True~ or ~False~
@@ -273,6 +273,12 @@ program: an added ~else~ makes sure that at least one decision is taken.
 
 - Decisions include what code to execute and what to skip (~if~, ~else~,
   ~elif~).
+
+- Process models and flow charts show the logical structure clearly.
+
+- You can create compound logical conditions using multiple operators,
+  e.g. ~name == 'Alice' and int(age) > 12' to check if the input name
+  is BOTH Alice and if she is older than 12.
 
 * Glossary
 
