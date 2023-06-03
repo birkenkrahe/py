@@ -189,7 +189,6 @@
 
 - [[https://pythontutor.com/visualize.html#code=while%20True%3A%0A%20%20%20%20name%20%3D%20input%28%22What's%20your%20name%3F%20%22%29%0A%20%20%20%20if%20name%20!%3D%20'Joe'%3A%0A%20%20%20%20%20%20%20%20continue%0A%20%20%20%20password%20%3D%20input%28%22What's%20the%20password%3F%20%22%29%0A%20%20%20%20if%20password%20%3D%3D%20'swordfish'%3A%0A%20%20%20%20%20%20%20%20break%0Aprint%28'Access%20granted'%29%0A&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%22Joe%22,%22salmon%22,%22Joe%22,%22swordfish%22%5D&textReferences=false][Solution (pythontutor.com)]]
 
-
 * Non-Boolean truth values
 
 - Recall: to the computer, when used in conditions, ~0~, ~0.0~ and ~''~
@@ -313,9 +312,9 @@
 
 - Once you're done, run the program at [[https://autbor.com/fivetimeswhile/][pythontutor.com]].
 
-* NEXT Starting, stopping and stepping with ~range~
+* Starting, stopping and stepping with ~range~
 
-- The shortest documentation can be head on the IPython shell with the
+- The shortest documentation can be had on the IPython shell with the
   keyword (variable or function) ~?~
 
 - The ~range~ function ('constructor') e.g. is documented online in the
@@ -331,11 +330,23 @@
         print(i)
   #+end_src
 
+  #+RESULTS:
+  : 12
+  : 13
+  : 14
+  : 15
+
 - Counting up from 2 in steps of 2:
   #+begin_src python
     for i in range(2,10,2):
         print(i)
   #+end_src
+
+  #+RESULTS:
+  : 2
+  : 4
+  : 6
+  : 8
 
 - You can use a negative number for ~step~ to make the loop count down:
   #+begin_src python
@@ -343,8 +354,21 @@
         print(i)
   #+end_src
 
+  #+RESULTS:
+  : 5
+  : 4
+  : 3
+  : 2
+  : 1
+  : 0
+
 - What ~type~ is ~range(5)~?
-  
+  #+begin_src python :results output
+    print(type(range(5))
+  #+end_src
+
+  #+RESULTS:
+
 * Summary
 
 - Code can be executed repeatedly in a loop while their conditions

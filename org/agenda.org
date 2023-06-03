@@ -917,12 +917,12 @@ INFORMAL OPEN TOOL POLL:
 - Let me know via 'Python Chat' if anything is unclear.
 - All of these are original, first-time exercises (likely with errors).
 
-* Day 9: Importing modules
+* DONE Day 9: Importing modules
 #+attr_latex: :width 400px
 #+caption: De Dion-Bouton tricycle towing a passenger (ca. 1919)
 [[../img/import.jpg]]
 
-** TODO Review and preview (test 2 is coming soon)
+** Review and preview (test 2 is coming soon)
 
 1) What's the template for an ~elif~ statement?
    #+begin_quote
@@ -931,11 +931,13 @@ INFORMAL OPEN TOOL POLL:
    3) separator ~:~
    4) indented clause on the next line
    #+end_quote
+
 2) Does it matter when an (alternative) ~elif~ statement occurs?
    #+begin_quote
    Yes, because the conditional ~if~ statement is left when the
    condition is satisfied, and no further conditions are checked.
    #+end_quote
+
 3) What type of conditional statement is this and how many conditions
    are being tested?
    #+attr_latex: :width 400px
@@ -946,11 +948,13 @@ INFORMAL OPEN TOOL POLL:
    1. Is the ~name~ 'Alice'? - if not, check:
    2. Is the ~age~ greater than 12?
    #+end_quote
+
 4) How could you check if the input ~name~ is 'Alice' and if she is not a
    minor by ~age~?
    #+begin_example python
      if name == 'Alice' and int(age) > 18:
    #+end_example
+
 5) When is the message "Get ready to host" below printed if the
    variable ~guests~ is entered as keyboard input?
    #+begin_example python
@@ -965,15 +969,18 @@ INFORMAL OPEN TOOL POLL:
      '0'. (Empty ~''~ input or floating values raise an exception: ~int~
      can only convert strings that represent integer numbers).
    #+end_quote
-6) What type of data does a ~while~ conditions evaluate to?
+
+6) What type of data does a ~while~ condition evaluate to?
    #+begin_quote
    A Boolean value, ~True~ or ~False~
    #+end_quote
+
 7) What is the difference between ~break~ and ~continue~?
    #+begin_quote
    - ~break~ leaves the current (innermost) clause/loop
    - ~continue~ goes back to the condition for another evaluation
    #+end_quote
+
 8) The variable ~data~ is obtained as keyboard input below. When is the
    ~data~ printed?
    #+begin_src python :results output
@@ -986,6 +993,7 @@ INFORMAL OPEN TOOL POLL:
    - The ~while~ condition will remain ~True~ until anything is entered.
    - When anything but the empty string is entered, it is printed.
    #+end_quote
+
 9) What is the difference between ~range(10)~, ~range(0, 10)~, ~range(0,
    10, 1)~ and ~range(9,-1,-1) in a ~for~ loop?
    #+begin_src python
@@ -1006,6 +1014,12 @@ INFORMAL OPEN TOOL POLL:
      print()
    #+end_src
 
+   #+RESULTS:
+   : 0 1 2 3 4 5 6 7 8 9 
+   : 0 1 2 3 4 5 6 7 8 9 
+   : 0 1 2 3 4 5 6 7 8 9 
+   : 9 8 7 6 5 4 3 2 1 0
+
 10) How many Boolean operators can you use in a ~for~ loop with ~range~?
     #+begin_quote
     A ~for~ loop with ~range~ has no condition because the 'stop' condition
@@ -1015,15 +1029,30 @@ INFORMAL OPEN TOOL POLL:
     [[../img/for_while.png]]
     #+end_quote
 
-** TODO Finish ~range~, then: module ~import~, sample program
-** TODO In-class summary
+** In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
 
 - [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
 
-** TODO Homework
+- ~range~ function details: ~type~, counting up and down, ~start~, ~stop~ and
+  ~step~ (positional) parameters.
+- The Python Standard Library contains ca. 200 of the most important
+  modules for controlling the environment, like ~os~, ~sys~, ~random~, ~math~.
+- There are more than 200,000 Python packages in the PyPl (the
+  official Python Package Index) alone. By comparison: R, another
+  popular interpreted open source language, has ca. 20,000 packages.
+- Modules (aka libraries) must be imported with ~import~, individual
+  functions with ~from [module]~. Use ~sys.modules~ to check which modules
+  are imported.
+- Use ~sys.exit()~ to exit from any part of the program (not just loops).
+- Use ~random.randint(a,b)~ for random integers from [a,b]
+- Use ~os.getenv~ to check OS environment variables like ~USER~ (you).
+- Planning, implementation and extension of a simple 'guess the
+  number' game where you guess a random number drawn by the computer.
+  
+** Homework
 #+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
@@ -1055,6 +1084,7 @@ Original problem: "[[https://dmoj.ca/problem/dmopc14c5p1/pdf][Cone Drill]]"
 
 [[https://lyon.instructure.com/courses/1700/assignments/14849][See Canvas]] for bonus questions: dealing with input exceptions and
 changing the format of the output.
+
 
 
 * TODO Day 10: FUNCTIONS

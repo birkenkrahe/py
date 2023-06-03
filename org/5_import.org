@@ -19,6 +19,11 @@ details about your computer's ~os~, get ~random~ numbers and the current
     print(len(str(100000000000)))
   #+end_src
 
+  #+RESULTS:
+  : hello
+  : 5
+  : 12
+
 - Additional functions are contained in the /standard library/, which is
   a large collection of /modules/, each of which contain /methods/ or
   functions ([[https://docs.python.org/3/library/index.html][link]]).
@@ -54,6 +59,7 @@ details about your computer's ~os~, get ~random~ numbers and the current
   [[../img/py_os.png]]
 
 * Seeing what's been imported with ~sys~  
+
 - To see ALL environment variables, you can use a method inside a
   method of ~os~ and loop over two variables simultaneously:
   #+begin_src python
@@ -75,6 +81,10 @@ details about your computer's ~os~, get ~random~ numbers and the current
     print(len(sys.modules))
     print(type(sys.modules))
   #+end_src
+
+  #+RESULTS:
+  : 61
+  : <class 'dict'>
 
 * Random numbers with ~random~
 
@@ -155,7 +165,7 @@ details about your computer's ~os~, get ~random~ numbers and the current
 - Run this program in IDLE. It contains an infinite loop with no ~break~
   statement and can only be terminated by either entering 'exit', or
   by killing the process (closing IDLE).
-
+  
 * Short program: Guess the Number
 
 - We're going to bring the last few topics together in a complete
@@ -206,7 +216,10 @@ details about your computer's ~os~, get ~random~ numbers and the current
   #+caption: Flow diagram for guessTheNumber.py
   [[../img/py_guessTheNumber.png]]
 
-- Solution Python code (16 + 5 lines):
+- Solution Python code (16 + 5 lines): the ~continue~ commands are not
+  absolutely necessary for the program to work because at the end of
+  the ~if~ and ~elif~ statement, there is no other place to go but the top
+  of the infinite loop. 
   #+begin_src python :tangle ./src/guessTheNumber.py
     # import random module
     import random
