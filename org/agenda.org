@@ -1000,24 +1000,24 @@ INFORMAL OPEN TOOL POLL:
      # range(10) starts at 0 goes to 9
      for i in range(10):
          print(i,end=' ')
-     print()
+         print()
          # range(0,10) starts at 0 goes to 9
      for i in range(0,10):
          print(i,end=' ')
-     print()
+         print()
          # range(0,10,1) starts at 0 goes to 9
      for i in range(0,10):
          print(i,end=' ')
-     print()
+         print()
      for i in range(9,-1,-1):
          print(i,end=' ')
-     print()
+         print()
    #+end_src
 
    #+RESULTS:
-   : 0 1 2 3 4 5 6 7 8 9 
-   : 0 1 2 3 4 5 6 7 8 9 
-   : 0 1 2 3 4 5 6 7 8 9 
+   : 0 1 2 3 4 5 6 7 8 9
+   : 0 1 2 3 4 5 6 7 8 9
+   : 0 1 2 3 4 5 6 7 8 9
    : 9 8 7 6 5 4 3 2 1 0
 
 10) How many Boolean operators can you use in a ~for~ loop with ~range~?
@@ -1051,7 +1051,7 @@ INFORMAL OPEN TOOL POLL:
 - Use ~os.getenv~ to check OS environment variables like ~USER~ (you).
 - Planning, implementation and extension of a simple 'guess the
   number' game where you guess a random number drawn by the computer.
-  
+
 ** Homework
 #+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
@@ -1087,26 +1087,231 @@ changing the format of the output.
 
 
 
-* TODO Day 10: FUNCTIONS
-* TODO Day 11
-* TODO Day 12
-* TODO Day 13
-* TODO Day 14
+* TODO Day 10: Functions definition and writing
+#+attr_latex: :width 400px
+#+caption: Llyfrgell Genedlaethol Cymru / Claerwen Dam (1952)
+[[../img/functions.jpg]]
+
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+* TODO Day 11: Scope and exception handling
+#+attr_latex: :width 400px
+#+caption: Llyfrgell Genedlaethol Cymru / Ned and donkey (1875)
+[[../img/scope.jpg]]
+
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+* TODO Day 12: Lists, Methods, and ~NumPy~
+#+attr_latex: :width 400px
+#+caption: Llyfrgell Genedlaethol Cymru / Llanfachraeth in darkness (1957)
+[[../img/lists.jpg]]
+
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+* TODO Day 13: References and Conway's Game of Life
+#+attr_latex: :width 400px
+#+caption: Llyfrgell Genedlaethol Cymru / double wedding at Llanrhaeadr (1954)
+[[../img/gameoflife.jpg]]
+
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+* TODO Day 14: Dictionaries and the Zen of Python
+#+attr_latex: :width 400px
+#+caption: Llyfrgell Genedlaethol Cymru / Longden Bay Go-cart Racers (1953)
+[[../img/dictionary.jpg]]
+
 ** Test 3 is coming - includes Numpy (DataCamp)
 
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
 
-* TODO Day 15: APPLICATIONS
-* TODO Day 16
-* TODO Day 17
-* TODO Day 18
-* TODO Day 19
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+
+* TODO Day 15: String manipulation with ~string~
+#+attr_latex: :width 400px
+#+caption: Flanzaleys String Quartet (LOC@Flickr.com)
+[[../img/strings.jpg]]
+
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+* TODO Day 16: Pattern matching with ~RegEx~
+#+attr_latex: :width 400px
+#+caption: USAF B-25 bomber above European patchwork landscape (1940)
+[[../img/pattern.jpg]]
+
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+* TODO Day 17: File manipulation with ~shutil~
+#+attr_latex: :width 400px
+#+caption: Cottage loaves baked in an ancient oven at Llanrhaeadr-ym-Mochnant
+[[../img/oven.jpg]]
+
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+* TODO Day 18: Web scraping - ~beautiful soup~
+#+attr_latex: :width 400px
+#+caption: Photo: Sam Hood / Schoolchildren line up for soup (1934)
+[[../img/soup.jpg]]
+
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+* TODO Day 19: Spreadsheets and SQL databases
+#+attr_latex: :width 400px
+#+caption: Photo: Sam Hood / Schoolchildren line up for soup (1934)
+[[../img/spreadsheets.jpg]]
+
 ** Test 4 is coming - includes "Intermediate R"
 
-* TODO Day 20
-* TODO Day 21
-* TODO Day 22
-* TODO Day 23: Project presentations
-* TODO Day 24: Project presentations / Summary / Outlook
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+
+* TODO Day 20: Data visualization - ~matplotlib~
+#+attr_latex: :width 400px
+#+caption: Music on Water Street, St. John's, Newfoundland (Flickr.com).
+[[../img/photogenic.jpg]]
+
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+* TODO Day 21: Machine learning with ~sklearn~
+#+attr_latex: :width 400px
+#+caption: Llyfrgell Genedlaethol Cymru / Redman's hairdressers (1957)
+[[../img/hairdressers.jpg]]
+
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+* TODO Day 22: 2 project presentations
+#+attr_latex: :width 400px
+#+caption: Group, Flickr.com
+[[../img/group1.jpg]]
+
+* TODO Day 23: 2 project presentations
+#+attr_latex: :width 400px
+#+caption: Library of Virginia, family portrait.
+[[../img/group2.jpg]]
+
+* TODO Day 24: 2 project presentations/Summary/Outlook
+#+attr_latex: :width 400px
+#+caption: Whiteman group, LOC@Flickr.com
+[[../img/group3.jpg]]
+
 * Footnotes
 [fn:1]Webscraping Excel manipulation and Machine Learning are already
 part of my plan, but cybersecurity is currently not included (except

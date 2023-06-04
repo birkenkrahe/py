@@ -3,59 +3,424 @@
 #+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
 #+STARTUP: overview hideblocks indent inlineimages entitiespretty
 #+PROPERTY: header-args:python :results output :exports both :session *Python*
-* Introduction
-* Definition of a Function
-- A mini-program within a program.
-- Potential to reduce code duplication and increase readability.
+* Python Functions: Simplifying Your Code
 
-* def Statements with Parameters
-- The `def` statement defines (that is, creates) a function.
-- Example of a function with a parameter:
-  #+BEGIN_SRC python
+- 
+Functions play a crucial role in programming. They allow you to break
+down your code into smaller, reusable pieces, making it easier to
+manage and maintain. In Python, functions are defined using the ~def~
+keyword, followed by the function name and parentheses. They can have
+parameters, return values, and even optional arguments. Let's explore
+the power of functions in Python.
+
+* Definition of a Function
+
+A function is like a mini-program within a program. It is a
+self-contained block of code that performs a specific task. By
+encapsulating a task within a function, you can reuse that
+functionality multiple times without rewriting the code. Functions
+also enhance code readability by providing a logical structure and
+meaningful names.
+
+* ~def~ Statements with Parameters
+
+Parameters are inputs that you can pass to a function. They allow you
+to customize the behavior of the function based on the values you
+provide. The ~def~ statement is used to define a function, followed by
+the function name and parentheses that can contain zero or more
+parameters. Let's look at an example:
+
+#+begin_src python
   def hello(name):
       print('Hello, ' + name)
-  #+END_SRC
-  
-* Return Values and return Statements
-- The `return` statement causes the function to exit and hand back a value to its caller.
-- Example of a function with a return statement:
-  #+BEGIN_SRC python
+#+end_src
+
+In this example, the function ~hello~ takes a parameter called
+~name~. When the function is called with a name, it prints a greeting
+message using that name.
+
+* Practice defining functions:
+
+Exercise 1:
+- Write a function called ~calculate_area~ that takes two parameters,
+  length and width, and calculates the area of a rectangle. The
+  formula to calculate the area of a rectangle is area = length *
+  width. The function should return the calculated area.
+
+Exercise 2:
+- Write a function called is_even that takes a single parameter,
+  number, and checks if the number is even. If the number is even, the
+  function should return True; otherwise, it should return False.
+
+Here's an example solution to both exercises:
+#+begin_src python
+  # Exercise 1
+  def calculate_area(length, width):
+      area = length * width
+      return area
+
+  # Exercise 2
+  def is_even(number):
+      if number % 2 == 0:
+          return True
+      else:
+          return False
+#+end_src
+
+You can test these functions by calling them with different arguments:
+#+begin_src python
+  # Testing Exercise 1
+  print(calculate_area(4, 5))  # Output: 20
+  print(calculate_area(7, 3))  # Output: 21
+
+  # Testing Exercise 2
+  print(is_even(4))  # Output: True
+  print(is_even(7))  # Output: False
+#+end_src
+
+* Return Values and ~return~ Statements
+
+Functions can also provide an output or return value using the ~return~
+statement. The ~return~ statement causes the function to exit and
+returns a value to its caller. Here's an example:
+
+#+begin_src python
   def getAnswer(answerNumber):
       if answerNumber == 42:
           return 'The meaning of life, the universe, and everything.'
-  #+END_SRC
+#+end_src
 
-* The None Value
-- In Python, there is a value called `None`, which represents the absence of a value.
-- `None` is the only value of the `NoneType` data type.
+In this case, the ~getAnswer~ function takes an ~answerNumber~
+parameter. If the parameter is equal to 42, the function returns the
+corresponding string. Otherwise, it doesn't explicitly return
+anything, which is equivalent to returning ~None~.
+
+* Practice using return values and statements
+
+Exercise 1:
+
+- Write a function called get_average that takes a list of numbers as
+  a parameter and returns the average of those numbers. The average is
+  calculated by summing all the numbers in the list and dividing by
+  the total count of numbers.
+
+Exercise 2:
+
+- Write a function called is_prime that takes a single positive
+  integer as a parameter and returns True if the number is prime, and
+  False otherwise. A prime number is a number greater than 1 that is
+  only divisible by 1 and itself.
+
+Here's an example solution to both exercises:
+#+begin_src python
+  # Exercise 1
+  def get_average(numbers):
+      total = sum(numbers)
+      count = len(numbers)
+      average = total / count
+      return average
+
+  # Exercise 2
+  def is_prime(number):
+      if number < 2:
+          return False
+      for i in range(2, int(number**0.5) + 1):
+          if number % i == 0:
+              return False
+      return True
+#+end_src
+
+You can test these functions by calling them with different arguments:
+#+begin_src python
+  # Testing Exercise 1
+  print(get_average([2, 4, 6, 8, 10]))  # Output: 6.0
+  print(get_average([1, 3, 5, 7, 9]))  # Output: 5.0
+
+  # Testing Exercise 2
+  print(is_prime(7))  # Output: True
+  print(is_prime(10))  # Output: False
+#+end_src
+
+* The ~None~ Value
+
+In Python, ~None~ is a special value that represents the absence of a
+value. It is commonly used to indicate that a function or operation
+does not produce any meaningful result. ~None~ is the only value of the
+~NoneType~ data type. You can use it as a placeholder or to indicate the
+lack of a return value.
+
+* Practice the ~None~ value
+
+Exercise 1:
+
+- Write a function called find_max that takes a list of numbers as a
+  parameter and returns the maximum value in the list. If the list is
+  empty, the function should return None.
+
+Exercise 2:
+
+- Write a function called check_divisibility that takes two integers,
+  num and divisor, as parameters. The function should check if num is
+  divisible by divisor without a remainder. If it is divisible, the
+  function should return True; otherwise, it should return None.
+
+Here's an example solution to both exercises:
+#+begin_src python
+  # Exercise 1
+  def find_max(numbers):
+      if len(numbers) == 0:
+          return None
+      max_num = numbers[0]
+      for num in numbers:
+          if num > max_num:
+              max_num = num
+      return max_num
+
+  # Exercise 2
+  def check_divisibility(num, divisor):
+      if num % divisor == 0:
+          return True
+      else:
+          return None
+#+end_src
+
+You can test these functions by calling them with different arguments:
+#+begin_src python
+  # Testing Exercise 1
+  print(find_max([2, 4, 6, 8, 10]))  # Output: 10
+  print(find_max([]))  # Output: None
+
+  # Testing Exercise 2
+  print(check_divisibility(10, 5))  # Output: True
+  print(check_divisibility(10, 7))  # Output: None
+#+end_src
 
 * Keyword Arguments and ~print()~
-- Keyword arguments are often used for optional parameters.
-- Example with `print()` function:
-  #+BEGIN_SRC python
+
+Keyword arguments allow you to specify optional parameters when
+calling a function. One common function where keyword arguments are
+used is the ~print()~ function. Let's see an example:
+
+#+begin_src python
   print('Hello', end='')
   print('World')
-  #+END_SRC
-- The output will be `HelloWorld`.
+#+end_src
+
+The ~print()~ function has an optional parameter called ~end~, which
+determines the string to append at the end of the printed output. By
+default, ~end~ is set to ~'\n'~ (newline character). In the example above,
+we override the default value of ~end~ by passing an empty string,
+resulting in the output ~HelloWorld~ without any space or newline
+between the words.
+
+* Practice keyword arguments and ~print~
+
+Exercise 1:
+
+- Write a function called create_sentence that takes three parameters:
+  subject, verb, and object. The function should print a sentence
+  using these parameters, with a space between each word. Use keyword
+  arguments to make the order of the parameters flexible.
+
+Exercise 2:
+
+- Write a function called print_person_info that takes four
+  parameters: name, age, city, and country. The function should print
+  a formatted message that includes the person's information. Use
+  keyword arguments to specify default values for city and country.
+
+Here's an example solution to both exercises:
+#+begin_src python
+  # Exercise 1
+  def create_sentence(subject, verb, object):
+      print(subject, verb, object)
+
+  # Exercise 2
+  def print_person_info(name, age, city="Unknown", country="Unknown"):
+      print(f"Name: {name}, Age: {age}, City: {city}, Country: {country}")
+#+end_src
+
+You can test these functions by calling them with different arguments:
+#+begin_src python
+  # Testing Exercise 1
+  create_sentence(subject="I", verb="love", object="Python")  # Output: I love Python
+  create_sentence(object="programming", subject="I", verb="enjoy")  # Output: I enjoy programming
+
+  # Testing Exercise 2
+  print_person_info("Alice", 25, city="New York", country="USA")
+  # Output: Name: Alice, Age: 25, City: New York, Country: USA
+
+  print_person_info("Bob", 30)
+  # Output: Name: Bob, Age: 30, City: Unknown, Country: Unknown
+#+end_src
 
 * Local and Global Scope
-- Parameters and variables that are assigned in a called function are said to exist in that function’s local scope.
-- Variables that are assigned outside all functions are said to exist in the global scope.
 
-* The ~global~ statement
-* Exception Handling
-- An error that happens inside a try block will cause execution to immediately move to the code in the except block.
-- Example of exception handling:
-  #+BEGIN_SRC python
-  def spam(divideBy):
-      try:
-          return 42 / divideBy
-      except ZeroDivisionError:
-          print('Error: Invalid argument.')
-  #+END_SRC
+Python functions have their own local scope, which means variables
+defined within the function are only accessible within that
+function. Parameters and variables assigned within a function are said
+to exist in the local scope. Conversely, variables defined outside all
+functions have a global scope and can be accessed from any part of the
+program. It's important to understand the concept of scope to avoid
+naming conflicts and understand variable visibility within your code.
 
-* A Short Program: Zigzag
-* Summary
-* Glossary
-* References
+* Practice local and global scope
+
+Exercise 1:
+
+- Write a function called calculate_sum that takes two parameters, a
+  and b. Inside the function, declare a local variable called result
+  and assign it the sum of a and b. Print the value of result inside
+  the function. Then, outside the function, print the value of
+  result. What do you observe? Explain the concept of local scope.
+
+Exercise 2:
+
+- Write a function called modify_global_variable that takes no
+  parameters. Inside the function, declare a global variable called
+  count and assign it an initial value of 0. Increment the value of
+  count by 1. Print the value of count inside the function. Then,
+  outside the function, print the value of count. What do you observe?
+  Explain the concept of global scope.
+
+Here's an example solution to both exercises:
+#+begin_src python
+  # Exercise 1
+  def calculate_sum(a, b):
+      result = a + b
+      print("Inside the function:", result)
+
+  calculate_sum(2, 3)  # Output: Inside the function: 5
+  # print("Outside the function:", result)
+  # Uncommenting this line will result in an error
+
+  # In this exercise, when we try to access the variable `result` outside the function,
+  # it results in a NameError. This is because `result` is defined in the local scope of the function
+  # and is not accessible outside of it.
+
+  # Exercise 2
+  def modify_global_variable():
+      global count
+      count = 0
+      count += 1
+      print("Inside the function:", count)
+
+  modify_global_variable()  # Output: Inside the function: 1
+  print("Outside the function:", count)  # Output: Outside the function: 1
+
+  # In this exercise, we declare `count` as a global variable inside the function
+  # using the `global` keyword. This allows us to modify the global variable within the function,
+  # and the changes made to `count` are reflected outside the function as well.
+#+end_src
+
+- In exercise 1, you'll notice that trying to access the local
+  variable result outside the function results in a NameError. This
+  demonstrates that variables defined within a function are said to
+  exist in the local scope and are only accessible within that
+  function.
+
+- In exercise 2, by declaring count as a global variable inside the
+  function, we are able to modify the global variable within the
+  function and the changes persist outside the function. This
+  illustrates the concept of global scope, where variables defined
+  outside all functions can be accessed from any part of the program.
+
+* The global statement
+
+In Python, variables declared outside a function are considered global
+by default. However, if you want to modify a global variable within a
+function, you need to explicitly declare it using the ~global~
+statement.
+
+The ~global~ statement is used to indicate that a variable is a global
+variable, even if it is assigned a value within a function. This
+allows you to modify the global variable's value from within the
+function's local scope.
+
+Here's an example:
+
+#+begin_src python
+count = 0
+
+def increment():
+    global count
+    count += 1
+
+increment()
+print(count)  ; Output: 1
+#+end_src
+
+In this example, we have a global variable ~count~ initialized with a
+value of 0. The ~increment~ function uses the ~global~ statement to
+indicate that ~count~ is a global variable, not a local one. It
+increments the value of ~count~ by 1. When we call the ~increment~
+function and print the value of ~count~, it has been modified to 1.
+
+Using the ~global~ statement allows you to access and modify global
+variables within a function. However, it's generally recommended to
+minimize the use of global variables and favor passing values as
+function parameters and returning results instead. This helps in
+maintaining code clarity and avoiding unintended side effects.
+
+* Practice the ~global~ statement
+
+Exercise 1:
+
+- Write a function called increment_count that takes no
+  parameters. Inside the function, declare a global variable called
+  count and assign it an initial value of 0. Increment the value of
+  count by 1. Print the value of count inside the function. Then, call
+  the function multiple times to observe how the global statement
+  affects the variable.
+
+Exercise 2:
+
+- Write a function called modify_global_list that takes an element as
+  a parameter. Inside the function, declare a global list called
+  my_list and initialize it with some elements. Append the given
+  element to my_list and print the updated list. Then, call the
+  function multiple times with different elements to observe how the
+  global statement allows modifications to the global list.
+
+Here's an example solution to both exercises:
+#+begin_src python
+  # Exercise 1
+  def increment_count():
+      global count
+      count = 0
+      count += 1
+      print("Inside the function:", count)
+
+  increment_count()  # Output: Inside the function: 1
+  increment_count()  # Output: Inside the function: 1 (count is reset to 0 every time)
+
+  # In this exercise, we use the `global` statement to declare `count` as a global variable
+  # inside the function. This allows us to modify the global variable `count` within the function.
+  # However, note that each time the function is called, `count` is reset to 0, since it is declared inside the function.
+
+  # Exercise 2
+  def modify_global_list(element):
+      global my_list
+      my_list.append(element)
+      print("Updated list:", my_list)
+
+  my_list = [1, 2, 3]
+  modify_global_list(4)  # Output: Updated list: [1, 2, 3, 4]
+  modify_global_list(5)  # Output: Updated list: [1, 2, 3, 4, 5]
+
+  # In this exercise, we use the `global` statement to declare `my_list` as a global list
+  # inside the function. This allows us to modify the global list `my_list` by appending elements to it.
+  # Each time the function is called, the given element is appended to the global list and the updated list is printed.
+#+end_src
+
+* Conclusion
+
+Functions are an essential concept in Python programming. They provide
+a way to encapsulate reusable code blocks, accept inputs through
+parameters, and return outputs using return statements. Understanding
+how to define and use functions effectively will enhance your code
+organization, reusability, and overall readability. With the knowledge
+gained from this lecture, you can start harnessing the power of
+functions in your Python projects.
+
 
