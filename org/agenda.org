@@ -1092,6 +1092,10 @@ changing the format of the output.
 #+caption: Llyfrgell Genedlaethol Cymru / Claerwen Dam (1952)
 [[../img/functions.jpg]]
 
+** [[https://lyon.instructure.com/courses/1700/assignments/11921?display=full_width][Review Test 1: Any Questions? Complaints?]]
+
+** Lecture & Practice: Python functions I
+
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
@@ -1103,6 +1107,8 @@ changing the format of the output.
 #+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
+
+
 
 * TODO Day 11: Scope and exception handling
 #+attr_latex: :width 400px
@@ -1160,6 +1166,7 @@ changing the format of the output.
 #+caption: Llyfrgell Genedlaethol Cymru / Longden Bay Go-cart Racers (1953)
 [[../img/dictionary.jpg]]
 
+** No class on Mon 15-June: work on your project instead
 ** Test 3 is coming - includes Numpy (DataCamp)
 
 ** TODO In-class summary
