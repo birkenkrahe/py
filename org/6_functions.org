@@ -144,11 +144,6 @@ What are functions?
             result(2)
   #+end_src
 
-  #+RESULTS:
-  : Parameter: 2
-  : Parameter: 1
-  : Parameter: 0
-
 * TODO Practice defining functions without parameters:
 
 1) In Colab, write a function ~count~ that takes a string ~str~ as an
@@ -176,7 +171,7 @@ What are functions?
      modern editor, the syntax highlighting will tip you off.
    #+end_quote
 
-5) Solution ([[https://pythontutor.com/visualize.html#code=%23%20function%20def%0Adef%20count%20%28str%29%3A%0A%20%20%20%20%20print%28str%29%0A%20%20%20%20%20print%28str.count%28''%29-1%29%0A%23%20function%20call%0Acount%28str%3D'abcd'%29%0Acount%28''%29%0Aprint%28str%28'0'%29%29%0A&cumulative=false&curInstr=12&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false][pythontutor with poor naming practice]]):
+5) Solution ([[https://pythontutor.com/visualize.html#code=%23%20function%20def%0Adef%20count%20%28str%29%3A%0A%20%20%20%20%20print%28str%29%0A%20%20%20%20%20print%28str.count%28''%29-1%29%0A%23%20function%20call%0Acount%28str%3D'abcd'%29%0Acount%28''%29%0Aprint%28str%28'0'%29%29%0A&cumulative=false&curInstr=12&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false][here in pythontutor with poor naming practice]]):
    #+begin_src python
      # function def
      def cnt (string):
@@ -188,13 +183,6 @@ What are functions?
      cnt(string='a b c d') # keyword parameter call
      print('abcd'.count('')-1)  # standard Python `str.count` function
    #+end_src
-
-   #+RESULTS:
-   : 1
-   : 4
-   : 7
-   : 7
-   : 4
 
 * Return Values and ~return~ Statements
 
@@ -221,9 +209,10 @@ What are functions?
 
 - Let's [[https://pythontutor.com/visualize.html#code=def%20getAnswer%28answerNumber%29%3A%0A%20%20%20%20if%20answerNumber%20%3D%3D%2042%3A%0A%20%20%20%20%20%20%20%20return%20'The%20meaning%20of%20life,%20the%20universe,%20and%20everything.'%0AgetAnswer%2842%29%0AgetAnswer%2840%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false][check this out in pythontutor]].
 
-* Extended example: Magic 8 Ball
+* Extended example: 'Magic 8 Ball'
 
-- Enter this code in Colab, then run it a few times ([[https://pythontutor.com/visualize.html#code=import%20random%0A%0Adef%20getAnswer%28answerNumber%29%3A%0A%20%20%20%20if%20answerNumber%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20'It%20is%20certain'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%202%3A%0A%20%20%20%20%20%20%20%20return%20'It%20is%20decidedly%20so'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%203%3A%0A%20%20%20%20%20%20%20%20return%20'Yes'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%204%3A%0A%20%20%20%20%20%20%20%20return%20'Reply%20hazy%20try%20again'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%205%3A%0A%20%20%20%20%20%20%20%20return%20'Ask%20again%20later'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%206%3A%0A%20%20%20%20%20%20%20%20return%20'Concentrate%20and%20ask%20again'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%207%3A%0A%20%20%20%20%20%20%20%20return%20'My%20reply%20is%20no'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%208%3A%0A%20%20%20%20%20%20%20%20return%20'Outlook%20not%20so%20good'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%209%3A%0A%20%20%20%20%20%20%20%20return%20'Very%20doubtful'%0A%0Ar%20%3D%20random.randint%281,%209%29%0Afortune%20%3D%20getAnswer%28r%29%0Aprint%28fortune%29%0AgetAnswer%2810%29&cumulative=false&curInstr=27&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false][pythontutor]]):
+- Enter this code in Colab (without comments), then run it a few times
+  ([[https://pythontutor.com/visualize.html#code=import%20random%0A%0Adef%20getAnswer%28answerNumber%29%3A%0A%20%20%20%20if%20answerNumber%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20'It%20is%20certain'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%202%3A%0A%20%20%20%20%20%20%20%20return%20'It%20is%20decidedly%20so'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%203%3A%0A%20%20%20%20%20%20%20%20return%20'Yes'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%204%3A%0A%20%20%20%20%20%20%20%20return%20'Reply%20hazy%20try%20again'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%205%3A%0A%20%20%20%20%20%20%20%20return%20'Ask%20again%20later'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%206%3A%0A%20%20%20%20%20%20%20%20return%20'Concentrate%20and%20ask%20again'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%207%3A%0A%20%20%20%20%20%20%20%20return%20'My%20reply%20is%20no'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%208%3A%0A%20%20%20%20%20%20%20%20return%20'Outlook%20not%20so%20good'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%209%3A%0A%20%20%20%20%20%20%20%20return%20'Very%20doubtful'%0A%0Ar%20%3D%20random.randint%281,%209%29%0Afortune%20%3D%20getAnswer%28r%29%0Aprint%28fortune%29%0AgetAnswer%2810%29&cumulative=false&curInstr=27&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false][pythontutor]]):
   #+begin_src python
     import random                  #1
 
@@ -260,8 +249,9 @@ What are functions?
   5) ~print~ the ~fortune~.
   6) When calling a value outside of [1,9], ~None~ is ~return~ value.
 
-* TODO Practice using return values and statements
+- Introducing a ~list~ will allow us to shrink this script by a lot.
 
+* TODO Practice using return values and statements
 ** Calculate area of a rectangle
 
 - Write a function called ~calculate_area~ that takes two parameters,
@@ -302,7 +292,7 @@ What are functions?
   no ~return~ statement.
 
 - This is similar to how a ~while~ or ~for~ loop implicitly ends with a
-  ~continue~ statement.
+  ~continue~ statement (adding it makes the code more readable).
 
 - Also, using ~return~ without a return value, returns ~None~. Show this!
   #+begin_src python
@@ -320,7 +310,8 @@ What are functions?
   empty, the function should return ~None~.
 
 - Tip: you can use the built-in function ~max~ to identify the maximum
-  number in a Python list, or you can devise your own algorithm.
+  number in a Python list, or you can devise your own algorithm
+  (home bonus assignment).
 
 - Test the function by calling it with these sample arguments:
   #+begin_example python
@@ -345,154 +336,205 @@ What are functions?
     print(check_divisibility(10, 7))  # Output: None
   #+end_example
 
+* Keyword Arguments and ~print()~
 
-* NEXT Keyword Arguments and ~print()~
+- Arguments are either positional arguments or keyword arguments
 
-Keyword arguments allow you to specify optional parameters when
-calling a function. One common function where keyword arguments are
-used is the ~print()~ function. Let's see an example:
+- Positional arguments are identified by their position only
 
-#+begin_src python
-  print('Hello', end='')
-  print('World')
-#+end_src
+- Keyword arguments can be assigned default values
 
-The ~print()~ function has an optional parameter called ~end~, which
-determines the string to append at the end of the printed output. By
-default, ~end~ is set to ~'\n'~ (newline character). In the example above,
-we override the default value of ~end~ by passing an empty string,
-resulting in the output ~HelloWorld~ without any space or newline
-between the words.
-
-* TODO Practice keyword arguments and ~print~
-
-Exercise 1:
-
-- Write a function called create_sentence that takes three parameters:
-  subject, verb, and object. The function should print a sentence
-  using these parameters, with a space between each word. Use keyword
-  arguments to make the order of the parameters flexible.
-
-Exercise 2:
-
-- Write a function called print_person_info that takes four
-  parameters: name, age, city, and country. The function should print
-  a formatted message that includes the person's information. Use
-  keyword arguments to specify default values for city and country.
-
-Here's an example solution to both exercises:
-#+begin_src python
-  # Exercise 1
-  def create_sentence(subject, verb, object):
-      print(subject, verb, object)
-
-  # Exercise 2
-  def print_person_info(name, age, city="Unknown", country="Unknown"):
-      print(f"Name: {name}, Age: {age}, City: {city}, Country: {country}")
-#+end_src
-
-You can test these functions by calling them with different arguments:
-#+begin_src python
-  # Testing Exercise 1
-  create_sentence(subject="I", verb="love", object="Python")  # Output: I love Python
-  create_sentence(object="programming", subject="I", verb="enjoy")  # Output: I enjoy programming
-
-  # Testing Exercise 2
-  print_person_info("Alice", 25, city="New York", country="USA")
-  # Output: Name: Alice, Age: 25, City: New York, Country: USA
-
-  print_person_info("Bob", 30)
-  # Output: Name: Bob, Age: 30, City: Unknown, Country: Unknown
-#+end_src
-
-* Local and Global Scope
-
-Python functions have their own local scope, which means variables
-defined within the function are only accessible within that
-function. Parameters and variables assigned within a function are said
-to exist in the local scope. Conversely, variables defined outside all
-functions have a global scope and can be accessed from any part of the
-program. It's important to understand the concept of scope to avoid
-naming conflicts and understand variable visibility within your code.
-
-- Example 3: can you define a function within another function?
+- The ~print~ function is an example:
   #+begin_src python
-    # function definition
-    def helloWorld():
-        print('Hello, world!')
-        def hello():
-            return print('hello again')
-        hello()
-        # function call
-    helloWorld()
+    print('Hello', end='')
+    print('World')
   #+end_src
 
   #+RESULTS:
-  : Hello, world!
-  : hello again
+  : HelloWorld
 
-* Practice local and global scope
+- Which other keyword parameters does ~print~ have?  
+  #+begin_src python
+    print(help(print))
+  #+end_src  
 
-Exercise 1:
+  #+RESULTS:
+  #+begin_example
+  Help on built-in function print in module builtins:
 
-- Write a function called calculate_sum that takes two parameters, a
-  and b. Inside the function, declare a local variable called result
-  and assign it the sum of a and b. Print the value of result inside
-  the function. Then, outside the function, print the value of
-  result. What do you observe? Explain the concept of local scope.
+  print(*args, sep=' ', end='\n', file=None, flush=False)
+      Prints the values to a stream, or to sys.stdout by default.
 
-Exercise 2:
+      sep
+        string inserted between values, default a space.
+      end
+        string appended after the last value, default a newline.
+      file
+        a file-like object (stream); defaults to the current sys.stdout.
+      flush
+        whether to forcibly flush the stream.
 
-- Write a function called modify_global_variable that takes no
-  parameters. Inside the function, declare a global variable called
-  count and assign it an initial value of 0. Increment the value of
-  count by 1. Print the value of count inside the function. Then,
-  outside the function, print the value of count. What do you observe?
-  Explain the concept of global scope.
+  None
+  #+end_example
+  
+- Print ~Hello, World Hello, World~ using only 'Hello' and 'World':
+  #+begin_src python
+    print('Hello', 'World', end=' ', sep=', ')
+    print('Hello', 'World', end='', sep=', ')    
+  #+end_src
 
-Here's an example solution to both exercises:
-#+begin_src python
-  # Exercise 1
-  def calculate_sum(a, b):
-      result = a + b
-      print("Inside the function:", result)
+- Print 'Hello, World!' to a file named ~helloworld.txt~, then check if
+  the file was created with 'magic' IPython commands ~%ls~ and ~%cat~:
+  #+begin_example python
+    # tell computer to write stdout to a file f
+    with open('helloworld.txt', 'w') as f:
+        print('Hello, World!', file=f)
 
-  calculate_sum(2, 3)  # Output: Inside the function: 5
-  # print("Outside the function:", result)
-  # Uncommenting this line will result in an error
+    # in IPython, list file and view content
+    %ls -l helloworld.txt 
+    %cat helloworld.txt
+  #+end_example
 
-  # In this exercise, when we try to access the variable `result` outside the function,
-  # it results in a NameError. This is because `result` is defined in the local scope of the function
-  # and is not accessible outside of it.
+- The ~flush~ keyword parameter default is ~False~, which means that the
+  output is buffered (held) before being written to stdout.
 
-  # Exercise 2
-  def modify_global_variable():
-      global count
-      count = 0
-      count += 1
-      print("Inside the function:", count)
+- When you want logging or status messages during run-time to be
+  directly visible, ~flush=True~ might be useful:
+  #+begin_example python
+    import time
 
-  modify_global_variable()  # Output: Inside the function: 1
-  print("Outside the function:", count)  # Output: Outside the function: 1
+    for i in range(5):
+        print(i, end=' ', flush=True)  # write i immediately
+        time.sleep(1) # pause for 1 second
+  #+end_example
 
-  # In this exercise, we declare `count` as a global variable inside the function
-  # using the `global` keyword. This allows us to modify the global variable within the function,
-  # and the changes made to `count` are reflected outside the function as well.
-#+end_src
+- It makes sense to spend some time experimenting with the keyword
+  parameters of important built-in functions that you use a lot.
 
-- In exercise 1, you'll notice that trying to access the local
-  variable result outside the function results in a NameError. This
-  demonstrates that variables defined within a function are said to
-  exist in the local scope and are only accessible within that
-  function.
+- You can add your own keyword arguments to the functions as well
+  (after learning more about lists and dictionaries).
 
-- In exercise 2, by declaring count as a global variable inside the
-  function, we are able to modify the global variable within the
-  function and the changes persist outside the function. This
-  illustrates the concept of global scope, where variables defined
-  outside all functions can be accessed from any part of the program.
+* The Call Stack
 
-* The global statement
+- A conversation could be called 'stack-like' if the current topic is
+  always at the top of the stack structure:
+  #+attr_latex: :width 400px
+  #+caption: Conversation as call stack
+  [[../img/6_stack.png]]
+
+- Similarly, Python remembers which line of your script called the
+  function and will return there when it hits a ~return~ statement.
+
+- If that function called other functions, it would return to those
+  functions first before returning to the original function call.
+
+- Check out this program ([[https://autbor.com/abcdcallstack/][autbor.com/abcdcallstack/]]):
+  #+begin_src python
+    def a():
+        print('a starts')
+        b()
+        d()
+        print('a returns')
+
+    def b():
+        print('b starts')
+        c()
+        print('b returns')
+
+    def c():
+        print('c starts')
+        print('c returns')
+
+    def d():
+        print('d starts')
+        print('d returns')
+
+    # function call
+    a()                
+  #+end_src
+
+  #+RESULTS:
+  : a starts
+  : b starts
+  : c starts
+  : c returns
+  : b returns
+  : d starts
+  : d returns
+  : a returns
+
+- The stack picture looks like this:
+  #+attr_latex: :width 400px
+  #+caption: abcd call stack
+  [[../img/6_abcdstack.png]]
+
+- Frame objects are only added and removed from the top of the stack.
+
+- The top of the stack is which function is currently being executed.
+
+* Local and Global Scope
+
+- Variables that are assigned in functions are in /local scope/ - they
+  are only known (and can be used only) inside the function.
+
+- Variables that are assigned outside of any function are in /global
+  scope/ - they are known (and can be used) anywhere in the script.
+
+- A variable must be either local or global in scope.
+
+- Scopes are like containers: When a scope is destroyed, all the
+  values stored in the scope's variables are forgotten:
+  1) When a function call is ended, local scope is destroyed.
+  2) When a program is finished, global scope is destroyed.
+
+- Why is this important?
+  1) Code in global scope cannot use local variables
+  2) Code in local scope can use global variables
+  3) You can use the same name for variables in different scopes
+  4) This narrows the number of lines that could cause a bug.
+
+* Local and global variables with the same name
+
+- Check out this example (in the [[https://autbor.com/localglobalsamename/][pythontutor]] you can see the frames):
+  how many variables called ~eggs~ are there?
+  #+begin_src python
+    def spam():
+        eggs = 'spam local'
+        print(eggs) # prints 'spam local'
+
+    def bacon():
+        eggs = 'bacon local'
+        spam()   # call spam
+        print(eggs)  # prints 'bacon local'
+
+    eggs = 'global'  # global `eggs`
+    bacon()          # local `eggs` in bacon() and spam()
+    print(eggs)      # global `eggs`
+  #+end_src
+
+- Analyze this: which printout do you expect - will this work?
+  #+begin_src python
+    # function definition
+    def hello1():
+        print('Hello, from hello1()')
+        def hello2():
+            return print('hello from hello2()')
+        hello2()
+
+    # function call
+    hello1()
+    hello2()
+  #+end_src
+
+* TODO Practice local scope
+
+- Write a function called ~add~ that takes two parameters, ~x~ and
+  ~y~. Inside the function, declare a local variable called ~z~ and assign
+  it the sum of ~x~ and ~y~. Print the value of ~z~ inside the
+  function. Then, outside the function, print the value of
+  ~z~. What do you observe? Explain the concept of local scope.
+
+* IN PROGRESS The global statement
 
 In Python, variables declared outside a function are considered global
 by default. However, if you want to modify a global variable within a
@@ -529,66 +571,21 @@ minimize the use of global variables and favor passing values as
 function parameters and returning results instead. This helps in
 maintaining code clarity and avoiding unintended side effects.
 
-* Practice the ~global~ statement
+* TODO Practice the ~global~ statement
+* TODO Exception handling
+* TODO Short program: Zigzag
+* Summary
 
-Exercise 1:
-
-- Write a function called increment_count that takes no
-  parameters. Inside the function, declare a global variable called
-  count and assign it an initial value of 0. Increment the value of
-  count by 1. Print the value of count inside the function. Then, call
-  the function multiple times to observe how the global statement
-  affects the variable.
-
-Exercise 2:
-
-- Write a function called modify_global_list that takes an element as
-  a parameter. Inside the function, declare a global list called
-  my_list and initialize it with some elements. Append the given
-  element to my_list and print the updated list. Then, call the
-  function multiple times with different elements to observe how the
-  global statement allows modifications to the global list.
-
-Here's an example solution to both exercises:
-#+begin_src python
-  # Exercise 1
-  def increment_count():
-      global count
-      count = 0
-      count += 1
-      print("Inside the function:", count)
-
-  increment_count()  # Output: Inside the function: 1
-  increment_count()  # Output: Inside the function: 1 (count is reset to 0 every time)
-
-  # In this exercise, we use the `global` statement to declare `count` as a global variable
-  # inside the function. This allows us to modify the global variable `count` within the function.
-  # However, note that each time the function is called, `count` is reset to 0, since it is declared inside the function.
-
-  # Exercise 2
-  def modify_global_list(element):
-      global my_list
-      my_list.append(element)
-      print("Updated list:", my_list)
-
-  my_list = [1, 2, 3]
-  modify_global_list(4)  # Output: Updated list: [1, 2, 3, 4]
-  modify_global_list(5)  # Output: Updated list: [1, 2, 3, 4, 5]
-
-  # In this exercise, we use the `global` statement to declare `my_list` as a global list
-  # inside the function. This allows us to modify the global list `my_list` by appending elements to it.
-  # Each time the function is called, the given element is appended to the global list and the updated list is printed.
-#+end_src
-
-* Conclusion
-
-Functions are an essential concept in Python programming. They provide
-a way to encapsulate reusable code blocks, accept inputs through
-parameters, and return outputs using return statements. Understanding
-how to define and use functions effectively will enhance your code
-organization, reusability, and overall readability. With the knowledge
-gained from this lecture, you can start harnessing the power of
-functions in your Python projects.
+- Functions provide a way to encapsulate reusable code blocks, accept
+  inputs through parameters, and return outputs using return
+  statements.
+- Understanding how to define and use functions effectively will
+  enhance your code organization, reusability, and overall
+  readability.
+- Local and global scope helps you encapsulate and isolate values for
+  program writing, testing and debugging.
+- Exception handling statements run code when a specific error has
+  been detected to make your programs more resilient to common errors.
 
 * IN PROGRESS Glossary
 
@@ -601,6 +598,13 @@ functions in your Python projects.
 | Keyword parameter    | Paramater optionally called with a name         |
 | Positional parameter | Parameter called with position only             |
 | Recursive function   | Function that calls itself                      |
+| ~None~                 | Value that indicates a missing value            |
+| Return value         | Value that is returned by a function            |
+| Positional argument  | Value in function call for positional parameter |
+| Keyword argument     | Value in function call for keyword parameter    |
+| Local scope          | Variables known only in functions               |
+| Global scope         | Variables known everywhere in the script        |
+|                      |                                                 |
 
 * Footnotes
 
