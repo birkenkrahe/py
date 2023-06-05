@@ -1087,14 +1087,19 @@ changing the format of the output.
 
 
 
-* TODO Day 10: Functions definition and writing
+* TODO Day 10: Functions
 #+attr_latex: :width 400px
 #+caption: Llyfrgell Genedlaethol Cymru / Claerwen Dam (1952)
 [[../img/functions.jpg]]
 
 ** [[https://lyon.instructure.com/courses/1700/assignments/11921?display=full_width][Review Test 1: Any Questions? Complaints?]]
 
-** Lecture & Practice: Python functions I
+- Here are the results of test 1 visualized using Python ([[https://gist.github.com/birkenkrahe/4ff216d053a639c7773e607952aeec19][GitHub]])
+  using ~matplotlib.pyplot~, and ~pandas~' ~Series~ and ~DataFrame.describe~
+  #+attr_latex: :width 400px
+  #+caption: Histogram and boxplot of the results of test 1
+  [[../img/test1.png]]
+- Stats and visualization are much easier to do in R ([[https://github.com/birkenkrahe/grades/blob/main/summer23.org][GitHub]])
 
 ** TODO In-class summary
 #+attr_latex: :width 300px
@@ -1108,6 +1113,25 @@ changing the format of the output.
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
+*** Maximum number in a ~list~
+
+- *Write* a function called ~find_max~ that takes a list of numbers as a
+  parameter and returns the maximum value in the list. If the list is
+  empty, the function should return ~None~.
+
+- You did this in class using the built-in ~max~ function. For this
+  assignment, come up with your own algorithm and *do not use* ~max~.
+
+- *Test* the function by calling it with these sample arguments:
+  #+begin_example python
+    print(find_max([2, 4, 6, 8, 10]))  # Output: 10
+    print(find_max([]))  # Output: None
+  #+end_example
+
+- *Submit* the link to your appropriately documented Colab file. This
+  means text cells for problem description, script solution and
+  testing suite, and references ([[https://gist.github.com/birkenkrahe/1b15fe6b573d22c5af08dc9584cfc086][like here]]), with headlines and code
+  highlighted.
 
 
 * TODO Day 11: Scope and exception handling
