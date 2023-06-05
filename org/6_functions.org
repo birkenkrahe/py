@@ -4,198 +4,349 @@
 #+STARTUP: overview hideblocks indent inlineimages entitiespretty
 #+PROPERTY: header-args:python :results output :exports both :session *Python*
 * Python Functions: Simplifying Your Code
+#+attr_latex: :width 400px
+#+caption: Llyfrgell Genedlaethol Cymru / Claerwen Dam (1952)
+[[../img/functions.jpg]]
 
-- 
-Functions play a crucial role in programming. They allow you to break
-down your code into smaller, reusable pieces, making it easier to
-manage and maintain. In Python, functions are defined using the ~def~
-keyword, followed by the function name and parentheses. They can have
-parameters, return values, and even optional arguments. Let's explore
-the power of functions in Python.
+Why functions?
+- Break down code into smaller, reusable pieces
+- Make it easier to manage and maintain code
+- Encapsulate tasks within functions
+- Call function from anywhere
 
-* Definition of a Function
+What are functions?
+- ~def~ keyword
+- Name of function
+- Pair of parentheses ~()~
+- Parameters of function
+- Separator ~:~
+- Body of the function
+- Return values
 
-A function is like a mini-program within a program. It is a
-self-contained block of code that performs a specific task. By
-encapsulating a task within a function, you can reuse that
-functionality multiple times without rewriting the code. Functions
-also enhance code readability by providing a logical structure and
-meaningful names.
+* ~def~ Statements without Parameters
 
-* ~def~ Statements with Parameters
+- Example 1: 'hello world' as a function without arguments:
+  #+begin_src python
+    # function call
+    helloWorld()
+    # function definition
+    def helloWorld():
+        print('Hello, world!')
 
-Parameters are inputs that you can pass to a function. They allow you
-to customize the behavior of the function based on the values you
-provide. The ~def~ statement is used to define a function, followed by
-the function name and parentheses that can contain zero or more
-parameters. Let's look at an example:
+  #+end_src
 
-#+begin_src python
-  def hello(name):
-      print('Hello, ' + name)
-#+end_src
+- Example 2: What will the output of this script be if you call ~howdy~
+  three times in a row?
+  #+begin_src python
+    # function definition
+    def howdy():
+        print('Howdy!')
+        print('Howdy!!')
+        print('Hello there.')
+        # function calls
+    howdy()
+    howdy()
+    howdy()
+  #+end_src
 
-In this example, the function ~hello~ takes a parameter called
-~name~. When the function is called with a name, it prints a greeting
-message using that name.
+- You can view the execution of the program at [[https://autbor.com/hellofunc/][autbor.com/hellofunc/]]
 
-* Practice defining functions:
+* ~def~ Statement with Parameters
 
-Exercise 1:
-- Write a function called ~calculate_area~ that takes two parameters,
-  length and width, and calculates the area of a rectangle. The
-  formula to calculate the area of a rectangle is area = length *
-  width. The function should return the calculated area.
+- You can define your own functions with /parameters/. When you pass
+  /values/ to the function, these are called /arguments/.
 
-Exercise 2:
-- Write a function called is_even that takes a single parameter,
-  number, and checks if the number is even. If the number is even, the
-  function should return True; otherwise, it should return False.
+- Example 3: 'hello' as a greeting with ~name~ input:
+  #+begin_src python :results silent
+    def hello(name):
+        print('Hello, ' + name)
+  #+end_src
 
-Here's an example solution to both exercises:
-#+begin_src python
-  # Exercise 1
-  def calculate_area(length, width):
-      area = length * width
-      return area
+- In this example, the function ~hello~ takes a parameter called
+  ~name~. When the function is called with a name, it prints a greeting
+  message using that name.
+  #+begin_src python
+    hello('Marcus')
+    hello('Alice')
+  #+end_src
 
-  # Exercise 2
-  def is_even(number):
-      if number % 2 == 0:
-          return True
-      else:
-          return False
-#+end_src
+- When the function returns from being called, the value stored in a
+  parameter is forgotten: what's the output of this script given the
+  definition of ~hello(name)~ above?
+  #+begin_src python
+    hello('Bob')
+    hello(name)
+  #+end_src
 
-You can test these functions by calling them with different arguments:
-#+begin_src python
-  # Testing Exercise 1
-  print(calculate_area(4, 5))  # Output: 20
-  print(calculate_area(7, 3))  # Output: 21
+* Define, Call, Pass, Argument, Parameter, Recursion
 
-  # Testing Exercise 2
-  print(is_even(4))  # Output: True
-  print(is_even(7))  # Output: False
-#+end_src
+- It may sound trivial, but it's not trivial to keep these concepts
+  apart:
+  #+name: tab_terms
+  | TERM/COMMAND        | MEANING                                         |
+  |---------------------+-------------------------------------------------|
+  | Function definition | Create a function with ~def~ [name]([args]):      |
+  | Function call       | Executing function (with/out passing arguments) |
+  | Function argument   | Value passed to a function in a function call   |
+  | Function parameter  | Variables that have arguments assigned to them  |
+
+- Analyse this function and decide how to call it - what is 'result'?
+  #+begin_src python :results silent
+    def result(result):
+        print(result)
+  #+end_src
+
+- Example calls:
+  #+begin_src python
+    result(12)
+    result(12 + 500)
+    result('a')
+    result('hello world')
+    result('hello ' + 'world')
+  #+end_src
+
+- What's what:
+  1) ~result~ is a function name
+  2) ~result~ is a parameter of the function ~result~
+  3) ~result~ is an argument of the function call ~print~
+
+- Can you call ~result~ inside ~result~? ([[https://pythontutor.com/visualize.html#code=def%20result%28result%29%3A%0A%20%20%20%20print%28result%29%0A%20%20%20%20result%281%29%0Aresult%282%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false][pythontutor.com]])
+  #+begin_src python
+    def result(result):
+        print(result)
+        result(1)
+        result(2)
+  #+end_src
+  #+begin_quote
+  - The ~TypeError: 'int' object is not callable~ is because at that
+    point, ~result~ has been redefined as a parameter of the function,
+    not the function itself.
+  - When you try to call ~result(1)~ inside the function, you treat ~2~
+    (the value passed as an argument to the function parameter) as a
+    function - but ~2~ is an ~int~ and therefore not callable.
+  #+end_quote
+
+- A clearer version of this procedure:
+  #+begin_src python
+    def result(parameter):
+        print(parameter)
+        parameter(1) # Here parameter is not a function, it's the value
+        # you passed (2)
+    result(2)
+  #+end_src
+
+- How can you make a /recursive/ function that calls itself? ([[https://pythontutor.com/visualize.html#code=def%20result%28parameter%29%3A%0A%20%20%20%20print%28'Parameter%3A%20',%20parameter%29%0A%20%20%20%20if%20parameter%20%3E%200%3A%20%20%0A%20%20%20%20%20%20%20%20result%28parameter%20-%201%29%20%0Aresult%282%29&cumulative=false&curInstr=16&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false][PythonTutor]])
+  #+begin_src python
+    def result(parameter):
+        print(f'Parameter: {parameter}')
+        if parameter > 0:  # a base case to stop recursion
+            result(parameter - 1)  # call function itself, not the parameter
+            result(2)
+  #+end_src
+
+  #+RESULTS:
+  : Parameter: 2
+  : Parameter: 1
+  : Parameter: 0
+
+* TODO Practice defining functions without parameters:
+
+1) In Colab, write a function ~count~ that takes a string ~str~ as an
+   argument and prints the number of its characters.
+
+2) Call ~count~ on these arguments: ~a~, ~abcd~, ~a b c d~. Output:
+
+3) Is it Okay to call this function ~count~?
+   #+begin_quote
+   - It's OK to call your own function by a name used by Python: it
+     will not affect the built-in function of the same name.
+   - However, in your current scope (i.e. your Python session), it
+     will overshadow the built-in function.
+   - It is considered poor practice to re-use function names. In a
+     modern editor, the syntax highlighting will tip you off.
+   #+end_quote
+
+4) Is it Okay to call the function parameter ~str~?
+   #+begin_quote
+   - It is OK to call a parameter inside your own function by a known
+     name - it won't affect its use outside of the function.
+   - However, inside the function, your name will overshadow the
+     previous name used by Python.
+   - It is considered poor practice to re-use keywords as names. In a
+     modern editor, the syntax highlighting will tip you off.
+   #+end_quote
+
+5) Solution ([[https://pythontutor.com/visualize.html#code=%23%20function%20def%0Adef%20count%20%28str%29%3A%0A%20%20%20%20%20print%28str%29%0A%20%20%20%20%20print%28str.count%28''%29-1%29%0A%23%20function%20call%0Acount%28str%3D'abcd'%29%0Acount%28''%29%0Aprint%28str%28'0'%29%29%0A&cumulative=false&curInstr=12&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false][pythontutor with poor naming practice]]):
+   #+begin_src python
+     # function def
+     def cnt (string):
+         print(string.count('')-1)
+         # function call
+     cnt('a')
+     cnt('abcd')
+     cnt('a b c d')
+     cnt(string='a b c d') # keyword parameter call
+     print('abcd'.count('')-1)  # standard Python `str.count` function
+   #+end_src
+
+   #+RESULTS:
+   : 1
+   : 4
+   : 7
+   : 7
+   : 4
 
 * Return Values and ~return~ Statements
 
-Functions can also provide an output or return value using the ~return~
-statement. The ~return~ statement causes the function to exit and
-returns a value to its caller. Here's an example:
+- Functions can also provide an /output/ or /return value/ using the
+  ~return~ statement. It consists of:
+  1) the ~return~ keyword
+  2) the value or expression that the function should return.
 
-#+begin_src python
-  def getAnswer(answerNumber):
-      if answerNumber == 42:
-          return 'The meaning of life, the universe, and everything.'
-#+end_src
+- The ~return~ statement causes the function to exit.
 
-In this case, the ~getAnswer~ function takes an ~answerNumber~
-parameter. If the parameter is equal to 42, the function returns the
-corresponding string. Otherwise, it doesn't explicitly return
-anything, which is equivalent to returning ~None~.
+- Example 1 (can you identify the terms?):
+  #+begin_src python
+    def getAnswer(answerNumber):
+        if answerNumber == 42:
+            return 'The meaning of life, the universe, and everything.'
+  #+end_src
 
-* Practice using return values and statements
+- Analysis of the function:
+  1) ~getAnswer~ is a function
+  2) It takes a parameter ~answerNumber~
+  3) The function checks if parameter is equal to ~42~
+  4) If the parameter is equal to ~42~, it returns a string.
+  5) If the parameter is not equal to ~42~, it returns ~None~.
 
-Exercise 1:
+- Let's [[https://pythontutor.com/visualize.html#code=def%20getAnswer%28answerNumber%29%3A%0A%20%20%20%20if%20answerNumber%20%3D%3D%2042%3A%0A%20%20%20%20%20%20%20%20return%20'The%20meaning%20of%20life,%20the%20universe,%20and%20everything.'%0AgetAnswer%2842%29%0AgetAnswer%2840%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false][check this out in pythontutor]].
 
-- Write a function called get_average that takes a list of numbers as
-  a parameter and returns the average of those numbers. The average is
-  calculated by summing all the numbers in the list and dividing by
-  the total count of numbers.
+* Extended example: Magic 8 Ball
 
-Exercise 2:
+- Enter this code in Colab, then run it a few times ([[https://pythontutor.com/visualize.html#code=import%20random%0A%0Adef%20getAnswer%28answerNumber%29%3A%0A%20%20%20%20if%20answerNumber%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%20'It%20is%20certain'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%202%3A%0A%20%20%20%20%20%20%20%20return%20'It%20is%20decidedly%20so'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%203%3A%0A%20%20%20%20%20%20%20%20return%20'Yes'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%204%3A%0A%20%20%20%20%20%20%20%20return%20'Reply%20hazy%20try%20again'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%205%3A%0A%20%20%20%20%20%20%20%20return%20'Ask%20again%20later'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%206%3A%0A%20%20%20%20%20%20%20%20return%20'Concentrate%20and%20ask%20again'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%207%3A%0A%20%20%20%20%20%20%20%20return%20'My%20reply%20is%20no'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%208%3A%0A%20%20%20%20%20%20%20%20return%20'Outlook%20not%20so%20good'%0A%20%20%20%20elif%20answerNumber%20%3D%3D%209%3A%0A%20%20%20%20%20%20%20%20return%20'Very%20doubtful'%0A%0Ar%20%3D%20random.randint%281,%209%29%0Afortune%20%3D%20getAnswer%28r%29%0Aprint%28fortune%29%0AgetAnswer%2810%29&cumulative=false&curInstr=27&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false][pythontutor]]):
+  #+begin_src python
+    import random                  #1
 
-- Write a function called is_prime that takes a single positive
-  integer as a parameter and returns True if the number is prime, and
-  False otherwise. A prime number is a number greater than 1 that is
-  only divisible by 1 and itself.
+    def getAnswer(answerNumber):   #2
+        if answerNumber == 1:      #3
+            return 'It is certain'
+        elif answerNumber == 2:
+            return 'It is decidely so'
+        elif answerNumber == 3:
+            return 'It is Yes'
+        elif answerNumber == 4:
+            return 'Reply hazy try again'
+        elif answerNumber == 5:
+            return 'Ask again later'
+        elif answerNumber == 6:
+            return 'Concentrate and ask again'
+        elif answerNumber == 7:
+            return 'My reply is no'
+        elif answerNumber == 8:
+            return 'Outlook not so good'
+        elif answerNumber == 9:
+            return 'Very doubtful'
 
-Here's an example solution to both exercises:
-#+begin_src python
-  # Exercise 1
-  def get_average(numbers):
-      total = sum(numbers)
-      count = len(numbers)
-      average = total / count
-      return average
+    r = random.randint(1,9)        #4
+    fortune = getAnswer(r)         #5
+    print(fortune)                 #6
+  #+end_src
 
-  # Exercise 2
-  def is_prime(number):
-      if number < 2:
-          return False
-      for i in range(2, int(number**0.5) + 1):
-          if number % i == 0:
-              return False
-      return True
-#+end_src
+- Analysis:
+  1) Import ~random~ module for random number functions.
+  2) Store a random integer from [1,9] in ~r~.
+  3) Call function ~getAnswer~ with argument ~r~.
+  4) Store ~return~ value from function in ~fortune~.
+  5) ~print~ the ~fortune~.
+  6) When calling a value outside of [1,9], ~None~ is ~return~ value.
 
-You can test these functions by calling them with different arguments:
-#+begin_src python
-  # Testing Exercise 1
-  print(get_average([2, 4, 6, 8, 10]))  # Output: 6.0
-  print(get_average([1, 3, 5, 7, 9]))  # Output: 5.0
+* TODO Practice using return values and statements
 
-  # Testing Exercise 2
-  print(is_prime(7))  # Output: True
-  print(is_prime(10))  # Output: False
-#+end_src
+** Calculate area of a rectangle
+
+- Write a function called ~calculate_area~ that takes two parameters,
+  ~length~ and ~width~, and calculates the ~area~ of a rectangle. The
+  formula to calculate the area of a rectangle is ~area = length *
+  width~. The function should return the calculated area via ~print~.
+
+- Test the function with the values (4,5) and (7,3) for
+  (length,width), and the expected output 20 and 21, respectively.
+
+** Identify an even number
+
+- Write a function called ~is_even~ that takes a single parameter,
+  ~number~, and checks if the number is even. If the number is even, the
+  function should return ~True~; otherwise, it should return ~False~.
+
+- Tip: to check if a number N is even, you can use the modulus
+  operator ~%~ - the modulus of any even number with 2 is zero.
+
+- Test the function with the values 4 and 7.
 
 * The ~None~ Value
 
-In Python, ~None~ is a special value that represents the absence of a
-value. It is commonly used to indicate that a function or operation
-does not produce any meaningful result. ~None~ is the only value of the
-~NoneType~ data type. You can use it as a placeholder or to indicate the
-lack of a return value.
+- In Python, ~None~ represents the absence of a value.
 
-* Practice the ~None~ value
+- ~None~ is the only value of the ~NoneType~ data type (show this)[fn:1].
+  #+begin_src python
+    print(type(None))
+  #+end_src
+  
+- ~None~ is used e.g. as the ~return~ value for ~print()~:
+  #+begin_src python
+    spam = print('Hello') # prints 'Hello'
+    print(None == spam)   # spam now contains None
+  #+end_src
 
-Exercise 1:
+- Python adds ~return None~ to the end of any function definition with
+  no ~return~ statement.
 
-- Write a function called find_max that takes a list of numbers as a
+- This is similar to how a ~while~ or ~for~ loop implicitly ends with a
+  ~continue~ statement.
+
+- Also, using ~return~ without a return value, returns ~None~. Show this!
+  #+begin_src python
+    def none():
+        return 
+    print(none())
+  #+end_src  
+
+* TODO Practice the ~None~ value
+
+** Maximum value in a list
+
+- Write a function called ~find_max~ that takes a list of numbers as a
   parameter and returns the maximum value in the list. If the list is
-  empty, the function should return None.
+  empty, the function should return ~None~.
 
-Exercise 2:
+- Tip: you can use the built-in function ~max~ to identify the maximum
+  number in a Python list, or you can devise your own algorithm.
 
-- Write a function called check_divisibility that takes two integers,
-  num and divisor, as parameters. The function should check if num is
-  divisible by divisor without a remainder. If it is divisible, the
-  function should return True; otherwise, it should return None.
+- Test the function by calling it with these sample arguments:
+  #+begin_example python
+    print(find_max([2, 4, 6, 8, 10]))  # Output: 10
+    print(find_max([]))  # Output: None
+  #+end_example
 
-Here's an example solution to both exercises:
-#+begin_src python
-  # Exercise 1
-  def find_max(numbers):
-      if len(numbers) == 0:
-          return None
-      max_num = numbers[0]
-      for num in numbers:
-          if num > max_num:
-              max_num = num
-      return max_num
+** Check divisibility of two integers
 
-  # Exercise 2
-  def check_divisibility(num, divisor):
-      if num % divisor == 0:
-          return True
-      else:
-          return None
-#+end_src
+- Write a function called ~check_divisibility~ that takes two integers,
+  ~num~ and ~divisor~, as parameters. The function should check if ~num~ is
+  divisible by ~divisor~ without a remainder. If it is divisible, the
+  function should return ~True~; otherwise, it should return ~None~.
 
-You can test these functions by calling them with different arguments:
-#+begin_src python
-  # Testing Exercise 1
-  print(find_max([2, 4, 6, 8, 10]))  # Output: 10
-  print(find_max([]))  # Output: None
+- Tip: to check if a number N is divisible by a number M, you can use
+  the modulus operator ~%~ - the modulus of N and M is zero if they are
+  divisible.
+   
+- Test the function with different arguments:
+  #+begin_example python
+    print(check_divisibility(10, 5))  # Output: True
+    print(check_divisibility(10, 7))  # Output: None
+  #+end_example
 
-  # Testing Exercise 2
-  print(check_divisibility(10, 5))  # Output: True
-  print(check_divisibility(10, 7))  # Output: None
-#+end_src
 
-* Keyword Arguments and ~print()~
+* NEXT Keyword Arguments and ~print()~
 
 Keyword arguments allow you to specify optional parameters when
 calling a function. One common function where keyword arguments are
@@ -213,7 +364,7 @@ we override the default value of ~end~ by passing an empty string,
 resulting in the output ~HelloWorld~ without any space or newline
 between the words.
 
-* Practice keyword arguments and ~print~
+* TODO Practice keyword arguments and ~print~
 
 Exercise 1:
 
@@ -263,6 +414,22 @@ to exist in the local scope. Conversely, variables defined outside all
 functions have a global scope and can be accessed from any part of the
 program. It's important to understand the concept of scope to avoid
 naming conflicts and understand variable visibility within your code.
+
+- Example 3: can you define a function within another function?
+  #+begin_src python
+    # function definition
+    def helloWorld():
+        print('Hello, world!')
+        def hello():
+            return print('hello again')
+        hello()
+        # function call
+    helloWorld()
+  #+end_src
+
+  #+RESULTS:
+  : Hello, world!
+  : hello again
 
 * Practice local and global scope
 
@@ -340,14 +507,14 @@ function's local scope.
 Here's an example:
 
 #+begin_src python
-count = 0
+  count = 0
 
-def increment():
-    global count
-    count += 1
+  def increment():
+      global count
+      count += 1
 
-increment()
-print(count)  ; Output: 1
+  increment()
+  print(count)  ; Output: 1
 #+end_src
 
 In this example, we have a global variable ~count~ initialized with a
@@ -423,4 +590,22 @@ organization, reusability, and overall readability. With the knowledge
 gained from this lecture, you can start harnessing the power of
 functions in your Python projects.
 
+* IN PROGRESS Glossary
 
+| TERM/COMMAND         | MEANING                                         |
+|----------------------+-------------------------------------------------|
+| Function definition  | Create a function                               |
+| Function call        | Executing function (with/out passing arguments) |
+| Function argument    | Value passed to a function in a function call   |
+| Function parameter   | Variables that have arguments assigned to them  |
+| Keyword parameter    | Paramater optionally called with a name         |
+| Positional parameter | Parameter called with position only             |
+| Recursive function   | Function that calls itself                      |
+
+* Footnotes
+
+[fn:1]In R, missing values are indicated by the ~NA~ special value,
+which is of data type ~logical~ (aka Boolean). The ~pandas~ library in
+Python, missing values are represented as ~NaN~ (Not a Number). Both
+languages have many methods to deal with missing values, which are
+a frequent problem in real datasets.
