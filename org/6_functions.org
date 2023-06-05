@@ -11,7 +11,7 @@
 Why functions?
 - Break down code into smaller, reusable pieces
 - Make it easier to manage and maintain code
-- Encapsulate tasks within functions
+- Encapsulate tasks and variable within functions
 - Call function from anywhere
 
 What are functions?
@@ -20,18 +20,18 @@ What are functions?
 - Pair of parentheses ~()~
 - Parameters of function
 - Separator ~:~
-- Body of the function
-- Return values
+- Body of the function indented in the next line
+- Return values anywhere in the function (~return~)
 
 * ~def~ Statements without Parameters
 
 - Example 1: 'hello world' as a function without arguments:
   #+begin_src python
-    # function call
-    helloWorld()
     # function definition
     def helloWorld():
         print('Hello, world!')
+    # function call
+    helloWorld()
 
   #+end_src
 
@@ -43,11 +43,22 @@ What are functions?
         print('Howdy!')
         print('Howdy!!')
         print('Hello there.')
-        # function calls
+    # function calls
     howdy()
     howdy()
     howdy()
   #+end_src
+
+  #+RESULTS:
+  : Howdy!
+  : Howdy!!
+  : Hello there.
+  : Howdy!
+  : Howdy!!
+  : Hello there.
+  : Howdy!
+  : Howdy!!
+  : Hello there.
 
 - You can view the execution of the program at [[https://autbor.com/hellofunc/][autbor.com/hellofunc/]]
 
@@ -115,7 +126,7 @@ What are functions?
     def result(result):
         print(result)
         result(1)
-        result(2)
+    result(2)
   #+end_src
   #+begin_quote
   - The ~TypeError: 'int' object is not callable~ is because at that
@@ -141,13 +152,15 @@ What are functions?
         print(f'Parameter: {parameter}')
         if parameter > 0:  # a base case to stop recursion
             result(parameter - 1)  # call function itself, not the parameter
-            result(2)
+    result(2)
   #+end_src
 
-* TODO Practice defining functions without parameters:
+* NEXT Practice defining functions with one parameter
 
 1) In Colab, write a function ~count~ that takes a string ~str~ as an
    argument and prints the number of its characters.
+
+   Tip: remember that there is a built-in function called ~str.count~ that can count the characters of a string ~str~ when given the right argument.
 
 2) Call ~count~ on these arguments: ~a~, ~abcd~, ~a b c d~. Output:
 
@@ -171,12 +184,13 @@ What are functions?
      modern editor, the syntax highlighting will tip you off.
    #+end_quote
 
-5) Solution ([[https://pythontutor.com/visualize.html#code=%23%20function%20def%0Adef%20count%20%28str%29%3A%0A%20%20%20%20%20print%28str%29%0A%20%20%20%20%20print%28str.count%28''%29-1%29%0A%23%20function%20call%0Acount%28str%3D'abcd'%29%0Acount%28''%29%0Aprint%28str%28'0'%29%29%0A&cumulative=false&curInstr=12&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false][here in pythontutor with poor naming practice]]):
+5) Solution 1 ([[https://pythontutor.com/visualize.html#code=%23%20function%20def%0Adef%20count%20%28str%29%3A%0A%20%20%20%20%20print%28str%29%0A%20%20%20%20%20print%28str.count%28''%29-1%29%0A%23%20function%20call%0Acount%28str%3D'abcd'%29%0Acount%28''%29%0Aprint%28str%28'0'%29%29%0A&cumulative=false&curInstr=12&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false][here in pythontutor with poor naming practice]]):
    #+begin_src python
      # function def
      def cnt (string):
          print(string.count('')-1)
-         # function call
+
+     # function call
      cnt('a')
      cnt('abcd')
      cnt('a b c d')
@@ -184,6 +198,18 @@ What are functions?
      print('abcd'.count('')-1)  # standard Python `str.count` function
    #+end_src
 
+6) Solution 2:
+   #+begin_src python
+     def cnt1(string):
+         return len(string)
+     print(cnt1('abcd'))
+     print(cnt1('a b c'))
+   #+end_src
+
+   #+RESULTS:
+   : 4
+   : 5
+   
 * Return Values and ~return~ Statements
 
 - Functions can also provide an /output/ or /return value/ using the

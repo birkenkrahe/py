@@ -379,6 +379,7 @@ script" I'd have to do some research first.) Hope this helps.
 - Variable names: one word, letters, numbers (not at beginning),
   underscore only
 
+
 * DONE Day 5: Keyboard input and first look at functions
 #+attr_latex: :width 300px
 #+caption: Women on a tandem bicycle, 28 September 1938 (Flickr.com)
@@ -1099,7 +1100,20 @@ changing the format of the output.
   #+attr_latex: :width 400px
   #+caption: Histogram and boxplot of the results of test 1
   [[../img/test1.png]]
+
 - Stats and visualization are much easier to do in R ([[https://github.com/birkenkrahe/grades/blob/main/summer23.org][GitHub]])
+
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+* TODO Day 11: Scope and exception handling
+#+attr_latex: :width 400px
+#+caption: Llyfrgell Genedlaethol Cymru / Ned and donkey (1875)
+[[../img/scope.jpg]]
 
 ** TODO In-class summary
 #+attr_latex: :width 300px
@@ -1134,22 +1148,6 @@ changing the format of the output.
   highlighted.
 
 
-* TODO Day 11: Scope and exception handling
-#+attr_latex: :width 400px
-#+caption: Llyfrgell Genedlaethol Cymru / Ned and donkey (1875)
-[[../img/scope.jpg]]
-
-** TODO In-class summary
-#+attr_latex: :width 300px
-#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
-[[../img/summary.jpg]]
-
-- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
-
-** TODO Homework
-#+attr_latex: :width 300px
-#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
-[[../img/homework.jpg]]
 
 * TODO Day 12: Lists, Methods, and ~NumPy~
 #+attr_latex: :width 400px
