@@ -266,3 +266,9 @@ details about your computer's ~os~, get ~random~ numbers and the current
      best solution to a programming problem that satisfies all
      requirements, even the unspoken ones, equally well.
 
+* References
+
+- Sweigart, A. (2019). Automate the Boring Stuff with
+  Python. NoStarch. URL: [[https://automatetheboringstuff.com/2e/chapter2/][automatetheboringstuff.com]]
+
+

@@ -805,13 +805,101 @@ What are functions?
 - Write a function ~divide_numbers~ that asks the user to enter two
   numbers ~num1~ and ~num2~ and divides the first number by the second
   number.
+
 - Inside the function, handle any potential exceptions that may occur
   during the division operation, such as division by zero or invalid
   input.
 
-* TODO Short program: Zigzag
+* TODO Short program: Zig-zag
 
+- This program will create a back-and-forth, zig-zag pattern until the
+  user stops it by pressing ~CTRL-c~. [[https://gist.github.com/birkenkrahe/0b1e4c712a79968e3e21a55d8944adfd][See here for a notebook in GitHub]].
 
+- Sample output:
+  #+attr_latex: :width 400px
+  #+caption: Sample output from zig-zag program
+  [[../img/zigzag.png]]
+
+- Type this code into Colab:
+  #+begin_src python
+    import time, sys
+    indent = 0 
+    indentIncreasing = True
+
+    try:
+      while True: 
+          print(' ' * indent, end='')
+          print('********')
+          time.sleep(0.1)  
+
+          if indentIncreasing:
+              indent += 1 
+              if indent == 20:
+                  indentIncreasing = False
+          else:
+              indent -= 1 
+              indentIncreasing = True 
+
+    except KeyboardInterrupt:
+        sys.exit()
+  #+end_src  
+
+- Analysis:
+  1) The program begins with importing two modules: ~time~ for
+     time-keeping, and ~sys~ for the ~exit~ function, which triggers a
+     ~KeyboardInterrupt~ 'error':
+     #+begin_example python
+     import time, sys
+     #+end_example
+  2) Two loop variables are ~indent~ for the number of spaces to indent
+     per line, and ~indentIncreasing~, a Boolean variable that indicates
+     direction: ~True~ for moving to the right, ~False~ for the left.
+     #+begin_example python
+     indent = 0 
+     indentIncreasing = True
+     #+end_example
+  3) The rest of the program is placed in a ~try~ statement: do whatever
+     follows unless the ~except~ condition is triggered. The script
+     enters an /infinite loop/ to print ~indent~ number of spaces next to
+     one another followed by eight asterisks. The script halts for
+     1/10 secs. after the print.
+     #+begin_example python
+     try:
+       while True: 
+          print(' ' * indent, end='')
+          print('********')
+          time.sleep(0.1)  
+     #+end_example
+  4) To adjust the indentation until the asterisks are printed, we
+     check if ~indentIncreasing~ is ~True~: if it is, we indent until the
+     indentation hits the value ~20~, and switch ~indentIncreasing~ to
+     ~False~:
+     #+begin_example python
+       if indentIncreasing:
+           indent += 1 
+           if indent == 20:
+               indentIncreasing = False
+     #+end_example
+  5) If ~indentIncreasing~ is ~False~, the ~else~ condition is true and we
+     reduce the indentation in ~indent~ by one until we hit ~0~. Then we
+     switch direction by setting ~indentIncreasing~ to ~True~.
+     #+begin_example python
+       else:
+         indent -= 1 
+           indentIncreasing = True 
+     #+end_example
+  6) After checking the conditions, the program goes back to the start
+     of the infinite loop and executes again. If the user triggers a
+     keyboard interrupt with CTRL-c (or CTRL-m + i in Colab, or by
+     pressing the STOP button next to the code cell), ~sys.exit~ is
+     executed, the loop is left and the program is finished.
+     #+begin_example python
+       except KeyboardInterrupt:
+           sys.exit()
+     #+end_example
+
+      
+           
 * Summary
 
 - Functions provide a way to encapsulate reusable code blocks, accept
@@ -825,7 +913,7 @@ What are functions?
 - Exception handling statements run code when a specific error has
   been detected to make your programs more resilient to common errors.
 
-* IN PROGRESS Glossary
+* Glossary
 
 | TERM/COMMAND         | MEANING                                         |
 |----------------------+-------------------------------------------------|
@@ -843,10 +931,18 @@ What are functions?
 | Local scope          | Variables known only in functions               |
 | Global scope         | Variables known everywhere in the script        |
 | Void function        | Function without parameters like ~print()~        |
+| ~try:...except:~       | Exception handling                              |
+
+
+* References
+
+- Sweigart, A. (2019). Automate the Boring Stuff with
+  Python. NoStarch. URL: [[https://automatetheboringstuff.com/2e/chapter2/][automatetheboringstuff.com]]
+
 
 * Footnotes
 
-[fn:1]In R, missing values are indicated by the ~NA~ special value,
+[fn:1] In R, missing values are indicated by the ~NA~ special value,
 which is of data type ~logical~ (aka Boolean). The ~pandas~ library in
 Python, missing values are represented as ~NaN~ (Not a Number). Both
 languages have many methods to deal with missing values, which are
