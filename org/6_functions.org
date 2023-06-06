@@ -30,7 +30,7 @@ What are functions?
     # function definition
     def helloWorld():
         print('Hello, world!')
-    # function call
+        # function call
     helloWorld()
 
   #+end_src
@@ -43,7 +43,7 @@ What are functions?
         print('Howdy!')
         print('Howdy!!')
         print('Hello there.')
-    # function calls
+        # function calls
     howdy()
     howdy()
     howdy()
@@ -126,7 +126,7 @@ What are functions?
     def result(result):
         print(result)
         result(1)
-    result(2)
+        result(2)
   #+end_src
   #+begin_quote
   - The ~TypeError: 'int' object is not callable~ is because at that
@@ -152,10 +152,10 @@ What are functions?
         print(f'Parameter: {parameter}')
         if parameter > 0:  # a base case to stop recursion
             result(parameter - 1)  # call function itself, not the parameter
-    result(2)
+            result(2)
   #+end_src
 
-* NEXT Practice defining functions with one parameter
+* Practice defining functions with one parameter
 
 1) In Colab, write a function ~count~ that takes a string ~str~ as an
    argument and prints the number of its characters.
@@ -209,7 +209,7 @@ What are functions?
    #+RESULTS:
    : 4
    : 5
-   
+
 * Return Values and ~return~ Statements
 
 - Functions can also provide an /output/ or /return value/ using the
@@ -277,8 +277,8 @@ What are functions?
 
 - Introducing a ~list~ will allow us to shrink this script by a lot.
 
-* TODO Practice using return values and statements
-** Calculate area of a rectangle
+* IN PROGRESS Practice using return values and statements
+** DONE Calculate area of a rectangle
 
 - Write a function called ~calculate_area~ that takes two parameters,
   ~length~ and ~width~, and calculates the ~area~ of a rectangle. The
@@ -288,7 +288,55 @@ What are functions?
 - Test the function with the values (4,5) and (7,3) for
   (length,width), and the expected output 20 and 21, respectively.
 
-** Identify an even number
+- Sample solution:
+  #+name: calculate_area_1
+  #+begin_src python
+    # function definition
+    def calculate_area(length, width):
+        area = length * width
+        return print(area)
+    # function call
+    calculate_area(4,5)
+    calculate_area(7,3)
+  #+end_src
+
+  #+RESULTS:
+  : 20
+  : 21
+
+- What is the impact of ~return~? Leave it out:
+  #+name: calculate_area_2
+  #+begin_src python
+    # function definition
+    def calculate_area_2(length, width):
+        area = length * width
+        print(area)
+        # function call
+    calculate_area_2(4,5)
+    calculate_area_2(7,3)
+  #+end_src
+
+  #+RESULTS: calculate_area_2
+  : 20
+  : 21
+
+- What is the impact of ~print~? Return only the result:
+  #+name: calculate_area_3
+  #+begin_src python
+    # function definition
+    def calculate_area_3(length, width):
+        area = length * width
+        return area
+    # function call
+    print(calculate_area_3(4,5))
+    print(calculate_area_3(7,3))
+  #+end_src
+
+  #+RESULTS: calculate_area_3
+  : 20
+  : 21
+
+** NEXT Identify an even number
 
 - Write a function called ~is_even~ that takes a single parameter,
   ~number~, and checks if the number is even. If the number is even, the
@@ -307,7 +355,7 @@ What are functions?
   #+begin_src python
     print(type(None))
   #+end_src
-  
+
 - ~None~ is used e.g. as the ~return~ value for ~print()~:
   #+begin_src python
     spam = print('Hello') # prints 'Hello'
@@ -320,12 +368,13 @@ What are functions?
 - This is similar to how a ~while~ or ~for~ loop implicitly ends with a
   ~continue~ statement (adding it makes the code more readable).
 
-- Also, using ~return~ without a return value, returns ~None~. Show this!
+- Also, using ~return~ without a return value, returns ~None~. Show this
+  with a function that you write yourself!
   #+begin_src python
     def none():
-        return 
+        return
     print(none())
-  #+end_src  
+  #+end_src
 
 * TODO Practice the ~None~ value
 
@@ -355,7 +404,7 @@ What are functions?
 - Tip: to check if a number N is divisible by a number M, you can use
   the modulus operator ~%~ - the modulus of N and M is zero if they are
   divisible.
-   
+
 - Test the function with different arguments:
   #+begin_example python
     print(check_divisibility(10, 5))  # Output: True
@@ -379,10 +428,10 @@ What are functions?
   #+RESULTS:
   : HelloWorld
 
-- Which other keyword parameters does ~print~ have?  
+- Which other keyword parameters does ~print~ have?
   #+begin_src python
     print(help(print))
-  #+end_src  
+  #+end_src
 
   #+RESULTS:
   #+begin_example
@@ -402,11 +451,11 @@ What are functions?
 
   None
   #+end_example
-  
+
 - Print ~Hello, World Hello, World~ using only 'Hello' and 'World':
   #+begin_src python
     print('Hello', 'World', end=' ', sep=', ')
-    print('Hello', 'World', end='', sep=', ')    
+    print('Hello', 'World', end='', sep=', ')
   #+end_src
 
 - Print 'Hello, World!' to a file named ~helloworld.txt~, then check if
@@ -417,7 +466,7 @@ What are functions?
         print('Hello, World!', file=f)
 
     # in IPython, list file and view content
-    %ls -l helloworld.txt 
+    %ls -l helloworld.txt
     %cat helloworld.txt
   #+end_example
 
@@ -476,7 +525,7 @@ What are functions?
         print('d returns')
 
     # function call
-    a()                
+    a()
   #+end_src
 
   #+RESULTS:
@@ -560,46 +609,209 @@ What are functions?
   function. Then, outside the function, print the value of
   ~z~. What do you observe? Explain the concept of local scope.
 
-* IN PROGRESS The global statement
+* The ~global~ statement
 
-In Python, variables declared outside a function are considered global
-by default. However, if you want to modify a global variable within a
-function, you need to explicitly declare it using the ~global~
-statement.
+  - Use ~global~ to modify a global variable from within a function: the
+    line ~global eggs~ at the top of a function says to Python "don't
+    create a local variable with this name!"
 
-The ~global~ statement is used to indicate that a variable is a global
-variable, even if it is assigned a value within a function. This
-allows you to modify the global variable's value from within the
-function's local scope.
+  - View the program execution at [[https://autbor.com/globalstatement/][autbor.com/globalstatement/]]
+    #+begin_src python
+      def spam():
+          global eggs
+          eggs = 'spam' # this is now the global value of `eggs`
 
-Here's an example:
+      eggs = 'global'
+      spam()  # returns the global value of `eggs`
+      print(eggs)
+    #+end_src
 
-#+begin_src python
-  count = 0
+  - There are four rules to tell which scope a variable is in:
+    1. If is used in the global scope (outside of all functions), then
+       it is always a global variable.
+    2. If there is a ~global~ statement in a function, it is a global
+       variable.
+    3. If there is no ~global~ statement and the variable is used in an
+       assignment in the function, it is a local variable.
+    4. But if the variable is not used in an assignment statement, it is
+       a global variable.
 
-  def increment():
-      global count
-      count += 1
+  - Identify output and local or global variables ([[https://autbor.com/sameNameLocalGlobal/][pythontutor]]):
+    #+begin_src python
+      def spam():
+          global eggs
+          eggs = 'spam'
 
-  increment()
-  print(count)  ; Output: 1
-#+end_src
+      def bacon():
+          eggs = 'bacon'
 
-In this example, we have a global variable ~count~ initialized with a
-value of 0. The ~increment~ function uses the ~global~ statement to
-indicate that ~count~ is a global variable, not a local one. It
-increments the value of ~count~ by 1. When we call the ~increment~
-function and print the value of ~count~, it has been modified to 1.
+      def ham():
+          print(eggs)
 
-Using the ~global~ statement allows you to access and modify global
-variables within a function. However, it's generally recommended to
-minimize the use of global variables and favor passing values as
-function parameters and returning results instead. This helps in
-maintaining code clarity and avoiding unintended side effects.
+      eggs = 42
+      spam()
+      print(eggs)
+    #+end_src
+
+  - Identify output and local or global variables ([[https://pythontutor.com/visualize.html#code=def%20cnt%28%29%3A%0A%20%20%20%20count%20%3D%200%0A%20%20%20%20return%20count%0A%0Adef%20increment%28%29%3A%0A%20%20%20%20global%20count%0A%20%20%20%20count%20%2B%3D%201%0A%0Acount%20%3D%200%0Acnt%28%29%0Aincrement%28%29%0Aprint%28count%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false][pythontutor]]):
+    #+begin_src python
+      count = 0
+      
+      def cnt():
+          count = 0
+          return count
+
+      def increment():
+          global count
+          count += 1
+
+      cnt()
+      increment()
+      print(count)
+    #+end_src
+
+* Referencing local variables before assignment
+
+- If you try to use a local variable in a function before you assign a
+  value to it, you get an ~UnboundLocalError~ ([[https://autbor.com/sameNameError/][pythontutor]]):
+  #+begin_src python
+    def spam():
+        print(eggs) # ERROR
+        eggs = 'spam local'
+
+    eggs = 'global'
+    spam()
+  #+end_src
+  #+begin_example python
+      print(eggs) # ERROR
+          ^^^^
+      UnboundLocalError: cannot access local variable 'eggs'
+      where it is not associated with a value
+  #+end_example
+
+- Python sees the assignment for ~eggs~ in the function and therefore
+  considers it local.
+
+- But when trying to execute ~print(eggs)~, ~eggs~ does not exist, and
+  Python will not fall back to using the global ~eggs~ variable.
 
 * TODO Practice the ~global~ statement
-* TODO Exception handling
+
+- Write a /void/ function called ~modify_global_variable~ that takes no
+  parameters. Inside the function, declare a ~global~ variable called
+  ~count~ and assign it an initial value of ~0~. Increment the value of
+  ~count~ by ~1~ using an /augmented assignment/ operator ~+=~. Print the
+  value of ~count~ inside the function. Then, outside the function,
+  increment the value of ~count~ by ~1~ and print it. *Print all statements
+  with f-strings*.
+
+- Sample output:
+  #+begin_example python
+    Inside the function: 1
+    Outside the function: 2
+  #+end_example
+
+- Copy your solution to [[https://pythontutor.com/visualize.html#code=def%20modify_global_variable%28%29%3A%0A%20%20%20%20global%20count%0A%20%20%20%20count%20%3D%200%0A%20%20%20%20count%20%2B%3D%201%0A%20%20%20%20print%28f'Inside%20the%20function%3A%20%7Bcount%7D'%29%20%20%23%20inside%20function%0A%0Amodify_global_variable%28%29%0Acount%20%2B%3D%201%0Aprint%28f'Outside%20the%20function%3A%20%7Bcount%7D'%29%20%23%20outside%20of%20function&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false][pythontutor.com]] to visualize the execution.
+
+* Exception handling with ~try~ and ~except~
+
+- In real-world programs, you want Python to detect errors, handle
+  them, and continue to run.
+
+- Example: this program has a fatal divide-by-zero error.
+  #+begin_src python
+    def spam(divideBy):
+        return 42 / divideBy
+
+    print(spam(2))
+    print(spam(12))
+    print(spam(0))
+    print(spam(1))            
+  #+end_src
+
+- The error name is ~ZeroDivisionError~. From the traceback, you know
+  that the ~return~ statement is causing the error.
+
+- To handle this exception, put the divide-by-zero code in a ~try~
+  clause and add an ~except~ clause to handle the error scenario:
+  #+begin_src python
+    def spam(divideBy):
+        try:
+            return 42 / divideBy
+        except ZeroDivisionError:
+            print('Error: Invalid argument')
+
+    print(spam(2))
+    print(spam(12))
+    print(spam(0))
+    print(spam(1))            
+  #+end_src
+
+  #+RESULTS:
+  : 21.0
+  : 3.5
+  : Error: Invalid argument
+  : None
+  : 42.0
+
+- Why is ~None~ printed out?
+  #+begin_quote
+  Answer: because the ~except~ clause does not end with a ~return~
+  statement.
+  #+end_quote
+
+- Any errors that occur in function calls in a ~try~ block will be
+  caught: compare this version ([[https://autbor.com/spamintry/][pythontutor]])
+  #+begin_src python
+    def spam(divideBy):
+        return 42 / divideBy
+
+    try:
+        print(spam(2))
+        print(spam(12))
+        print(spam(0))
+        print(spam(1))            
+    except ZeroDivisionError:
+        print('Error: Invalid argument')
+  #+end_src
+
+- You can add as many ~except~ statements as you like, for more than one
+  error. The syntax is:
+  #+begin_example python
+    try:
+        [code]
+    except [error1]:
+        print('...')
+    except [error2]:
+        print('...')
+    ...
+  #+end_example
+
+* TODO Practice Exception Handling
+
+- Write a function that takes two arguments ~a~ and ~b~ and returns their
+  sum.
+- Handle the potential error when trying to add a string or a
+  number.
+- To test the function, use the following testdata:
+  #+begin_example python
+    prt(1,2)
+    prt('hello','world')
+    prt('hello',1)
+  #+end_example
+
+* TODO Practice Exception Handling (home/bonus)
+
+- Write a function ~divide_numbers~ that asks the user to enter two
+  numbers ~num1~ and ~num2~ and divides the first number by the second
+  number.
+- Inside the function, handle any potential exceptions that may occur
+  during the division operation, such as division by zero or invalid
+  input.
+
 * TODO Short program: Zigzag
+
+
 * Summary
 
 - Functions provide a way to encapsulate reusable code blocks, accept
@@ -630,7 +842,7 @@ maintaining code clarity and avoiding unintended side effects.
 | Keyword argument     | Value in function call for keyword parameter    |
 | Local scope          | Variables known only in functions               |
 | Global scope         | Variables known everywhere in the script        |
-|                      |                                                 |
+| Void function        | Function without parameters like ~print()~        |
 
 * Footnotes
 
