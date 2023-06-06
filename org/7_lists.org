@@ -1,0 +1,5 @@
+#+TITLE:PYTHON LISTS
+#+AUTHOR: Marcus Birkenkrahe
+#+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
+#+STARTUP: overview hideblocks indent inlineimages entitiespretty
+#+PROPERTY: header-args:python :results output :exports both :session *Python*
