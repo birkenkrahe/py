@@ -3,3 +3,12 @@
 #+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
 #+STARTUP: overview hideblocks indent inlineimages entitiespretty
 #+PROPERTY: header-args:python :results output :exports both :session *Python*
+* The ~list~ data type
+* Working with lists
+* Augmented assignment operators
+* Methods
+* Example program: Magic 8 ball with a list
+* Sequence data types
+* References
+* Short program: Conway's Game of Life
+* Summary
