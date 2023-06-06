@@ -1124,9 +1124,11 @@ changing the format of the output.
 
 ** TODO Preview and review
 
-1) What is a function?
+1) What is a function and what's another name for them in Python?
    #+begin_quote
-   A piece of reusable code.
+   A piece of reusable code, defined by ~def~ followed by the function
+   name and parentheses ~()~ with or without parameters inside. Also
+   called 'method' in Python.
    #+end_quote
 2) What's the difference between a /parameter/ and an /argument/?
    #+begin_quote
@@ -1172,15 +1174,20 @@ changing the format of the output.
 
    #+RESULTS:
    : [1 2 3]
-9) What is another name for a function in Python?
+9) Which command opens up the documentation for ~len~?
    #+begin_quote
-   A method.
+   - On the IPython shell (Colab, Jupyter, DataCamp Workspace): ~len?~
+   - In IDLE, Python console or any script: ~help(len)~
    #+end_quote
-10) Which command opens up the documentation for ~len~?
+10) What are positional and what are keyboard parameters?
     #+begin_quote
-    - On the IPython shell (Colab, Jupyter, DataCamp Workspace): ~len?~
-    - In IDLE, Python console or any script: ~help(len)~
+    - Positional parameters must come first in the definition and in
+      the function call. Arguments are assigned to them by position
+      only.
+    - Keyboard parameters must come second in the definition and in
+      the function call, after that they come in any order.
     #+end_quote
+
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
