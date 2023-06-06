@@ -277,8 +277,8 @@ What are functions?
 
 - Introducing a ~list~ will allow us to shrink this script by a lot.
 
-* IN PROGRESS Practice using return values and statements
-** DONE Calculate area of a rectangle
+* Practice using return values and statements
+** Calculate area of a rectangle
 
 - Write a function called ~calculate_area~ that takes two parameters,
   ~length~ and ~width~, and calculates the ~area~ of a rectangle. The
@@ -336,7 +336,7 @@ What are functions?
   : 20
   : 21
 
-** NEXT Identify an even number
+** Identify an even number
 
 - Write a function called ~is_even~ that takes a single parameter,
   ~number~, and checks if the number is even. If the number is even, the
@@ -376,7 +376,7 @@ What are functions?
     print(none())
   #+end_src
 
-* TODO Practice the ~None~ value
+* Practice the ~None~ value
 
 ** Maximum value in a list
 
@@ -394,7 +394,7 @@ What are functions?
     print(find_max([]))  # Output: None
   #+end_example
 
-** Check divisibility of two integers
+** Check divisibility of two integers (do it at home)
 
 - Write a function called ~check_divisibility~ that takes two integers,
   ~num~ and ~divisor~, as parameters. The function should check if ~num~ is
@@ -425,12 +425,9 @@ What are functions?
     print('World')
   #+end_src
 
-  #+RESULTS:
-  : HelloWorld
-
 - Which other keyword parameters does ~print~ have?
   #+begin_src python
-    print(help(print))
+    print(help(print))   # on IPython, use `print?`
   #+end_src
 
   #+RESULTS:
@@ -568,7 +565,7 @@ What are functions?
   3) You can use the same name for variables in different scopes
   4) This narrows the number of lines that could cause a bug.
 
-* Local and global variables with the same name
+* NEXT Local and global variables with the same name
 
 - Check out this example (in the [[https://autbor.com/localglobalsamename/][pythontutor]] you can see the frames):
   how many variables called ~eggs~ are there?
@@ -587,27 +584,32 @@ What are functions?
     print(eggs)      # global `eggs`
   #+end_src
 
-- Analyze this: which printout do you expect - will this work?
+- *Analyze this:* which printout do you expect - will this work?
   #+begin_src python
     # function definition
     def hello1():
-        print('Hello, from hello1()')
+        print('Hello from hello1')
         def hello2():
-            return print('hello from hello2()')
+            return print('Hello from hello2')
         hello2()
-
-    # function call
+    # function calls
     hello1()
     hello2()
   #+end_src
+
+- *Analysis:*
+  1) All functions are void (take no arguments).
+  2) ~hello1~ prints message and calls ~hello2~
+  3) ~hello2~ prints message and returns ~print~ message
+  4) ~hello1~ returns ~None~ and ~hello2~ is destroyed
+  5) ~hello2~ is called outside of scope - ~NameError~
 
 * TODO Practice local scope
 
 - Write a function called ~add~ that takes two parameters, ~x~ and
   ~y~. Inside the function, declare a local variable called ~z~ and assign
   it the sum of ~x~ and ~y~. Print the value of ~z~ inside the
-  function. Then, outside the function, print the value of
-  ~z~. What do you observe? Explain the concept of local scope.
+  function. Then, outside the function, print the value of ~z~.
 
 * The ~global~ statement
 
@@ -802,13 +804,29 @@ What are functions?
 
 * TODO Practice Exception Handling (home/bonus)
 
-- Write a function ~divide_numbers~ that asks the user to enter two
-  numbers ~num1~ and ~num2~ and divides the first number by the second
+- Write a function ~div~ that asks the user to enter two numbers ~num1~
+  and ~num2~ (with ~input~) and divides the first number by the second
   number.
 
-- Inside the function, handle any potential exceptions that may occur
-  during the division operation, such as division by zero or invalid
-  input.
+- Inside the function, handle two potential exceptions: 1) division by
+  zero, and 2) invalid input (
+
+- Tip: do this with ~try~ and ~except~ and check out which errors are
+  raised when dividing by zero or providing invalid input.
+
+- Tip: You can stack ~except~ clauses like shown here:
+  #+begin_example python
+    try:
+       [do something]
+    except ErrorType1:
+       [print something]
+    except ErrorType2:
+       [print something]
+  #+end_example
+
+- Sample input/output session:
+  #+attr_html: :width 400px
+  [[../img/6_div.png]]
 
 * TODO Short program: Zig-zag
 
