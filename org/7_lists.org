@@ -8,7 +8,7 @@
 #+caption: Llyfrgell Genedlaethol Cymru / Llanfachraeth in darkness (1957)
 [[../img/lists.jpg]]
 
-- The ~list~ data type 
+- The ~list~ data type
 - The ~tuple~ data type
 - Augmented assignment operators
 - Methods as type-specific functions
@@ -49,7 +49,7 @@
 * Practice list creation, extraction and deletion
 
 You should be able to do all of these exercises with what you learnt
-in the DataCamp course "Introduction to Python":
+in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birkenkrahe/0e1b69ba3ce842324335062842f28729][notebook in GitHub]]):
 
 1) Assign these items to ~spam~ and extract them using a ranged ~for~ loop
    on one line separated by a single space: ~cat bat rat elephant~
@@ -88,7 +88,7 @@ in the DataCamp course "Introduction to Python":
    #+end_src
 
 6) How can you extract the last number in this list of lists?
-   #+begin_src python 
+   #+begin_src python
      spam = [['cat','bat'], [10,20,30,40,50]]
    #+end_src
    #+begin_src python
@@ -97,7 +97,7 @@ in the DataCamp course "Introduction to Python":
            spam[1][-1],
            spam[-1][4],
            spam[-1][-1],
-           end='')     
+           end='')
    #+end_src
 
 7) Write ~'The elephant is afraid of the bat.'~ using /negative/ indices
@@ -136,30 +136,259 @@ in the DataCamp course "Introduction to Python":
    #+RESULTS:
    : ['cat', 'bat', 'rat', 'armadillo']
    : ['cat', 'armadillo', 'rat', 'armadillo']
-   
+
 10) Create ~spam = ['cat', 'bat', 'cat', 'bat']~ by list concatenation
     and replication:
     #+begin_src python
       spam = ['cat','bat'] * 2
       print(spam)
       del spam
-      spam = ['cat','bat'] + ['cat','bat'] 
+      spam = ['cat','bat'] + ['cat','bat']
       print(spam)
     #+end_src
 
     #+RESULTS:
     : ['cat', 'bat', 'cat', 'bat']
     : ['cat', 'bat', 'cat', 'bat']
-    
-* NEXT Working with lists
 
+* Working with lists - ~allMyCats~
 
+- Here is a ~list~-less version of a program to get the names of six
+  cats from the user and printing them ([[https://autbor.com/allmycats1/][pythontutor]]):
+  #+begin_src python
+    catName1 = input('Enter the name of cat 1: ')
+    catName2 = input('Enter the name of cat 2: ')
+    catName3 = input('Enter the name of cat 3: ')
+    catName4 = input('Enter the name of cat 4: ')
+    catName5 = input('Enter the name of cat 5: ')
+    catName6 = input('Enter the name of cat 6: ')
+    print(f'The cat names are: {catName1}, {catName2},\
+     {catName3}, {catName4}, {catName5}, {catName6}')
+  #+end_src
 
+- Instead, use a single variable that contains a ~list~ value
+  ([[https://autbor.com/allmycats2/][pythontutor]]):
+  #+begin_src python
+    catNames = [ ]
+    while True:
+        print('Enter name of cat (or nothing to stop):')
+        name = input()
+        if name == '':
+            break
+        catNames = catNames + [name]
+    if not catNames:
+        print('You should get a cat')
+    else:
+        print('The cat names are:')
+        for name in catNames:
+            print(f'{name}')
+  #+end_src
+  1) Initialize empty list ~catNames~
+  2) Infinite loop: ask for cat's ~name~ until empty entry
+  3) Check if ~catNames~ were entered
+  4) If ~catNames~ were entered, print them looping over the ~list~
+
+* Looping over lists
+
+- Notice how the ~for~ loop ranges over the list elements without ~range~:
+  #+begin_src python
+    for i in ['a','b', None, 10,100]:
+        print(i,end=' ')
+  #+end_src
+
+- Can you print this list using a ~for~ loop with ~range~?
+  #+begin_src python
+    List = ['a','b', None, 10,100]
+    for i in range(len(List)):
+        print(List[i],end=' ')
+  #+end_src  
+
+- Instead of using ~range~ to get the integer index of the list items,
+  call ~enumerate~ instead:
+  #+begin_src python
+    List = ['a','b', None, 10,100]
+    for index, item in enumerate(List):
+        print(f'Index {index} in the list is: {item}')
+  #+end_src
+
+  #+RESULTS:
+  : Index 0 in the list is: a
+  : Index 1 in the list is: b
+  : Index 2 in the list is: None
+  : Index 3 in the list is: 10
+  : Index 4 in the list is: 100
+
+- There is no simple way to get the name of ~List~ once it's been
+  created because the variable name is just a /reference/ to the data.
+
+- All ~global~ objects are available in a /dictionary/ ~globals().items()~.
+  #+begin_src python
+    print(globals().items())
+  #+end_src
+  
+* Scope and lists
+
+- Challenge:
+  1) copy the code cell into a new code cell in Colab
+  2) wrap the input routine into a function ~getCatNames()~
+  3) make ~catNames~ global
+  4) call ~getCatNames~ before the final printout.
+  #+begin_src python
+    def getCatNames():
+        global catNames  # make `catNames` global
+        catNames = [ ]
+        while True:
+            print('Enter name of cat (or nothing to stop):')
+            name = input()
+            if name == '':
+                return
+            catNames = catNames + [name]
+        return catNames
+
+    getCatNames()   # function call
+
+    if not catNames:
+        print('You should get a cat')
+    else:
+        print('The cat names are:')
+        for name in catNames:
+            print(f'{name}')
+  #+end_src
+
+- How could you keep ~catNames~ in local scope (inside the function) and
+  still access its values outside?
+  #+begin_src python
+    def getCatNames():
+        catNames = [ ]
+        while True:
+            print('Enter name of cat (or nothing to stop):')
+            name = input()
+            if name == '':
+                return
+            catNames = catNames + [name]
+        return catNames
+
+    myCatNames = getCatNames()
+    print(myCatNames)
+  #+end_src
+
+* ~in~ or ~out~?
+
+- The following script lets the user type in a pet name and then
+  checks to see if the name is listed:
+  #+begin_src python
+    myPets = ['Nanny', 'Rosie', 'Poppy', 'Jack']
+    name = input('Enter a pet name: ')
+    if name not in myPets:
+        print(f"I don't have a pet named {name}.")
+    else:
+        print(f"{name} is my pet.")
+  #+end_src
+
+* Multiple assignments (~tuple~ unpacking)
+
+- You can assign multiple variables with the values in one line.
+
+- The one assignment per line way:
+  #+begin_src python
+    cat = ['fast', 'moody', 'black']
+    speed = cat[0]
+    disposition = cat[1]
+    color = cat[2]
+    print(f'The {color} cat is {speed} and {disposition}')
+  #+end_src
+
+  #+RESULTS:
+  : The black cat is fast and moody
+  
+- Multiple assignments: number of variables and length of list must be
+  exactly equal otherwise you get a ~ValueError~.
+  #+begin_src python
+    cat = ['fast', 'moody', 'black']
+    speed, disposition, color = cat # stored as tuple and unpacked
+    print(f'The {color} cat is {speed} and {disposition}')
+  #+end_src
+
+  #+RESULTS:
+  : The black cat is fast and moody
+
+- Handle the ~ValueError~ that is caused by adding a variable ~name~ to
+  the assignment:
+  #+begin_src python
+    cat = ['fast', 'moody', 'black']
+    speed, disposition, color, name = cat # name is not known
+    print(f'The {color} cat is {speed} and {disposition}')
+  #+end_src
+
+- Solution:
+  1) put the assignment into a ~try~ clause and add a ~except ValueError:~
+     clause
+  2) to test, run original version (exception), then add ~'Jack'~ to ~cat~
+     in the first line
+  #+begin_src python
+    cat = ['fast', 'moody', 'black']
+    try:
+        speed, disposition, color, name = cat
+    except ValueError:
+        print('ValueError - check multiple assignment')
+    else:
+        print(f'The {color} cat named {name} is {speed} and {disposition}')
+  #+end_src
+
+* Lists as ~random~ arguments
+
+- The ~random.choice~ function will return a randomly selected item from
+  the list:
+  #+begin_src python
+    import random
+    pets = ['dog', 'cat', 'squirrel','moose','mouse','pony','snake']
+    print(random.choice(pets))
+  #+end_src
+
+- This is a shorter form of ~pets[random.randint(0,len(pets)-1]~:
+  #+begin_src python
+    import random
+    pets = ['dog', 'cat', 'squirrel','moose','mouse','pony','snake']
+    print(pets[random.randint(0,len(pets)-1)])
+  #+end_src
+
+- The ~random.shuffle~ function will reorder the items in a list: it
+  modifies the list /in place/ rather than returning a new list.
+  #+begin_src python
+    import random
+    people = ['Alice', 'Bob', 'Carol', 'David']
+    random.shuffle(people)
+    print(people)
+  #+end_src
 
 * Augmented assignment operators
-* Methods
+#+attr_latex: :width 400px
+#+caption: Augmented assignment operators
+[[../img/7_augmented.png]]
+
+- These operators work for numbers, strings and lists:
+  #+begin_src python
+    spam = 'Hello, '
+    spam += 'world!'   # equivalent to spam = spam + 'world!'
+    print(spam)
+
+    bacon = ['Huzza']
+    bacon *= 3         # equivalent to bacon = bacon * 3
+    print(bacon)
+  #+end_src
+
+  #+RESULTS:
+  : Hello, world!
+  : ['Huzza', 'Huzza', 'Huzza']
+
+
+* Methods for specific data types
+
+
+
 * Example program: Magic 8 ball with a list
 * Sequence data types
 * References
 * Short program: Conway's Game of Life
 * Summary
+* Glossary

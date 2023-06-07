@@ -595,7 +595,7 @@ What are functions?
         def hello2():
             return print('Hello from hello2')
         hello2()
-    # function calls
+        # function calls
     hello1()
     hello2()
   #+end_src
@@ -616,64 +616,64 @@ What are functions?
 
 * The ~global~ statement
 
-  - Use ~global~ to modify a global variable from within a function: the
-    line ~global eggs~ at the top of a function says to Python "don't
-    create a local variable with this name!"
+- Use ~global~ to modify a global variable from within a function: the
+  line ~global eggs~ at the top of a function says to Python "don't
+  create a local variable with this name!"
 
-  - View the program execution at [[https://autbor.com/globalstatement/][autbor.com/globalstatement/]]
-    #+begin_src python
-      def spam():
-          global eggs
-          eggs = 'spam' # this is now the global value of `eggs`
+- View the program execution at [[https://autbor.com/globalstatement/][autbor.com/globalstatement/]]
+  #+begin_src python
+    def spam():
+        global eggs
+        eggs = 'spam' # this is now the global value of `eggs`
 
-      eggs = 'global'
-      spam()  # returns the global value of `eggs`
-      print(eggs)
-    #+end_src
+    eggs = 'global'
+    spam()  # returns the global value of `eggs`
+    print(eggs)
+  #+end_src
 
-  - There are four rules to tell which scope a variable is in:
-    1. If is used in the global scope (outside of all functions), then
-       it is always a global variable.
-    2. If there is a ~global~ statement in a function, it is a global
-       variable.
-    3. If there is no ~global~ statement and the variable is used in an
-       assignment in the function, it is a local variable.
-    4. But if the variable is not used in an assignment statement, it is
-       a global variable.
+- There are four rules to tell which scope a variable is in:
+  1. If is used in the global scope (outside of all functions), then
+     it is always a global variable.
+  2. If there is a ~global~ statement in a function, it is a global
+     variable.
+  3. If there is no ~global~ statement and the variable is used in an
+     assignment in the function, it is a local variable.
+  4. But if the variable is not used in an assignment statement, it is
+     a global variable.
 
-  - Identify output and local or global variables ([[https://autbor.com/sameNameLocalGlobal/][pythontutor]]):
-    #+begin_src python
-      def spam():
-          global eggs
-          eggs = 'spam'
+- Identify output and local or global variables ([[https://autbor.com/sameNameLocalGlobal/][pythontutor]]):
+  #+begin_src python
+    def spam():
+        global eggs
+        eggs = 'spam'
 
-      def bacon():
-          eggs = 'bacon'
+    def bacon():
+        eggs = 'bacon'
 
-      def ham():
-          print(eggs)
+    def ham():
+        print(eggs)
 
-      eggs = 42
-      spam()
-      print(eggs)
-    #+end_src
+    eggs = 42
+    spam()
+    print(eggs)
+  #+end_src
 
-  - Identify output and local or global variables ([[https://pythontutor.com/visualize.html#code=def%20cnt%28%29%3A%0A%20%20%20%20count%20%3D%200%0A%20%20%20%20return%20count%0A%0Adef%20increment%28%29%3A%0A%20%20%20%20global%20count%0A%20%20%20%20count%20%2B%3D%201%0A%0Acount%20%3D%200%0Acnt%28%29%0Aincrement%28%29%0Aprint%28count%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false][pythontutor]]):
-    #+begin_src python
-      count = 0
-      
-      def cnt():
-          count = 0
-          return count
+- Identify output and local or global variables ([[https://pythontutor.com/visualize.html#code=def%20cnt%28%29%3A%0A%20%20%20%20count%20%3D%200%0A%20%20%20%20return%20count%0A%0Adef%20increment%28%29%3A%0A%20%20%20%20global%20count%0A%20%20%20%20count%20%2B%3D%201%0A%0Acount%20%3D%200%0Acnt%28%29%0Aincrement%28%29%0Aprint%28count%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false][pythontutor]]):
+  #+begin_src python
+    count = 0
 
-      def increment():
-          global count
-          count += 1
+    def cnt():
+        count = 0
+        return count
 
-      cnt()
-      increment()
-      print(count)
-    #+end_src
+    def increment():
+        global count
+        count += 1
+
+    cnt()
+    increment()
+    print(count)
+  #+end_src
 
 * Referencing local variables before assignment
 
@@ -731,7 +731,7 @@ What are functions?
     print(spam(2))
     print(spam(12))
     print(spam(0))
-    print(spam(1))            
+    print(spam(1))
   #+end_src
 
 - The error name is ~ZeroDivisionError~. From the traceback, you know
@@ -749,7 +749,7 @@ What are functions?
     print(spam(2))
     print(spam(12))
     print(spam(0))
-    print(spam(1))            
+    print(spam(1))
   #+end_src
 
   #+RESULTS:
@@ -766,7 +766,7 @@ What are functions?
   #+end_quote
 
 - Any errors that occur in function calls in a ~try~ block will be
-  caught: compare this version ([[https://autbor.com/spamintry/][pythontutor]])
+  caught (see [[https://autbor.com/spamintry/][pythontutor]]):
   #+begin_src python
     def spam(divideBy):
         return 42 / divideBy
@@ -775,21 +775,125 @@ What are functions?
         print(spam(2))
         print(spam(12))
         print(spam(0))
-        print(spam(1))            
+        print(spam(1))
+
     except ZeroDivisionError:
         print('Error: Invalid argument')
   #+end_src
 
+* ~try~ harder ~except~ when you're ~finally~ done
+
 - You can add as many ~except~ statements as you like, for more than one
-  error. The syntax is:
+  error. Example: a version of ~float~ that fails gracefully.
+
+- Remember: executing the ~except~ clause means that a legitimate error
+  is suppressed and the program fails in a controlled manner only.
+
+- The ~except~ clause will only be executed if ~float(x)~ raises an
+  exception (in this case a ~ValueError~):
+  #+begin_src python
+    def attempt_float(x):
+        try:
+           return print(float(x))
+        except:
+           return print(f"Cannot convert '{x}' to float.")
+
+    attempt_float('1.2345')
+    attempt_float('something')   # ValueError
+  #+end_src
+
+- A ~float~ conversion can also raise a ~TypeError~:
+  #+begin_src python :results silent
+    float((1,2))  # TypeError: cannot convert a tuple
+  #+end_src
+
+- Here, the ~except~ clause will only be executed if a ~ValueError~ is
+  raised (the ~TypeError~ might indicate a legitimate bug):
+  #+begin_src python
+    def attempt_float(x):
+        try:
+           return print(float(x))
+        except ValueError:
+           return print(f"ValueError: cannot convert '{x}' to float.")
+
+    attempt_float((1,2))  # TypeError not excepted - program terminates
+    attempt_float('1.2345')
+    attempt_float('something')   # ValueError is excepted
+  #+end_src
+
+- The ~except~ clause will only be executed if a ~ValueError~ is raised:
+  #+begin_src python
+    def attempt_float(x):
+        try:
+           return print(float(x))
+        except ValueError:
+           return print(f"V: cannot convert '{x}' to float.")
+
+    attempt_float('1.2345')
+    attempt_float('something')   # ValueError
+  #+end_src
+
+- You can catch multiple exception types simultaneously, too:
+  #+begin_src python
+    def attempt_float(x):
+        try:
+            return print(float(x))
+        except (TypeError, ValueError):
+            return print(f'TypeError or ValueError: {x}')
+    attempt_float('a')
+    attempt_float((1,2,3))
+    attempt_float(1)
+  #+end_src
+
+  #+RESULTS:
+  : TypeError or ValueError: a
+  : TypeError or ValueError: (1, 2, 3)
+  : 1.0
+
+- Or you can catch them serially, like this:
+  #+begin_src python
+    def attempt_float(x):
+        try:
+            return print(float(x))
+        except TypeError:
+            return print(f'TypeError: {x}')
+        except ValueError:
+            return print(f'ValueError: {x}')
+
+    attempt_float('a')
+    attempt_float((1,2,3))
+    attempt_float(1)
+  #+end_src
+
+  #+RESULTS:
+  : ValueError: a
+  : TypeError: (1, 2, 3)
+  : 1.0
+
+- You may not want to suppress an exception but code to be executed
+  regardless - use ~finally~ for that:
   #+begin_example python
+    f = open(path, mode='w') # open path to file f
     try:
-        [code]
-    except [error1]:
-        print('...')
-    except [error2]:
-        print('...')
-    ...
+        write_to_file(f)  # write to file f
+    finally:
+        f.close()          # file f will ALWAYS get closed
+  #+end_example
+
+  #+RESULTS:
+  
+- You can have code that executes only if the ~try~ clause succeeds
+  using ~else~ and ~finally~:
+  #+begin_example python
+    f = open(path, mode='w') # open path to file f
+    try:
+        write_to_file(f)  # write to file f
+    except:
+        print('Failed')   # exit if writing didn't work
+    else:
+        print('Succeeded')  # exit if writing did work
+    finally:
+        f.close()   # close f no matter what
   #+end_example
 
 * Practice Exception Handling
@@ -844,26 +948,26 @@ What are functions?
 - Type this code into Colab:
   #+begin_src python
     import time, sys
-    indent = 0 
+    indent = 0
     indentIncreasing = True
 
     try:
-      while True: 
+      while True:
           print(' ' * indent, end='')
           print('********')
-          time.sleep(0.1)  
+          time.sleep(0.1)
 
           if indentIncreasing:
-              indent += 1 
+              indent += 1
               if indent == 20:
                   indentIncreasing = False
           else:
-              indent -= 1 
-              indentIncreasing = True 
+              indent -= 1
+              indentIncreasing = True
 
     except KeyboardInterrupt:
         sys.exit()
-  #+end_src  
+  #+end_src
 
 - Analysis:
   1) The program begins with importing two modules: ~time~ for
@@ -876,7 +980,7 @@ What are functions?
      per line, and ~indentIncreasing~, a Boolean variable that indicates
      direction: ~True~ for moving to the right, ~False~ for the left.
      #+begin_example python
-     indent = 0 
+     indent = 0
      indentIncreasing = True
      #+end_example
   3) The rest of the program is placed in a ~try~ statement: do whatever
@@ -886,10 +990,10 @@ What are functions?
      1/10 secs. after the print.
      #+begin_example python
      try:
-       while True: 
+       while True:
           print(' ' * indent, end='')
           print('********')
-          time.sleep(0.1)  
+          time.sleep(0.1)
      #+end_example
   4) To adjust the indentation until the asterisks are printed, we
      check if ~indentIncreasing~ is ~True~: if it is, we indent until the
@@ -897,7 +1001,7 @@ What are functions?
      ~False~:
      #+begin_example python
        if indentIncreasing:
-           indent += 1 
+           indent += 1
            if indent == 20:
                indentIncreasing = False
      #+end_example
@@ -906,8 +1010,8 @@ What are functions?
      switch direction by setting ~indentIncreasing~ to ~True~.
      #+begin_example python
        else:
-         indent -= 1 
-           indentIncreasing = True 
+         indent -= 1
+           indentIncreasing = True
      #+end_example
   6) After checking the conditions, the program goes back to the start
      of the infinite loop and executes again. If the user triggers a

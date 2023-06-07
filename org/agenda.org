@@ -1371,7 +1371,14 @@ changing the format of the output.
 #+caption: Llyfrgell Genedlaethol Cymru / Llanfachraeth in darkness (1957)
 [[../img/lists.jpg]]
 
-** TODO Preview and review
+* TODO A bit traumatized by this image (as a German)
+#+attr_latex: :width 400px
+#+caption: Great Garden Gnome Massacre (via Twitter)
+[[../img/massacre.jpg]]
+
+"The Great German Garden Gnome Massacre"
+
+* TODO Preview and review
 
 1) What is the difference between a function and a function call?
    #+begin_quote
@@ -1465,14 +1472,14 @@ changing the format of the output.
     %cat test.txt    # view the file `test.txt`
     #+end_example
 
-** TODO In-class summary
+* TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
 
 - [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
 
-** TODO Homework
+* TODO Homework
 #+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
