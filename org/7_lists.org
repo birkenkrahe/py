@@ -1,10 +1,161 @@
-#+TITLE:PYTHON LISTS
+#+TITLE:PYTHON LISTS, TUPLES and METHODS
 #+AUTHOR: Marcus Birkenkrahe
 #+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
 #+STARTUP: overview hideblocks indent inlineimages entitiespretty
-#+PROPERTY: header-args:python :results output :exports both :session *Python*
+#+PROPERTY: header-args:python :results output :exports both
+* Overview
+#+attr_latex: :width 400px
+#+caption: Llyfrgell Genedlaethol Cymru / Llanfachraeth in darkness (1957)
+[[../img/lists.jpg]]
+
+- The ~list~ data type 
+- The ~tuple~ data type
+- Augmented assignment operators
+- Methods as type-specific functions
+- References and pointers
+- Conway's Game of Life
+
 * The ~list~ data type
-* Working with lists
+
+- A ~list~ contains multiple values in an ordered sequence.
+
+- A ~list~ is a /value/ and can be stored in an object, and it also
+  contains values also called /items/.
+
+- The list items can be of any data type including lists:
+  #+begin_src python
+    print([1,2,3])   # numeric list (numeric items)
+    print(['cat','bat','rat','elephant'])    # string list (string items)
+    print(['hello', True, None, 42, 3.1415]) # mixed type list
+  #+end_src
+
+- Lists can be stored like any other value:
+  #+begin_src python
+    spam = ['cat', 'bat', 'rat']
+    print(len(spam))    # number of items in spam
+    print(type(spam))   # class of spam
+    print([] == list('')) # empty list
+  #+end_src
+
+- ~spam~ is four things:
+  1) a ~list~ variable (storage)
+  2) a ~list~ value (stored)
+  3) an ordered sequence of string values (indexed)
+  4) an object (instanced)
+  #+attr_latex: :width 400px
+  #+caption: A list with its index values
+  [[../img/7_list.png]]
+
+* Practice list creation, extraction and deletion
+
+You should be able to do all of these exercises with what you learnt
+in the DataCamp course "Introduction to Python":
+
+1) Assign these items to ~spam~ and extract them using a ranged ~for~ loop
+   on one line separated by a single space: ~cat bat rat elephant~
+   #+begin_src python
+     spam = ['cat', 'bat', 'rat', 'elephant']
+     for i in range(4):
+         print(spam[i], end=' ')
+   #+end_src
+
+2) What if the list has ~N~ elements? Can you generalize the loop?
+   #+begin_src python
+     spam = ['cat', 'bat', 'rat', 'elephant']
+     for i in range(len(spam)):
+         print(spam[i], end=' ')
+   #+end_src
+
+3) Use elements of ~spam~ to print the sentence ~'The bat ate the cat.'~
+   formatted with an f-string:
+   #+begin_src python
+     spam = ['cat', 'bat', 'rat', 'elephant']
+     print(f"'The {spam[1]} ate the {spam[0]}.'")
+   #+end_src
+
+4) Which error do you get when you use an index that exceeds the number
+   of values in your list value? Create an example.
+   #+begin_src python :results silent
+     spam = ['cat', 'bat', 'rat', 'elephant']
+     print(spam[5])
+   #+end_src
+
+5) Can index values be non-integer? Find out!
+   #+begin_src python :results output
+     spam = ['cat', 'bat', 'rat', 'elephant']
+     print(spam[int(1.0)])
+     print(spam[1.0])
+   #+end_src
+
+6) How can you extract the last number in this list of lists?
+   #+begin_src python 
+     spam = [['cat','bat'], [10,20,30,40,50]]
+   #+end_src
+   #+begin_src python
+     spam = [['cat','bat'], [10,20,30,40,50]]
+     print(spam[1][4],
+           spam[1][-1],
+           spam[-1][4],
+           spam[-1][-1],
+           end='')     
+   #+end_src
+
+7) Write ~'The elephant is afraid of the bat.'~ using /negative/ indices
+   of ~spam = ['cat', 'bat', 'rat', 'elephant']~:
+   #+begin_src python
+     spam = ['cat', 'bat', 'rat', 'elephant']
+     print(f"'The {spam[-1]} is afraid of the {spam[-4]}.'")
+   #+end_src
+
+8) From ~spam = ['cat', 'bat', 'rat', 'elephant']~, extract
+   ~['cat','bat','rat']~:
+   #+begin_src python
+     spam = ['cat', 'bat', 'rat', 'elephant']
+     print(spam[0:3],    # slicing first three elements
+           spam[-4:-1],  # slicing first three elements 'from the rear'
+           sep='\n')
+     del spam[-1]        # deleting the last element
+     print(spam)
+   #+end_src
+
+   #+RESULTS:
+   : ['cat', 'bat', 'rat']
+   : ['cat', 'bat', 'rat']
+   : ['cat', 'bat', 'rat']
+
+9) Change ~spam = ['cat', 'bat', 'rat', 'elephant']~ to the list
+   ~['cat','armadillo','rat', 'armadillo']~:
+   #+begin_src python
+     spam = ['cat', 'bat', 'rat', 'elephant']
+     spam[-1] = 'armadillo'
+     print(spam)
+     spam[1] = 'armadillo'
+     print(spam)
+   #+end_src
+
+   #+RESULTS:
+   : ['cat', 'bat', 'rat', 'armadillo']
+   : ['cat', 'armadillo', 'rat', 'armadillo']
+   
+10) Create ~spam = ['cat', 'bat', 'cat', 'bat']~ by list concatenation
+    and replication:
+    #+begin_src python
+      spam = ['cat','bat'] * 2
+      print(spam)
+      del spam
+      spam = ['cat','bat'] + ['cat','bat'] 
+      print(spam)
+    #+end_src
+
+    #+RESULTS:
+    : ['cat', 'bat', 'cat', 'bat']
+    : ['cat', 'bat', 'cat', 'bat']
+    
+* NEXT Working with lists
+
+
+
+
 * Augmented assignment operators
 * Methods
 * Example program: Magic 8 ball with a list

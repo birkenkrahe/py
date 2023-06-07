@@ -455,6 +455,9 @@ What are functions?
     print('Hello', 'World', end='', sep=', ')
   #+end_src
 
+  #+RESULTS:
+  : Hello, World Hello, World
+
 - Print 'Hello, World!' to a file named ~helloworld.txt~, then check if
   the file was created with 'magic' IPython commands ~%ls~ and ~%cat~:
   #+begin_example python
@@ -604,7 +607,7 @@ What are functions?
   4) ~hello1~ returns ~None~ and ~hello2~ is destroyed
   5) ~hello2~ is called outside of scope - ~NameError~
 
-* TODO Practice local scope
+* Practice local scope
 
 - Write a function called ~add~ that takes two parameters, ~x~ and
   ~y~. Inside the function, declare a local variable called ~z~ and assign
@@ -697,7 +700,7 @@ What are functions?
 - But when trying to execute ~print(eggs)~, ~eggs~ does not exist, and
   Python will not fall back to using the global ~eggs~ variable.
 
-* TODO Practice the ~global~ statement
+* Practice the ~global~ statement
 
 - Write a /void/ function called ~modify_global_variable~ that takes no
   parameters. Inside the function, declare a ~global~ variable called
@@ -789,7 +792,7 @@ What are functions?
     ...
   #+end_example
 
-* TODO Practice Exception Handling
+* Practice Exception Handling
 
 - Write a function that takes two arguments ~a~ and ~b~ and returns their
   sum.
@@ -802,7 +805,7 @@ What are functions?
     prt('hello',1)
   #+end_example
 
-* TODO Practice Exception Handling (home/bonus)
+* Practice Exception Handling (home/bonus)
 
 - Write a function ~div~ that asks the user to enter two numbers ~num1~
   and ~num2~ (with ~input~) and divides the first number by the second
@@ -828,7 +831,7 @@ What are functions?
   #+attr_html: :width 400px
   [[../img/6_div.png]]
 
-* TODO Short program: Zig-zag
+* Short program: Zig-zag
 
 - This program will create a back-and-forth, zig-zag pattern until the
   user stops it by pressing ~CTRL-c~. [[https://gist.github.com/birkenkrahe/0b1e4c712a79968e3e21a55d8944adfd][See here for a notebook in GitHub]].
@@ -916,8 +919,6 @@ What are functions?
            sys.exit()
      #+end_example
 
-      
-           
 * Summary
 
 - Functions provide a way to encapsulate reusable code blocks, accept
