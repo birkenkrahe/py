@@ -1404,13 +1404,13 @@ changing the format of the output.
      local scope that ends when the program returns from the function
      call.
    #+end_quote
-   
+
 3) What happens to variables in a local scope when the function call
    returns?
    #+begin_quote
    They are destroyed.
    #+end_quote
-   
+
 4) What is a return value? Can a return value be part of an
    expression?
    #+begin_quote
@@ -1426,7 +1426,7 @@ changing the format of the output.
 
    #+RESULTS:
    : 4
-        
+
 5) If a function does not have a return statement, what is the return
    value of a call to that function?
    #+begin_quote
@@ -1444,11 +1444,11 @@ changing the format of the output.
    It imports the module ~areallyourpetsnamederic~ if this module was
    installed. Otherwise it gives an ~ModuleNotFoundError~.
    #+end_quote
-    
+
 9) If you had a function named ~bacon()~ in a module named ~spam~, how
    would you call it after importing ~spam~?
    #+begin_quote
-     As ~spam.bacon()~.
+   As ~spam.bacon()~.
    #+end_quote
 
 10) In which order do the keyword parameters ~end~, ~sep~, ~file~ and ~flush~
@@ -1464,7 +1464,7 @@ changing the format of the output.
     %ls -l hello.py  # long listing of the file `hello.py`
     %cat test.txt    # view the file `test.txt`
     #+end_example
-    
+
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
@@ -1517,10 +1517,33 @@ changing the format of the output.
 1) How can you force a variable in a function to refer to the global
    variable?
    #+begin_quote
-     With a ~global~ keyword before the variable name on a line of its
-     own, or by using it in an assignment outside of a function.
+   With a ~global~ keyword before the variable name on a line of its
+   own, or by using it in an assignment outside of a function.
    #+end_quote
-   
+
+2) What is the output when you run this code? (Source: [[https://twitter.com/driscollis/status/1665702110950993920?s=20][Twitter]].)
+   #+begin_src python
+     number = 8
+
+     def adder(integer):
+         print(number)
+         number = 10
+         print(number + integer)
+
+     adder(5)
+   #+end_src
+
+   - [ ] 8 and then an exception is raised
+   - [ ] ~NameError~
+   - [ ] ~TypeError~
+   - [ ] ~UnboundLocalError~
+
+   #+begin_quote
+   Answer: ~UnboundLocalError~ because inside the function, ~number~ is a
+   local variable (it's assigned below) and you're trying to use it
+   before it has been assigned a value.
+   #+end_quote
+
 
 ** TODO In-class summary
 #+attr_latex: :width 300px
