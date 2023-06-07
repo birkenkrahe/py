@@ -568,7 +568,7 @@ What are functions?
   3) You can use the same name for variables in different scopes
   4) This narrows the number of lines that could cause a bug.
 
-* NEXT Local and global variables with the same name
+* Local and global variables with the same name
 
 - Check out this example (in the [[https://autbor.com/localglobalsamename/][pythontutor]] you can see the frames):
   how many variables called ~eggs~ are there?
@@ -599,6 +599,10 @@ What are functions?
     hello1()
     hello2()
   #+end_src
+
+  #+RESULTS:
+  : Hello from hello1
+  : Hello from hello2
 
 - *Analysis:*
   1) All functions are void (take no arguments).
@@ -668,12 +672,15 @@ What are functions?
 
     def increment():
         global count
-        count += 1
+        count += 1  # count = count + 1
 
     cnt()
     increment()
     print(count)
   #+end_src
+
+  #+RESULTS:
+  : 1
 
 * Referencing local variables before assignment
 
@@ -707,8 +714,9 @@ What are functions?
   ~count~ and assign it an initial value of ~0~. Increment the value of
   ~count~ by ~1~ using an /augmented assignment/ operator ~+=~. Print the
   value of ~count~ inside the function. Then, outside the function,
-  increment the value of ~count~ by ~1~ and print it. *Print all statements
-  with f-strings*.
+  increment the value of ~count~ by ~1~ and print it.
+
+- *Print all statements with f-strings*.
 
 - Sample output:
   #+begin_example python
@@ -802,6 +810,10 @@ What are functions?
     attempt_float('something')   # ValueError
   #+end_src
 
+  #+RESULTS:
+  : 1.2345
+  : Cannot convert 'something' to float.
+
 - A ~float~ conversion can also raise a ~TypeError~:
   #+begin_src python :results silent
     float((1,2))  # TypeError: cannot convert a tuple
@@ -827,11 +839,14 @@ What are functions?
         try:
            return print(float(x))
         except ValueError:
-           return print(f"V: cannot convert '{x}' to float.")
+           return print(f"ValueError: cannot convert '{x}' to float.")
 
+    attempt_float((1,2))  
     attempt_float('1.2345')
     attempt_float('something')   # ValueError
-  #+end_src
+#+end_src           
+
+#+RESULTS:
 
 - You can catch multiple exception types simultaneously, too:
   #+begin_src python
@@ -840,6 +855,7 @@ What are functions?
             return print(float(x))
         except (TypeError, ValueError):
             return print(f'TypeError or ValueError: {x}')
+
     attempt_float('a')
     attempt_float((1,2,3))
     attempt_float(1)
@@ -916,7 +932,7 @@ What are functions?
   number.
 
 - Inside the function, handle two potential exceptions: 1) division by
-  zero, and 2) invalid input (
+  zero, and 2) invalid input.
 
 - Tip: do this with ~try~ and ~except~ and check out which errors are
   raised when dividing by zero or providing invalid input.
@@ -930,7 +946,7 @@ What are functions?
     except ErrorType2:
        [print something]
   #+end_example
-
+  
 - Sample input/output session:
   #+attr_html: :width 400px
   [[../img/6_div.png]]
@@ -1022,7 +1038,7 @@ What are functions?
        except KeyboardInterrupt:
            sys.exit()
      #+end_example
-
+     
 * Summary
 
 - Functions provide a way to encapsulate reusable code blocks, accept

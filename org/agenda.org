@@ -1371,6 +1371,10 @@ changing the format of the output.
 #+caption: Llyfrgell Genedlaethol Cymru / Llanfachraeth in darkness (1957)
 [[../img/lists.jpg]]
 
+Friday: quick project update - informal "sprint review"
+- How're you doing?
+- Any questions?
+- Informal presentation and discussion
 * TODO A bit traumatized by this image (as a German)
 #+attr_latex: :width 400px
 #+caption: Great Garden Gnome Massacre (via Twitter)
@@ -1434,7 +1438,12 @@ changing the format of the output.
    #+RESULTS:
    : 4
 
-5) If a function does not have a return statement, what is the return
+5) What's another name for /constant/ in Python?
+   #+begin_quote
+   A literal.
+   #+end_quote
+   
+6) If a function does not have a return statement, what is the return
    value of a call to that function?
    #+begin_quote
    The non-value or missing value ~None~. Same if the function has a
@@ -1459,7 +1468,7 @@ changing the format of the output.
    #+end_quote
 
 10) In which order do the keyword parameters ~end~, ~sep~, ~file~ and ~flush~
-    have to be written?
+    have to be written? (These are ~print~ parameters.)
     #+begin_quote
     As long as you use their names, as in ~end=' '~, or ~sep=','~, they
     can be in any order as long as they come after the positional
