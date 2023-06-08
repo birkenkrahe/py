@@ -59,12 +59,18 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
          print(spam[i], end=' ')
    #+end_src
 
+   #+RESULTS:
+   : cat bat rat elephant 
+
 2) What if the list has ~N~ elements? Can you generalize the loop?
    #+begin_src python
      spam = ['cat', 'bat', 'rat', 'elephant']
      for i in range(len(spam)):
          print(spam[i], end=' ')
    #+end_src
+
+   #+RESULTS:
+   : cat bat rat elephant 
 
 3) Use elements of ~spam~ to print the sentence ~'The bat ate the cat.'~
    formatted with an f-string:
@@ -87,6 +93,9 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
      print(spam[1.0])
    #+end_src
 
+   #+RESULTS:
+   : bat
+   
 6) How can you extract the last number in this list of lists?
    #+begin_src python
      spam = [['cat','bat'], [10,20,30,40,50]]
@@ -100,12 +109,18 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
            end='')
    #+end_src
 
+   #+RESULTS:
+   : 50 50 50 50
+
 7) Write ~'The elephant is afraid of the bat.'~ using /negative/ indices
    of ~spam = ['cat', 'bat', 'rat', 'elephant']~:
    #+begin_src python
      spam = ['cat', 'bat', 'rat', 'elephant']
      print(f"'The {spam[-1]} is afraid of the {spam[-4]}.'")
    #+end_src
+
+   #+RESULTS:
+   : 'The elephant is afraid of the cat.'
 
 8) From ~spam = ['cat', 'bat', 'rat', 'elephant']~, extract
    ~['cat','bat','rat']~:
@@ -169,7 +184,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
 - Instead, use a single variable that contains a ~list~ value
   ([[https://autbor.com/allmycats2/][pythontutor]]):
   #+begin_src python
-    catNames = [ ]
+    catNames = []
     while True:
         print('Enter name of cat (or nothing to stop):')
         name = input()
@@ -210,13 +225,6 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
     for index, item in enumerate(List):
         print(f'Index {index} in the list is: {item}')
   #+end_src
-
-  #+RESULTS:
-  : Index 0 in the list is: a
-  : Index 1 in the list is: b
-  : Index 2 in the list is: None
-  : Index 3 in the list is: 10
-  : Index 4 in the list is: 100
 
 - There is no simple way to get the name of ~List~ once it's been
   created because the variable name is just a /reference/ to the data.

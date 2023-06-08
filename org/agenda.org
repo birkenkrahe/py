@@ -1549,8 +1549,7 @@ Friday: quick project update - informal "sprint review"
 
 ** TODO Preview and review
 
-1) How can you force a variable in a function to refer to the global
-   variable?
+1) How can you force a variable in a function to become ~global~?
    #+begin_quote
    With a ~global~ keyword before the variable name on a line of its
    own, or by using it in an assignment outside of a function.
@@ -1586,6 +1585,10 @@ Friday: quick project update - informal "sprint review"
      # Print global variables
      print(f'Global variables: {global_var1}, {global_var2}')
    #+end_src
+
+   #+RESULTS:
+   : Local variables: OpenAI, GPT-3
+   : Global variables: Hello, World
 3) What is the output when you run this code? (Source: [[https://twitter.com/driscollis/status/1665702110950993920?s=20][Twitter]].)
    #+begin_src python
      number = 8
