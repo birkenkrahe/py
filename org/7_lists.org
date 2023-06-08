@@ -272,18 +272,42 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
             print('Enter name of cat (or nothing to stop):')
             name = input()
             if name == '':
-                return
+                return catNames
             catNames = catNames + [name]
-        return catNames
 
     myCatNames = getCatNames()
     print(myCatNames)
+
   #+end_src
+  1) This function returns from the loop (and from the function call)
+     when an empty string is entered (no input).
+  2) Otherwise it keeps adding cat names to the ~catNames~ list.
+  3) Upon returning from the function call, the list ~catNames~ is
+     destroyed, but when the function call is saved in an object
+     ~myCatNames~, this object will hold the ~return~ value from
+     ~getCatNames~.
 
 * ~in~ or ~out~?
 
-- The following script lets the user type in a pet name and then
-  checks to see if the name is listed:
+- The ~in~ or ~not in~ command works on lists:
+  #+begin_src python
+    spam = ['cat', 'bat', 'rat']
+    print('cat' in spam)
+    print('chicken' not in spam)    
+  #+end_src
+
+  #+RESULTS:
+  : True
+  : True
+
+* Practice the ~in~ keyword for lists
+
+- Write a script that lets the user type in a pet ~name~ and checks if
+  the ~name~ is ~in~ a list ~myPets~ (which you need to create first). If it
+  is ~in~ the list, say "I have a pet with that name", otherwise say
+  that you don't.
+
+- Solution:  
   #+begin_src python
     myPets = ['Nanny', 'Rosie', 'Poppy', 'Jack']
     name = input('Enter a pet name: ')
@@ -291,6 +315,24 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
         print(f"I don't have a pet named {name}.")
     else:
         print(f"{name} is my pet.")
+  #+end_src
+
+- Here I put the ~input~ command in a function ~getPetName~. When it is
+  called, it returns ~name~, but ~name~ is local to the function, and you
+  need to transfer it to the global variable ~petName~ to be used:
+  #+begin_src python
+    def getPetName():
+        name = input('Enter a pet name: ')
+        return name
+
+    myPets = ['Nanny', 'Rosie', 'Poppy', 'Jack']
+
+    petName = getPetName()
+
+    if petName not in myPets:
+        print(f"I don't have a pet named {petName}.")
+    else:
+        print(f"{petName} is my pet.")
   #+end_src
 
 * Multiple assignments (~tuple~ unpacking)
@@ -385,10 +427,6 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
     print(bacon)
   #+end_src
 
-  #+RESULTS:
-  : Hello, world!
-  : ['Huzza', 'Huzza', 'Huzza']
-
 * Methods for specific data types
 
 - Each data type as its own set of methods, e.g. the ~list~ data type
@@ -422,6 +460,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
     print(spam.index('howdy'))
     print(spam.index('howdy howdy howdy'))
   #+end_src
+
 - When there are duplicates, the first instance is returned:
   #+begin_src python
     spam = ['hello', 'hi', 'howdy', 'hey', 'hi']
