@@ -1366,7 +1366,7 @@ changing the format of the output.
   solution and testing suite, and references ([[https://gist.github.com/birkenkrahe/1b15fe6b573d22c5af08dc9584cfc086][like here]]), with
   headlines and code highlighted.
 
-* NEXT Day 12: Global scope/exception handling/lists
+* DONE Day 12: Global scope/exception handling
 #+attr_latex: :width 400px
 #+caption: Llyfrgell Genedlaethol Cymru / Llanfachraeth in darkness (1957)
 [[../img/lists.jpg]]
@@ -1375,14 +1375,14 @@ Friday: quick project update - informal "sprint review"
 - How're you doing?
 - Any questions?
 - Informal presentation and discussion
-* TODO A bit traumatized by this image (as a German)
+** A bit traumatized by this image (as a German)
 #+attr_latex: :width 400px
 #+caption: Great Garden Gnome Massacre (via Twitter)
 [[../img/massacre.jpg]]
 
 "The Great German Garden Gnome Massacre"
 
-* TODO Preview and review
+** Preview and review
 
 1) What is the difference between a function and a function call?
    #+begin_quote
@@ -1481,14 +1481,22 @@ Friday: quick project update - informal "sprint review"
     %cat test.txt    # view the file `test.txt`
     #+end_example
 
-* TODO In-class summary
+** In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
 
 - [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
 
-* TODO Homework
+- The ~global~ statement
+- Four rules to tell which scope a variable is in
+- Identifying global and local scope variables
+- Exception handling with ~try~ and ~except~
+- Cannot access local variable (~UnboundLocalError~)
+- ~try~ statement with ~finally~ and ~else~
+- Short zig-zag animation program with ~sys.exit~ (~KeyboardInterrupt~)
+  
+** Homework
 #+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
@@ -1523,7 +1531,7 @@ Friday: quick project update - informal "sprint review"
   solution and testing suite, and references (like here), with
   headlines and code highlighted.
 
-* TODO Day 13: References/Game of Life
+* TODO Day 13: Lists/References
 #+attr_latex: :width 400px
 #+caption: Llyfrgell Genedlaethol Cymru / double wedding at Llanrhaeadr (1954)
 [[../img/gameoflife.jpg]]
@@ -1536,7 +1544,6 @@ Friday: quick project update - informal "sprint review"
    With a ~global~ keyword before the variable name on a line of its
    own, or by using it in an assignment outside of a function.
    #+end_quote
-
 2) What is the output when you run this code? (Source: [[https://twitter.com/driscollis/status/1665702110950993920?s=20][Twitter]].)
    #+begin_src python
      number = 8
@@ -1548,7 +1555,6 @@ Friday: quick project update - informal "sprint review"
 
      adder(5)
    #+end_src
-
    - [ ] 8 and then an exception is raised
    - [ ] ~NameError~
    - [ ] ~TypeError~
@@ -1559,8 +1565,15 @@ Friday: quick project update - informal "sprint review"
    local variable (it's assigned below) and you're trying to use it
    before it has been assigned a value.
    #+end_quote
-
-
+3) What is the purpose and structure of ~except~ statements?
+   #+begin_quote
+   - The ~except~ statement is triggered when the ~try~ clause fails.
+   - Optionally, ~except~ is followed by one or more system errors.
+   - These errors can be parallelized like ~(ValueError,NameError)~, or
+     serialized (~except: ValueError~ and ~except: NameError~).
+   - The ~finally~ clause identifies an action that always happens.
+   #+end_quote
+   
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
@@ -1573,7 +1586,7 @@ Friday: quick project update - informal "sprint review"
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-* TODO Day 14: Dictionaries/Zen of Python
+* TODO Day 14: Dictionaries/Game of Life/Zen of Python
 #+attr_latex: :width 400px
 #+caption: Llyfrgell Genedlaethol Cymru / Longden Bay Go-cart Racers (1953)
 [[../img/dictionary.jpg]]
