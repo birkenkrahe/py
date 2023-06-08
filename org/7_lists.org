@@ -381,14 +381,286 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
   : Hello, world!
   : ['Huzza', 'Huzza', 'Huzza']
 
-
 * Methods for specific data types
 
+- Each data type as its own set of methods, e.g. the ~list~ data type
+  has methods for finding, adding, removing and manipulating values.
 
+- Examples:
+  1) to call the ~list~ method ~index~ on the item ~'hello'~ of a list ~spam~:
+     #+begin_src python
+       spam = ['hello','world']
+       print(spam.index('hello'))  # returns an index
+     #+end_src
+  2) to call the ~str~ method ~count~ on the substring ~'_'~ of the string
+     ~'hello_world'~ stored in ~ham~:
+     #+begin_src python
+       ham = 'hello_world'
+       print(ham.count('_'))  # returns a count
+     #+end_src
 
-* Example program: Magic 8 ball with a list
-* Sequence data types
-* References
-* Short program: Conway's Game of Life
-* Summary
-* Glossary
+- This approach transfers to other packages such a ~numpy~ or ~pandas~ -
+  the focus of the methods is on the library purpose like numeric data
+  processing or statistical analysis.
+
+- Where applicable, I will contrast standard Python with NumPy and/or
+  pandas (Kudos OpenAI: ChatGPT has been invaluable for this task.)
+
+* Finding a value in a ~list~ with ~index~
+
+- If the value is not in the list, a ~ValueError~ is raised:
+  #+begin_src python
+    spam = ['hello', 'hi', 'howdy', 'hey']
+    print(spam.index('howdy'))
+    print(spam.index('howdy howdy howdy'))
+  #+end_src
+- When there are duplicates, the first instance is returned:
+  #+begin_src python
+    spam = ['hello', 'hi', 'howdy', 'hey', 'hi']
+    print(spam.index('hi'))
+  #+end_src
+
+* Finding a value in a numpy ~array~ with ~where~
+
+- In NumPy, you can use the ~where~ function - a lot more information is
+  available, but you need more skill to sort through it:
+  #+begin_src python
+    import numpy as np
+    spam = ['hello', 'hi', 'howdy', 'hey', 'hi']
+
+    # turn list into numpy array
+    spam_np = np.array(spam)
+
+    # store value of index for item 
+    idx = np.where(spam_np == 'howdy')  
+
+    print(idx)    # index informaion (full)
+    print(idx[0][0])  # index only
+    print(spam_np[idx])   # array value
+  #+end_src
+
+* Finding a value in a pandas ~series~ with ~
+
+- In pandas, you can use Boolean indexing:
+  #+begin_src python
+    import pandas as pd
+
+    # Create a pandas Series
+    spam_pd = pd.Series(['hello', 'hi', 'howdy', 'hey', 'hi'])
+
+    # Find the index where the value is equal to 'howdy'
+    index = spam_pd[spam_pd == 'howdy'].index[0]
+
+    print(index)
+  #+end_src
+
+- If the value is not found in the Series, it will raise an
+  ~IndexError~.
+
+* Adding values for lists with ~append~ and ~insert~
+
+- You can add new values to a list with ~append~ (at the end) and
+  ~insert~.
+
+- Append ~'moose'~ at the end of ~spam~:
+  #+begin_src python
+    spam = ['cat', 'dog', 'bat']
+    print(spam)
+    spam.append('moose')
+    print(spam)
+  #+end_src
+
+- Insert ~'chicken'~ as item number ~1~ into ~spam~:
+  #+begin_src python
+    spam = ['cat', 'dog', 'bat']
+    print(spam)
+    spam.insert(1,'chicken')
+    print(spam)
+  #+end_src
+
+  #+RESULTS:
+  : ['cat', 'dog', 'bat']
+  : ['cat', 'chicken', 'dog', 'bat']
+  
+- These functions modify a list /in place/: neither of them gives the
+  new value as a return value - they return ~None~ instead:
+  #+begin_src python
+    spam = ['cat', 'dog', 'bat']
+    print(spam.append('moose'))
+    print(spam)
+    print(spam.insert(1,'chicken'))
+    print(spam)
+  #+end_src
+
+- If that's so, what does ~spam = spam.append('elephant')~ do?
+  #+begin_src python
+    spam = ['cat', 'dog', 'bat']
+    print(spam)
+    spam = spam.append('elephant')
+    print(spam)
+  #+end_src
+
+* Adding and inserting for NumPy ~array~
+
+- By contrast, NumPy's ~np.append~ and ~np.insert~ methods create a new
+  array and you need to assign the result back to the array to keep
+  it:
+  #+begin_src python
+    import numpy as np
+
+    spam_np = np.array(['cat', 'dog', 'bat', 'elephant'])
+
+    print(spam_np)
+
+    spam_np = np.append(spam_np, 'moose')
+
+    print(spam_np)
+
+    spam_np = np.insert(spam_np, 1, 'chicken')
+
+    print(spam_np)
+  #+end_src
+
+- The behavior of NumPy for strings is tricky though: e.g. string
+  items in the array will be truncated if the inserted string is
+  larger than the largest string already in the array.
+
+- To test that, run the code above and remove ~'elephant'~: the
+  resulting inserted array will list ~'chick'~ and not ~'chicken'~.
+
+- Numbers work better: an example with ~np.append~
+  #+begin_src python
+    import numpy as np
+
+    # Create a numpy array
+    arr = np.array([1, 2, 3, 4, 5])
+
+    # Append a single value
+    arr = np.append(arr, 6)
+    print(arr)  # Output: [1 2 3 4 5 6]
+
+    # Append multiple values
+    arr = np.append(arr, [7, 8, 9])
+    print(arr)  # Output: [1 2 3 4 5 6 7 8 9]
+  #+end_src
+
+- An example with ~np.insert~:
+  #+begin_src python
+    import numpy as np
+
+    # Create a numpy array
+    arr = np.array([1, 2, 3, 4, 5])
+
+    # Insert a single value at index 2
+    arr = np.insert(arr, 2, 6)
+    print(arr)  # Output: [1 2 6 3 4 5]
+
+    # Insert multiple values at index 3
+    arr = np.insert(arr, 3, [7, 8, 9])
+    print(arr)  # Output: [1 2 6 7 8 9 3 4 5]
+  #+end_src  
+
+  #+RESULTS:
+  : [1 2 6 3 4 5]
+  : [1 2 6 7 8 9 3 4 5]
+
+* Trying to call a method on another data type
+
+- The ~append~ and ~insert~ methods are ~list~ methods and won't work for
+  strings or integers:
+  #+begin_src python
+    eggs = 'hello'
+    eggs.append('world')
+  #+end_src
+
+- Calling ~insert~ on an integer:
+  #+begin_src python
+    bacon = 42
+    bacon.insert(1,'world')
+  #+end_src  
+
+* Removing values from lists with ~remove~ or ~del~
+
+- The ~remove~ method removes its arguments in place:
+  #+begin_src python
+    spam = ['cat','bat','rat','elephant']
+    print(spam)
+    spam.remove('bat')
+    print(spam)
+  #+end_src
+
+- Trying to remove a value that does not exist raises a ~ValueError~:
+  #+begin_src python
+    spam = ['cat','bat','rat','elephant']
+    spam.remove('chicken')
+  #+end_src
+
+- If there are multiple identical items, only the first will be
+  removed:
+  #+begin_src python
+    spam = ['cat','bat','rat','elephant','cat','bat']
+    print(spam)
+    spam.remove('bat')
+    print(spam)   # only the first instance is removed
+  #+end_src
+
+- Wondering at this point how many values you can remove at a time?
+  Check the help (don't forget that this is a ~list~ method):
+  #+begin_src python
+    help(list.remove)
+  #+end_src
+
+  #+RESULTS:
+  : Help on method_descriptor:
+  : 
+  : remove(self, value, /)
+  :     Remove first occurrence of value.
+  :     
+  :     Raises ValueError if the value is not present.
+  : 
+
+- If you know the index of the item you want to remove, you can use
+  the ~del~ keyword to delete items:
+  #+begin_src python
+    spam = ['cat','bat','rat','elephant','cat','bat']
+    del spam[1]
+    print(spam)
+  #+end_src
+
+- To remove more than one item at a time, you can either use a ~list~
+  comprehension, or the ~filter~ function:
+  #+begin_src python
+    spam = ['cat','bat','rat','elephant','cat','bat']
+
+    # Remove all 'bat' items
+    spam = [item for item in spam if item != 'bat']
+
+    print(spam)  # Output: ['cat', 'rat', 'elephant', 'cat']
+  #+end_src
+
+- The ~filter~ function takes an anonymous or ~lambda~ function as the
+  argument:
+  #+begin_src python
+    spam = ['cat','bat','rat','elephant','cat','bat']
+
+    # Remove all 'bat' items
+    spam = list(filter(lambda item: item != 'bat', spam))
+
+    print(spam)  # Output: ['cat', 'rat', 'elephant', 'cat']
+  #+end_src
+
+  #+RESULTS:
+  : ['cat', 'rat', 'elephant', 'cat']
+
+* TODO Sorting values in a list with ~sort~
+
+* TODO Reversing values in a list with ~reverse~
+
+* TODO Practice ~list~ methods
+
+* TODO Example program: Magic 8 ball with a list
+* TODO Sequence data types
+* TODO References
+* TODO Short program: Conway's Game of Life
+* TODO Summary
+* TODO Glossary
