@@ -1633,6 +1633,16 @@ Friday: quick project update - informal "sprint review"
 
 - [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
 
+- List are values, contain values (items) and are ordered (indexed)
+- List items can have any data type and can be stored as values
+- List creation, extracting values with the index operator ~[ ]~, the
+  slicing operator ~:~ and positive or negative index values,
+  concatenation with ~+~ /replication with ~*~
+- Generalized ~range~ argument ~len(list)~ and looping without ~range~ using
+  the index vector of a list: ~for item in list:~
+- Error types: ~Syntaxerror~, ~TypeError~, ~ValueError~, ~IndexError~.
+- Accessing items in lists that are list items, initializ empty list
+  
 ** TODO Homework
 #+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
