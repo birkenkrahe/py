@@ -9,11 +9,11 @@
 [[../img/lists.jpg]]
 
 - The ~list~ data type
-- The ~tuple~ data type
+- Working with lists 
 - Augmented assignment operators
 - Methods as type-specific functions
-- References and pointers
-- Conway's Game of Life
+- Standard Python vs. NumPy vs. pandas
+- Magic 8 Ball reloaded
 
 * The ~list~ data type
 
@@ -486,7 +486,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
     print(spam_np[idx])   # array value
   #+end_src
 
-* Finding a value in a pandas ~series~ with ~
+* Finding a value in a pandas ~series~ with ~pd.index~
 
 - In pandas, you can use Boolean indexing:
   #+begin_src python
@@ -679,7 +679,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
   : 2  baz    two  z  3    NaN     NaN
   : 0  qux  three  w  4  delta  durian
   : 0  qux  three  w  4  delta  durian
-
+  
 * Trying to call a method on another data type
 
 - The ~append~ and ~insert~ methods are ~list~ methods and won't work for
@@ -1180,12 +1180,6 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
 4) Test the performance of both programs in Colab using ~%timeit~. Do
    you record any difference?
    
-* TODO Sequence data types - tuples
-
-* TODO References - immutable and mutable data types
-
-* TODO Short program: Conway's Game of Life
-
 * Summary
 
 - Lists are useful data types since they allow you to write code that
@@ -1208,4 +1202,30 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
 - The methods to manipulate arrays and DataFrames in many ways
   parallel the functions for lists (often they have the same name).
 
-* TODO Glossary
+* Glossary
+
+| TERM/COMMAND   | DEFINITION                                      |
+|----------------+-------------------------------------------------|
+| ~random.choice~  | Return randomly selected list item              |
+| ~random.shuffle~ | Randomly shuffle list items                     |
+| ~np.array~       | Numpy array creation                            |
+| ~list.append~    | Append values to list /in place/                  |
+| ~list.insert~    | Insert value at list index value /in place/       |
+| ~np.append~      | Create new array with appended value            |
+| ~np.insert~      | Create new array with inserted value            |
+| ~df.insert~      | Insert new column in pandas DataFrame           |
+| ~df.concat~      | Add new row to pandas DataFrame                 |
+| ~list.remove~    | Remove values from list                         |
+| ~del~            | Keyword to remove specific list value           |
+| Comprehension  | Building Boolean index flags for sets           |
+| ~lambda~         | Keyword for anonymous functions                 |
+| ~filter~         | Iterator to filter sequence data                |
+| ~np.delete~      | Create new array without the deleted value      |
+| ~pd.drop~        | Remove columns or values from DataFrame         |
+| ~list.sort~      | Sort list values in place (~reverse=False~)       |
+| ~list.reverse~   | Reverse list items in place                     |
+| ~np.sort~        | Sort NumPy arrays                               |
+| ~[::-1]~         | Reverse sorting order slicing (lists or arrays) |
+| ~pd.sort_values~ | Sort DataFrame by values in one or more columns |
+| ~pd.sort_index~  | Sort DataFrame by row index                     |
+
