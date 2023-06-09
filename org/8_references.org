@@ -12,8 +12,9 @@
 - Mutable and immutable data types
 - References and variables for integers
 - References and variables for lists
-- Memory identity and passing references
-- Copy and deep copy
+- Memory identity function
+- Passing references in function calls
+- Copying functions from the copy module
 
 * Sequence data types
 
@@ -263,32 +264,190 @@
     #+attr_latex: :width 400px
   [[../img/list_ref2.png]]
 
-    
-  
+* Identity and the ~id~ function
+
+- All Python values have a unique ID that can be obtained with the ~id~
+  function:
+  #+begin_src python
+    print(id('Howdy'))
+  #+end_src
+
+  #+RESULTS:
+  : 1928141373488
+
+- If you keep running this chunk, the ID will change: Python picks
+  this address based on where memory happens to be free at the time.
+
+- ~'Howdy'~ is an immutable string and cannot be changed. To change the
+  string in a variable, you have to make a new string object in a
+  different place in memory to which the variable will refer/point.
+
+- You can follow this process with ~id~:
+  #+begin_src python
+    bacon = 'Hello'
+    print(id(bacon))
+
+    # Make a new string and refer to it as `bacon`
+    bacon += ' world!'
+    print(id(bacon))
+  #+end_src
+
+  #+RESULTS:
+  : 1863027277488
+  : 1863027277744
+
+- Lists are mutable objects and can be modified: ~list.append~ changes
+  an existing list object (/in place/):
+  #+begin_src python
+    eggs = ['cat', 'dog']
+    print(id(eggs))
+
+    # append 'moose' to `eggs` modifies the list itself
+    eggs.append('moose')
+    print(id(eggs))
+
+    # create a new list with the same variable (reference) name
+    eggs = ['bat', 'rat', 'cows']
+    print(id(eggs))
+
+    # what is this then?
+    mem = eggs.insert(1,'cat')
+    print(id(mem))
+    print(id(eggs))
+    #+end_src
+
+  #+RESULTS:
+  : 2655765168768
+  : 2655765168768
+  : 2655767164928
+  : 140733411716296
+  : 2655767164928
+
+- In the last example, what is ~mem = eggs.insert(1,'cat')~?
+  #+begin_src python
+    eggs = ['bat', 'rat', 'cows']
+    print(id(eggs))
+    mem = eggs.insert(1,'cat')
+    print(id(mem))
+    print(mem)
+  #+end_src
+  ~mem~ is nothing to us: it's a location that the computer uses to
+  update ~eggs~ in place, but in actual fact it is a non-value (~None~).
+
+* Passing references in function calls
+
+- When a function is called, the values of the arguments are passed to
+  the parameter variables.
+
+- If the function parameter is a list, this means that a copy of the
+  reference is used for the parameter:
+  #+begin_src python
+    # function appends string to argument list (print list ref ID)
+    def eggs(someParameter):
+        print('Parameter ID: ', id(someParameter))
+        someParameter.append('Hello')
+
+    # initialize list and print ID
+    spam = [1,2,3]
+    print('List ID:      ', id(spam))
+
+    # call function on list and print return value
+    eggs(spam)
+
+    # the list is modified directly in place
+    print(spam)
+  #+end_src
+
+* ~copy~ and ~deepcopy~ from the copy module
+
+- If you do NOT want changes to apply to your original list, you can
+  use the ~copy.copy~ and ~copy.deepcopy~ functions:
+  #+begin_src python
+    # import module from the standard library (no need to install)
+    import copy
+
+    # create a list and check its reference
+    spam = ['A', 'B', 'C', 'D']
+    print(id(spam))
+
+    # copy `spam` to `cheese` creating a new list
+    cheese = copy.copy(spam)
+    print(id(cheese))
+
+    # change list value
+    cheese[1] = 42
+
+    print(spam)
+    print(cheese)
+  #+end_src
+
+  #+RESULTS:
+  : 2332400824448
+  : 2332400249536
+  : ['A', 'B', 'C', 'D']
+  : ['A', 42, 'C', 'D']
+
+- ~spam~ and ~cheese~ variables now refer to separate lists:
+  #+attr_latex: :width 400px
+  #caption: Different ID for different lists after copy.copy()
+  [[../img/deepcopy.png]]
+
+- If the list you need to copy contains lists, then use the
+  ~copy.deepcopy~ function instead. Try this with ~blt~ below:
+  1) create list ~food = ['soup', ['bacon','lettuce','tomato']]~
+  2) copy ~food~ to ~sandwich~
+  3) change ~'soup'~ in ~sandwich~ to ~'bread'~
+  4) print the IDs of ~food~ and ~sandwich~
+  5) print the ~food~ and ~sandwich~ lists
+
+- Solution:
+  #+begin_src python
+    import copy
+
+    # create list with list as item
+    food = ['soup', ['bacon','lettuce','tomato']]
+
+    # copy `food` to `sandwich`
+    sandwich = copy.deepcopy(food)
+
+    # change 'soup' in `sandwich` to 'bread'
+    sandwich[0] = 'bread'
+
+    # print the IDs of both lists
+    print('food: ', id(food))
+    print('copy: ', id(sandwich))
+
+    # check that list values are identical
+    print(food == sandwich)
+    print(food)
+    print(sandwich)
+  #+end_src
+
 * Summary
 
-- Lists are useful data types since they allow you to write code that
-  works on a modifiable number of values in a single variable.
-- Lists are a sequence data type that is mutable, meaning that their
-  contents can change.
 - Tuples and strings, though also sequence data types, are immutable
   and cannot be changed.
 - A variable that contains a tuple or string value can be overwritten
   with a new tuple or string value
-- This is not the same thing as modifying the existing valuein place —
+- This is not the same thing as modifying the existing value in place —
   like, say, the ~append()~ or ~remove()~ methods do on lists.
 - Variables do not store list values directly; they store references
   to lists. Any change you make to a list may impact other variables.
 - You can use ~copy()~ or ~deepcopy()~ if you want to make changes to a
   list in one variable without modifying the original list.
-- NumPy array and pandas DataFrame structures are purpose-built to
-  handle multi-dimensional numeric data (NumPy) or general data in
-  tabular form (pandas).
-- The methods to manipulate arrays and DataFrames in many ways
-  parallel the functions for lists (often they have the same name).
 
-* TODO Glossary
+* Glossary
 
-| TERM/COMMAND | DEFINITION |
-|--------------+------------|
-|              |            |
+| TERM/COMMAND  | DEFINITION                               |
+|---------------+------------------------------------------|
+| ~()~            | Create tuple                             |
+| ~tuple~         | Convert to tuple                         |
+| ~id~            | Memory ID (address)                      |
+| ~copy.copy~     | Copy list to new list                    |
+| ~copy.deepcopy~ | Copy list that contains list to new list |
+
+* References
+
+- Sweigart, A. (2019). Automate the Boring Stuff with
+  Python. NoStarch. URL: [[https://automatetheboringstuff.com/2e/chapter2/][automatetheboringstuff.com]]
+

@@ -1186,16 +1186,6 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
   works on a modifiable number of values in a single variable.
 - Lists are a sequence data type that is mutable, meaning that their
   contents can change.
-- Tuples and strings, though also sequence data types, are immutable
-  and cannot be changed.
-- A variable that contains a tuple or string value can be overwritten
-  with a new tuple or string value
-- This is not the same thing as modifying the existing valuein place —
-  like, say, the ~append()~ or ~remove()~ methods do on lists.
-- Variables do not store list values directly; they store references
-  to lists. Any change you make to a list may impact other variables.
-- You can use ~copy()~ or ~deepcopy()~ if you want to make changes to a
-  list in one variable without modifying the original list.
 - NumPy array and pandas DataFrame structures are purpose-built to
   handle multi-dimensional numeric data (NumPy) or general data in
   tabular form (pandas).
@@ -1228,4 +1218,10 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
 | ~[::-1]~         | Reverse sorting order slicing (lists or arrays) |
 | ~pd.sort_values~ | Sort DataFrame by values in one or more columns |
 | ~pd.sort_index~  | Sort DataFrame by row index                     |
+
+* References
+
+- Sweigart, A. (2019). Automate the Boring Stuff with
+  Python. NoStarch. URL: [[https://automatetheboringstuff.com/2e/chapter2/][automatetheboringstuff.com]]
+
 
