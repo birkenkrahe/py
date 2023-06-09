@@ -60,7 +60,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
    #+end_src
 
    #+RESULTS:
-   : cat bat rat elephant 
+   : cat bat rat elephant
 
 2) What if the list has ~N~ elements? Can you generalize the loop?
    #+begin_src python
@@ -70,7 +70,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
    #+end_src
 
    #+RESULTS:
-   : cat bat rat elephant 
+   : cat bat rat elephant
 
 3) Use elements of ~spam~ to print the sentence ~'The bat ate the cat.'~
    formatted with an f-string:
@@ -95,7 +95,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
 
    #+RESULTS:
    : bat
-   
+
 6) How can you extract the last number in this list of lists?
    #+begin_src python
      spam = [['cat','bat'], [10,20,30,40,50]]
@@ -216,7 +216,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
     List = ['a','b', None, 10,100]
     for i in range(len(List)):
         print(List[i],end=' ')
-  #+end_src  
+  #+end_src
 
 - Instead of using ~range~ to get the integer index of the list items,
   call ~enumerate~ instead:
@@ -233,7 +233,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
   #+begin_src python
     print(globals().items())
   #+end_src
-  
+
 * Scope and lists
 
 - Challenge:
@@ -287,13 +287,13 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
      ~myCatNames~, this object will hold the ~return~ value from
      ~getCatNames~.
 
-* ~in~ or ~out~?
+* NEXT ~in~ or ~out~?
 
 - The ~in~ or ~not in~ command works on lists:
   #+begin_src python
     spam = ['cat', 'bat', 'rat']
     print('cat' in spam)
-    print('chicken' not in spam)    
+    print('chicken' not in spam)
   #+end_src
 
   #+RESULTS:
@@ -307,7 +307,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
   is ~in~ the list, say "I have a pet with that name", otherwise say
   that you don't.
 
-- Solution:  
+- Solution:
   #+begin_src python
     myPets = ['Nanny', 'Rosie', 'Poppy', 'Jack']
     name = input('Enter a pet name: ')
@@ -350,7 +350,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
 
   #+RESULTS:
   : The black cat is fast and moody
-  
+
 - Multiple assignments: number of variables and length of list must be
   exactly equal otherwise you get a ~ValueError~.
   #+begin_src python
@@ -478,8 +478,8 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
     # turn list into numpy array
     spam_np = np.array(spam)
 
-    # store value of index for item 
-    idx = np.where(spam_np == 'howdy')  
+    # store value of index for item
+    idx = np.where(spam_np == 'howdy')
 
     print(idx)    # index informaion (full)
     print(idx[0][0])  # index only
@@ -528,7 +528,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
   #+RESULTS:
   : ['cat', 'dog', 'bat']
   : ['cat', 'chicken', 'dog', 'bat']
-  
+
 - These functions modify a list /in place/: neither of them gives the
   new value as a return value - they return ~None~ instead:
   #+begin_src python
@@ -605,11 +605,80 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
     # Insert multiple values at index 3
     arr = np.insert(arr, 3, [7, 8, 9])
     print(arr)  # Output: [1 2 6 7 8 9 3 4 5]
-  #+end_src  
+  #+end_src
 
   #+RESULTS:
   : [1 2 6 3 4 5]
   : [1 2 6 7 8 9 3 4 5]
+
+* Adding columns and rows in pandas ~DataFrame~
+
+- The central structure for ~pandas~ is the DataFrame, a tabular
+  structure of column vectors of the same length with each vector only
+  having one type.
+
+- Let's import ~pandas~ as ~pd~ and create a DataFrame ~df~:
+  #+name: df
+  #+begin_src python :results silent
+    import pandas as pd
+
+    # Create a DataFrame of four column vectors A,B,C,D
+    df = pd.DataFrame({
+        'A': ['foo', 'bar', 'baz'],
+        'B': ['one', 'one', 'two'],
+        'C': ['x', 'y', 'z'],
+        'D': [1, 2, 3]
+    })
+  #+end_src
+
+- Adding a new column to a DataFrame by adding it like an index:
+  #+begin_src python :noweb yes
+    <<df>>
+    # Add a new column E
+    df['E'] = ['alpha', 'beta', 'gamma']
+
+    print(df)
+  #+end_src
+
+- Inserting a new column at a specific position with ~df.insert~:
+  #+begin_src python :noweb yes
+    <<df>>
+    # Insert a new column at position 1
+    df.insert(1, 'F', ['apple', 'banana', 'cherry'])
+
+    print(df)
+  #+end_src
+
+  #+RESULTS:
+  :      A       F    B  C  D
+  : 0  foo   apple  one  x  1
+  : 1  bar  banana  one  y  2
+  : 2  baz  cherry  two  z  3
+
+- Adding a new row to a DataFrame with ~df.concat~ (~df.append~ is also
+  available but it is deprecated as of 2022):
+  #+begin_src python :noweb yes
+    <<df>>
+    # Create a new DataFrame for the new row
+    new_row = pd.DataFrame([{'A': 'qux', 'B': 'three', 'C': 'w',\
+                             'D': 4, 'E': 'delta', 'F': 'durian'}])
+
+    # Use pd.concat to append the new row
+    df = pd.concat([df, new_row])
+
+    # Use pd.append to append the new row once again
+    df = df.append(new_row)
+
+    print(df)
+  #+end_src
+
+  #+RESULTS:
+  :      A      B  C  D      E       F
+  : 0  foo    one  x  1    NaN     NaN
+  : 1  bar    one  y  2    NaN     NaN
+  : 2  baz    two  z  3    NaN     NaN
+  : 0  qux  three  w  4  delta  durian
+  : 0  qux  three  w  4  delta  durian
 
 * Trying to call a method on another data type
 
@@ -624,7 +693,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
   #+begin_src python
     bacon = 42
     bacon.insert(1,'world')
-  #+end_src  
+  #+end_src
 
 * Removing values from lists with ~remove~ or ~del~
 
@@ -659,12 +728,12 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
 
   #+RESULTS:
   : Help on method_descriptor:
-  : 
+  :
   : remove(self, value, /)
   :     Remove first occurrence of value.
-  :     
+  :
   :     Raises ValueError if the value is not present.
-  : 
+  :
 
 - If you know the index of the item you want to remove, you can use
   the ~del~ keyword to delete items:
@@ -675,7 +744,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
   #+end_src
 
 - To remove more than one item at a time, you can either use a ~list~
-  comprehension, or the ~filter~ function:
+  comprehension (~set~ building), or the ~filter~ function (lambda):
   #+begin_src python
     spam = ['cat','bat','rat','elephant','cat','bat']
 
@@ -685,8 +754,8 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
     print(spam)  # Output: ['cat', 'rat', 'elephant', 'cat']
   #+end_src
 
-- The ~filter~ function takes an anonymous or ~lambda~ function as the
-  argument:
+- In the example, the ~filter~ function (/iterator/) takes an anonymous or
+  ~lambda~ function as the argument:
   #+begin_src python
     spam = ['cat','bat','rat','elephant','cat','bat']
 
@@ -696,18 +765,447 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
     print(spam)  # Output: ['cat', 'rat', 'elephant', 'cat']
   #+end_src
 
+* Removing values from a NumPy ~array~
+
+- You cannot directly remove an item from an ~array~ like in a Python
+  list with ~remove~ but you can create a new array that doesn't include
+  the items to be removed.
+
+- Using Boolean indexing or masking:
+  #+begin_src python
+    import numpy as np
+
+    # Create a numpy array
+    arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+    # Create a new array that doesn't include the value 5
+    arr = arr[arr != 5]
+
+    print(arr)  # Output: [1 2 3 4 6 7 8 9]
+  #+end_src
+
   #+RESULTS:
-  : ['cat', 'rat', 'elephant', 'cat']
+  : [1 2 3 4 6 7 8 9]
 
-* TODO Sorting values in a list with ~sort~
+- Using the ~np.delete~ method:
+  #+begin_src python
+    import numpy as np
 
-* TODO Reversing values in a list with ~reverse~
+    # Create a numpy array
+    arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
 
-* TODO Practice ~list~ methods
+    # Create a new array that doesn't include the item at index 4
+    arr = np.delete(arr, 4)
 
-* TODO Example program: Magic 8 ball with a list
-* TODO Sequence data types
-* TODO References
+    print(arr)  # Output: [1 2 3 4 6 7 8 9]
+  #+end_src
+
+  #+RESULTS:
+  : [1 2 3 4 6 7 8 9]
+
+* Removing values from a pandas ~DataFrame~
+
+- The ~pd.drop~ function is used to remove either columns or rows from a
+  DataFrame: the keyword parameter ~axis~ is ~1~ for columns, ~0~ for rows.
+
+- Unlike the NumPy arrays, you can specify if you wish to modify the
+  DataFrame in place using the ~inplace~ keyword parameter.
+
+- Remove a column:
+  #+begin_src python
+    import pandas as pd
+
+    # Create a simple dataframe
+    df = pd.DataFrame({
+        'A': [1, 2, 3],
+        'B': [4, 5, 6],
+        'C': [7, 8, 9]
+    })
+
+    print("Original DataFrame")
+    print(df)
+
+    # Drop column 'A'
+    df = df.drop('A', axis=1)
+
+    print("DataFrame After Dropping Column 'A'")
+    print(df)
+  #+end_src
+
+- Remove a row:
+  #+begin_src python
+    import pandas as pd
+
+    # Create a simple dataframe
+    df = pd.DataFrame({
+        'A': [1, 2, 3],
+        'B': [4, 5, 6],
+        'C': [7, 8, 9]
+    })
+
+    print("Original DataFrame")
+    print(df)
+
+    # Drop row at index 1
+    df = df.drop(1, axis=0)
+
+    print("DataFrame After Dropping Row at Index 1")
+    print(df)
+  #+end_src
+
+  #+RESULTS:
+  : Original DataFrame
+  :    A  B  C
+  : 0  1  4  7
+  : 1  2  5  8
+  : 2  3  6  9
+  : DataFrame After Dropping Row at Index 1
+  :    A  B  C
+  : 0  1  4  7
+  : 2  3  6  9
+  
+* Sorting values in a list with ~sort~
+
+- Lists of number values or strings can be sorted with ~list.sort~:
+  #+begin_src python
+    spam = [2, 5, 3.14, 1, -7]
+    spam.sort()  # default sort is ascending
+    print(spam)
+
+    ham = ['ants', 'cats', 'dogs', 'badgers', 'elephants']
+    ham.sort()  # default sort is ascending in alphabetical order
+    print(ham)
+  #+end_src
+
+- To reverse the order from ascending to descending use the ~reverse~
+  keyword:
+  #+begin_src python
+    spam = [2, 5, 3.14, 1, -7]
+    spam.sort(reverse=True)  # reverse sorting
+    print(spam)
+
+    ham = ['ants', 'cats', 'dogs', 'badgers', 'elephants']
+    ham.sort(reverse=True)  # reverse sorting
+    print(ham)
+  #+end_src
+
+  #+RESULTS:
+  : [5, 3.14, 2, 1, -7]
+  : ['elephants', 'dogs', 'cats', 'badgers', 'ants']
+
+- As you can see in the ~help(list.sort)~ docstring, you can also sort
+  using a function, e.g. the ~len~ function:
+  #+begin_src python
+    ham = ['ants', 'cats', 'dogs', 'badgers', 'elephants', 'snakes']
+    ham.sort(key=len,reverse=True)  # reverse sorting by length
+    print(ham)
+  #+end_src
+
+- In the last example, note that ~'ants'~ goes before ~'cats'~ before
+  ~'dogs'~ because within a group of strings with the same ~len~ value,
+  sorting is alphabetical (in ascending order).
+
+- To change this is more complex: you use an anonymous ~lambda~ function
+  in the ~sort~ function that sorts first by ~len~ and then reverses the
+  order:
+  #+begin_src python
+    ham = ['ants', 'cats', 'dogs', 'badgers', 'elephants', 'snakes']
+
+    # Sort the list by the number of characters in each string, and then reverse the alphabetical order
+    ham.sort(key=lambda x: (len(x), x), reverse=True)
+
+    print(ham)
+  #+end_src
+
+* Reversing values in a list with ~reverse~
+
+- To quickly reverse the order of list items, use ~list.reverse~:
+  #+begin_src python
+    spam = ['cat', 'dog', 'moose']
+    spam.reverse()
+    print(spam)
+  #+end_src
+
+  #+RESULTS:
+  : ['moose', 'dog', 'cat']
+
+- This is a simple function that does not offer any keyword
+  parameters:
+  #+begin_src python
+    help(list.reverse)
+  #+end_src
+
+* Sorting a NumPy ~array~
+
+- The ~np.sort~ function offers different sorting algorithms (~kind~), and
+  you can specify along which dimension to sort (~axis~), and the ~order~.
+  #+begin_src python
+    import numpy as np
+    help(np.sort)
+  #+end_src
+
+- A simple example - sorting is in ascending order by default, and a
+  new sorted array is created.
+  #+begin_src python
+    import numpy as np
+
+    # Create a numpy array
+    arr = np.array([3, 2, 1, 5, 4])
+
+    print("Original array:")
+    print(arr)
+
+    # Sort the array
+    sorted_arr = np.sort(arr)
+
+    print("Sorted array:")
+    print(sorted_arr)
+  #+end_src
+
+  #+RESULTS:
+  : Original array:
+  : [3 2 1 5 4]
+
+- To reverse the sorting order of a NumPy array, you can use the
+  ~[::-1]~ slicing operation after sorting the array:
+  #+begin_src python
+    import numpy as np
+
+    # Create a numpy array
+    arr = np.array([3, 2, 1, 5, 4])
+
+    print("Original array:")
+    print(arr)
+
+    # Sort the array in descending order
+    sorted_arr_desc = np.sort(arr)[::-1]
+
+    print("Array sorted in descending order:")
+    print(sorted_arr_desc)
+  #+end_src
+
+  #+RESULTS:
+  : Original array:
+  : [3 2 1 5 4]
+  : Array sorted in descending order:
+  : [5 4 3 2 1]
+
+- This slicing trick also works with lists:
+  #+begin_src python
+    spam = [3, 2, 1, 5, 4]
+    spam.sort()
+    print(spam)
+    print(spam[::-1])
+  #+end_src  
+
+  #+RESULTS:
+  : [1, 2, 3, 4, 5]
+  : [5, 4, 3, 2, 1]
+
+* Sorting a pandas ~DataFrame~
+
+- You can sort a DataFrame by values in one or more columns with the
+  ~pd.sort_values~ method:
+  #+begin_src python
+    import pandas as pd
+
+    # create a simple dataframe with columns, A,B,C
+    df = pd.DataFrame({
+        'A': [2,3,1],
+        'B': [1,3,2],
+        'C': ['b','a','c']
+    })
+
+    print("Original DataFrame")
+    print(df)
+
+    # Sort by column 'A'
+    df_sorted = df.sort_values('A')
+
+    print("DataFrame sorted by column 'A'")
+    print(df_sorted)
+  #+end_src
+
+- A DataFrame is not a matrix: to sort by the rows you need to sort by
+  the row labels (the index) using the ~sort_index~ method:
+  #+begin_src python
+    import pandas as pd
+
+    # create a simple dataframe with columns, A,B,C 
+    df = pd.DataFrame({
+        'A': [2,3,1],
+        'B': [1,3,2],
+        'C': ['b','a','c']
+    }, index = ['Y', 'X', 'Z'])
+
+    print("Original DataFrame")
+    print(df)
+
+    # sort by index
+    df_sorted = df.sort_index()
+
+    print("DataFrame sorted by index")
+    print(df_sorted)
+  #+end_src
+
+  #+RESULTS:
+  #+begin_example
+  Original DataFrame
+     A  B  C
+  Y  2  1  b
+  X  3  3  a
+  Z  1  2  c
+  DataFrame sorted by index
+     A  B  C
+  X  3  3  a
+  Y  2  1  b
+  Z  1  2  c
+  #+end_example
+
+* Exceptions to Python indentation rules for ~list~
+
+- Indentation is significant in Python because the indentation for a
+  line of code tells Python what block it is in, otherwise you get an
+  ~IndentationError~.
+
+- Lists, however, can span several lines in any indentation, and the
+  same goes for pandas ~DataFrame~ and NumPy ~array~ structures: Python
+  knows that the structure isn't finished before the ending bracket.
+
+- List example:
+  #+begin_src python
+    spam = ['apples',
+            'oranges',
+                            'bananas',
+     'peaches'                            ]
+    print(spam)
+    print(type(spam))
+  #+end_src
+
+- NumPy example:
+  #+begin_src python
+    import numpy as np
+    arr = np.array(['apples',
+            'oranges',
+                            'bananas',
+     'peaches'                            ])
+    print(arr)
+    print(type(arr))
+  #+end_src
+
+- Pandas example:
+  #+begin_src python
+    import pandas as pd
+    df = pd.DataFrame({ 'A': [1,2,
+                              3],
+        'B' :
+                        [4, 5, 6],
+                           'C':
+    [7,8,9]
+                        })
+    print(df)
+    print(type(df))              
+  #+end_src
+
+  #+RESULTS:
+  :    A  B  C
+  : 0  1  4  7
+  : 1  2  5  8
+  : 2  3  6  9
+  : <class 'pandas.core.frame.DataFrame'>
+
+* Practice ~list~ methods - Magic 8 Ball reloaded
+
+1) Earlier, you created a Magic 8 ball program as a fortune teller:
+  #+begin_src python
+    import random
+
+    def getAnswer(answerNumber):
+        if answerNumber == 1:
+            return 'It is certain'
+        elif answerNumber == 2:
+            return 'It is decidely so'
+        elif answerNumber == 3:
+            return 'It is Yes'
+        elif answerNumber == 4:
+            return 'Reply hazy try again'
+        elif answerNumber == 5:
+            return 'Ask again later'
+        elif answerNumber == 6:
+            return 'Concentrate and ask again'
+        elif answerNumber == 7:
+            return 'My reply is no'
+        elif answerNumber == 8:
+            return 'Outlook not so good'
+        elif answerNumber == 9:
+            return 'Very doubtful'
+
+    r = random.randint(1,9)
+    fortune = getAnswer(r)
+    print(fortune)
+  #+end_src
+
+2) Using lists, write a much more elegant version of the previous
+   Magic 8 Ball program:
+   - instead of several lines of nearly identical ~elif~ statements,
+     create a single list ~messages~ to work with. The list holds the
+     messages as its items.
+   - instead of calling a function ~getAnswer~, ~print~ a message using
+     ~random.randint~ to pick the index (i.e. the position) of the
+     message - there are 9 messages. Remember that ~random.randint(a,b)~
+     picks an integer in ~[a,b]~.
+   - You can generalize the program further by making the upper bound
+     of ~random.randint~ independent of the number 9. Now you could add
+     messages to the list ad infinitum.
+
+3) Solution:
+   #+begin_src python
+     import random
+
+     messages = ['It is certain',
+                 'It is decidedly so',
+                 'Yes, definitely',
+                 'Reply hazy try again',
+                 'Ask again later',
+                 'Concentrate and ask again',
+                 'My reply is no',
+                 'Outlook not so good',
+                 'Very doubtful']
+     print(messages[random.randint(0,len(messages)-1)])
+   #+end_src
+
+   #+RESULTS:
+   : Very doubtful
+
+4) Test the performance of both programs in Colab using ~%timeit~. Do
+   you record any difference?
+   
+* TODO Sequence data types - tuples
+
+* TODO References - immutable and mutable data types
+
 * TODO Short program: Conway's Game of Life
-* TODO Summary
+
+* Summary
+
+- Lists are useful data types since they allow you to write code that
+  works on a modifiable number of values in a single variable.
+- Lists are a sequence data type that is mutable, meaning that their
+  contents can change.
+- Tuples and strings, though also sequence data types, are immutable
+  and cannot be changed.
+- A variable that contains a tuple or string value can be overwritten
+  with a new tuple or string value
+- This is not the same thing as modifying the existing valuein place —
+  like, say, the ~append()~ or ~remove()~ methods do on lists.
+- Variables do not store list values directly; they store references
+  to lists. Any change you make to a list may impact other variables.
+- You can use ~copy()~ or ~deepcopy()~ if you want to make changes to a
+  list in one variable without modifying the original list.
+- NumPy array and pandas DataFrame structures are purpose-built to
+  handle multi-dimensional numeric data (NumPy) or general data in
+  tabular form (pandas).
+- The methods to manipulate arrays and DataFrames in many ways
+  parallel the functions for lists (often they have the same name).
+
 * TODO Glossary
