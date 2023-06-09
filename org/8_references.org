@@ -1,0 +1,294 @@
+#+TITLE:PYTHON SEQUENCE DATA AND REFERENCES
+#+AUTHOR: Marcus Birkenkrahe
+#+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
+#+STARTUP: overview hideblocks indent inlineimages entitiespretty
+#+PROPERTY: header-args:python :results output :exports both
+* Overview
+#+attr_latex: :width 400px
+#+caption: Llyfrgell Genedlaethol Cymru / Longden Bay Go-cart Racers (1953)
+[[../img/dictionary.jpg]]
+
+- Sequence data types: tuples, lists, strings, range objects
+- Mutable and immutable data types
+- References and variables for integers
+- References and variables for lists
+- Memory identity and passing references
+- Copy and deep copy
+
+* Sequence data types
+
+  - Python's sequence data include:
+    1) ~list~ objects
+    2) string (~str~) objects (sequence of characters) 
+    3) range objects returned by ~range~
+    4) ~tuple~ objects
+
+  - These data types support /indexing/ and /slicing/, and you can /iterate/
+    over them in a specific order.
+
+  - On the other hand, ~set~ data are not sequence data.      
+
+  - Here are some examples of indexing, slicing, iterating with other
+    sequence data, e.g. strings:
+    #+begin_src python
+      name = 'Alice'
+      print(name[0])
+      print(name[:])
+      print('A' in name)
+      print('Al' not in name)
+      for i in name:
+          print(f'*** {i} ***')
+    #+end_src
+
+    #+RESULTS:
+    : A
+    : Alice
+    : True
+    : False
+    : *** A ***
+    : *** l ***
+    : *** i ***
+    : *** c ***
+    : *** e ***
+
+* Mutable and immutable data types
+
+- A ~list~ and a string differ in an important way:
+  1) A ~list~ value is a /mutable/ data type - its values can be added,
+     removed, or changed.
+  2) A string (~str~) value is /immutable/ (or /literal/): it cannot be
+     changed:
+     #+begin_src python :results silent
+       name = 'Jack a cat.'
+       name[6] = 'the'
+     #+end_src
+
+- To mutate a string, you need to slice and concatenate to build a new
+  string from parts of the old string.
+
+- Transform ~name = 'Jack a cat'~ into ~newName = Jack the cat~:
+  #+begin_src python
+    name = 'Jack a cat'
+    newName = name[0:5] + 'the' + name[-4:]
+    print(newName)
+    print(name)
+  #+end_src
+
+- What is the output of this code:
+  #+begin_src python
+    eggs = [1, 2, 3]
+    eggs = [4, 5, 6]
+    print(eggs)
+  #+end_src  
+  
+- This is what happens:
+  #+attr_latex: :width 400px
+  #+caption: The contents of the list are replaced
+  [[../img/immutable.png]]
+
+- To modify the /original/ list in ~eggs~ to contain ~[4,5,6]~ /in place/,
+  you'd have to go out of your way:
+  #+begin_src python
+    eggs = [1, 2, 3]
+    del eggs[2]      # delete old list items
+    del eggs[1]
+    del eggs[0]
+    eggs.append(4)   # append new list items
+    eggs.append(5)
+    eggs.append(6)
+    print(eggs)
+  #+end_src
+
+- This is what really happens:
+  #+attr_latex: :width 400px
+  #+caption: The original list is being altered
+  [[../img/immutable1.png]]
+
+- Changing a value of a mutable data type changes the value /in place/,
+  since the variable's value is not replaced with a new list value.
+
+- Calling functions with mutable vs. immutable arguments exhibits very
+  different behavior.
+  
+* The ~tuple~ data type
+
+- The ~tuple~ data type is very similar to ~list~ except:
+  1) tuples are created with ~()~ while lists are created with ~[]~
+  2) tuples, like strings, are immutable, lists are mutable.
+
+- Creating, indexing, slicing, measuring a tuple:
+  #+begin_src python
+    eggs = ('hello', 42, 0.5)
+    print(eggs[0])
+    print(eggs[1:3])
+    print(len(eggs))
+  #+end_src     
+
+- So far so good - but you cannot assign values to tuple items:
+  #+begin_src python :results silent
+    eggs = ('hello', 42, 0.5)
+    eggs[1] = 99
+  #+end_src
+
+- So replacing an item works similarly as with strings: you have to
+  rebuild the tuple.
+  #+begin_src python
+    eggs = ('hello', 42, 0.5)
+    eggs = (eggs[0], 99, eggs[2])
+    print(eggs)
+  #+end_src  
+
+- Item deletion with ~del~ does not work, neither is there an ~append~
+  method for tuples: try that yourself!
+  #+begin_src python :results silent
+    eggs = ('hello', 42, 0.5)
+    del eggs[0]
+    eggs.append(1)
+  #+end_src
+
+- It is OK to have trailing commas in list or tuple assignments:
+  #+begin_src python
+    eggs = [1,2,]
+    print(eggs)
+
+    bacon = (1,2,)
+    print(bacon)
+  #+end_src
+
+- If you only have one value in your tuple, the trailing comma tells
+  Python that this is a tuple and not a scalar or string:
+  #+begin_src python
+    print(type(1))
+    print(type((1,)))
+
+    print(type('hello'))
+    print(type(('hello',)))
+  #+end_src
+
+- Why use tuples?
+  1) to create ordered sequences that you don't want to change
+  2) to gain speed when using ordered sequences for loops
+  
+- The functions ~list~ and ~tuple~ will convert their arguments to lists
+  and tuples just like ~str~.
+
+- Converting a ~list~ into a ~tuple~:
+  #+begin_src python
+    t = tuple(['cat','dog',5])   
+    print(t)
+    print(type(t))
+  #+end_src
+
+- Converting a string into a ~list~ or a ~tuple~:    
+  #+begin_src python
+    l = list('hello')
+    print(l)
+    print(type(l))
+
+    t = tuple('hello')
+    print(t)
+    print(type(t))
+  #+end_src
+
+- Converting a ~tuple~ into a ~list~ (handy if you want it to be mutable):
+  #+begin_src python
+    l = list(('cat','dog', 5))
+    print(l)
+    l.append([1,2,])
+    print(l)    
+  #+end_src
+
+  #+RESULTS:
+  : ['cat', 'dog', 5]
+  : ['cat', 'dog', 5, [1, 2]]
+
+* References for integer variables
+#+attr_latex: :width 400px
+#+caption: Python objects consist of identity, type, and value
+[[../img/reference.png]]
+
+- Variables don't actually "store" strings or integer
+  values. Technically, they store /references/ to computer memory
+  locations where the values are stored.
+
+- In other languages like C/C++, you can manipulate values and these
+  references (called /pointers/) separately, in Python you cannot.
+
+- In this example, copying ~spam~ to ~cheese~ by assigning it to ~cheese~
+  does not copy the /value/ over but only the /reference/ to the value.
+  #+begin_src python
+    spam = 42
+    cheese = spam  # both point to memory with '42' in it
+    spam = 100     # spam points to memory with '100' in it
+    print(spam)  
+    print(cheese)
+  #+end_src
+
+- Integers are /immutable/ values that don't change: changing a variable
+  only makes it refer to another value in memory.
+
+* References for lists
+
+- Lists don't work this way: they're /mutable/ - their values can change.
+
+- In this example, you see both referencing and value changing:
+  #+begin_src python
+    spam = [0,1,2,3,4,5]  #1
+
+    # Copy the reference to the list spam to a new list value
+    cheese = spam         #2
+    print(cheese)
+
+    # Change the list value in place
+    cheese[1] = 'hello'   #3
+
+    # Both variables refer to the same list
+    print(spam)
+    print(cheese)
+  #+end_src
+
+- What's happening here?
+  1) A reference to the list is assigned to ~spam~
+  2) The list reference is copied to ~cheese~ (not the list itself)
+  3) When the first element of ~cheese~ is modified, the same list that
+     ~spam~ refers to is modified.
+
+- The figures illustrate creation of ~spam~ and copying of the reference
+  to ~cheese~:
+  #+attr_latex: :width 400px
+  [[../img/list_ref.png]]   [[../img/list_ref1.png]] 
+
+- When ~cheese~ is altered /in place/, the list that ~spam~ refers to is
+  altered:
+    #+attr_latex: :width 400px
+  [[../img/list_ref2.png]]
+
+    
+  
+* Summary
+
+- Lists are useful data types since they allow you to write code that
+  works on a modifiable number of values in a single variable.
+- Lists are a sequence data type that is mutable, meaning that their
+  contents can change.
+- Tuples and strings, though also sequence data types, are immutable
+  and cannot be changed.
+- A variable that contains a tuple or string value can be overwritten
+  with a new tuple or string value
+- This is not the same thing as modifying the existing valuein place —
+  like, say, the ~append()~ or ~remove()~ methods do on lists.
+- Variables do not store list values directly; they store references
+  to lists. Any change you make to a list may impact other variables.
+- You can use ~copy()~ or ~deepcopy()~ if you want to make changes to a
+  list in one variable without modifying the original list.
+- NumPy array and pandas DataFrame structures are purpose-built to
+  handle multi-dimensional numeric data (NumPy) or general data in
+  tabular form (pandas).
+- The methods to manipulate arrays and DataFrames in many ways
+  parallel the functions for lists (often they have the same name).
+
+* TODO Glossary
+
+| TERM/COMMAND | DEFINITION |
+|--------------+------------|
+|              |            |

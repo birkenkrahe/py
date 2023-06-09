@@ -1531,7 +1531,7 @@ Friday: quick project update - informal "sprint review"
   solution and testing suite, and references (like here), with
   headlines and code highlighted.
 
-* TODO Day 13: Lists/Methods/References
+* DONE Day 13: Working with lists/looping/scope
 #+attr_latex: :width 400px
 #+caption: Llyfrgell Genedlaethol Cymru / double wedding at Llanrhaeadr (1954)
 [[../img/gameoflife.jpg]]
@@ -1693,14 +1693,84 @@ corresponding BMI computation in NumPy 100 times and repeat this run
 - (Optional) Make program safe with exception handling
 - [[https://lyon.instructure.com/courses/1700/assignments/14754][Submission details in Canvas]]
 
-* TODO Day 14: Dictionaries/Game of Life/Zen of Python
+* TODO Day 14: Methods for ~list~, ~array~, ~DataFrame~
 #+attr_latex: :width 400px
 #+caption: Llyfrgell Genedlaethol Cymru / Longden Bay Go-cart Racers (1953)
 [[../img/dictionary.jpg]]
 
-** No class on Mon 15-June: work on your project instead
-** Test 3 is coming - includes Numpy (DataCamp)
+** TODO Materialschlacht?
+#+attr_latex: :width 400px
+#+caption: French soldier among brass shells (World War I)
+[[../img/materialschlacht.png]]
 
+The course is turning into a "Materialschlacht" (German for a battle
+where resources rather than tactics are used to overwhelm the enemy):
+
+- The chapter on 'loops' came to 15 pages
+- The chapter on 'functions' came to 30 pages
+- The chapter on 'lists and methods' runs to 40 pages...
+- The next chapter (references) will close the 'overview'
+
+We'll still have covered only about 25% of Python's common ground.
+
+** TODO Preview/review
+
+1) What is []? 
+   #+begin_quote
+   The empty list (no items), same as the empty string converted to a
+   list ~list('')~.
+   #+end_quote
+   
+2) How would you assign the value ~'hello'~ as the third value in a list
+   stored in a variable named ~spam = [2, 4, 6, 8, 10]~?
+   #+begin_src python
+     spam = [2, 4, 6, 8, 10]
+     spam.insert(3,'hello') # alters spam 'in place'
+     print(spam)
+   #+end_src
+
+3) ~spam = ['a', 'b', 'c', 'd']~. What is ~spam[int(int('3' * 2) // 11)]~?
+   #+begin_src python
+     spam = ['a', 'b', 'c', 'd']
+     print(spam[int(int('3' * 2) // 11)])
+   #+end_src
+   Why:
+   #+begin_src python
+     spam = ['a', 'b', 'c', 'd']     
+     print('3' * 2)
+     print(int('3' * 2))
+     print(int('3' * 2) // 11)
+     print(int(int('3' * 2) // 11))
+     print(spam[3])
+   #+end_src
+
+4) ~spam = ['a', 'b', 'c', 'd']~. What is ~spam[-1]~?
+   #+begin_src python
+     spam = ['a', 'b', 'c', 'd']
+     print(spam[-1])
+   #+end_src
+
+5) ~spam = ['a', 'b', 'c', 'd']~. What is ~spam[:2]~?
+   #+begin_src python
+     spam = ['a', 'b', 'c', 'd']
+     print(spam[:2])
+   #+end_src
+
+** TODO Project time! No class on Monday 12-June, 19-June!
+#+attr_latex: :width 400px
+#+caption: Royal Flying Corps gunner practicing shooting during WW1
+[[../img/gunner.jpg]]
+
+[[https://lyon.instructure.com/courses/1700/discussion_topics/4464][Announcement (June 9, 2023)]]
+
+1) Jonathan: Hexagonal grid game built with PyGame
+2) Radek: Scrape and analyze journal data with ...?
+3) 
+4) 
+5) 
+6) 
+
+** TODO Test 3 is coming - includes Numpy (DataCamp)
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
@@ -1713,8 +1783,29 @@ corresponding BMI computation in NumPy 100 times and repeat this run
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
+*** Comma code
 
-* TODO Day 15: String manipulation with ~string~
+- Say you have a list value like this:
+  #+begin_example python
+   spam = ['apples', 'bananas', 'tofu', 'cats']
+  #+end_example
+
+- *Write* a function ~commaCode~ that takes a ~list~ value as an argument
+  and returns a string with all the items separated by a comma and a
+  space, with ~and~ inserted before the last item.
+
+- For example, passing the previous ~spam~ list to the function would
+  return ~'apples, bananas, tofu, and cats'~. But your function should
+  be able to work with any list value passed to it.
+
+- Be sure to *test* the case where an empty list ~[]~ is passed to your
+  function. In this case, print ~'[]'~.
+
+- Submit a link to an appropriately documented Colab notebook for
+  bonus points [[https://lyon.instructure.com/courses/1700/assignments/14920][here in Canvas]] no later than June 16.
+
+
+* TODO Day 15: Project day I (no class)
 #+attr_latex: :width 400px
 #+caption: Flanzaleys String Quartet (LOC@Flickr.com)
 [[../img/strings.jpg]]
@@ -1731,7 +1822,7 @@ corresponding BMI computation in NumPy 100 times and repeat this run
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-* TODO Day 16: Pattern matching with ~RegEx~
+* TODO Day 16: String manipulation with ~string~
 #+attr_latex: :width 400px
 #+caption: USAF B-25 bomber above European patchwork landscape (1940)
 [[../img/pattern.jpg]]
@@ -1765,7 +1856,7 @@ corresponding BMI computation in NumPy 100 times and repeat this run
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-* TODO Day 18: * Web scraping - ~beautiful soup~
+* TODO Day 18: Data visualization - ~matplotlib~ 
 #+attr_latex: :width 400px
 #+caption: Photo: Sam Hood / Schoolchildren line up for soup (1934)
 [[../img/soup.jpg]]
@@ -1782,7 +1873,7 @@ corresponding BMI computation in NumPy 100 times and repeat this run
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-* TODO Day 19: * Spreadsheets and SQL databases
+* TODO Day 19: * Web scraping - ~beautiful soup~
 #+attr_latex: :width 400px
 #+caption: Photo: Sam Hood / Schoolchildren line up for soup (1934)
 [[../img/spreadsheets.jpg]]
@@ -1802,7 +1893,7 @@ corresponding BMI computation in NumPy 100 times and repeat this run
 [[../img/homework.jpg]]
 
 
-* TODO Day 20: Data visualization - ~matplotlib~
+* TODO Day 20: Project Day II (no class)
 #+attr_latex: :width 400px
 #+caption: Music on Water Street, St. John's, Newfoundland (Flickr.com).
 [[../img/photogenic.jpg]]
@@ -1819,7 +1910,7 @@ corresponding BMI computation in NumPy 100 times and repeat this run
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-* TODO Day 21: * Machine learning with ~sklearn~
+* TODO Day 21: * Spreadsheets and SQL databases
 #+attr_latex: :width 400px
 #+caption: Llyfrgell Genedlaethol Cymru / Redman's hairdressers (1957)
 [[../img/hairdressers.jpg]]
@@ -1836,17 +1927,17 @@ corresponding BMI computation in NumPy 100 times and repeat this run
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-* TODO Day 22: 2 project presentations
+* TODO Day 22: * Machine learning with ~sklearn~
 #+attr_latex: :width 400px
 #+caption: Group, Flickr.com
 [[../img/group1.jpg]]
 
-* TODO Day 23: 2 project presentations
+* TODO Day 23: 3 project presentations
 #+attr_latex: :width 400px
 #+caption: Library of Virginia, family portrait.
 [[../img/group2.jpg]]
 
-* TODO Day 24: 2 project presentations/Summary/Outlook
+* TODO Day 24: 3 project presentations
 #+attr_latex: :width 400px
 #+caption: Whiteman group, LOC@Flickr.com
 [[../img/group3.jpg]]
