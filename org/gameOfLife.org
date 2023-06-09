@@ -1,3 +1,92 @@
-* TODO Extended example: Conway's Game of Life
+#+TITLE:CONWAY'S GAME OF LIFE
+#+AUTHOR: Marcus Birkenkrahe
+#+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
+#+STARTUP: overview hideblocks indent inlineimages entitiespretty
+#+PROPERTY: header-args:python :results output :exports both
+* README
+
+- More on cellular automata in Python (Ilievski, 2021)
+- More on cellular automata ([[https://en.wikipedia.org/wiki/Cellular_automaton][Wikipedia]])
+- Conway's Game of Life ([[https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life][Wikipedia]])
+- Code source: Sweigart (2019).
+
+* Mathematical basis: cellular automata
+
+- Automata are self-operating state-machines or iterative arrays
+
+- History: discovered by Ulam/von Neumann (1940s), popularized by
+  Conway (1970s), analyzed by Wolfram (1980s).
+
+- /Applications/ include: fluid dynamics simulations in *physics*, plant
+  growth processes in *biology*, pseudo random number generation in
+  *cryptography*, traffic flow modeling, city growth patterns in *urban
+  planning*, spread of forest fires in *ecology*, chemical reaction
+  models in *chemistry*, terrain generation in *game development*, etc.
+
+* A Rule 30 automaton in Python
+#+attr_latex: :width 400px
+#+caption: A Conus textile shell similar in appearance to Rule 30 (Wikipedia)
+[[../img/rule30.jpeg]]
+
+- Here's a simple Python implementation of a one-dimensional cellular
+  automaton, specifically the '[[https://en.wikipedia.org/wiki/Rule_30][Rule 30 automaton]]'.
+
+- Despite its simplicity, it generates complex, seemingly random
+  patterns (e.g. on shells).
+
+- The code:
+  #+begin_src python
+    # function that applies rule 30 to a list of cells
+    def rule30(cells):
+        """Applies Rule 30 to the given list of cells."""
+        new_cells = []
+        for i in range(len(cells)):
+            left = cells[i - 1] if i > 0 else 0
+            center = cells[i]
+            right = cells[i + 1] if i < len(cells) - 1 else 0
+            new_cells.append(left ^ (center or right))  # Rule 30 logic
+        return new_cells
+
+    # Initial configuration
+    cells = [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+
+    # Run the automaton for 10 steps
+    for _ in range(10):
+        print(''.join('#' if cell else ' ' for cell in cells))
+        cells = rule30(cells)
+  #+end_src
+
+  #+RESULTS:
+  #+begin_example
+       #     
+      ###    
+     ##  #   
+    ## ####  
+   ##  #   # 
+  ## #### ###
+  #  #    #  
+  #####  ### 
+  #    ###  #
+  ##  ##  ###
+  #+end_example
+
+- In this code
+  
+* Extended example: Conway's 'Game of Life'
+#+attr_latex: :width 400px
+#caption: Four steps in a Conway's Game of Life simulation
+[[../img/conway.png]]
+
+- 
+
+* References
+
+- Ilievski, V. (2021). Simple but Stunning: Animated Cellular Automata
+  in Python. URL: [[https://isquared.digital/blog/2021-05-02-cellular-automata/][isquared.digital]]
+- OpenAI (2023). ChatGPT May 24 Version. URL: chat.openai.com.
+- Sweigart, A. (2019). Automate the Boring Stuff with
+  Python. NoStarch. URL: [[https://automatetheboringstuff.com/2e/chapter2/][automatetheboringstuff.com]]
+
+  
 
 
