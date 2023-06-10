@@ -287,7 +287,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
      ~myCatNames~, this object will hold the ~return~ value from
      ~getCatNames~.
 
-* NEXT ~in~ or ~out~?
+* Are you ~in~ or ~out~?
 
 - The ~in~ or ~not in~ command works on lists:
   #+begin_src python
@@ -299,7 +299,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
   #+RESULTS:
   : True
   : True
-
+  
 * Practice the ~in~ keyword for lists
 
 - Write a script that lets the user type in a pet ~name~ and checks if
@@ -342,9 +342,12 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
 - The one assignment per line way:
   #+begin_src python
     cat = ['fast', 'moody', 'black']
+
+    # assign list items to new variables
     speed = cat[0]
     disposition = cat[1]
     color = cat[2]
+
     print(f'The {color} cat is {speed} and {disposition}')
   #+end_src
 
@@ -395,6 +398,14 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
     print(random.choice(pets))
   #+end_src
 
+  #+begin_src python
+    import random
+    print(random.choice(['p','r','s']))
+  #+end_src
+
+  #+RESULTS:
+  : s
+
 - This is a shorter form of ~pets[random.randint(0,len(pets)-1]~:
   #+begin_src python
     import random
@@ -429,8 +440,9 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
 
 * Methods for specific data types
 
-- Each data type as its own set of methods, e.g. the ~list~ data type
-  has methods for finding, adding, removing and manipulating values.
+- Each data structure as its own set of methods, e.g. the ~list~ data
+  type has methods for finding, adding, removing and manipulating
+  values.
 
 - Examples:
   1) to call the ~list~ method ~index~ on the item ~'hello'~ of a list ~spam~:
@@ -438,12 +450,19 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
        spam = ['hello','world']
        print(spam.index('hello'))  # returns an index
      #+end_src
+
+     #+RESULTS:
+     : 0
+
   2) to call the ~str~ method ~count~ on the substring ~'_'~ of the string
      ~'hello_world'~ stored in ~ham~:
      #+begin_src python
        ham = 'hello_world'
        print(ham.count('_'))  # returns a count
      #+end_src
+
+     #+RESULTS:
+     : 1
 
 - This approach transfers to other packages such a ~numpy~ or ~pandas~ -
   the focus of the methods is on the library purpose like numeric data
@@ -456,10 +475,16 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
 
 - If the value is not in the list, a ~ValueError~ is raised:
   #+begin_src python
+
     spam = ['hello', 'hi', 'howdy', 'hey']
+
     print(spam.index('howdy'))
+    
     print(spam.index('howdy howdy howdy'))
   #+end_src
+
+  #+RESULTS:
+  : 2
 
 - When there are duplicates, the first instance is returned:
   #+begin_src python
@@ -467,12 +492,16 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
     print(spam.index('hi'))
   #+end_src
 
+  #+RESULTS:
+  : 1
+
 * Finding a value in a numpy ~array~ with ~where~
 
 - In NumPy, you can use the ~where~ function - a lot more information is
   available, but you need more skill to sort through it:
   #+begin_src python
     import numpy as np
+
     spam = ['hello', 'hi', 'howdy', 'hey', 'hi']
 
     # turn list into numpy array
@@ -485,6 +514,11 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
     print(idx[0][0])  # index only
     print(spam_np[idx])   # array value
   #+end_src
+
+  #+RESULTS:
+  : (array([2], dtype=int64),)
+  : 2
+  : ['howdy']
 
 * Finding a value in a pandas ~series~ with ~pd.index~
 
@@ -500,6 +534,9 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
 
     print(index)
   #+end_src
+
+  #+RESULTS:
+  : 2
 
 - If the value is not found in the Series, it will raise an
   ~IndexError~.
@@ -1171,11 +1208,12 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
                  'My reply is no',
                  'Outlook not so good',
                  'Very doubtful']
+
      print(messages[random.randint(0,len(messages)-1)])
    #+end_src
 
    #+RESULTS:
-   : Very doubtful
+   : Reply hazy try again
 
 4) Test the performance of both programs in Colab using ~%timeit~. Do
    you record any difference?

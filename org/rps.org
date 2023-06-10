@@ -1,0 +1,30 @@
+#+begin_src python :tangle ../src/rps.py
+  import random
+
+  wins = 0
+  loss = 0
+  ties = 0
+
+  print('ROCK, PAPER, SCISSORS',end='\n\n')
+
+  while True:
+
+      print(f'{wins} Wins, {loss} Losses, {ties} Ties')
+      user = input('Enter your move: r(ock), (p)aper, (s)cissors or (q)uit: ')
+
+      if user == 'q':
+	  break
+
+      comp = random.choice(['r','p','s'])
+      print(f'{user.upper()} vs. {comp.upper()}:')
+
+      if comp == user:
+	  ties += 1
+	  print("It's a tie!")
+      elif (user == 'r' and comp == 's') or (user == 'p' and comp == 'r') or (user == 's' and comp == 'p'):
+	  wins += 1
+	  print('You win!')
+      else:
+	  loss += 1
+	  print("You loose!")
+#+end_src

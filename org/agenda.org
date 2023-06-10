@@ -1693,12 +1693,12 @@ corresponding BMI computation in NumPy 100 times and repeat this run
 - (Optional) Make program safe with exception handling
 - [[https://lyon.instructure.com/courses/1700/assignments/14754][Submission details in Canvas]]
 
-* TODO Day 14: Methods for ~list~, ~array~, ~DataFrame~
+* DONE Day 14: Methods for ~list~, ~array~, ~DataFrame~
 #+attr_latex: :width 400px
 #+caption: Llyfrgell Genedlaethol Cymru / Longden Bay Go-cart Racers (1953)
 [[../img/dictionary.jpg]]
 
-** TODO Materialschlacht?
+** Materialschlacht?
 #+attr_latex: :width 400px
 #+caption: French soldier among brass shells (World War I)
 [[../img/materialschlacht.png]]
@@ -1713,7 +1713,7 @@ where resources rather than tactics are used to overwhelm the enemy):
 
 We'll still have covered only about 25% of Python's common ground.
 
-** TODO Preview/review
+** Preview/review
 
 1) What is []? 
    #+begin_quote
@@ -1727,13 +1727,24 @@ We'll still have covered only about 25% of Python's common ground.
      spam = [2, 4, 6, 8, 10]
      spam.insert(3,'hello') # alters spam 'in place'
      print(spam)
+
+     spam[4] = 'world'
+     print(spam)
    #+end_src
+
+   #+RESULTS:
+   : [2, 4, 6, 'hello', 8, 10]
+   : [2, 4, 6, 'hello', 'world', 10]
 
 3) ~spam = ['a', 'b', 'c', 'd']~. What is ~spam[int(int('3' * 2) // 11)]~?
    #+begin_src python
      spam = ['a', 'b', 'c', 'd']
      print(spam[int(int('3' * 2) // 11)])
    #+end_src
+
+   #+RESULTS:
+   : d
+
    Why:
    #+begin_src python
      spam = ['a', 'b', 'c', 'd']     
@@ -1744,41 +1755,76 @@ We'll still have covered only about 25% of Python's common ground.
      print(spam[3])
    #+end_src
 
+   #+RESULTS:
+   : 33
+   : 33
+   : 3
+   : 3
+   : d
+
 4) ~spam = ['a', 'b', 'c', 'd']~. What is ~spam[-1]~?
    #+begin_src python
      spam = ['a', 'b', 'c', 'd']
      print(spam[-1])
+     print(spam[-0])
    #+end_src
 
+   #+RESULTS:
+   : d
+   : a
+   
 5) ~spam = ['a', 'b', 'c', 'd']~. What is ~spam[:2]~?
    #+begin_src python
      spam = ['a', 'b', 'c', 'd']
      print(spam[:2])
    #+end_src
 
-** TODO Project time! No class on Monday 12-June, 19-June!
+   #+RESULTS:
+   : ['a', 'b']
+
+** Project time! No class on Monday 12-June, 19-June!
 #+attr_latex: :width 400px
 #+caption: Royal Flying Corps gunner practicing shooting during WW1
 [[../img/gunner.jpg]]
 
 [[https://lyon.instructure.com/courses/1700/discussion_topics/4464][Announcement (June 9, 2023)]]
 
-1) Jonathan: Hexagonal grid game built with PyGame
-2) Radek: Scrape and analyze journal data with ...?
-3) 
-4) 
-5) 
-6) 
+*Notes from the project discussion (see also [[https://lyon.instructure.com/courses/1700/pages/project-idea-s][Canvas list]]):*
 
-** TODO Test 3 is coming - includes Numpy (DataCamp)
-** TODO In-class summary
+1) Jonathan: PyGame not good at UI - if I leave PyGame then I would
+   like to scrape sites and label data and work with it
+   (stable diffusion AI). Windows will be a challenge.
+   
+2) Radek: Scrape and analyze journal data from the American Economic
+   Review. Info is not in PDF but on the landing page. Any DataCamp
+   projects or courses on this? Which Python packages to use?
+
+3) Lucia: coding a simple website with Python. Python has an HTTP
+   server built-in and so you should be able to do local development
+   work. I'll find a tutorial and I suggest to check it out with
+   ChatGPT (shifts to "prompt engineering").
+
+4) Clifford: 'hangman' game - optimize the number of word guesses. 
+
+5) Peter: data collection - scrape existing lists of corporate
+   information to get them in a table and match column
+   information. Saves me time compared to manual collection and
+   comparison. Could write script to open web page with the company
+   ID?
+   
+6) Ryan: originally wanted to do SQL(ite) - now a text based adventure
+   game with ASCII art embedded in the game. MUD/MOO (LambdaMOO) has a
+   similar approach.
+
+** Test 3 is coming - includes Numpy (DataCamp)
+** In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
 
 - [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
 
-** TODO Homework
+** Homework
 #+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
@@ -1804,7 +1850,7 @@ We'll still have covered only about 25% of Python's common ground.
 - Submit a link to an appropriately documented Colab notebook for
   bonus points [[https://lyon.instructure.com/courses/1700/assignments/14920][here in Canvas]] no later than June 16.
 
-
+  
 * TODO Day 15: Project day I (no class)
 #+attr_latex: :width 400px
 #+caption: Flanzaleys String Quartet (LOC@Flickr.com)
