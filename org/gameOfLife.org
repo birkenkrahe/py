@@ -2,13 +2,13 @@
 #+AUTHOR: Marcus Birkenkrahe
 #+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
 #+STARTUP: overview hideblocks indent inlineimages entitiespretty
-#+PROPERTY: header-args:python :results output :exports both
+#+PROPERTY: header-args:python :results output :exports both :session *Python*
 * README
 
 - More on cellular automata in Python (Ilievski, 2021)
 - More on cellular automata ([[https://en.wikipedia.org/wiki/Cellular_automaton][Wikipedia]])
 - Conway's Game of Life ([[https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life][Wikipedia]])
-- Code source: Sweigart (2019).
+- Code source: Sweigart (2019)/OpenAI. For more games, see [[https://github.com/asweigart/pythonstdiogames][GitHub]].
 
 * Mathematical basis: cellular automata
 
@@ -23,7 +23,20 @@
   planning*, spread of forest fires in *ecology*, chemical reaction
   models in *chemistry*, terrain generation in *game development*, etc.
 
-* A Rule 30 automaton in Python
+- Automata are conveniently represented as directed (cyclic) graphs:
+  here is an example of a 2 state finite automaton.
+  #+attr_latex: :width 400px
+  #+caption: Simple automaton with two states (Ilievski, 2021)
+  [[../img/automaton.png]]
+
+- In the depicted automaton, S1 and S2 are states, and the edges are
+  transition lines that are triggered by the state: e.g. 0 on S1
+  triggers a state change from S1 to S2.
+
+- The language of graphs is also important in network analysis,
+  database and algorithm design.
+
+* Example: a 'Rule 30' automaton in Python
 #+attr_latex: :width 400px
 #+caption: A Conus textile shell similar in appearance to Rule 30 (Wikipedia)
 [[../img/rule30.jpeg]]
@@ -38,7 +51,7 @@
   #+begin_src python
     # function that applies rule 30 to a list of cells
     def rule30(cells):
-        """Applies Rule 30 to the given list of cells."""
+        # Applies Rule 30 to the given list of cells
         new_cells = []
         for i in range(len(cells)):
             left = cells[i - 1] if i > 0 else 0
@@ -58,26 +71,587 @@
 
   #+RESULTS:
   #+begin_example
-       #     
-      ###    
-     ##  #   
-    ## ####  
-   ##  #   # 
+       #
+      ###
+     ##  #
+    ## ####
+   ##  #   #
   ## #### ###
-  #  #    #  
-  #####  ### 
+  #  #    #
+  #####  ###
   #    ###  #
   ##  ##  ###
+  # ### ###
+  # #   #  #
+  # ## ######
+  # #  #
+  # #####
+  # #    #
+  # ##  ###
+  # # ###  #
+  # # #  ####
+  # # ####
+  # # #   #
+  # # ## ###
+  # # #  #  #
+  # # #######
+  # # #
+  # # ##
+  # # # #
+  # # # ##
+  # # # # #
+  # # # # ##
+  # # # # # #
   #+end_example
 
-- In this code
-  
+- How the program works:
+  1) ~rule30~ is a function that takes a list of cells as input and
+     applies Rule 30 to generate the new state of these cells. Rule 30
+     is one of the elementary cellular automaton rules introduced by
+     Stephen Wolfram. It's named "Rule 30" because the rule number,
+     30, translates to ~00011110~ in binary, which dictates the new
+     state for a given triplet of cells.
+  2) Inside the ~rule30~ function, a new list called ~new_cells~ is created
+     to store the new state of the cells.
+  3) The function then iterates over each cell in the input list
+     (~cells~). For each cell, it determines the state of its left
+     neighbor, itself, and its right neighbor. Based on these states,
+     it computes the new state using the Rule 30 logic: ~new_state =
+     left XOR (center OR right)~, where XOR (or ~^~) is the bitwise
+     exclusive OR operation.
+  4) After iterating through all the cells, the function returns the
+     ~new_cells~ list, which represents the new state of the cells after
+     applying Rule 30.
+  5) The main part of the program initializes the cells with a
+     specific configuration (11 cells, with the sixth cell being in
+     state 1 and the rest in state 0).
+  6) The program then runs the cellular automaton for 10 steps. In
+     each step, it prints the current state of the cells as a string
+     of ~#~ characters for state 1 and spaces for state 0. After
+     printing, it calls the ~rule30~ function to compute the new state
+     of the cells for the next step.
+  7) The underscore ~_~ in the ~for~ loop is a conventional placeholder or
+     throwaway variable since it is not actually needed anywhere: the
+     loop is there only to execute the clause 10 times.
+  8) Which /methods/ are used in this program?
+     #+begin_quote
+     - ~list.append~: appends item to list in place
+     - ~str.join~: joins any number of strings
+     - Other functions: ~range~, ~len~, ~print~.
+     #+end_quote
+
 * Extended example: Conway's 'Game of Life'
 #+attr_latex: :width 400px
-#caption: Four steps in a Conway's Game of Life simulation
+#caption: Four steps in a Conway's Game of Life simulation (Sweigart, 2019)
 [[../img/conway.png]]
 
-- 
+  - In the graphical illustration, an empty square is 'dead', and a
+    filled-in one is 'alive'.
+
+  - Conway's Game of Life simulation (CGOL) has four simple rules:
+    1) each live cell with one or no neighbors dies.
+    2) each live cell with four or more neighbors dies.
+    3) each live cell with two or three neighbors survives.
+    4) each dead cell with three neighbors becomes populated.
+
+  - In a 4 x 4 state space, the two automatons below describe the
+    transition of 5 live cells and reproduction of 2 live cells:
+    #+name: automaton
+    | cell | next | state 1 | state 2 | fate         |
+    |------+------+---------+---------+--------------|
+    | b1   |    1 |       1 |       0 | dies         |
+    | c2   |    3 |       1 |       1 | lives        |
+    | c3   |    2 |       1 |       1 | lives        |
+    | b3   |    3 |       1 |       1 | lives        |
+    | a3   |    1 |       1 |       0 | dies         |
+    |------+------+---------+---------+--------------|
+    | a2   |    3 |       0 |       1 | comes alive  |
+    | b4   |    3 |       0 |       1 | comes alive  |
+    #+attr_latex: :width 200px
+    [[../img/gol1.png]] [[../img/gol2.png]]
+
+  - You can play CGOL online at [[https://playgameoflife.com/][playgameoflife.com]] and check out the
+    sequence above. On the site, click on 'explanation' to see the set
+    of rules illustrated with examples.
+
+  - In the code, a list of lists is used to represent a 2-dimensional
+    field. The inner list represents each column of squares and stores a
+    ~#~ string for living, and a ~' '~ space for dead squares.
+
+* Conway's Game of Life using lists
+
+- Save the file from here as ~conwaysgameoflife.py~:
+  https://inventwithpython.com/projects/conwaysgameoflife.py
+
+- Open a CMD terminal on Windows, go to the ~Downloads~ directory and
+  run the simulation with ~python conwaysgameoflife.py~:
+  #+attr_latex: :width 300px
+  #+caption: Conway's Game of Life at the start and after stabilizing.
+  [[../img/conwaygameoflife1.png]] [[../img/conwaygameoflife2.png]]
+
+- Here's the code followed by an analysis[fn:1]:
+  #+begin_src python :tangle ../src/gameOfLife.py
+    # Conway's Game of Life
+    import random, time, copy
+
+    WIDTH = 60
+    HEIGHT = 20
+
+    # create a list of lists for the cells:
+    nextCells = []
+    for x in range(WIDTH):
+        for y in range(HEIGHT):
+            #if random.randint(0,1) == 0:
+            if (x, y) in ((1, 0), (2, 1), (0, 2), (1, 2), (2, 2)):
+                column.append('#')  # add a living cell
+            else:
+                column.append(' ')  # add a dead cell
+                nextCells.append(column)  # nextCells is a list of column lists
+
+    while True: # main program loop
+        print('\n\n\n\n\n')  # separate each step with newlines
+        currentCells = copy.deepcopy(nextCells)
+
+        # print currentCells on screen:
+        for y in range(HEIGHT):
+            for x in range(WIDTH):
+                print(currentCells[x][y], end=' ') # print hash or space
+            print()   # print newline at the end of the row
+
+        # calculate the next step's cells based on current step's cells
+        for x in range(WIDTH):
+            for y in range(HEIGHT):
+                # get neighboring coordinates
+                leftCoord = (x - 1) % WIDTH
+                rightCoord = (x + 1) % WIDTH
+                aboveCoord = (y - 1) % HEIGHT
+                belowCoord = (y + 1) % HEIGHT
+
+                # count number of living neighbors:
+                numNeighbors = 0
+                if currentCells[leftCoord][aboveCoord]=='#':
+                    numNeighbors += 1 # top-left neighbor alive
+                if currentCells[x][aboveCoord]=='#':
+                    numNeighbors += 1 # top neighbor alive
+                if currentCells[rightCoord][aboveCoord]=='#':
+                    numNeighbors += 1 # top-right neighbor alive
+                if currentCells[leftCoord][y]=='#':
+                    numNeighbors += 1 # left neighbor alive
+                if currentCells[rightCoord][y]=='#':
+                    numNeighbors += 1 # right neighbor alive
+                if currentCells[leftCoord][belowCoord]=='#':
+                    numNeighbors += 1 # bottom-left neighbor alive
+                if currentCells[x][belowCoord]=='#':
+                    numNeighbors += 1 # bottom neighbor alive
+                if currentCells[rightCoord][belowCoord]=='#':
+                    numNeighbors += 1 # bottom-right neighbor alive
+
+                # set cell based on Conway's Game of Life rules:
+                if currentCells[x][y] == '#' and (numNeighbors==2 or numNeighbors==3):
+                    # living cells with 2-3 neighbors live:
+                    nextCells[x][y] = '#'
+                elif currentCells[x][y] == ' ' and numNeighbors == 3:
+                    # dead cells with 3 neighbors become alive:
+                    nextCells[x][y] = '#'
+                    # add a 1-sec pause to reduce flickering
+        time.sleep(1)
+  #+end_src
+
+** Import modules needed:
+
+  1) ~random.randint~ to populate the grid randomly with cells
+  2) ~time.sleep~ to delay execution by a second between screens
+  3) ~copy.deepcopy~ to copy a list (instead of only a reference)
+  #+begin_example python
+    import random, time, copy
+  #+end_example
+
+** Create random cell population
+
+- We want to simulate life on a 2-dimensional canvas. You can do that
+  with a list inside a list. We call it ~nextCells~ and add ~WIDTH~
+  columns of length ~HEIGHT~ to it using ~list.append~:
+  #+name: nextCells
+  #+begin_src python :results silent
+    import random
+    WIDTH=10
+    HEIGHT=5
+    nextCells = []
+    for x in range(WIDTH):
+        column = []
+        for y in range(HEIGHT):
+            if random.randint(0,1) == 0:
+                column.append('O')
+            else:
+                column.append(' ')
+        nextCells.append(column)
+  #+end_src
+
+- Print the lists to reveal the 2-dimensional structure: the list
+  items that are lists are the columns of the 10 x 5 grid:
+  #+begin_src python :noweb yes
+    <<nextCells>>  # create random population
+    print('first column: ',nextCells[0][:])
+    print('last column:  ',nextCells[9][:],end='\n\n')
+    for y in range(HEIGHT):
+        for x in range(WIDTH):
+            print(nextCells[x][y], end=' ') # print hash or space
+        print()   # print newline at the end of the row
+  #+end_src  
+
+  #+RESULTS:
+  : first column:  ['O', ' ', 'O', 'O', ' ']
+  : last column:   ['O', 'O', ' ', 'O', ' ']
+  : 
+  : O     O O O O   O O 
+  :   O O O       O   O 
+  : O O     O           
+  : O O   O O O O O O O 
+  :   O O O O
+
+- What is the address of the last cell (lower right corner)?
+  #+begin_src python :results output
+    nextCells[WIDTH-1][HEIGHT-1]
+  #+end_src
+
+** Copy cells and print them
+
+- Each iteration of the main program loop is a single step of the
+  cellular automata: all cells are traversed and re-evaluated to see
+  if they live or die, or become alive:
+  #+begin_example python
+    while True: # main program loop
+      print('\n\n\n\n\n')  # separate each step with newlines
+      currentCells = copy.deepcopy(nextCells)
+  #+end_example
+
+- We put this list of lists into ~nextCells~, then on each step we copy
+  ~nextCells~ into ~currentCells~, print it to the screen and then use the
+  cells in ~currentCells~ to calculate the next in ~nextCells~:
+  #+begin_example python
+    # print currentCells on screen:
+    for y in range(HEIGHT):
+        for x in range(WIDTH):
+            print(currentCells[x][y], end=' ') # print hash or space
+        print()   # print newline at the end of the row
+    
+  #+end_example
+
+** Calculate indices of cells around each cell
+
+- The living or dead state of each cell depends on its neighbors, so
+  we calculate the indices of the cells to the left, right, above and
+  below the current x and y coordinates:
+  #+begin_example python
+    # calculate the next step's cells based on current step's cells
+    for x in range(WIDTH):
+        for y in range(HEIGHT):
+            # get neighboring coordinates
+            leftCoord = (x - 1) % WIDTH
+            rightCoord = (x + 1) % WIDTH
+            aboveCoord = (y - 1) % HEIGHT
+            belowCoord = (y + 1) % HEIGHT
+  #+end_example
+
+- The ~%~ operator makes the index wrap around at the edges of the grid:
+  The leftmost column ~0~ would be ~0 - 1 = -1~. To identify this with the
+  rightmost column ~WIDTH - 1 = 59~, take ~(0 - 1) % WIDTH = 59~.
+
+- How does this work? It's called 'floored division' in Python,
+  rounding down a number to the nearest integer that is less or equal
+  to that number: drop the decimal part of the number and keep the
+  integer part unchanged if it's positive or moving towards negative
+  infinity if it's negative:x
+
+- When you divide -1 by 60, you get approximately -0.0167. If you
+  round this towards negative infinity, you get -1 as the
+  quotient.
+
+- Now, if you plug this into the formula for modulo:
+
+
+  
+
+
+
+* Conway's Game of Life using dictionaries
+
+- Here's Sweigart's code using dictionaries. You can
+  [[https://inventwithpython.com/projects/conwaysgameoflife.py][download it from here]], or follow the author while he's coding on YouTube
+  ([[https://youtu.be/Vn8Mug5w7sw][Sweigart, 2021]]):
+  #+begin_src python :tangle ../src/conway.py
+    """Conway's Game of Life, by Al Sweigart al@inventwithpython.com
+    The classic cellular automata simulation. Press Ctrl-C to stop.
+    More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
+    This code is available at https://nostarch.com/big-book-small-python-programming
+    Tags: short, artistic, simulation"""
+
+    import copy, random, sys, time
+
+    # Set up the constants:
+    WIDTH = 79   # The width of the cell grid.
+    HEIGHT = 20  # The height of the cell grid.
+
+    # (!) Try changing ALIVE to '#' or another character:
+    ALIVE = 'O'  # The character representing a living cell.
+    # (!) Try changing DEAD to '.' or another character:
+    DEAD = ' '   # The character representing a dead cell.
+
+    # (!) Try changing ALIVE to '|' and DEAD to '-'.
+
+    # The cells and nextCells are dictionaries for the state of the game.
+    # Their keys are (x, y) tuples and their values are one of the ALIVE
+    # or DEAD values.
+    nextCells = {}
+    # Put random dead and alive cells into nextCells:
+    for x in range(WIDTH):  # Loop over every possible column.
+        for y in range(HEIGHT):  # Loop over every possible row.
+            # 50/50 chance for starting cells being alive or dead.
+            if random.randint(0, 1) == 0:
+                nextCells[(x, y)] = ALIVE  # Add a living cell.
+            else:
+                nextCells[(x, y)] = DEAD  # Add a dead cell.
+
+    while True:  # Main program loop.
+        # Each iteration of this loop is a step of the simulation.
+
+        print('\n' * 50)  # Separate each step with newlines.
+        cells = copy.deepcopy(nextCells)
+
+        # Print cells on the screen:
+        for y in range(HEIGHT):
+            for x in range(WIDTH):
+                print(cells[(x, y)], end='')  # Print the # or space.
+                print()  # Print a newline at the end of the row.
+                print('Press Ctrl-C to quit.')
+
+        # Calculate the next step's cells based on current step's cells:
+        for x in range(WIDTH):
+            for y in range(HEIGHT):
+                # Get the neighboring coordinates of (x, y), even if they
+                # wrap around the edge:
+                left  = (x - 1) % WIDTH
+                right = (x + 1) % WIDTH
+                above = (y - 1) % HEIGHT
+                below = (y + 1) % HEIGHT
+
+                # Count the number of living neighbors:
+                numNeighbors = 0
+                if cells[(left, above)] == ALIVE:
+                    numNeighbors += 1  # Top-left neighbor is alive.
+                if cells[(x, above)] == ALIVE:
+                    numNeighbors += 1  # Top neighbor is alive.
+                if cells[(right, above)] == ALIVE:
+                    numNeighbors += 1  # Top-right neighbor is alive.
+                if cells[(left, y)] == ALIVE:
+                    numNeighbors += 1  # Left neighbor is alive.
+                if cells[(right, y)] == ALIVE:
+                    numNeighbors += 1  # Right neighbor is alive.
+                if cells[(left, below)] == ALIVE:
+                    numNeighbors += 1  # Bottom-left neighbor is alive.
+                if cells[(x, below)] == ALIVE:
+                    numNeighbors += 1  # Bottom neighbor is alive.
+                if cells[(right, below)] == ALIVE:
+                    numNeighbors += 1  # Bottom-right neighbor is alive.
+
+                # Set cell based on Conway's Game of Life rules:
+                if cells[(x, y)] == ALIVE and (numNeighbors == 2
+                                               or numNeighbors == 3):
+                    # Living cells with 2 or 3 neighbors stay alive:
+                        nextCells[(x, y)] = ALIVE
+                elif cells[(x, y)] == DEAD and numNeighbors == 3:
+                    # Dead cells with 3 neighbors become alive:
+                    nextCells[(x, y)] = ALIVE
+                else:
+                    # Everything else dies or stays dead:
+                    nextCells[(x, y)] = DEAD
+
+        try:
+            time.sleep(1)  # Add a 1 second pause to reduce flickering.
+        except KeyboardInterrupt:
+            print("Conway's Game of Life")
+            print('By Al Sweigart al@inventwithpython.com')
+            sys.exit()  # When Ctrl-C is pressed, end the program.
+  #+end_src
+* Conway's Game of Life with NumPy and matplotlib
+
+- [[https://gist.github.com/birkenkrahe/efd9aaa5d20a08e259767e2de9bdf94b][See here for the notebook (GitHub]]). You need to download the Python
+  source code and run it on the terminal or in IDLE.
+
+- This Python program sets up an NxN grid (in this case, 100x100),
+  randomly populates it with cells that are either "on" or "off", and
+  then updates the grid over time according to Conway's Game of Life
+  rules.
+
+- The program:
+  #+begin_src python :tangle ../src/cgolanimation.py
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import matplotlib.animation as animation
+
+    def update(frameNum, img, grid, N):
+        # Copy grid to apply rules
+        newGrid = grid.copy()
+
+        # Loop through each cell in the grid
+        for i in range(N):
+            for j in range(N):
+                # Compute the sum of the eight neighbors
+                total = int((grid[i, (j-1)%N] + grid[i, (j+1)%N] +
+                             grid[(i-1)%N, j] + grid[(i+1)%N, j] +
+                             grid[(i-1)%N, (j-1)%N] + grid[(i-1)%N, (j+1)%N] +
+                             grid[(i+1)%N, (j-1)%N] + grid[(i+1)%N, (j+1)%N]) / 255)
+
+                # Conway's rules
+                if grid[i, j] == ON:
+                    if (total < 2) or (total > 3):
+                        newGrid[i, j] = OFF
+                else:
+                    if total == 3:
+                        newGrid[i, j] = ON
+
+        # Update the data
+        img.set_data(newGrid)
+        grid[:] = newGrid[:]
+        return img,
+
+    # Grid size and animation frames
+    N = 100
+    ON = 255
+    OFF = 0
+    vals = [ON, OFF]
+
+    # Populate grid with random on/off states
+    grid = np.random.choice(vals, N*N, p=[0.2, 0.8]).reshape(N, N)
+
+    # Create the figure and axis objects
+    fig, ax = plt.subplots()
+
+    # Display the grid as an image
+    img = ax.imshow(grid, interpolation='nearest')
+
+    # Animate
+    ani = animation.FuncAnimation(fig, update, fargs=(img, grid, N, ),
+                                  frames=10, interval=50, save_count=50)
+
+    # Display
+    plt.show()
+  #+end_src
+
+- Analysis:
+  1) Import modules:
+     #+begin_src python :results silent
+       import numpy as np
+       import matplotlib.pyplot as plt
+       import matplotlib.animation as animation
+     #+end_src
+     ~numpy~ is used for handling arrays efficiently. In Conway's Game
+     of Life, the world is represented as a grid of cells, which is
+     essentially a two-dimensional array. ~matplotlib~ is used for
+     plotting, and we are using its sub-module animation to create
+     animations.
+  2) Define the update function:
+     #+begin_src python :results silent
+       def update(frameNum, img, grid, N):
+           newGrid = grid.copy()
+
+           for i in range(N):
+               for j in range(N):
+                   total = int((grid[i, (j-1)%N] + grid[i, (j+1)%N] +
+                                grid[(i-1)%N, j] + grid[(i+1)%N, j] +
+                                grid[(i-1)%N, (j-1)%N] + grid[(i-1)%N, (j+1)%N] +
+                                grid[(i+1)%N, (j-1)%N] + grid[(i+1)%N, (j+1)%N]) / 255)
+
+                   if grid[i, j] == ON:
+                       if (total < 2) or (total > 3):
+                           newGrid[i, j] = OFF
+                   else:
+                       if total == 3:
+                           newGrid[i, j] = ON
+
+           img.set_data(newGrid)
+           grid[:] = newGrid[:]
+           return img,
+     #+end_src
+     - This function, called ~update~, is executed for each frame of the
+       animation. It takes four arguments: ~frameNum~ (the current frame
+       number), ~img~ (the image plot object for displaying the current
+       state of the grid), ~grid~ (the current state of the grid), and ~N~
+       (the size of the grid).
+     - ~newGrid~ is a (shallow, i.e. reference) copy of the current
+       grid. This copy is used to store the next state of the grid.
+     - The nested ~for~ loops iterate through each cell in the grid. For
+       each cell, the function calculates the total number of live
+       neighbors (dividing by 255 to normalize to 1 for live cells,
+       since live cells are represented by 255 or white).
+     - It then applies Conway's Game of Life rules to decide whether
+       each cell should be alive or dead in the next state. The
+       changes are stored in ~newGrid~.
+     - ~img.set_data(newGrid)~ updates the image plot object with the
+       new grid state.
+     - ~grid[:] = newGrid[:]~ updates the actual grid with the new
+       state.
+  3) Initialize grid and constants:
+     #+begin_src python :results silent
+       N = 100
+       ON = 255
+       OFF = 0
+       vals = [ON, OFF]
+       grid = np.random.choice(vals, N*N, p=[0.2, 0.8]).reshape(N, N)
+     #+end_src
+     - ~N~ represents the size of the grid (100x100 in this case).
+     - ~ON~ and ~OFF~ are constants used to represent the states of the
+       cells (255 for on/alive/white and 0 for off/dead/black).
+     - ~grid~ is initialized as a two-dimensional array with ~random~
+       values of ~ON~ and ~OFF~. The ~np.random.choice~ function is used to
+       fill the grid with a 20% chance of a cell being alive (~ON~) and
+       80% chance of being dead (~OFF~).
+  4) Set up the plot:
+     #+begin_src python :results silent
+       fig, ax = plt.subplots()
+       img = ax.imshow(grid, interpolation='nearest')
+     #+end_src
+     - ~plt.subplots~ creates a new figure and a set of subplots. In
+       this case, we only have one subplot (which is the default), so
+       it effectively just creates a new figure for the animation.
+     - ~ax.imshow(grid, interpolation='nearest')~ displays the data in
+       grid as an image. The parameter ~interpolation='nearest'~
+       specifies that no interpolation should be done - the value of
+       each cell should be displayed as-is. This is stored in the
+       variable ~img~.
+  5) Create the animation:
+     #+begin_src python :results silent
+       ani = animation.FuncAnimation(fig,
+                                     update,
+                                     fargs=(img, grid, N, ),
+                                     frames=10,
+                                     interval=50,
+                                     save_count=50)
+     #+end_src
+     - ~animation.FuncAnimation~ is a function from ~matplotlib.animation~
+       that creates an animation by repeatedly calling a function
+       (~update~ in this case).
+     - The ~fig~ argument specifies the figure object on which to draw
+       the animation.
+     - ~update~ is the function that will be called for each frame of
+       the animation.
+     - ~fargs~ is a tuple of arguments that will be passed to update
+       each time it is called.
+     - ~frames~ specifies the number of frames in the animation (in this
+       example, the animation will have 10 frames).
+     - ~interval~ is the delay between frames in milliseconds.
+     - ~save_count~ is just an optimization that tells the animation to
+       keep the last 50 frames in memory.
+  6) Display the animation:
+     #+begin_src python
+       plt.show()
+     #+end_src
+     - Finally, ~plt.show()~ is called to display the animation. This
+       opens a window that shows the animation of the grid evolving
+       over time according to the rules of Conway's Game of Life.
+  7) Extensions: this animation only runs for 10 frames. You can
+     experiment with different parameters - number of frames, grid
+     size, different initial configuration of the grid.
 
 * References
 
@@ -86,7 +660,12 @@
 - OpenAI (2023). ChatGPT May 24 Version. URL: chat.openai.com.
 - Sweigart, A. (2019). Automate the Boring Stuff with
   Python. NoStarch. URL: [[https://automatetheboringstuff.com/2e/chapter2/][automatetheboringstuff.com]]
+- Sweigart, A. (2021). Calm Programming - Conway's Game of life. URL:
+  [[https://youtu.be/Vn8Mug5w7sw][youtu.be/Vn8Mug5w7sw]].
 
-  
+* Footnotes
 
-
+[fn:1] The simulation that you saw is slightly different from the one
+we're discussing: it uses two ~dictionary~ data structures, one for the
+current state of the living/dead cells in the grid, and one for the
+next simulation's step's state.

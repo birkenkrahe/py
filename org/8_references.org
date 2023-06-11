@@ -41,17 +41,6 @@
           print(f'*** {i} ***')
     #+end_src
 
-    #+RESULTS:
-    : A
-    : Alice
-    : True
-    : False
-    : *** A ***
-    : *** l ***
-    : *** i ***
-    : *** c ***
-    : *** e ***
-
 * Mutable and immutable data types
 
 - A ~list~ and a string differ in an important way:
