@@ -1858,24 +1858,7 @@ We'll still have covered only about 25% of Python's common ground.
 #+caption: USAF B-25 bomber above European patchwork landscape (1940)
 [[../img/pattern.jpg]]
 
-* TODO Day 16: String manipulation with ~string~
-#+attr_latex: :width 400px
-#+caption: Flanzaleys String Quartet (LOC@Flickr.com)
-[[../img/strings.jpg]]
-
-** TODO In-class summary
-#+attr_latex: :width 300px
-#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
-[[../img/summary.jpg]]
-
-- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
-
-** TODO Homework
-#+attr_latex: :width 300px
-#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
-[[../img/homework.jpg]]
-
-* TODO Day 17: File manipulation with ~shutil~
+* TODO Day 16: References / Conway's Game of Life
 #+attr_latex: :width 400px
 #+caption: Cottage loaves baked in an ancient oven at Llanrhaeadr-ym-Mochnant
 [[../img/oven.jpg]]
@@ -1892,7 +1875,24 @@ We'll still have covered only about 25% of Python's common ground.
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-* TODO Day 18: Data visualization - ~matplotlib~ 
+* TODO Day 17: Dictionaries / Fantasy Game Inventory
+#+attr_latex: :width 400px
+#+caption: Flanzaleys String Quartet (LOC@Flickr.com)
+[[../img/strings.jpg]]
+
+** TODO In-class summary
+#+attr_latex: :width 300px
+#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
+[[../img/summary.jpg]]
+
+- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+
+** TODO Homework
+#+attr_latex: :width 300px
+#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
+[[../img/homework.jpg]]
+
+* TODO Day 18: String manipulation
 #+attr_latex: :width 400px
 #+caption: Photo: Sam Hood / Schoolchildren line up for soup (1934)
 [[../img/soup.jpg]]
