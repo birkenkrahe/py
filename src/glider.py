@@ -1,4 +1,5 @@
 # Conway's Game of Life
+# By Al Sweigart - inventwithpython.com (2016)
 import random, time, copy
 
 WIDTH = 79   # x range
