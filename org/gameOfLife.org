@@ -69,41 +69,6 @@
         cells = rule30(cells)
   #+end_src
 
-  #+RESULTS:
-  #+begin_example
-       #
-      ###
-     ##  #
-    ## ####
-   ##  #   #
-  ## #### ###
-  #  #    #
-  #####  ###
-  #    ###  #
-  ##  ##  ###
-  # ### ###
-  # #   #  #
-  # ## ######
-  # #  #
-  # #####
-  # #    #
-  # ##  ###
-  # # ###  #
-  # # #  ####
-  # # ####
-  # # #   #
-  # # ## ###
-  # # #  #  #
-  # # #######
-  # # #
-  # # ##
-  # # # #
-  # # # ##
-  # # # # #
-  # # # # ##
-  # # # # # #
-  #+end_example
-
 - How the program works:
   1) ~rule30~ is a function that takes a list of cells as input and
      applies Rule 30 to generate the new state of these cells. Rule 30
@@ -174,15 +139,27 @@
   sequence above. On the site, click on 'explanation' to see the set
   of rules illustrated with examples.
 
+- A nice project for my new Snap! course: Game of Life simulation in
+  [[https://snap.berkeley.edu/project?username=joecooldoo&projectname=Conways%20Game%20of%20Life][in Snap! here at U Berkeley]]:
+  #+attr_latex: :width 400px
+  #+caption: Conway Game of Life simulation 10 x 10 in Snap!
+  [[../img/conway_snap.png]]
+
+- For a (free) 500p. book on the Game of Life and the mathematics
+  behind it, see Johnston/Greene (2022): [[https://conwaylife.com/book/][conwaylife.com/book/]].
+     
 - In the code, a list of lists is used to represent a 2-dimensional
-  field. The inner list represents each column of squares and stores a
-  ~#~ string for living, and a ~' '~ space for dead squares.
+  field. The inner list represents each column of squares and stores
+  one character (like 'O') for living, and a space for dead cells.
 
 * Conway's Game of Life using lists
 
 - Save the file from here as ~conwaysgameoflife.py~:
   https://inventwithpython.com/projects/conwaysgameoflife.py
 
+- Save the ~gameOfLife.py~ from GitHub:
+  [[https://github.com/birkenkrahe/py/blob/main/src/gameOfLife.py][github.com/birkenkrahe/py/blob/main/src/gameOfLife.py]]
+  
 - Open a CMD terminal on Windows, go to the ~Downloads~ directory and
   run the simulation with ~python conwaysgameoflife.py~:
   #+attr_latex: :width 300px
@@ -192,6 +169,7 @@
 - Here's the code followed by an analysis:
   #+begin_src python :tangle ../src/gameOfLife1.py
     # Conway's Game of Life
+    # By Al Sweigart - inventwithpython.com (2016)
     import random, time, copy
 
     WIDTH = 79   # x range
@@ -492,8 +470,13 @@
   #+attr_latex: :width 200px
   [[../img/glider.png]]
 
-- Download ~glider.py~ and run it in a terminal: 
+- Download ~glider.py~ and run it in a terminal:
+  [[https://github.com/birkenkrahe/py/blob/main/src/glider.pyq][github.com/birkenkrahe/py/blob/main/src/glider.py]]
 
+- It's fun to experiment with other patterns. The free book by
+  Johnston and Greene (2022) contains a lot of patterns for
+  reproduction.
+  
 * Conway's Game of Life using dictionaries
 
 - Here's Sweigart's code using dictionaries. You can
@@ -777,10 +760,12 @@
 
 - Ilievski, V. (2021). Simple but Stunning: Animated Cellular Automata
   in Python. URL: [[https://isquared.digital/blog/2021-05-02-cellular-automata/][isquared.digital]]
+  
+- Johnson, N. and Greene, D. (2022). Conway's Game of Life -
+  Mathematics and Construction. URL: conwaylife.com/book/
 - OpenAI (2023). ChatGPT May 24 Version. URL: chat.openai.com.
 - Sweigart, A. (2019). Automate the Boring Stuff with
   Python. NoStarch. URL: [[https://automatetheboringstuff.com/2e/chapter2/][automatetheboringstuff.com]]
 - Sweigart, A. (2021). Calm Programming - Conway's Game of life. URL:
   [[https://youtu.be/Vn8Mug5w7sw][youtu.be/Vn8Mug5w7sw]].
 
-* Footnotes
