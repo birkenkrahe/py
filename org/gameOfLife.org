@@ -145,38 +145,38 @@
 #caption: Four steps in a Conway's Game of Life simulation (Sweigart, 2019)
 [[../img/conway.png]]
 
-  - In the graphical illustration, an empty square is 'dead', and a
-    filled-in one is 'alive'.
+- In the graphical illustration, an empty square is 'dead', and a
+  filled-in one is 'alive'.
 
-  - Conway's Game of Life simulation (CGOL) has four simple rules:
-    1) each live cell with one or no neighbors dies.
-    2) each live cell with four or more neighbors dies.
-    3) each live cell with two or three neighbors survives.
-    4) each dead cell with three neighbors becomes populated.
+- Conway's Game of Life simulation (CGOL) has four simple rules:
+  1) each live cell with one or no neighbors dies.
+  2) each live cell with four or more neighbors dies.
+  3) each live cell with two or three neighbors survives.
+  4) each dead cell with three neighbors becomes populated.
 
-  - In a 4 x 4 state space, the two automatons below describe the
-    transition of 5 live cells and reproduction of 2 live cells:
-    #+name: automaton
-    | cell | next | state 1 | state 2 | fate         |
-    |------+------+---------+---------+--------------|
-    | b1   |    1 |       1 |       0 | dies         |
-    | c2   |    3 |       1 |       1 | lives        |
-    | c3   |    2 |       1 |       1 | lives        |
-    | b3   |    3 |       1 |       1 | lives        |
-    | a3   |    1 |       1 |       0 | dies         |
-    |------+------+---------+---------+--------------|
-    | a2   |    3 |       0 |       1 | comes alive  |
-    | b4   |    3 |       0 |       1 | comes alive  |
-    #+attr_latex: :width 200px
-    [[../img/gol1.png]] [[../img/gol2.png]]
+- In a 4 x 4 state space, the two automatons below describe the
+  transition of 5 live cells and reproduction of 2 live cells:
+  #+name: automaton
+  | cell | next | state 1 | state 2 | fate         |
+  |------+------+---------+---------+--------------|
+  | b1   |    1 |       1 |       0 | dies         |
+  | c2   |    3 |       1 |       1 | lives        |
+  | c3   |    2 |       1 |       1 | lives        |
+  | b3   |    3 |       1 |       1 | lives        |
+  | a3   |    1 |       1 |       0 | dies         |
+  |------+------+---------+---------+--------------|
+  | a2   |    3 |       0 |       1 | comes alive  |
+  | b4   |    3 |       0 |       1 | comes alive  |
+  #+attr_latex: :width 200px
+  [[../img/gol1.png]] [[../img/gol2.png]]
 
-  - You can play CGOL online at [[https://playgameoflife.com/][playgameoflife.com]] and check out the
-    sequence above. On the site, click on 'explanation' to see the set
-    of rules illustrated with examples.
+- You can play CGOL online at [[https://playgameoflife.com/][playgameoflife.com]] and check out the
+  sequence above. On the site, click on 'explanation' to see the set
+  of rules illustrated with examples.
 
-  - In the code, a list of lists is used to represent a 2-dimensional
-    field. The inner list represents each column of squares and stores a
-    ~#~ string for living, and a ~' '~ space for dead squares.
+- In the code, a list of lists is used to represent a 2-dimensional
+  field. The inner list represents each column of squares and stores a
+  ~#~ string for living, and a ~' '~ space for dead squares.
 
 * Conway's Game of Life using lists
 
@@ -189,24 +189,26 @@
   #+caption: Conway's Game of Life at the start and after stabilizing.
   [[../img/conwaygameoflife1.png]] [[../img/conwaygameoflife2.png]]
 
-- Here's the code followed by an analysis[fn:1]:
-  #+begin_src python :tangle ../src/gameOfLife.py
+- Here's the code followed by an analysis:
+  #+begin_src python :tangle ../src/gameOfLife1.py
     # Conway's Game of Life
     import random, time, copy
 
-    WIDTH = 60
-    HEIGHT = 20
+    WIDTH = 79   # x range
+    HEIGHT = 20  # y range
+    ALIVE = 'O'  # symbol for live cells
+    DEAD = ' '   # symbol for dead cells
 
     # create a list of lists for the cells:
     nextCells = []
     for x in range(WIDTH):
+        column = [] # create a new column
         for y in range(HEIGHT):
-            #if random.randint(0,1) == 0:
-            if (x, y) in ((1, 0), (2, 1), (0, 2), (1, 2), (2, 2)):
-                column.append('#')  # add a living cell
+            if random.randint(0,1) == 0:
+                column.append(ALIVE)  # add a living cell
             else:
-                column.append(' ')  # add a dead cell
-                nextCells.append(column)  # nextCells is a list of column lists
+                column.append(DEAD)  # add a dead cell
+        nextCells.append(column)  # nextCells is a list of column lists
 
     while True: # main program loop
         print('\n\n\n\n\n')  # separate each step with newlines
@@ -229,42 +231,48 @@
 
                 # count number of living neighbors:
                 numNeighbors = 0
-                if currentCells[leftCoord][aboveCoord]=='#':
+                if currentCells[leftCoord][aboveCoord]==ALIVE:
                     numNeighbors += 1 # top-left neighbor alive
-                if currentCells[x][aboveCoord]=='#':
+                if currentCells[x][aboveCoord]==ALIVE:
                     numNeighbors += 1 # top neighbor alive
-                if currentCells[rightCoord][aboveCoord]=='#':
+                if currentCells[rightCoord][aboveCoord]==ALIVE:
                     numNeighbors += 1 # top-right neighbor alive
-                if currentCells[leftCoord][y]=='#':
+                if currentCells[leftCoord][y]==ALIVE:
                     numNeighbors += 1 # left neighbor alive
-                if currentCells[rightCoord][y]=='#':
+                if currentCells[rightCoord][y]==ALIVE:
                     numNeighbors += 1 # right neighbor alive
-                if currentCells[leftCoord][belowCoord]=='#':
+                if currentCells[leftCoord][belowCoord]==ALIVE:
                     numNeighbors += 1 # bottom-left neighbor alive
-                if currentCells[x][belowCoord]=='#':
+                if currentCells[x][belowCoord]==ALIVE:
                     numNeighbors += 1 # bottom neighbor alive
-                if currentCells[rightCoord][belowCoord]=='#':
+                if currentCells[rightCoord][belowCoord]==ALIVE:
                     numNeighbors += 1 # bottom-right neighbor alive
 
                 # set cell based on Conway's Game of Life rules:
-                if currentCells[x][y] == '#' and (numNeighbors==2 or numNeighbors==3):
-                    # living cells with 2-3 neighbors live:
-                    nextCells[x][y] = '#'
-                elif currentCells[x][y] == ' ' and numNeighbors == 3:
+                if currentCells[x][y] == ALIVE:
+                    if numNeighbors==2 or numNeighbors==3:
+                        # living cells with 2-3 neighbors live:
+                        nextCells[x][y] = ALIVE
+                    else:
+                        nextCells[x][y] = DEAD
+                else:
                     # dead cells with 3 neighbors become alive:
-                    nextCells[x][y] = '#'
-                    # add a 1-sec pause to reduce flickering
+                    if numNeighbors == 3:
+                        nextCells[x][y] = ALIVE
+                    else:
+                        nextCells[x][y] = DEAD
+        # add a 1-sec pause to reduce flickering
         time.sleep(1)
   #+end_src
 
 ** Import modules needed:
 
-  1) ~random.randint~ to populate the grid randomly with cells
-  2) ~time.sleep~ to delay execution by a second between screens
-  3) ~copy.deepcopy~ to copy a list (instead of only a reference)
-  #+begin_example python
-    import random, time, copy
-  #+end_example
+1) ~random.randint~ to populate the grid randomly with cells
+2) ~time.sleep~ to delay execution by a second between screens
+3) ~copy.deepcopy~ to copy a list (instead of only a reference)
+   #+begin_example python
+     import random, time, copy
+   #+end_example
 
 ** Create random cell population
 
@@ -284,7 +292,7 @@
                 column.append('O')
             else:
                 column.append(' ')
-        nextCells.append(column)
+                nextCells.append(column)
   #+end_src
 
 - Print the lists to reveal the 2-dimensional structure: the list
@@ -296,17 +304,17 @@
     for y in range(HEIGHT):
         for x in range(WIDTH):
             print(nextCells[x][y], end=' ') # print hash or space
-        print()   # print newline at the end of the row
-  #+end_src  
+            print()   # print newline at the end of the row
+  #+end_src
 
   #+RESULTS:
   : first column:  ['O', ' ', 'O', 'O', ' ']
   : last column:   ['O', 'O', ' ', 'O', ' ']
-  : 
-  : O     O O O O   O O 
-  :   O O O       O   O 
-  : O O     O           
-  : O O   O O O O O O O 
+  :
+  : O     O O O O   O O
+  :   O O O       O   O
+  : O O     O
+  : O O   O O O O O O O
   :   O O O O
 
 - What is the address of the last cell (lower right corner)?
@@ -327,14 +335,13 @@
 
 - We put this list of lists into ~nextCells~, then on each step we copy
   ~nextCells~ into ~currentCells~, print it to the screen and then use the
-  cells in ~currentCells~ to calculate the next in ~nextCells~:
+  cells in ~currentCells~ to calculate the next in ~nextCells~.
   #+begin_example python
     # print currentCells on screen:
     for y in range(HEIGHT):
         for x in range(WIDTH):
             print(currentCells[x][y], end=' ') # print hash or space
         print()   # print newline at the end of the row
-    
   #+end_example
 
 ** Calculate indices of cells around each cell
@@ -347,7 +354,7 @@
     for x in range(WIDTH):
         for y in range(HEIGHT):
             # get neighboring coordinates
-            leftCoord = (x - 1) % WIDTH
+            leftCoord  = (x - 1) % WIDTH
             rightCoord = (x + 1) % WIDTH
             aboveCoord = (y - 1) % HEIGHT
             belowCoord = (y + 1) % HEIGHT
@@ -361,18 +368,131 @@
   rounding down a number to the nearest integer that is less or equal
   to that number: drop the decimal part of the number and keep the
   integer part unchanged if it's positive or moving towards negative
-  infinity if it's negative:x
+  infinity if it's negative:
+  #+begin_src python
+    from math import floor, ceil
+    print(floor(5.8))  # 5 is the largest integer <= 5.8
+    print(ceil(5.8)) # 6 is the next integer >= 5.8
+    print(floor(2))  # 2 is already 'floored'
+    print(floor(-2.3)) # -3 is the largest integer <= -2.3
+    print(floor(-7)) # -7 is already 'floored'
+  #+end_src
 
 - When you divide -1 by 60, you get approximately -0.0167. If you
-  round this towards negative infinity, you get -1 as the
-  quotient.
+  round this towards negative infinity, you get -1:
+  #+begin_src python
+    print(floor(-1/60))
+  #+end_src
 
 - Now, if you plug this into the formula for modulo:
+  #+begin_example
+  -1 % 60 = -1 - (60 * floor(-1/60))
+          = -1 - (60 * -1)
+          = -1 + 60
+          = 59
+  #+end_example
 
+- Print some coordinate values to see the wraparound for a 2 x 2 grid:
+  #+begin_src python
+    # calculate the next step's cells based on current step's cells
+    WIDTH  = 2
+    HEIGHT = 2
+    for x in range(WIDTH):
+        for y in range(HEIGHT):
+            print(f'(x,y) = ({x},{y}): ',end='')
+            leftCoord =  (x - 1) % WIDTH
+            rightCoord = (x + 1) % WIDTH
+            print(f'left  = {leftCoord}, x = {x}, right = {rightCoord}')
+            aboveCoord = (y - 1) % HEIGHT
+            belowCoord = (y + 1) % HEIGHT
+            print(f'{"":15}above = {aboveCoord}, y = {y}, below = {belowCoord}')
+  #+end_src
 
-  
+** Count the number of living neighbors
 
+- The rules relate to the number of living neighbors. We need to count
+  them for every ~currentCell[x][y]~. We use the coordinates we just
+  computed to look at everyone one of the eight neighbors:
+  #+begin_example python
+  # count number of living neighbors:
+  numNeighbors = 0
+  if currentCells[leftCoord][aboveCoord]=='#':
+      numNeighbors += 1 # top-left neighbor alive
+  if currentCells[x][aboveCoord]=='#':
+      numNeighbors += 1 # top neighbor alive
+  if currentCells[rightCoord][aboveCoord]=='#':
+      numNeighbors += 1 # top-right neighbor alive
+  if currentCells[leftCoord][y]=='#':
+      numNeighbors += 1 # left neighbor alive
+  if currentCells[rightCoord][y]=='#':
+      numNeighbors += 1 # right neighbor alive
+  if currentCells[leftCoord][belowCoord]=='#':
+     numNeighbors += 1 # bottom-left neighbor alive
+  if currentCells[x][belowCoord]=='#':
+     numNeighbors += 1 # bottom neighbor alive
+  if currentCells[rightCoord][belowCoord]=='#':
+     numNeighbors += 1 # bottom-right neighbor alive
+  #+end_example
 
+- The variable ~numNeighbors~ now contains the number of living
+  neighbors of each cell.
+
+** Apply Conway's rules for the next generation
+
+- ~nextCells~ contains the next generation's cells. We apply three rules
+  to ~currentCells[x][y]~ for both currently living or dead cells and
+  copy the result to ~nextCells~:
+  1) Living cells with 2 or 3 neighbors stay alive
+  2) Dead cells with 3 neighbors become alive
+  3) Every other cell either dies or stays dead
+  #+begin_example python
+  # set cell based on Conway's Game of Life rules:
+  if currentCells[x][y] == 'O':
+      if numNeighbors==2 or numNeighbors==3:
+          # living cells with 2-3 neighbors live:
+          nextCells[x][y] = 'O'
+      else:
+          nextCells[x][y] = ' '
+  else:
+      # dead cells with 3 neighbors become alive:
+      if numNeighbors == 3:
+          nextCells[x][y] = 'O'
+      else:
+          nextCells[x][y] = ' '
+  #+end_example   
+
+** Take a short time out
+
+- Before the next run through all cells, still within the infinite
+  loop, we pause execution for 1 second to suppress flickering:
+  #+begin_example python
+    # add a 1-sec pause to reduce flickering
+      time.sleep(1)
+    #+end_example
+
+- Otherwise, there is no exit condition, the automata will live, die
+  and replicate forever until they stabilize and the rules will not
+  lead to a change anymore, or only to small changes:
+  #+attr_latex: :width 200px
+  [[../img/stable1.png]] [[../img/stable2.png]]
+
+** Moving patterns: 'glider'
+
+- To create the pattern shown at the start, the 'glider', which goes
+  through 4 states before it repeats, replace
+  #+begin_example python
+    if random.randint(0,1) == 0
+  #+end_example
+  with this line:
+  #+begin_example python
+    if (x, y) in ((1, 0), (2, 1), (0, 2), (1, 2), (2, 2)):
+  #+end_example
+
+- This brings only the cells of the 'glider' starting state to life:
+  #+attr_latex: :width 200px
+  [[../img/glider.png]]
+
+- Download ~glider.py~ and run it in a terminal: 
 
 * Conway's Game of Life using dictionaries
 
@@ -664,8 +784,3 @@
   [[https://youtu.be/Vn8Mug5w7sw][youtu.be/Vn8Mug5w7sw]].
 
 * Footnotes
-
-[fn:1] The simulation that you saw is slightly different from the one
-we're discussing: it uses two ~dictionary~ data structures, one for the
-current state of the living/dead cells in the grid, and one for the
-next simulation's step's state.
