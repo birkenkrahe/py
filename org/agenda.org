@@ -1721,8 +1721,9 @@ We'll still have covered only about 25% of Python's common ground.
    list ~list('')~.
    #+end_quote
    
-2) How would you assign the value ~'hello'~ as the third value in a list
-   stored in a variable named ~spam = [2, 4, 6, 8, 10]~?
+2) How would you assign the value ~'hello'~ as the fourth value (index
+   value = 3) in a list stored in a variable named ~spam = [2, 4, 6, 8,
+   10]~?
    #+begin_src python
      spam = [2, 4, 6, 8, 10]
      spam.insert(3,'hello') # alters spam 'in place'
@@ -1741,7 +1742,7 @@ We'll still have covered only about 25% of Python's common ground.
      spam = ['a', 'b', 'c', 'd']
      print(spam[int(int('3' * 2) // 11)])
    #+end_src
-
+   
    #+RESULTS:
    : d
 
@@ -1853,7 +1854,7 @@ We'll still have covered only about 25% of Python's common ground.
   bonus points [[https://lyon.instructure.com/courses/1700/assignments/14920][here in Canvas]] no later than June 16.
 
   
-* TODO Day 15: Project day I (no class)
+* DONE Day 15: Project day I (no class)
 #+attr_latex: :width 400px
 #+caption: USAF B-25 bomber above European patchwork landscape (1940)
 [[../img/pattern.jpg]]
@@ -1863,6 +1864,64 @@ We'll still have covered only about 25% of Python's common ground.
 #+caption: Cottage loaves baked in an ancient oven at Llanrhaeadr-ym-Mochnant
 [[../img/oven.jpg]]
 
+** TODO Test 3 is live - open until Sunday June 18
+
+- *Plot challenge:* make a /density/ line plot of the test results of test
+  1-2 and color the lines differently to make them stand out. Include
+  the average in the diagram and print the name of the test next to
+  each of the averages. 
+
+- Test results as lists: 
+  #+begin_src python :results silent
+    test_1 = [18.17, 21, 21.5, 21.67, 23.17, 24]
+    test_2 = [14.17, 17.67, 17.83, 19.17, 19.5, 23]
+  #+end_src  
+
+- You have to have the ~seaborn~, ~matplotlib~ and ~numpy~ libraries
+  installed and loaded to run this code:
+  1) ~seaborn.kdeplot~ for the density smoothing
+  2) ~matplotlib.pyplot.subplots~ for the 2 subplots
+  3) ~numpy.mean~ to compute the average
+
+- The complete code with plot title and axes labels:
+  #+begin_src python
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    import numpy as np
+
+    test_1 = [18.17, 21, 21.5, 21.67, 23.17, 24]
+    test_2 = [14.17, 17.67, 17.83, 19.17, 19.5, 23]
+
+    fig, ax = plt.subplots(figsize=(5, 5))
+
+    sns.kdeplot(test_1, ax=ax, color='g')
+    ax.axvline(np.mean(test_1), color='g', linestyle='--')
+    ax.text(np.mean(test_1), 0.02, 'Test 1', color='g')
+
+    sns.kdeplot(test_2, ax=ax, color='b')
+    ax.axvline(np.mean(test_2), color='b', linestyle='--')
+    ax.text(np.mean(test_2), 0.02, 'Test 2', color='b')
+
+    ax.set_title('Test results CSC 109 Summer 2023')
+    ax.set_xlabel('Available points')
+
+    plt.tight_layout()
+    plt.show()
+  #+end_src
+
+- The final plot:
+  #+attr_latex: :width 400px
+  [[../img/test_1_2.png]]
+
+- [[https://gist.github.com/birkenkrahe/ae9f9024a43a2379cc393e97907328ac][See solution documentation and code in GitHub.]]  
+
+** TODO Test 4 will close on Thursday, June 22!
+
+- I will try to get it moved to Friday night (23 June) instead.
+- The test will include questions on the 2nd DataCamp course.
+
+** TODO Bonus deadline: June 22, 11:59 pm for partial credit
+- There's going to be one more regular and one more bonus assignment
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
