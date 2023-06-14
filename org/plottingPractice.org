@@ -163,7 +163,6 @@ Test 2. Draw the average of each test as a straight dashed line.
    #+attr_latex: :width 400px
    [[../img/hist_avg_3.png]]
 
-
 ** Subplots
 
 We want to put the two histogram plots next to one another on two
