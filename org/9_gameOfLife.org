@@ -756,6 +756,49 @@
      experiment with different parameters - number of frames, grid
      size, different initial configuration of the grid.
 
+* When to use lists vs. arrays
+
+In Python, lists and arrays are used to store multiple items in a
+single variable. However, they are used in different scenarios due to
+their unique characteristics and functionalities. Here are some
+reasons why you might use lists instead of arrays:
+
+1) Flexibility: Lists in Python are more flexible than arrays. They
+   can store different types of data (integers, strings, floats, other
+   lists, etc.) in the same list, while arrays (if you're referring to
+   arrays from the array module or NumPy arrays) typically require all
+   elements to be of the same type.
+
+2) Built-in Methods: Python lists come with a variety of built-in
+   methods for manipulation, such as ~append()~, ~insert()~, ~remove()~,
+   ~pop()~, ~count()~, ~sort()~, ~reverse()~, etc. While arrays also have some
+   of these methods, lists generally have more built-in functionality.
+
+3) Ease of Use: Lists are a built-in type in Python, which makes them
+   easy to use and understand for beginners. Arrays, on the other
+   hand, require importing a separate module (like the ~array~ module or
+   NumPy), which can add an extra layer of complexity.
+
+4) No Need for Vectorized Operations: If you don't need to perform
+   mathematical operations on the entire data structure (which is
+   where arrays shine), then a list can be a simpler and more
+   efficient choice.
+
+5) Memory: Lists are more memory efficient if you're storing
+   non-numeric data types.
+
+However, if you're doing numerical computations, especially on large
+datasets, arrays (particularly NumPy arrays) are often a better choice
+due to their efficiency and the powerful operations they support.
+
+Python also has: *dictionaries* (mutable unordered collection of
+elements whose items are named rather than indexed), *sets* (mutable,
+unordered collections of unique elements) and *tuples* (immutable
+ordered collection of elements) - and beyond that, there are
+Object-oriented structures like classes (with attributes, like
+~np.shape~, and methods, like ~np.array~) which are used to implement the
+other data structures.
+
 * References
 
 - Ilievski, V. (2021). Simple but Stunning: Animated Cellular Automata

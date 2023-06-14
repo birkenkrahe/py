@@ -245,6 +245,3 @@ panels. To do this, we need to use the ~plt.subplots~ method.
   that the subplot fits the panels nicely. Take it out and re-plot to
   see the effect.
 
-- Plots:
-  #+attr_latex: :width 400px
-  [[../img/hist_1_2.png]]
