@@ -4,7 +4,7 @@
 #+STARTUP:overview hideblocks indent inlineimages
 #+OPTIONS: toc:nil num:nil ^:nil
 #+property: header-args:R :results output :noweb yes :session *R* :exports both
-#+property: header-args:python :results output :noweb yes :session *Python* :exports both
+#+property: header-args:python :results output :noweb yes :exports both
 * DONE Day 1: Entry survey analysis and course overview
 #+attr_latex: :width 300px
 [[../img/dataScientistIn50days.jpg]]
@@ -1983,26 +1983,201 @@ Citation examples:
 - Hunter J.D. (2007). Matplotlib: A 2D Graphics Environment", Computing in
   Science & Engineering, 9(3): 90-95. doi:10.1109/MCSE.2007.55.
 
-* TODO Day 17: Dictionaries / Fantasy Game Inventory
+* DONE Day 17: Insert, append, remove, sort items
 #+attr_latex: :width 400px
 #+caption: Flanzaleys String Quartet (LOC@Flickr.com)
 [[../img/strings.jpg]]
 
 - See yesterday's homework: plotting practice!
-  
-** TODO In-class summary
+
+** Preview & Review - lists and methods
+
+1) What will this code print?
+   #+begin_src python
+     test = ['quick','brown','lazy']
+
+     speed, color, kind, dog = test
+
+     print(f'The {speed}, {color} fox jumped over the {kind} dog.')
+   #+end_src
+
+   #+RESULTS:
+
+2) Is this loop allowed? What will happen?
+   #+begin_src python
+     from math import pi
+     for i in [1, 'cat', pi, 'dog', True]:
+         print(i)
+
+     import numpy as np
+     theOne = np.array([1,2,3])
+     print(theOne)
+     for i in theOne:
+         print(i)
+   #+end_src
+
+   #+RESULTS:
+   : 1
+   : cat
+   : 3.141592653589793
+   : dog
+   : True
+   : [1 2 3]
+   : 1
+   : 2
+   : 3
+
+3) What's the output of this code?
+   #+begin_src python
+     cat = 'jack'
+     print(('cat', 'jack') in globals().items())
+     from math import pi
+     print(globals().items())
+   #+end_src
+
+   #+RESULTS:
+   : True
+   : dict_items([('__name__', '__main__'), ('__doc__', None), ('__package__', None), ('__loader__', <class '_frozen_importlib.BuiltinImporter'>), ('__spec__', None), ('__annotations__', {}), ('__builtins__', <module 'builtins' (built-in)>), ('__file__', '<stdin>'), ('__cached__', None), ('cat', 'jack'), ('pi', 3.141592653589793)])
+
+4) Is there any difference between these programs or their output?
+   #+begin_src python
+     def names():
+         names = ['jack','jill','joe','jane']
+         return names
+
+     print(names())
+     names = names()
+     print(names)
+   #+end_src
+
+   #+RESULTS:
+   : ['jack', 'jill', 'joe', 'jane']
+   : ['jack', 'jill', 'joe', 'jane']
+
+   #+begin_src python
+     def names():
+         names = ['jack','jill','joe','jane']
+         return names
+
+     names = names()
+     print(names())
+     print(names)
+   #+end_src
+
+   #+RESULTS:
+
+   #+begin_quote
+   1) You define a function ~names()~ that returns a list of names.
+   2) You then assign the ~return~ value of ~names()~ (which is a ~list~) to
+      the variable ~names~.
+   3) Now, ~names~ is no longer a function, but a ~list~.
+   4) When you try to call ~names()~ on the next line, Python throws a
+      ~TypeError~ because you're trying to call a list as if it were a
+      function, which is not allowed.
+
+   Fix: rename the function to ~getNames~ and don't try to call a
+   variable as a function!
+   #+end_quote
+   #+begin_src python
+     def getNames():
+         names = ['jack','jill','joe','jane']
+         return names
+
+     names = getNames()
+     print(names)
+   #+end_src
+
+5) This code contains two mistakes. What are they and what's the fix?
+   #+begin_src python
+     import random
+     pets = ['Jack', 'Nanny', 'Rosie', 'Poppy']
+     pets = random.shuffle(pets)
+     print(f'My favorite pets, in this order, are:\n{pets}')
+   #+end_src
+
+   #+RESULTS:
+   : My favorite pets, in this order, are:
+   : ['Jack', 'Rosie', 'Poppy', 'Nanny']
+
+   #+begin_quote
+   ~random.shuffle~ shuffles its argument in place and returns ~None~
+   #+end_quote
+
+** In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
 
 - [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
 
-** TODO Homework
+- Methods for ~list~, NumPy's ~np.array~ and pandas' ~pd.DataFrame~ types:
+  | ...VALUES | ~list~       | ~np.array~        | ~pd.DataFrame~        |
+  |-----------+------------+-----------------+---------------------|
+  | Finding   | ~.index~     | ~np.where~        | ~.index~              |
+  |           |            | ~arr[]~           | ~df[]~                |
+  | Adding    | ~.append~    | ~np.append~       | ~df[]~ (col)          |
+  | Inserting | ~.insert~    | ~np.insert~       | ~.concat~ (row)       |
+  | Removing  | ~.remove~    | ~arr[]~           | ~.drop(axis=0)~ (col) |
+  |           | ~del~        | ~np.delete~       | ~.drop(axis=1)~ (row) |
+  | Sorting   | ~.sort~      | ~np.sort~         | ~.sort_values~ (col)  |
+  | Reversing | ~.reverse~   | ~np.sort()[::-1]~ | ~.sort_index~ (row)   |
+  |           | ~list[::-1]~ |                 |                     |
+
+** Homework
 #+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-* TODO Day 18: String manipulation
+MAGIC 8 BALL RELOADED (BONUS - SEE CANVAS)
+
+1) You created a Magic 8 ball program as a fortune teller:
+  #+begin_src python
+    import random
+
+    def getAnswer(answerNumber):
+        if answerNumber == 1:
+            return 'It is certain'
+        elif answerNumber == 2:
+            return 'It is decidely so'
+        elif answerNumber == 3:
+            return 'It is Yes'
+        elif answerNumber == 4:
+            return 'Reply hazy try again'
+        elif answerNumber == 5:
+            return 'Ask again later'
+        elif answerNumber == 6:
+            return 'Concentrate and ask again'
+        elif answerNumber == 7:
+            return 'My reply is no'
+        elif answerNumber == 8:
+            return 'Outlook not so good'
+        elif answerNumber == 9:
+            return 'Very doubtful'
+
+    r = random.randint(1,9)
+    fortune = getAnswer(r)
+    print(fortune)
+  #+end_src
+
+2) Using lists, write a much more elegant version of the previous
+   Magic 8 Ball program:
+   - instead of several lines of nearly identical ~elif~ statements,
+     create a single list ~messages~ to work with. The list holds the
+     messages as its items.
+   - instead of calling a function ~getAnswer~, ~print~ a message using
+     ~random.randint~ to pick the index (i.e. the position) of the
+     message - there are 9 messages. Remember that ~random.randint(a,b)~
+     picks an integer in ~[a,b]~.
+   - You can also use ~random.choice~ to pick an item from ~messages~
+   - You can generalize the program further by making the upper bound
+     of ~random.randint~ independent of the number 9. Now you could add
+     messages to the list ad infinitum.
+
+3) Optionally, test the performance of the original Magic 8 Ball
+   program vs. the new version in Colab using the ~%timeit~ magic
+   function. [[https://colab.research.google.com/github/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/01.07-Timing-and-Profiling.ipynb#scrollTo=ZJQ34W_23gdA][Here is some documentation on this function.]]
+
+* TODO Day 18: References and Conway's Game of Life
 #+attr_latex: :width 400px
 #+caption: Photo: Sam Hood / Schoolchildren line up for soup (1934)
 [[../img/soup.jpg]]
@@ -2019,7 +2194,7 @@ Citation examples:
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-* TODO Day 19: * Web scraping - ~beautiful soup~
+* TODO Day 19: Dictionaries and Fantasy Games
 #+attr_latex: :width 400px
 #+caption: Photo: Sam Hood / Schoolchildren line up for soup (1934)
 [[../img/spreadsheets.jpg]]
@@ -2039,7 +2214,7 @@ Citation examples:
 [[../img/homework.jpg]]
 
 
-* TODO Day 20: Project Day II (no class)
+* TODO Day 20: Project day II (no class)
 #+attr_latex: :width 400px
 #+caption: Music on Water Street, St. John's, Newfoundland (Flickr.com).
 [[../img/photogenic.jpg]]
@@ -2056,7 +2231,7 @@ Citation examples:
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-* TODO Day 21: * Spreadsheets and SQL databases
+* TODO Day 21: Spreadsheets and SQL databases
 #+attr_latex: :width 400px
 #+caption: Llyfrgell Genedlaethol Cymru / Redman's hairdressers (1957)
 [[../img/hairdressers.jpg]]
@@ -2073,7 +2248,7 @@ Citation examples:
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-* TODO Day 22: * Machine learning with ~sklearn~
+* TODO Day 22: Machine learning with ~sklearn~
 #+attr_latex: :width 400px
 #+caption: Group, Flickr.com
 [[../img/group1.jpg]]
