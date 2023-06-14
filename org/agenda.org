@@ -1865,7 +1865,7 @@ We'll still have covered only about 25% of Python's common ground.
 #+caption: USAF B-25 bomber above European patchwork landscape (1940)
 [[../img/pattern.jpg]]
 
-* TODO Day 16: Plotting practice 
+* DONE Day 16: Plotting practice 
 #+attr_latex: :width 400px
 #+caption: Cottage loaves baked in an ancient oven at Llanrhaeadr-ym-Mochnant
 [[../img/oven.jpg]]
@@ -1935,19 +1935,61 @@ We'll still have covered only about 25% of Python's common ground.
 [[../img/summary.jpg]]
 
 - [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
-- 
+- Plotting practice (GitHub [[https://github.com/birkenkrahe/py/blob/main/org/plottingPractice.org][solution]] and [[https://gist.github.com/birkenkrahe/a61584bb88d5b97390e5781e9d62358c][practice file]])
+- Making a histogram with ~matplotlib.pyplot.hist~
+- Making a density estimate (smoothing curve) with [[https://seaborn.pydata.org/][seaborn]]
+- Customizing histogram: title, labels, colors, grid, legend
+- Barplots, lineplots, histograms; grammar of graphics and ggplot2
+- Computing averages over array elements, adding them to a plot
+- Formatting in an f-string with ~{var:.2f}~ and with ~round()~
+- Color schemes in Python and [[https://matplotlib.org/stable/gallery/color/named_colors.html][in matplotlib]]
+- Creating subplots with ~plt.subplots~, printing with ~plt.tight_layout~
+- Window/panel setup with ~fig~ and ~axs~.
 
 ** Homework
 #+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
+PLOTTING PRACTICE ([[https://lyon.instructure.com/courses/1700/assignments/15054][see Canvas]])
+
+*Combine* the classroom exercises for histograms and subplots and put
+the two customized histograms with averages of test 1 ([[https://github.com/birkenkrahe/py/blob/main/img/hist_avg_2.png][here]]) and test
+2 ([[https://github.com/birkenkrahe/py/blob/main/img/hist_avg_3.png][here]]) in ONE graphic panel on top of one another like we did it for
+a simple version of the histogram ([[https://github.com/birkenkrahe/py/blob/main/img/hist_1_2.png][here]]).
+
+Also, make sure that the subplots share the same x-axis scale so that
+you can compare them. /Tip:/ you can do that with this setup command:
+#+begin_example python
+  fig, axs = plt.subplot(2, sharex=True)
+#+end_example
+
+The final plot should look like this:
+ #+attr_html: :width 400px
+ [[../img/plottingExercise.png]]
+
+*Submit* a link to your Colab notebook with the results in
+[[https://lyon.instructure.com/courses/1700/assignments/15054][Canvas]]. Remember that you need to cite software, too. In the case of
+Python, this includes Python 3 itself but also the packages used. The
+package home pages usually tell you how they want to be cited, or you
+can ask the web.
+
+Citation examples:
+- Python Software Foundation. Python Language Reference, version
+  3.x. Available at http://www.python.org
+- Harris, C.R., Millman, K.J., van der Walt, S.J. et al. (2020). Array
+  programming with NumPy. Nature 585: 357–362 (2020).
+  doi:0.1038/s41586-020-2649-2.
+- Hunter J.D. (2007). Matplotlib: A 2D Graphics Environment", Computing in
+  Science & Engineering, 9(3): 90-95. doi:10.1109/MCSE.2007.55.
 
 * TODO Day 17: Dictionaries / Fantasy Game Inventory
 #+attr_latex: :width 400px
 #+caption: Flanzaleys String Quartet (LOC@Flickr.com)
 [[../img/strings.jpg]]
 
+- See yesterday's homework: plotting practice!
+  
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
