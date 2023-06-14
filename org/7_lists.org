@@ -287,7 +287,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
      ~myCatNames~, this object will hold the ~return~ value from
      ~getCatNames~.
 
-* Are you ~in~ or ~out~?
+* Are you ~in~ or ~not in~?
 
 - The ~in~ or ~not in~ command works on lists:
   #+begin_src python
@@ -541,7 +541,7 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
 - If the value is not found in the Series, it will raise an
   ~IndexError~.
 
-* Adding values for lists with ~append~ and ~insert~
+* NEXT Adding values for lists with ~append~ and ~insert~
 
 - You can add new values to a list with ~append~ (at the end) and
   ~insert~.
