@@ -18,28 +18,28 @@
 
 * Sequence data types
 
-  - Python's sequence data include:
-    1) ~list~ objects
-    2) string (~str~) objects (sequence of characters) 
-    3) range objects returned by ~range~
-    4) ~tuple~ objects
+- Python's sequence data include:
+  1) ~list~ objects
+  2) string (~str~) objects (sequence of characters)
+  3) range objects returned by ~range~
+  4) ~tuple~ objects
 
-  - These data types support /indexing/ and /slicing/, and you can /iterate/
-    over them in a specific order.
+- These data types support /indexing/ and /slicing/, and you can /iterate/
+  over them in a specific order.
 
-  - On the other hand, ~set~ data are not sequence data.      
+- On the other hand, ~set~ data are not sequence data.
 
-  - Here are some examples of indexing, slicing, iterating with other
-    sequence data, e.g. strings:
-    #+begin_src python
-      name = 'Alice'
-      print(name[0])
-      print(name[:])
-      print('A' in name)
-      print('Al' not in name)
-      for i in name:
-          print(f'*** {i} ***')
-    #+end_src
+- Here are some examples of indexing, slicing, iterating with other
+  sequence data, e.g. strings:
+  #+begin_src python
+    name = 'Alice'
+    print(name[0])
+    print(name[:])
+    print('A' in name)
+    print('Al' not in name)
+    for i in name:
+        print(f'*** {i} ***')
+  #+end_src
 
 * Mutable and immutable data types
 
@@ -69,8 +69,8 @@
     eggs = [1, 2, 3]
     eggs = [4, 5, 6]
     print(eggs)
-  #+end_src  
-  
+  #+end_src
+
 - This is what happens:
   #+attr_latex: :width 400px
   #+caption: The contents of the list are replaced
@@ -99,7 +99,7 @@
 
 - Calling functions with mutable vs. immutable arguments exhibits very
   different behavior.
-  
+
 * The ~tuple~ data type
 
 - The ~tuple~ data type is very similar to ~list~ except:
@@ -112,7 +112,7 @@
     print(eggs[0])
     print(eggs[1:3])
     print(len(eggs))
-  #+end_src     
+  #+end_src
 
 - So far so good - but you cannot assign values to tuple items:
   #+begin_src python :results silent
@@ -126,7 +126,7 @@
     eggs = ('hello', 42, 0.5)
     eggs = (eggs[0], 99, eggs[2])
     print(eggs)
-  #+end_src  
+  #+end_src
 
 - Item deletion with ~del~ does not work, neither is there an ~append~
   method for tuples: try that yourself!
@@ -158,18 +158,18 @@
 - Why use tuples?
   1) to create ordered sequences that you don't want to change
   2) to gain speed when using ordered sequences for loops
-  
+
 - The functions ~list~ and ~tuple~ will convert their arguments to lists
   and tuples just like ~str~.
 
 - Converting a ~list~ into a ~tuple~:
   #+begin_src python
-    t = tuple(['cat','dog',5])   
+    t = tuple(['cat','dog',5])
     print(t)
     print(type(t))
   #+end_src
 
-- Converting a string into a ~list~ or a ~tuple~:    
+- Converting a string into a ~list~ or a ~tuple~:
   #+begin_src python
     l = list('hello')
     print(l)
@@ -185,12 +185,31 @@
     l = list(('cat','dog', 5))
     print(l)
     l.append([1,2,])
-    print(l)    
+    print(l)
   #+end_src
 
   #+RESULTS:
   : ['cat', 'dog', 5]
   : ['cat', 'dog', 5, [1, 2]]
+
+* Looping over tuples
+
+- You can iterate over a list of tuples as follows:
+  #+begin_src python
+    pets = [('Jack','cat'),
+            ('Nanny','dog'),
+            ('Poppy','dog'),
+            ('Rosie','dog')]
+
+    for name,pet in pets:
+        print(f'I have a {pet} named {name}.')
+  #+end_src
+
+  #+RESULTS:
+  : I have a cat named Jack.
+  : I have a dog named Nanny.
+  : I have a dog named Poppy.
+  : I have a dog named Rosie.
 
 * References for integer variables
 #+attr_latex: :width 400px
@@ -210,7 +229,7 @@
     spam = 42
     cheese = spam  # both point to memory with '42' in it
     spam = 100     # spam points to memory with '100' in it
-    print(spam)  
+    print(spam)
     print(cheese)
   #+end_src
 
@@ -246,11 +265,11 @@
 - The figures illustrate creation of ~spam~ and copying of the reference
   to ~cheese~:
   #+attr_latex: :width 400px
-  [[../img/list_ref.png]]   [[../img/list_ref1.png]] 
+  [[../img/list_ref.png]]   [[../img/list_ref1.png]]
 
 - When ~cheese~ is altered /in place/, the list that ~spam~ refers to is
   altered:
-    #+attr_latex: :width 400px
+  #+attr_latex: :width 400px
   [[../img/list_ref2.png]]
 
 * Identity and the ~id~ function
@@ -303,7 +322,7 @@
     mem = eggs.insert(1,'cat')
     print(id(mem))
     print(id(eggs))
-    #+end_src
+  #+end_src
 
   #+RESULTS:
   : 2655765168768
@@ -439,4 +458,3 @@
 
 - Sweigart, A. (2019). Automate the Boring Stuff with
   Python. NoStarch. URL: [[https://automatetheboringstuff.com/2e/chapter2/][automatetheboringstuff.com]]
-

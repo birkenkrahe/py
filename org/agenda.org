@@ -1625,7 +1625,7 @@ Friday: quick project update - informal "sprint review"
      serialized (~except: ValueError~ and ~except: NameError~).
    - The ~finally~ clause identifies an action that always happens.
    #+end_quote
-   
+
 ** In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
@@ -1642,7 +1642,7 @@ Friday: quick project update - informal "sprint review"
   the index vector of a list: ~for item in list:~
 - Error types: ~Syntaxerror~, ~TypeError~, ~ValueError~, ~IndexError~.
 - Accessing items in lists that are list items, initializing empty list
-  
+
 ** Homework
 #+attr_latex: :width 300px
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
@@ -1715,12 +1715,12 @@ We'll still have covered only about 25% of Python's common ground.
 
 ** Preview/review
 
-1) What is []? 
+1) What is []?
    #+begin_quote
    The empty list (no items), same as the empty string converted to a
    list ~list('')~.
    #+end_quote
-   
+
 2) How would you assign the value ~'hello'~ as the fourth value (index
    value = 3) in a list stored in a variable named ~spam = [2, 4, 6, 8,
    10]~?
@@ -1742,13 +1742,13 @@ We'll still have covered only about 25% of Python's common ground.
      spam = ['a', 'b', 'c', 'd']
      print(spam[int(int('3' * 2) // 11)])
    #+end_src
-   
+
    #+RESULTS:
    : d
 
    Why:
    #+begin_src python
-     spam = ['a', 'b', 'c', 'd']     
+     spam = ['a', 'b', 'c', 'd']
      print('3' * 2)
      print(int('3' * 2))
      print(int('3' * 2) // 11)
@@ -1773,7 +1773,7 @@ We'll still have covered only about 25% of Python's common ground.
    #+RESULTS:
    : d
    : a
-   
+
 5) ~spam = ['a', 'b', 'c', 'd']~. What is ~spam[:2]~?
    #+begin_src python
      spam = ['a', 'b', 'c', 'd']
@@ -1795,7 +1795,7 @@ We'll still have covered only about 25% of Python's common ground.
 1) Jonathan: PyGame not good at UI - if I leave PyGame then I would
    like to scrape sites and label data and work with it
    (stable diffusion AI). Windows will be a challenge.
-   
+
 2) Radek: Scrape and analyze journal data from the American Economic
    Review. Info is not in PDF but on the landing page. Any DataCamp
    projects or courses on this? Which Python packages to use?
@@ -1805,14 +1805,14 @@ We'll still have covered only about 25% of Python's common ground.
    work. I'll find a tutorial and I suggest to check it out with
    ChatGPT (shifts to "prompt engineering").
 
-4) Clifford: 'hangman' game - optimize the number of word guesses. 
+4) Clifford: 'hangman' game - optimize the number of word guesses.
 
 5) Peter: data collection - scrape existing lists of corporate
    information to get them in a table and match column
    information. Saves me time compared to manual collection and
    comparison. Could write script to open web page with the company
    ID?
-   
+
 6) Ryan: originally wanted to do SQL(ite) - now a text based adventure
    game with ASCII art embedded in the game. MUD/MOO (LambdaMOO) has a
    similar approach.
@@ -1859,13 +1859,13 @@ We'll still have covered only about 25% of Python's common ground.
 - Submit a link to an appropriately documented Colab notebook for
   bonus points [[https://lyon.instructure.com/courses/1700/assignments/14920][here in Canvas]] no later than June 16.
 
-  
+
 * DONE Day 15: Project day I (no class)
 #+attr_latex: :width 400px
 #+caption: USAF B-25 bomber above European patchwork landscape (1940)
 [[../img/pattern.jpg]]
 
-* DONE Day 16: Plotting practice 
+* DONE Day 16: Plotting practice
 #+attr_latex: :width 400px
 #+caption: Cottage loaves baked in an ancient oven at Llanrhaeadr-ym-Mochnant
 [[../img/oven.jpg]]
@@ -1875,13 +1875,13 @@ We'll still have covered only about 25% of Python's common ground.
 - *Plot challenge:* make a /density/ line plot of the test results of test
   1-2 and color the lines differently to make them stand out. Include
   the average in the diagram and print the name of the test next to
-  each of the averages. 
+  each of the averages.
 
-- Test results as lists: 
+- Test results as lists:
   #+begin_src python :results silent
     test_1 = [18.17, 21, 21.5, 21.67, 23.17, 24]
     test_2 = [14.17, 17.67, 17.83, 19.17, 19.5, 23]
-  #+end_src  
+  #+end_src
 
 - You have to have the ~seaborn~, ~matplotlib~ and ~numpy~ libraries
   installed and loaded to run this code:
@@ -1914,12 +1914,12 @@ We'll still have covered only about 25% of Python's common ground.
     plt.tight_layout()
     plt.show()
   #+end_src
-  
+
 - The final plot:
   #+attr_latex: :width 400px
   [[../img/test_1_2.png]]
 
-- [[https://gist.github.com/birkenkrahe/ae9f9024a43a2379cc393e97907328ac][See solution documentation and code in GitHub.]]  
+- [[https://gist.github.com/birkenkrahe/ae9f9024a43a2379cc393e97907328ac][See solution documentation and code in GitHub.]]
 
 ** Test 4 will close on Friday, 23-June
 
@@ -1965,8 +1965,8 @@ you can compare them. /Tip:/ you can do that with this setup command:
 #+end_example
 
 The final plot should look like this:
- #+attr_html: :width 400px
- [[../img/plottingExercise.png]]
+#+attr_html: :width 400px
+[[../img/plottingExercise.png]]
 
 *Submit* a link to your Colab notebook with the results in
 [[https://lyon.instructure.com/courses/1700/assignments/15054][Canvas]]. Remember that you need to cite software, too. In the case of
@@ -2131,33 +2131,33 @@ Citation examples:
 MAGIC 8 BALL RELOADED (BONUS - SEE CANVAS)
 
 1) You created a Magic 8 ball program as a fortune teller:
-  #+begin_src python
-    import random
+   #+begin_src python
+     import random
 
-    def getAnswer(answerNumber):
-        if answerNumber == 1:
-            return 'It is certain'
-        elif answerNumber == 2:
-            return 'It is decidely so'
-        elif answerNumber == 3:
-            return 'It is Yes'
-        elif answerNumber == 4:
-            return 'Reply hazy try again'
-        elif answerNumber == 5:
-            return 'Ask again later'
-        elif answerNumber == 6:
-            return 'Concentrate and ask again'
-        elif answerNumber == 7:
-            return 'My reply is no'
-        elif answerNumber == 8:
-            return 'Outlook not so good'
-        elif answerNumber == 9:
-            return 'Very doubtful'
+     def getAnswer(answerNumber):
+         if answerNumber == 1:
+             return 'It is certain'
+         elif answerNumber == 2:
+             return 'It is decidely so'
+         elif answerNumber == 3:
+             return 'It is Yes'
+         elif answerNumber == 4:
+             return 'Reply hazy try again'
+         elif answerNumber == 5:
+             return 'Ask again later'
+         elif answerNumber == 6:
+             return 'Concentrate and ask again'
+         elif answerNumber == 7:
+             return 'My reply is no'
+         elif answerNumber == 8:
+             return 'Outlook not so good'
+         elif answerNumber == 9:
+             return 'Very doubtful'
 
-    r = random.randint(1,9)
-    fortune = getAnswer(r)
-    print(fortune)
-  #+end_src
+     r = random.randint(1,9)
+     fortune = getAnswer(r)
+     print(fortune)
+   #+end_src
 
 2) Using lists, write a much more elegant version of the previous
    Magic 8 Ball program:
@@ -2177,11 +2177,13 @@ MAGIC 8 BALL RELOADED (BONUS - SEE CANVAS)
    program vs. the new version in Colab using the ~%timeit~ magic
    function. [[https://colab.research.google.com/github/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/01.07-Timing-and-Profiling.ipynb#scrollTo=ZJQ34W_23gdA][Here is some documentation on this function.]]
 
-* TODO Day 18: References and Conway's Game of Life
+* TODO Day 18: Sequence data, references, and ~copy~
 #+attr_latex: :width 400px
 #+caption: Photo: Sam Hood / Schoolchildren line up for soup (1934)
 [[../img/soup.jpg]]
 
+** TODO [[https://lyon.instructure.com/courses/1700/assignments/14755][Last programming assignment "Student scores"]]
+** TODO [[https://lyon.instructure.com/courses/1700/assignments/15059][Last bonus assignment: "Magic 8 Ball reloaded"]]
 ** TODO In-class summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
@@ -2189,12 +2191,7 @@ MAGIC 8 BALL RELOADED (BONUS - SEE CANVAS)
 
 - [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
 
-** TODO Homework
-#+attr_latex: :width 300px
-#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
-[[../img/homework.jpg]]
-
-* TODO Day 19: Dictionaries and Fantasy Games
+* TODO Day 19: Conway's Game of Life
 #+attr_latex: :width 400px
 #+caption: Photo: Sam Hood / Schoolchildren line up for soup (1934)
 [[../img/spreadsheets.jpg]]
@@ -2231,7 +2228,7 @@ MAGIC 8 BALL RELOADED (BONUS - SEE CANVAS)
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-* TODO Day 21: Spreadsheets and SQL databases
+* TODO Day 21: Web scraping (~request~, ~bs4~, ~selenium~)
 #+attr_latex: :width 400px
 #+caption: Llyfrgell Genedlaethol Cymru / Redman's hairdressers (1957)
 [[../img/hairdressers.jpg]]
@@ -2248,7 +2245,7 @@ MAGIC 8 BALL RELOADED (BONUS - SEE CANVAS)
 #+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
 [[../img/homework.jpg]]
 
-* TODO Day 22: Machine learning with ~sklearn~
+* TODO Day 22: Spam filter (~pandas~, ~string~, ~nltk~)
 #+attr_latex: :width 400px
 #+caption: Group, Flickr.com
 [[../img/group1.jpg]]

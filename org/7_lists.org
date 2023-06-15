@@ -226,6 +226,13 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
         print(f'Index {index} in the list is: {item}')
   #+end_src
 
+  #+RESULTS:
+  : Index 0 in the list is: a
+  : Index 1 in the list is: b
+  : Index 2 in the list is: None
+  : Index 3 in the list is: 10
+  : Index 4 in the list is: 100
+
 - There is no simple way to get the name of ~List~ once it's been
   created because the variable name is just a /reference/ to the data.
 
@@ -630,6 +637,35 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
     # Insert multiple values at index 3
     arr = np.insert(arr, 3, [7, 8, 9])
   #+end_src
+ 
+- What's the difference of inserting a ~list~ of items as opposed to a
+  ~tuple~ of values? Answer: none - in both cases, the inserted item is
+  treated like a single element.
+  #+begin_src python
+    import numpy as np
+
+    arr = np.array([1, 2, 3, 4, 5])
+    lst = [7,8,9]
+    arr = np.insert(arr, 3, lst)
+    print(arr) 
+    print(arr.shape) 
+    print(arr[3:6])
+
+    arr1 = np.array([1, 2, 3, 4, 5])
+    tpl = (7,8,9)
+    arr1 = np.insert(arr1, 3, tpl)
+    print(arr1) 
+    print(arr1.shape)
+    print(arr[3:6])
+  #+end_src
+
+  #+RESULTS:
+  : [1 2 3 7 8 9 4 5]
+  : (8,)
+  : [7 8 9]
+  : [1 2 3 7 8 9 4 5]
+  : (8,)
+  : [7 8 9]
 
 * Adding columns and rows in pandas ~DataFrame~
 
