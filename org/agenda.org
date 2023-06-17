@@ -2175,7 +2175,7 @@ MAGIC 8 BALL RELOADED (BONUS - SEE CANVAS)
 
 3) Optionally, test the performance of the original Magic 8 Ball
    program vs. the new version in Colab using the ~%timeit~ magic
-   function. [[https://colab.research.google.com/github/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/01.07-Timing-and-Profiling.ipynb#scrollTo=ZJQ34W_23gdA][Here is some documentation on this function.]]
+   function. [[https://colab.research.google.com/github/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/01.07-Timing-and-Profiling.ipynb#scrollTo=ZJQ34W_23gdA][Here is some documentation on this and other functions.]]
 
 * TODO Day 18: Sequence data, references, and ~copy~
 #+attr_latex: :width 400px
@@ -2191,12 +2191,29 @@ MAGIC 8 BALL RELOADED (BONUS - SEE CANVAS)
 
 - [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
 
+
 * TODO Day 19: Conway's Game of Life
 #+attr_latex: :width 400px
 #+caption: Photo: Sam Hood / Schoolchildren line up for soup (1934)
 [[../img/spreadsheets.jpg]]
 
-** Test 4 is coming - includes "Intermediate R"
+* TODO I must be doing something wrong
+#+attr_latex: :width 400px
+[[../img/fortune.png]]
+
+* TODO Last test - incl. "Intermediate Python"
+#+attr_latex: :width 400px
+#+caption: Ladies' Reliability Trials, Australia, 1936 (Flickr.com)
+[[../img/ladies.jpg]]
+
+- Matplotlib (line plot, scatter plot, histograms)
+- Dictionaries and Pandas
+- Flow control with NumPy and Pandas
+- Loops over NumPy arrays and DataFrames
+- NOT INCLUDED: Case Study ("Hacker Statistics")
+
+(To create DataCamp test questions, I usually work through the
+practice exercises on DataCamp and let myself be inspired.)
 
 ** TODO In-class summary
 #+attr_latex: :width 300px
