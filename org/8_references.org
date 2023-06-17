@@ -24,8 +24,10 @@
   3) range objects returned by ~range~
   4) ~tuple~ objects
 
-- These data types support /indexing/ and /slicing/, and you can /iterate/
-  over them in a specific order.
+- These data types support:
+  1) /indexing/
+  2) /slicing/
+  3) /iterating/
 
 - On the other hand, ~set~ data are not sequence data.
 
@@ -44,19 +46,23 @@
 * Mutable and immutable data types
 
 - A ~list~ and a string differ in an important way:
+
   1) A ~list~ value is a /mutable/ data type - its values can be added,
      removed, or changed.
+
   2) A string (~str~) value is /immutable/ (or /literal/): it cannot be
-     changed:
+     changed. Try this:
      #+begin_src python :results silent
        name = 'Jack a cat.'
+       print(name[5])
        name[6] = 'the'
      #+end_src
 
 - To mutate a string, you need to slice and concatenate to build a new
   string from parts of the old string.
 
-- Transform ~name = 'Jack a cat'~ into ~newName = Jack the cat~:
+- Transform ~name = 'Jack a cat'~ into ~newName = Jack the cat~ by using
+  values taken from ~name~ and concatenate the string 'the':
   #+begin_src python
     name = 'Jack a cat'
     newName = name[0:5] + 'the' + name[-4:]
@@ -83,6 +89,7 @@
     del eggs[2]      # delete old list items
     del eggs[1]
     del eggs[0]
+    # bonus question: why does a for loop with range(3) fail?
     eggs.append(4)   # append new list items
     eggs.append(5)
     eggs.append(6)
@@ -101,6 +108,9 @@
   different behavior.
 
 * The ~tuple~ data type
+
+- R for example does not have a ~tuple~ data structure (but then, Python
+  does not have vectors, which are more useful to have).
 
 - The ~tuple~ data type is very similar to ~list~ except:
   1) tuples are created with ~()~ while lists are created with ~[]~
@@ -121,7 +131,7 @@
   #+end_src
 
 - So replacing an item works similarly as with strings: you have to
-  rebuild the tuple.
+  rebuild the tuple from ~eggs~:
   #+begin_src python
     eggs = ('hello', 42, 0.5)
     eggs = (eggs[0], 99, eggs[2])
@@ -194,22 +204,22 @@
 
 * Looping over tuples
 
-- You can iterate over a list of tuples as follows:
+- You can iterate over a list of tuples t_i as follows:  
   #+begin_src python
-    pets = [('Jack','cat'),
+    pets = [('Jack','cat'),   # each list item is a tuple
             ('Nanny','dog'),
             ('Poppy','dog'),
             ('Rosie','dog')]
 
-    for name,pet in pets:
+    # the variables are matched with the tuple items
+    # if you loop over an n-tuple, you need n loop variables
+    for name, pet in pets:
         print(f'I have a {pet} named {name}.')
   #+end_src
 
-  #+RESULTS:
-  : I have a cat named Jack.
-  : I have a dog named Nanny.
-  : I have a dog named Poppy.
-  : I have a dog named Rosie.
+- Too few loop variables leads to the same 'unpacking' error as when
+  you try to assign multiple variable values using tuples with too few
+  items.
 
 * References for integer variables
 #+attr_latex: :width 400px
@@ -236,6 +246,9 @@
 - Integers are /immutable/ values that don't change: changing a variable
   only makes it refer to another value in memory.
 
+- NumPy arrays and pandas DataFrames are mutable objects, too: Their
+  values can be modified after they've been created.
+
 * References for lists
 
 - Lists don't work this way: they're /mutable/ - their values can change.
@@ -255,6 +268,11 @@
     print(spam)
     print(cheese)
   #+end_src
+
+  #+RESULTS:
+  : [0, 1, 2, 3, 4, 5]
+  : [0, 'hello', 2, 3, 4, 5]
+  : [0, 'hello', 2, 3, 4, 5]
 
 - What's happening here?
   1) A reference to the list is assigned to ~spam~
@@ -280,9 +298,6 @@
     print(id('Howdy'))
   #+end_src
 
-  #+RESULTS:
-  : 1928141373488
-
 - If you keep running this chunk, the ID will change: Python picks
   this address based on where memory happens to be free at the time.
 
@@ -299,10 +314,6 @@
     bacon += ' world!'
     print(id(bacon))
   #+end_src
-
-  #+RESULTS:
-  : 1863027277488
-  : 1863027277744
 
 - Lists are mutable objects and can be modified: ~list.append~ changes
   an existing list object (/in place/):
@@ -324,13 +335,6 @@
     print(id(eggs))
   #+end_src
 
-  #+RESULTS:
-  : 2655765168768
-  : 2655765168768
-  : 2655767164928
-  : 140733411716296
-  : 2655767164928
-
 - In the last example, what is ~mem = eggs.insert(1,'cat')~?
   #+begin_src python
     eggs = ['bat', 'rat', 'cows']
@@ -339,6 +343,12 @@
     print(id(mem))
     print(mem)
   #+end_src
+
+  #+RESULTS:
+  : 1909821571712
+  : 140733796216008
+  : None
+
   ~mem~ is nothing to us: it's a location that the computer uses to
   update ~eggs~ in place, but in actual fact it is a non-value (~None~).
 
@@ -366,6 +376,11 @@
     print(spam)
   #+end_src
 
+  #+RESULTS:
+  : List ID:       2331913323136
+  : Parameter ID:  2331913323136
+  : [1, 2, 3, 'Hello']
+
 * ~copy~ and ~deepcopy~ from the copy module
 
 - If you do NOT want changes to apply to your original list, you can
@@ -388,12 +403,6 @@
     print(spam)
     print(cheese)
   #+end_src
-
-  #+RESULTS:
-  : 2332400824448
-  : 2332400249536
-  : ['A', 'B', 'C', 'D']
-  : ['A', 42, 'C', 'D']
 
 - ~spam~ and ~cheese~ variables now refer to separate lists:
   #+attr_latex: :width 400px
@@ -430,6 +439,13 @@
     print(food)
     print(sandwich)
   #+end_src
+
+  #+RESULTS:
+  : food:  2452291123712
+  : copy:  2452291123520
+  : False
+  : ['soup', ['bacon', 'lettuce', 'tomato']]
+  : ['bread', ['bacon', 'lettuce', 'tomato']]
 
 * Summary
 
