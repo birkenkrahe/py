@@ -28,7 +28,7 @@
 - [ ] *Practice:* a first (literate) Python program & platforms.
 - [ ] First *assignment*: "Getting started in Python" @DataCamp.
 
-** In-class summary
+** Summary
 
 - The terminal allows the user to communicate with the OS.
 - Python comes in different versions.
@@ -154,7 +154,7 @@ weekly multiple-choice tests, i.e. you can use this to prepare./
 - Options for creating and running Python scripts
 - Creating and running our first ever Python script
 
-** In-class summary - what did we discuss today?
+** Summary - what did we discuss today?
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
@@ -363,7 +363,7 @@ script" I'd have to do some research first.) Hope this helps.
 
 *
 
-** In-class summary
+** Summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
@@ -414,7 +414,7 @@ I didn't find it easy (HTML is textual markup, not binary, and much
 more forgiving) but I learnt something. At the top there is a link to
 a book which I did not read or use (it's from 2018 and the package I
 used was PyPDF4 and not PyPDF2).
-** In-class summary
+** Summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
@@ -570,7 +570,7 @@ Original problem: "[[https://dmoj.ca/problem/wc15c2j1/pdf][A New Hope]]".
      print('num is a integer now:', isinstance(num,int))
    #+end_src
 
-** In-class summary
+** Summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
@@ -760,7 +760,7 @@ INFORMAL OPEN TOOL POLL:
     : True
     : True
 
-** In-class summary
+** Summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
@@ -888,7 +888,7 @@ INFORMAL OPEN TOOL POLL:
       - If there's only a single statement, Python does not insist on
       indentation! Indentation is for 'proper' blocks (multiline).
 
-** TODO In-class summary
+** TODO Summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
@@ -1030,7 +1030,7 @@ INFORMAL OPEN TOOL POLL:
     [[../img/for_while.png]]
     #+end_quote
 
-** In-class summary
+** Summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
@@ -1102,7 +1102,7 @@ changing the format of the output.
 
 - Stats and visualization are much easier to do in R ([[https://github.com/birkenkrahe/grades/blob/main/summer23.org][GitHub]])
 
-** TODO In-class summary
+** TODO Summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
@@ -1324,7 +1324,7 @@ changing the format of the output.
       the function call, after that they come in any order.
     #+end_quote
 
-** In-class summary
+** Summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
@@ -1481,7 +1481,7 @@ Friday: quick project update - informal "sprint review"
     %cat test.txt    # view the file `test.txt`
     #+end_example
 
-** In-class summary
+** Summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
@@ -1626,7 +1626,7 @@ Friday: quick project update - informal "sprint review"
    - The ~finally~ clause identifies an action that always happens.
    #+end_quote
 
-** In-class summary
+** Summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
@@ -1818,7 +1818,7 @@ We'll still have covered only about 25% of Python's common ground.
    similar approach.
 
 ** Test 3 is coming - includes Numpy (DataCamp)
-** In-class summary
+** Summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
@@ -1929,7 +1929,7 @@ We'll still have covered only about 25% of Python's common ground.
 
 - There's going to be one more regular and one more bonus assignment
 
-** In-class summary
+** Summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
@@ -2103,7 +2103,7 @@ Citation examples:
    ~random.shuffle~ shuffles its argument in place and returns ~None~
    #+end_quote
 
-** In-class summary
+** Summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
@@ -2177,35 +2177,84 @@ MAGIC 8 BALL RELOADED (BONUS - SEE CANVAS)
    program vs. the new version in Colab using the ~%timeit~ magic
    function. [[https://colab.research.google.com/github/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/01.07-Timing-and-Profiling.ipynb#scrollTo=ZJQ34W_23gdA][Here is some documentation on this and other functions.]]
 
-* TODO Day 18: Sequence data, references, and ~copy~
+* DONE Day 18: Sequence data, references, ~copy~
 #+attr_latex: :width 400px
 #+caption: Photo: Sam Hood / Schoolchildren line up for soup (1934)
 [[../img/soup.jpg]]
 
 ** TODO [[https://lyon.instructure.com/courses/1700/assignments/14755][Last programming assignment "Student scores"]]
 ** TODO [[https://lyon.instructure.com/courses/1700/assignments/15059][Last bonus assignment: "Magic 8 Ball reloaded"]]
-** TODO In-class summary
+** TODO Summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
 
 - [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
 
+- Tuples and strings, though also sequence data types, are immutable
+  and cannot be changed.
+- A variable that contains a tuple or string value can be overwritten
+  with a new tuple or string value
+- This is not the same thing as modifying the existing value in place —
+  like, say, the ~append()~ or ~remove()~ methods do on lists.
+- Variables do not store list values directly; they store references
+  to lists. Any change you make to a list may impact other variables.
+- You can use ~copy()~ or ~deepcopy()~ if you want to make changes to a
+  list in one variable without modifying the original list.
 
-* TODO Day 19: Conway's Game of Life
+* DONE Day 19: Project Day II (no class)
 #+attr_latex: :width 400px
 #+caption: Photo: Sam Hood / Schoolchildren line up for soup (1934)
 [[../img/spreadsheets.jpg]]
 
-* TODO I must be doing something wrong
+#+begin_quote
+Change of plans for personal reasons:
+
+We will not meet in class tomorrow, Friday June 16. Please work on
+your project instead.  We will meet in class on Monday, June 19 at 1
+pm to discuss Conway's Game of Life. The remaining sessions on Tuesday
+and Wednesday will also contain applications as discussed. Thursday
+and Friday is reserved for your projects (3 each per day - 30 min max
+for presentation and discussion).  Thanks for your understanding!
+#+end_quote
+
+
+* TODO Day 20: Conway's Game of Life
+#+attr_latex: :width 400px
+#+caption: Music on Water Street, St. John's, Newfoundland (Flickr.com).
+[[../img/photogenic.jpg]]
+
+** TODO Test 3 issues
+*** Square brackets missing
+In test 3 (at least) one question had an issue: square brackets
+were missing in the array definition -
+#+begin_src python :results output
+  import numpy as np
+  z = np.array([[1,1,1],
+                [3,4,4]])
+  print(z[1:,:1]) # on the console, prints `[[3]]`
+  # while z[1][0] prints `3`
+#+end_src
+
+#+RESULTS:
+: [[3]]
+
+If you got this question wrong before I could fix it, you will did the
+extra point!
+
+
+** TODO I must be doing something wrong
 #+attr_latex: :width 400px
 [[../img/fortune.png]]
 
-* TODO Last test - incl. "Intermediate Python"
+** TODO Last test - new deadline Sunday 25 June!
 #+attr_latex: :width 400px
 #+caption: Ladies' Reliability Trials, Australia, 1936 (Flickr.com)
 [[../img/ladies.jpg]]
 
+Alas, I won't be finishing the test before middle of this week.
+
+Test questions come mostly from DataCamp's "Intermediate Python":
 - Matplotlib (line plot, scatter plot, histograms)
 - Dictionaries and Pandas
 - Flow control with NumPy and Pandas
@@ -2215,42 +2264,75 @@ MAGIC 8 BALL RELOADED (BONUS - SEE CANVAS)
 (To create DataCamp test questions, I usually work through the
 practice exercises on DataCamp and let myself be inspired.)
 
-** TODO In-class summary
-#+attr_latex: :width 300px
-#+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
-[[../img/summary.jpg]]
-
-- [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
-
-** TODO Homework
-#+attr_latex: :width 300px
-#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
-[[../img/homework.jpg]]
-
-
-* TODO Day 20: Project day II (no class)
+** TODO What does 'Let the data tell a story' mean?
 #+attr_latex: :width 400px
-#+caption: Music on Water Street, St. John's, Newfoundland (Flickr.com).
-[[../img/photogenic.jpg]]
+[[../img/storytelling.png]]
 
-** TODO In-class summary
+- The second DataCamp course says "let the data tell a story", for
+  example by customizing plots - what do you think about this?
+  #+attr_latex: :width 400px
+  [[../img/datacamp_storytelling.png]]
+
+- What are the elements of story? Look at this short (1:20 min)
+  example: "A Warning" - Plotagon animation (2017), URL: [[https://youtu.be/nA4fgn_D9BQ][youtube]].
+  #+begin_quote
+  Must have elements:
+  * Plot (storyline with start and end event)
+  * Characters (participants, more or less developed)
+  * Message (meaning, could be a list of options)
+  Some optional elements:
+  - Climax, denouement (a way of ending/untie the knot)
+  - Mood (humor, tragedy, farce)
+  - 3-stage plot (Aristotelian poetics)
+  #+end_quote
+
+- What does this have to do with data?
+  #+begin_quote
+  * A priori: nothing. Structured data aren't story input
+  * The digital data format is dominated by machine needs
+  * The format of a narrative is dominated by human needs
+  #+end_quote
+
+- What does this have to do with Python?
+  #+begin_quote
+  * Programming reduces the storytelling toolbox drastically, limiting
+    it to digital data structuring and visualization techniques
+  * No neuroscientific or psychological basis that this works in the
+    same way, or with similar efficiency as traditional storytelling
+  #+end_quote
+
+- MIT Sloan (and many others) offers 'Communicating data through
+  storytelling' promising that the participants will walk away with:
+  #+attr_latex: :width 400px
+  [[../img/mit_storytelling.png]]
+
+- Indicative: the MIT Sloan course curriculum
+  #+attr_latex: :width 400px
+  [[../img/mit_storytelling1.png]]
+
+- What does this mean?
+  #+begin_quote
+  * 'Data storytelling' is a hype term not reall like 'storytelling'
+    (perhaps to appeal to people who don't like working with machines)
+  * 'Machine learning' does the same thing to 'learning'
+  * Leave storytelling to the experts (cp. 10,000 hour rule)
+  * If you happen to like both machines and stories, accept that
+    you're probably never going to master both at the same level
+  #+end_quote
+
+** TODO Summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
 
 - [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
-
-** TODO Homework
-#+attr_latex: :width 300px
-#+caption: Max Williams photographed by Ian Grimes, 1942 (Flickr.com)
-[[../img/homework.jpg]]
 
 * TODO Day 21: Web scraping (~request~, ~bs4~, ~selenium~)
 #+attr_latex: :width 400px
 #+caption: Llyfrgell Genedlaethol Cymru / Redman's hairdressers (1957)
 [[../img/hairdressers.jpg]]
 
-** TODO In-class summary
+** TODO Summary
 #+attr_latex: :width 300px
 #+caption: Women spectators at wrestling, Sydney stadium 1940 (Flickr.com)
 [[../img/summary.jpg]]
@@ -2276,3 +2358,9 @@ practice exercises on DataCamp and let myself be inspired.)
 #+attr_latex: :width 400px
 #+caption: Whiteman group, LOC@Flickr.com
 [[../img/group3.jpg]]
+
+* References
+
+- GetSmarter (2023). Communicating Data Through Storytelling. Online
+  Short Course, MIT Management Executive Eduction. URL:
+  [[https://mit-online.getsmarter.com/presentations/lp/mit-sloan-communicating-data-through-storytelling-online-short-course/?cid=17123097342&utm_contentid=595893184926&ef_id=c:595893184926_d:c_n:g_ti:kwd-1524496353808_p:_k:data%20story%20telling%20course_m:p_a:143061320144&gad=1&gclid=Cj0KCQjw1rqkBhCTARIsAAHz7K3WA1w8ZCtN93AdO2qkMGvpUKrgvLGJ9-AFq6jvece6oY5yvrGOzVcaAtdQEALw_wcB&gclsrc=aw.ds][mit-online.getsmarter.com]].

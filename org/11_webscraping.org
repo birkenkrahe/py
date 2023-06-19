@@ -1,0 +1,3 @@
+#+property: header-args:python :results output :exports both :session *Python*
+#+startup: overview hideblocks indent inlineimages
+* SOMEDAY [[https://www.datacamp.com/tutorial/web-scraping-python-nlp][Web Scraping & NLP in Python (DataCamp tutorial)]]

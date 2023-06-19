@@ -1,11 +1,15 @@
 #+property: header-args:python :results output :exports both :session *Python*
 #+startup: overview hideblocks indent inlineimages
+* README
+
+- [[https://gist.github.com/birkenkrahe/a61584bb88d5b97390e5781e9d62358c][See GitHub for a Colab version of this file]].
+
 * Plotting practice: histograms
 
 *Plot challenge:* make a histogram of the results for Test 1 and for
 Test 2. Draw the average of each test as a straight dashed line.
 
-** Make a histogram and customize it
+* Make a histogram and customize it
 
 1) Open a new Colab notebook and name it ~PlottingPractice.ipynb~.
 
@@ -87,7 +91,7 @@ Test 2. Draw the average of each test as a straight dashed line.
 
 10) All of these functions are /methods/ of the ~pyplot~ module.
 
-** Compute and draw a line for the point average
+* Compute and draw a line for the point average
 
 1) Import the NumPy package as ~np~.
    #+begin_src python :results silent
@@ -163,7 +167,7 @@ Test 2. Draw the average of each test as a straight dashed line.
    #+attr_latex: :width 400px
    [[../img/hist_avg_3.png]]
 
-** Subplots
+* Subplots
 
 We want to put the two histogram plots next to one another on two
 panels. To do this, we need to use the ~plt.subplots~ method.
