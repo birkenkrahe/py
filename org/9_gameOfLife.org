@@ -33,9 +33,12 @@
   transition lines that are triggered by the state: e.g. 0 on S1
   triggers a state change from S1 to S2.
 
-- The language of graphs is also important in network analysis,
-  database and algorithm design.
-
+- Graphs are also important in network analysis, database and
+  algorithm design, and in mathematical physics (as Feynman diagrams).
+  #+attr_latex: :width 400px
+  #+caption: Higgs production via gluon-gluon fusion and decay into four charged leptons (Source: Passon, 2019).
+  [[../img/9_feynman.jpg]]
+  
 * Example: a 'Rule 30' automaton in Python
 #+attr_latex: :width 400px
 #+caption: A Conus textile shell similar in appearance to Rule 30 (Wikipedia)
@@ -101,7 +104,7 @@
   8) Which /methods/ are used in this program?
      #+begin_quote
      - ~list.append~: appends item to list in place
-     - ~str.join~: joins any number of strings
+     - ~str.join~: joins any number of strings (allows iterable)
      - Other functions: ~range~, ~len~, ~print~.
      #+end_quote
 
@@ -478,7 +481,6 @@
   reproduction.
   
 * Conway's Game of Life using dictionaries
-
 - Here's Sweigart's code using dictionaries. You can
   [[https://inventwithpython.com/projects/conwaysgameoflife.py][download it from here]], or follow the author while he's coding on YouTube
   ([[https://youtu.be/Vn8Mug5w7sw][Sweigart, 2021]]):
@@ -803,10 +805,12 @@ other data structures.
 
 - Ilievski, V. (2021). Simple but Stunning: Animated Cellular Automata
   in Python. URL: [[https://isquared.digital/blog/2021-05-02-cellular-automata/][isquared.digital]]
-  
 - Johnson, N. and Greene, D. (2022). Conway's Game of Life -
   Mathematics and Construction. URL: conwaylife.com/book/
 - OpenAI (2023). ChatGPT May 24 Version. URL: chat.openai.com.
+- Passon, O. (2019). On the interpretation of Feynman diagrams, or,
+  did the LHC experiments observe the Higgs to gamma gamma decay? In:
+  European J. Phil. Sc. 9(2):20. [[http://dx.doi.org/10.1007/s13194-018-0245-1][10.1007/s13194-018-0245-1]].
 - Sweigart, A. (2019). Automate the Boring Stuff with
   Python. NoStarch. URL: [[https://automatetheboringstuff.com/2e/chapter2/][automatetheboringstuff.com]]
 - Sweigart, A. (2021). Calm Programming - Conway's Game of life. URL:
