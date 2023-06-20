@@ -28,7 +28,7 @@
   #+attr_latex: :width 400px
   #+caption: Simple automaton with two states (Ilievski, 2021)
   [[../img/automaton.png]]
-
+  
 - In the depicted automaton, S1 and S2 are states, and the edges are
   transition lines that are triggered by the state: e.g. 0 on S1
   triggers a state change from S1 to S2.
@@ -107,10 +107,10 @@
      - ~str.join~: joins any number of strings (allows iterable)
      - Other functions: ~range~, ~len~, ~print~.
      #+end_quote
-
+     
 * Extended example: Conway's 'Game of Life'
 #+attr_latex: :width 400px
-#caption: Four steps in a Conway's Game of Life simulation (Sweigart, 2019)
+#+caption: Four steps in a Conway's Game of Life simulation (Sweigart, 2019)
 [[../img/conway.png]]
 
 - In the graphical illustration, an empty square is 'dead', and a
@@ -125,16 +125,16 @@
 - In a 4 x 4 state space, the two automatons below describe the
   transition of 5 live cells and reproduction of 2 live cells:
   #+name: automaton
-  | cell | next | state 1 | state 2 | fate         |
-  |------+------+---------+---------+--------------|
-  | b1   |    1 |       1 |       0 | dies         |
-  | c2   |    3 |       1 |       1 | lives        |
-  | c3   |    2 |       1 |       1 | lives        |
-  | b3   |    3 |       1 |       1 | lives        |
-  | a3   |    1 |       1 |       0 | dies         |
-  |------+------+---------+---------+--------------|
-  | a2   |    3 |       0 |       1 | comes alive  |
-  | b4   |    3 |       0 |       1 | comes alive  |
+  | cell | next | state 1 | state 2 | fate        |
+  |------+------+---------+---------+-------------|
+  | b1   |    1 |       1 |       0 | dies        |
+  | c2   |    3 |       1 |       1 | lives       |
+  | c3   |    2 |       1 |       1 | lives       |
+  | b3   |    3 |       1 |       1 | lives       |
+  | a3   |    1 |       1 |       0 | dies        |
+  |------+------+---------+---------+-------------|
+  | a2   |    3 |       0 |       1 | comes alive |
+  | b4   |    3 |       0 |       1 | comes alive |
   #+attr_latex: :width 200px
   [[../img/gol1.png]] [[../img/gol2.png]]
 
@@ -156,9 +156,6 @@
   one character (like 'O') for living, and a space for dead cells.
 
 * Conway's Game of Life using lists
-
-- Save the file from here as ~conwaysgameoflife.py~:
-  https://inventwithpython.com/projects/conwaysgameoflife.py
 
 - Save the ~gameOfLife.py~ from GitHub:
   [[https://github.com/birkenkrahe/py/blob/main/src/gameOfLife.py][github.com/birkenkrahe/py/blob/main/src/gameOfLife.py]]
@@ -273,7 +270,7 @@
                 column.append('O')
             else:
                 column.append(' ')
-                nextCells.append(column)
+        nextCells.append(column)
   #+end_src
 
 - Print the lists to reveal the 2-dimensional structure: the list
@@ -284,7 +281,7 @@
     print('last column:  ',nextCells[9][:],end='\n\n')
     for y in range(HEIGHT):
         for x in range(WIDTH):
-            print(nextCells[x][y], end=' ') # print hash or space
+            print(nextCells[x][y], end=' ') # print 'O' or space
             print()   # print newline at the end of the row
   #+end_src
 

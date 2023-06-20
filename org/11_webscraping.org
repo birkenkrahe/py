@@ -1,3 +1,99 @@
-#+property: header-args:python :results output :exports both :session *Python*
+#+TITLE:WEBSCRAPING WITH PYTHON
+#+AUTHOR: Marcus Birkenkrahe
+#+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
+#+property: header-args:python :results output :exports both
 #+startup: overview hideblocks indent inlineimages
-* SOMEDAY [[https://www.datacamp.com/tutorial/web-scraping-python-nlp][Web Scraping & NLP in Python (DataCamp tutorial)]]
+* README
+
+- This is an outline of several webscraping packages:
+  1) ~webbrowser~ - to ~open~ web pages
+  2) ~requests~ - to download files and web pages
+  3) ~bs4~ - to parse HTML source files
+  4) ~selenium~ - to launch and control a web browser
+
+- The development follows chapter 12 (pp. 267-299) in Sweigart (2019)
+  and the publicly available documentation for the packages:
+  1) [[https://docs.python.org/3/library/webbrowser.html][webbrowser (standard library)]]
+
+- There are some good tutorials from the DataCamp blog:
+  1) [[https://www.datacamp.com/tutorial/web-scraping-python-nlp][Web Scraping & NLP in Python (DataCamp tutorial)]] (2017).
+  2) [[https://www.datacamp.com/tutorial/web-scraping-using-python][Web Scraping using Python (and Beautiful Soup)]] (2018).
+  3) [[https://www.datacamp.com/tutorial/making-web-crawlers-scrapy-python][Making Web Crawlers Using Scrapy for Python]] (2019)
+
+- However, web development is a highly volatile field, with many
+  different languages, technologies and standards involved, and I
+  would not expect the code from older tutorials to work out of the
+  box.
+
+- Making it work nevertheless, however, is a great way to learn about
+  a package.
+
+* Using ~webbrowser~ to open a URL
+
+- The ~webbrowser~ module provides an interface to displaying web-based
+  documents to users.
+
+- You can call the ~open~ function on the URL to open the page:
+  #+begin_src python :results silent
+    import webbrowser
+    url = 'https://www.gutenberg.org/files/2701/2701-h/2701-h.htm'
+    webbrowser.open(url)
+    url = 'https://lyon.edu'
+    webbrowser.open(url)	
+    url = 'https://www.python.org'
+    webbrowser.open(url)
+  #+end_src
+
+- The script ~webbrowser~ can also be used on the command line. Enter
+  this in a terminal window:
+  #+begin_example sh
+    python -m webbrowser -t "https://www.python.org"
+  #+end_example
+
+- These will not work in Colab but they work on the terminal or in a
+  Python script.
+
+- As long as you have the URL, ~webbrowser~ lets users cut out the step
+  of opening the browser. Sample applications (scripts) include:
+  1) open all links on a page in separate browser tabs
+  2) open the browser to the URL for your local weather
+  3) open several social network sites that you regularly check.
+
+* Example: open Google map with an address only
+
+- We create a script that is run on the command line by the shell
+  program (~bash~) though it is a Python file.
+
+- The shell passes an address argument to the script where it is
+  received as a list of strings ~sys.argv~.
+
+- To turn the list into a single string value ~address~ (a URL for the
+  browser), use ~str.join~, then feed the ~address~ to ~webbrowser.open~.
+
+- You find this script in GitHub in ~py/src~ as ~mapit~ (link):
+  #+begin_src sh
+    #! python3
+    # launch map in browser using an address from the command line
+    # import pyperclip and use address = pyperclip.paste for clipboard use
+
+    import webbrowser, sys
+
+    # If there is at least one command line argument
+    if len(sys.argv) > 1:
+       address = ' '.join(sys.argv[1:])
+   
+       # Open the web browser with the constructed URL
+       webbrowser.open('https://www.google.com/maps/place/' + address)
+
+       # Print contents of sys.argv to the screen
+       print("Contents of the `sys.argv` list:")
+       for arg in sys.argv:
+                  print(arg, end=' ')
+  #+end_src
+
+* References
+
+- Sweigart, A. (2019). Automate the Boring Stuff with
+  Python. NoStarch. URL: [[https://automatetheboringstuff.com/2e/chapter2/][automatetheboringstuff.com]]
+- Van Rossum, G., Drake, F. L. (2009). Python 3 Reference Manual. URL:
+  https://docs.python.org/3/reference/.

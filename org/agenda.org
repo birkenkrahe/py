@@ -2219,12 +2219,16 @@ for presentation and discussion).  Thanks for your understanding!
 #+end_quote
 
 
-* TODO Day 20: Conway's Game of Life
+* DONE Day 20: Conway's Game of Life
 #+attr_latex: :width 400px
 #+caption: Music on Water Street, St. John's, Newfoundland (Flickr.com).
 [[../img/photogenic.jpg]]
 
 ** TODO Test 3 issues
+
+If you got these questions wrong before I could fix it, you will did
+the extra point!
+
 *** Square brackets missing
 In test 3 (at least) one question had an issue: square brackets
 were missing in the array definition -
@@ -2239,9 +2243,14 @@ were missing in the array definition -
 #+RESULTS:
 : [[3]]
 
-If you got this question wrong before I could fix it, you will did the
-extra point!
+*** Division by zero error
 
+- Question not clear enough: ~except: ZeroDivisionError~ catches all
+  errors, not just zero division, and there is the lacking
+  indentation.
+
+- Though you should have recognized the two errors anyway...
+  
 
 ** TODO I must be doing something wrong
 #+attr_latex: :width 400px
@@ -2312,7 +2321,7 @@ practice exercises on DataCamp and let myself be inspired.)
 
 - What does this mean?
   #+begin_quote
-  * 'Data storytelling' is a hype term not reall like 'storytelling'
+  * 'Data storytelling' is a hype term not really like 'storytelling'
     (perhaps to appeal to people who don't like working with machines)
   * 'Machine learning' does the same thing to 'learning'
   * Leave storytelling to the experts (cp. 10,000 hour rule)
