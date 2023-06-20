@@ -475,20 +475,7 @@ This is what getting a map with or without Python has cost you:
         print(f"p elements with 'id' value: {element.text}")
   #+end_src
 
-  #+RESULTS:
-  #+begin_example
-  container text: Hello
-  'text' element: Hello
-  'text' element: Outside
-  div elements: 
-  Hello
-  World
-
-  p elements Hello
-  p elements World
-  p elements Outside
-  p elements with 'id' value: World
-  #+end_example
+  
 
 * TODO Tokenize text with ~nltk~
 
