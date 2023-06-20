@@ -1,0 +1,17 @@
+#! python3
+# launch map in browser using an address from the command line
+# import pyperclip and use address = pyperclip.paste for clipboard use
+
+import webbrowser, sys
+
+# If there is at least one command line argument
+if len(sys.argv) > 1:
+    address = ' '.join(sys.argv[1:])
+    
+    # Open the web browser with the constructed URL
+    webbrowser.open('https://www.google.com/maps/place/' + address)
+
+# Print contents of sys.argv to the screen
+print("Contents of the `sys.argv` list:")
+for arg in sys.argv:
+    print(arg, end=' ')
