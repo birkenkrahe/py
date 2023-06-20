@@ -39,7 +39,7 @@
     url = 'https://www.gutenberg.org/files/2701/2701-h/2701-h.htm'
     webbrowser.open(url)
     url = 'https://lyon.edu'
-    webbrowser.open(url)	
+    webbrowser.open(url)
     url = 'https://www.python.org'
     webbrowser.open(url)
   #+end_src
@@ -81,15 +81,28 @@
     # If there is at least one command line argument
     if len(sys.argv) > 1:
        address = ' '.join(sys.argv[1:])
-   
+
        # Open the web browser with the constructed URL
        webbrowser.open('https://www.google.com/maps/place/' + address)
 
-       # Print contents of sys.argv to the screen
-       print("Contents of the `sys.argv` list:")
-       for arg in sys.argv:
-                  print(arg, end=' ')
+    # Write sys.argv to a file and print to the screen
+    filename = "address.txt"
+    with open(filename, "w") as file:
+        print("Contents of sys.argv:")
+        for arg in sys.argv:
+            # Write each argument to the file
+            file.write(arg + "\n")
+            # Print confirmation message
+            print(f"sys.argv has been written to {filename}")
   #+end_src
+
+- Download it, open a terminal and run it with an address like this:
+  #+begin_src sh
+    ./mapit 1014 E Main St, Batesville, AR 72501
+  #+end_src
+
+- This will open Google maps to the address and save  the list values
+
 
 * References
 
