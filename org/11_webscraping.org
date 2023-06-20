@@ -104,7 +104,7 @@
 - This will open Google maps to the address and save the list values
   to a file ~address.txt~ which you can view with the command ~cat~.
 
-* Savings
+* Savings!
 
 This is what getting a map with or without Python has cost you:
 | MANUALLY                     | PYTHON            |
@@ -280,7 +280,7 @@ This is what getting a map with or without Python has cost you:
     print(dir(requests))
   #+end_src
 
-* HTML
+* HTML code and CSS classes
 
 - HTML (HyperText Markup Language) files are plaintext ~.html~ files
 
@@ -292,6 +292,23 @@ This is what getting a map with or without Python has cost you:
   #+begin_example
     <strong>Hello</strong>, world!
   #+end_example
+
+- CSS (Cascading Style Sheets) are essentially functions to change the
+  layout without having to change every single HTML file. Example:
+  #+begin_example
+    <div class="container">
+        <p class="text">Hello</p>
+        <p id="special">World</p>
+    </div>
+    <p class="text">Outside</p>
+  #+end_example
+
+- This code contains:
+  1) one ~div~ divider element
+  2) two CSS classes (aka functions), ~.container~ and ~.text~
+  3) three ~p~ elements (new paragraph)
+  4) one ~id~ attribute with the value ~special~ inside a ~p~ element
+     (attributes can be linked to like ~#special~ or ~?id=special~)
 
 - You can open this code from within an HTML file with the ~webbrowser~
   module - run this in IDLE as a file ~html.py~:
@@ -439,9 +456,11 @@ This is what getting a map with or without Python has cost you:
 #+attr_latex: :width 400px
 [[../img/css.png]]
 
-- The ~select~ function uses CSS selectors to match elements, like
-  classes, IDs etc. It returns a list of elements matching the
-  selector:
+- The ~select~ function uses CSS selectors to match elements or tags,
+  like classes, IDs etc. It returns a list of elements matching the
+  selector.
+
+- Try this yourself with this HTML code:
   #+begin_src python
     from bs4 import BeautifulSoup
 
@@ -454,14 +473,49 @@ This is what getting a map with or without Python has cost you:
     """
     soup = BeautifulSoup(html, 'html.parser')
 
-    elements = soup.select('.container .text') # 'text' in 'container'
+    # Example: all elements that use a CSS `class` attribute named `.container`
+    elements = soup.select('.container .text')
+    for element in elements:
+        print(f'container text: {element.text}')
+
+    elements = soup.select('p')
+    for element in elements:
+        print(f'p elements: {element.text}')
+
+    # result values are stored in a list (sequence data)
+    print(elements)
+
+    # the data type is specific to bs4
+    print(type(elements))
+  #+end_src
+
+- Use this code to select the following elements:
+  1) Elements in the CSS class 'text'
+  2) Elements named 'div'
+  3) Elements named p with id value
+  4) Elements named p with id value 'special'
+
+- Solution:
+  #+begin_src python
+    from bs4 import BeautifulSoup
+
+    html = """
+    <div class="container">
+        <p class="text">Hello</p>
+        <p id="special">World</p>
+    </div>
+    <p class="text">Outside</p>
+    """
+    soup = BeautifulSoup(html, 'html.parser')
+
+    elements = soup.select('.container .text') # 'text' in '.container' class
     for element in elements:
         print(f'container text: {element.text}')  
 
-    elements = soup.select('.text') # elements named 'text'
+    elements = soup.select('.text') # elements in the '.text' class
     for element in elements:
-        print(f"'text' element: {element.text}")
-
+        print(f"'.text' element: {element.text}")
+        
     elements = soup.select('div')  # elements named 'div'
     for element in elements:
         print(f'div elements: {element.text}')
@@ -473,17 +527,154 @@ This is what getting a map with or without Python has cost you:
     elements = soup.select('p[id]')  # elements named 'p' w/id' value
     for element in elements:
         print(f"p elements with 'id' value: {element.text}")
+
+    elements = soup.select('p[id="special"]')  # p elements with id = 'special'
+    for element in elements:
+        print(f"p elements with 'class=special' value: {element.text}")
   #+end_src
 
+- Selector patterns can be combined to make sophisticated matches:
+  this pattern will match any element that has an ~id~ attribute of
+  ~author~ as long as it is also inside a ~p~ element
+  #+begin_example python
+    soup.select('p #author') # selects <p id="author">THIS</p>
+  #+end_example
+
+- What will this pattern select?
+  #+begin_example python
+    soup.select('span .text')
+  #+end_example
+  #+begin_quote
+  Any element of the CSS class 'text' inside a ~span~ element:
+  <span class="text">THIS</span>
+  #+end_quote
+
+- The tag values of the ~soup.select~ result ~list~ can be passed to ~str~
+  to show the HTML tags they represent, and an ~attrs~ attribute that
+  shows all HTML attributes of the tag as a ~dictionary~.
+  #+begin_src python
+    from bs4 import BeautifulSoup
+
+    html = """
+    <div class="container">
+        <p class="text">Hello</p>
+        <p id="special">World</p>
+    </div>
+    <p class="text">Outside</p>
+    """
+    soup = BeautifulSoup(html, 'html.parser')
+
+    elements = soup.select('.text')
+    print(elements[0])
+    print(type(elements[0]))
+    print(type(str(elements[0])))
+  #+end_src
+
+* Example HTML file: extract text and attributes
+
+- Here is the example HTML with mostly HTML and one CSS class element:
+  #+begin_example
+  <!-- This is the example.html file. -->
+  <html><head>
+          <title>The Website Title</title>
+        </head>
+        <body>
+          <p>Download the book <strong>The American</strong> from
+             <a href="https://www.gutenberg.org/files/177/177-0.txt">Project Gutenberg</a>.
+          </p>
+          <p class="slogan">Read more 19th century fiction!</p>
+          <p>By <span id="author">Henry James</span>
+          </p>
+        </body>
+  </html>
+  #+end_example
   
+- Pull the element with ~id="author"~ out of the example HTML:
+  #+begin_src python
+    import bs4
+
+    # open the HTML file
+    exampleFile = open('example.html')
+
+    # parse HTML from file 
+    exampleSoup = bs4.BeautifulSoup(exampleFile.read(), 'html.parser')
+
+    # select all 'id' attributes with the value 'author':
+    elements = exampleSoup.select('#author')
+
+    print(isinstance(elements,list))
+    print(elements)     # Output: list
+    print(len(elements))  # Output: 1
+    print(type(elements[0]))  # Output: bs4.element.Tag 
+
+    # the tag object as a string
+    print(str(elements[0]))
+
+    # get the tag text string
+    print(elements[0].getText())
+    print(isinstance(elements[0].getText(),str))
+
+    # get the tag attributes dictionary
+    print(elements[0].attrs)
+    print(isinstance(elements[0].attrs,dict))
+  #+end_src
+
+- As an exercise, pull the ~<p>~ elements from the example HTML and
+  1) get the text of the 1st list item with ~getText()~
+  2) turn the 2nd list item into a string with ~str~
+  3) get the text of the 2nd list item with ~getText()~
+  4) turn the 3rd list item into a string with ~str~
+  5) get the text of the 3rd list item with ~getText()~
+  #+begin_src python
+    import bs4
+    exampleFile = open('example.html')
+    exampleSoup = bs4.BeautifulSoup(exampleFile.read(), 'html.parser')
+    # select all 'p' elements
+    pElements = exampleSoup.select('p')
+
+    for i in range(3):
+        print(pElements[i].getText())
+        print(str(pElements[i]))
+  #+end_src  
+
+* Getting data from an element's attributes
+
+- You can use the ~get~ method to access attribute values from an
+  element: you pass a string of an attribute name, e.g. 'id', and get
+  the value in return:
+  #+begin_src python
+    import bs4
+
+    # open the HTML file
+    exampleFile = open('example.html')
+
+    # parse HTML from file 
+    exampleSoup = bs4.BeautifulSoup(exampleFile.read(), 'html.parser')
+
+    # select the first 'span' element
+    spanElement = exampleSoup.select('span')[0]
+
+    print(str(spanElement))
+    print(spanElement.get('id'))
+    print(spanElement.get('some_nonexistent_address') == None)
+    print(spanElement.attrs)
+  #+end_src
+
+  #+RESULTS:
+  : <span id="author">Henry James</span>
+  : author
+  : True
+  : {'id': 'author'}
+
+* TODO Extended example: opening all search results
+* TODO Extended example: downloading all xkcd cartoons
+* TODO Controlling the browser with ~selenium~
 
 * TODO Tokenize text with ~nltk~
 
 Source: https://www.datacamp.com/tutorial/web-scraping-python-nlp
 
-* TODO Example: opening all search results
-* TODO Example: downloading all xkcd cartoons
-* TODO Controlling the browser with ~selenium~
+* TODO Working with APIs
 * References
 
 - Sweigart, A. (2019). Automate the Boring Stuff with
