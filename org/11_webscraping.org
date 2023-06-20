@@ -101,8 +101,63 @@
     ./mapit 1014 E Main St, Batesville, AR 72501
   #+end_src
 
-- This will open Google maps to the address and save  the list values
+- This will open Google maps to the address and save the list values
+  to a file ~address.txt~ which you can view with the command ~cat~.
 
+* Savings
+
+This is what getting a map with or without Python has cost you:
+| MANUALLY                     | PYTHON            |
+|------------------------------+-------------------|
+| Highlight address            | Highlight address |
+| Copy address                 | Copy address      |
+| Open web browser             | Run ~mapit~         |
+| Open ~maps.google.com~         |                   |
+| Click the address text field |                   |
+| Paste the address            |                   |
+| Press enter                  |                   |
+
+* Using ~requests~ to download files from the web
+
+- With ~requests~, you can download files without having to worry about
+  network errors, connection problems or data compression.
+
+- This is the equivalent of the ~wget~ Unix command (similar to ~curl~,
+  which supports a wide variety of protocols not just HTTP and FTP)
+
+- This package is not part of the standard Python library and must be
+  installed (not on Colab or DataCamp):
+  #+begin_src sh
+    pip install --user requests  # installs for current user only
+  #+end_src  
+
+  #+RESULTS:
+  | Requirement | already | satisfied: | requests                 | in | c:\users\birkenkrahe\appdata\local\programs\python\python311\lib\site-packages | (2.29.0) |           |             |
+  | Requirement | already | satisfied: | charset-normalizer<4,>=2 | in | c:\users\birkenkrahe\appdata\local\programs\python\python311\lib\site-packages | (from    | requests) | (3.1.0)     |
+  | Requirement | already | satisfied: | idna<4,>=2.5             | in | c:\users\birkenkrahe\appdata\local\programs\python\python311\lib\site-packages | (from    | requests) | (3.4)       |
+  | Requirement | already | satisfied: | urllib3<1.27,>=1.21.1    | in | c:\users\birkenkrahe\appdata\local\programs\python\python311\lib\site-packages | (from    | requests) | (1.26.15)   |
+  | Requirement | already | satisfied: | certifi>=2017.4.17       | in | c:\users\birkenkrahe\appdata\local\programs\python\python311\lib\site-packages | (from    | requests) | (2022.12.7) |
+
+- Test that ~requests~ installed alright:
+  #+begin_src python :results silent
+    import requests
+  #+end_src
+  
+* Download a web page with ~requests.get~
+
+- The ~requests.get~ function takes a string of a URL to download. Check
+  out the ~type~ of the return value of this function.
+
+- Remember that to check the return value, you need to save the
+  function call itself in a variable and print it:
+  #+begin_src python
+    import requests
+
+    res = requests.get(
+  #+end_src
+
+  #+RESULTS:
+  : <class 'function'>
 
 * References
 
