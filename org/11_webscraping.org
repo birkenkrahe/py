@@ -350,7 +350,7 @@ This is what getting a map with or without Python has cost you:
         </div>
   #+end_example
 
-* IN PROGRESS Parsing HTML with the ~bs4~ module
+* Parsing HTML with the ~bs4~ module
 
 - 'Beautiful Soup' is a module for extracting information from an HTML
   page. The module's real name is ~bs4~ (version 4).
@@ -379,33 +379,64 @@ This is what getting a map with or without Python has cost you:
   </body></html>
   #+end_example
 
-- Practice! Create and download the file yourself:
-  1) Use ~webbrowser~ to render the file in your browser as ~james.html~
-  2) Use ~requests~ to get the file and save it as ~james.html~
+- Use ~webbrowser~ to render the file in your browser as ~example.html~:
+  #+begin_src python :results silent
+    import webbrowser
 
-* Solution:
+    # HTML content - whitespace is irrelevant
+    html_content = '  <!-- This is the example.html file. --> <html><head><title>The Website Title</title></head><body> <p>Download the book <strong>The American</strong> from <a href="https://www.gutenberg.org/files/177/177-0.txt">Project Gutenberg</a>.</p><p class="slogan">Read more 19th century fiction!</p> <p>By <span id="author">Henry James</span></p></body></html>'
 
-1) Use ~webbrowser~ to render the file in your browser as ~example.html~:
-   #+begin_src python :results silent
-     import webbrowser
+    # Write HTML content to a file
+    with open('example.html', 'w') as file:
+        file.write(html_content)
 
-     # HTML content - whitespace is irrelevant
-     html_content = '  <!-- This is the example.html file. --> <html><head><title>The Website Title</title></head><body> <p>Download the book <strong>The American</strong> from <a href="https://www.gutenberg.org/files/177/177-0.txt">Project Gutenberg</a>.</p><p class="slogan">Read more 19th century fiction!</p> <p>By <span id="author">Henry James</span></p></body></html>'
+    # Open the file in the web browser
+    webbrowser.open('example.html')
+  #+end_src
 
-     # Write HTML content to a file
-     with open('example.html', 'w') as file:
-         file.write(html_content)
+* Creating a Beautiful Soup Object from HTML
 
-     # Open the file in the web browser
-     webbrowser.open('example.html')
-   #+end_src
+- The ~bs4.BeautifulSoup~ function is called with a string containing
+  the HTML it will parse. It returns a ~BeautifulSoup~ object (on which
+  various methods will work).
 
-2) Use ~requests~ to get the file from here and save it as ~example.html~:
+- Example:
+  1) get a HTML page
+  2) raise an status exception check
+  3) pass response text to bs4.Beautiful Soup
+  4) show the type of the bs4 object
+  #+begin_src python
+    import requests, bs4
+
+    # download the main page from Project Gutenberg
+    res = requests.get('https://gutenberg.org')
+    try:
+        res.raise_for_status()
+    except Exception as exc:
+        print(f'There was a problem: {exc}')
+
+    # Pass the text attribute of the response to bs4.BeautifulSoup
+    gutenbergSoup = bs4.BeautifulSoup(res.text, 'html.parser')
+    print(type(gutenbergSoup))
+  #+end_src
+
+- Download ~example.html~ from here: [[https://bit.ly/beautifulBook][bit.ly/beautifulBook]] - in Colab,
+  you can upload it to the temporary directory.
+
+- Use ~requests~ to load the HTML file from your hard drive and pass a
+  ~File~ object instead of a ~requests.Response~ to ~bs4.BeautifulSoup~:
    #+begin_src python
-     url='file:///C:/Users/birkenkrahe/Documents/GitHub/py/org/example.html'
+     import requests, bs4
+     exampleFile = open('example.html')
+     exampleSoup = bs4.BeautifulSoup(exampleFile, 'html.parser')
+     print(type(exampleSoup))
    #+end_src
 
+   #+RESULTS:
+   : <class 'bs4.BeautifulSoup'>
 
+- The ~html.parser~ comes with Python (there is a faster parser in the
+  ~lxml~ module - [[https://lxml.de/parsing.html][see here]]).
 
 * TODO Example: opening all search results
 * TODO Example: downloading all xkcd cartoons
