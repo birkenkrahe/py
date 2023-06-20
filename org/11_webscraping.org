@@ -1,7 +1,7 @@
 #+TITLE:WEBSCRAPING WITH PYTHON
 #+AUTHOR: Marcus Birkenkrahe
 #+SUBTITLE: CSC 109 - Introduction to programming in Python - Summer 2023
-#+property: header-args:python :results output :exports both
+#+property: header-args:python :results output :exports both :noweb yes
 #+startup: overview hideblocks indent inlineimages
 * README
 
@@ -85,15 +85,15 @@
        # Open the web browser with the constructed URL
        webbrowser.open('https://www.google.com/maps/place/' + address)
 
-    # Write sys.argv to a file and print to the screen
-    filename = "address.txt"
-    with open(filename, "w") as file:
-        print("Contents of sys.argv:")
-        for arg in sys.argv:
-            # Write each argument to the file
-            file.write(arg + "\n")
-            # Print confirmation message
-            print(f"sys.argv has been written to {filename}")
+       # Write sys.argv to a file and print to the screen
+       filename = "address.txt"
+       with open(filename, "w") as file:
+       print("Contents of sys.argv:")
+       for arg in sys.argv:
+                  # Write each argument to the file
+                  file.write(arg + "\n")
+                  # Print confirmation message
+                  print(f"sys.argv has been written to {filename}")
   #+end_src
 
 - Download it, open a terminal and run it with an address like this:
@@ -129,7 +129,7 @@ This is what getting a map with or without Python has cost you:
   installed (not on Colab or DataCamp):
   #+begin_src sh
     pip install --user requests  # installs for current user only
-  #+end_src  
+  #+end_src
 
   #+RESULTS:
   | Requirement | already | satisfied: | requests                 | in | c:\users\birkenkrahe\appdata\local\programs\python\python311\lib\site-packages | (2.29.0) |           |             |
@@ -142,23 +142,274 @@ This is what getting a map with or without Python has cost you:
   #+begin_src python :results silent
     import requests
   #+end_src
-  
+
 * Download a web page with ~requests.get~
 
-- The ~requests.get~ function takes a string of a URL to download. Check
-  out the ~type~ of the return value of this function.
+- The ~requests.get~ function takes a string of a URL to download:
+  #+name: url
+  #+begin_src python
+    # a CSV file: gapminder dataset
+    url1 = 'https://raw.githubusercontent.com/birkenkrahe/py/main/data/gapminder.csv'
+    # a TXT file: Henry James, The American
+    url2 = 'https://www.gutenberg.org/files/177/177-0.txt'
+  #+end_src
+  #+name: res
+  #+begin_src python :results silent
+    <<url>>
+    import requests
+    res1 = requests.get(url1)
+    res2 = requests.get(url2)
+  #+end_src
 
-- Remember that to check the return value, you need to save the
-  function call itself in a variable and print it:
+- Check out the ~type~ of the return value of this function. Remember
+  that to check the return value, you need to save the function call
+  itself in a variable and print it:
+  #+begin_src python
+    <<res>>
+    print(type(res1))
+  #+end_src
+
+- Before reaching out to the file, let's check if the page exists -
+  ~requests.status.codes~ contains HTTP status codes:
+  #+begin_src python
+    <<res>>
+    print(f'Page exists: {res1.status_code == requests.codes.ok:}')
+  #+end_src
+
+- Look at the (standardized) list of status codes: you'll see 200 for
+  "OK", 404 for "not found" etc. ([[https://en.wikipedia.org/wiki/List_of_HTTP_status_codes][here is the complete list]]):
   #+begin_src python
     import requests
+    print(help(requests.status_codes))
+  #+end_src
 
-    res = requests.get(
+- Print the number of characters of the targeted web page, which is
+  now stored as one long string:
+  #+begin_src python
+    <<res>>
+    print(len(res1.text))
+    print(len(res2.text))
   #+end_src
 
   #+RESULTS:
-  : <class 'function'>
+  : 7862
+  : 794196
 
+- Strings are sequence data (indexed), so we can look at the top of
+  the text files like this:
+  #+begin_src python
+    <<res>>
+    print(res1.text[:250])
+    print(---------------)
+    print(res2.text[:250])
+  #+end_src
+
+- Microsoft Windows (inside Emacs) renders the text file (not the CSV)
+  with additional control characters. On the Python console, and in
+  Colab, it looks worse:
+  #+attr_latex: :width 400px
+  [[../img/american.png]]
+
+- Connection issues are rampant. Another way to check if the download
+  succeeded is to call ~raise_for_status~ on the ~response~ object: if
+  there was an error, then an exception will be raised.
+
+- Raise a 404 exception with a non-existent page (incomplete name):
+  #+name: bad_url
+  #+begin_src python :results silent
+    import requests
+    bad_url = 'https://www.gutenberg.org/files/177/177'
+    res = requests.get(bad_url)
+    res.raise_for_status()
+  #+end_src
+
+- You can wrap the ~raise_for_status()~ line with ~try...except~ to handle
+  the exception:
+  #+begin_src python :results silent
+    import requests
+    bad_url = 'https://www.gutenberg.org/files/177/177'
+    res = requests.get(bad_url)
+    try:
+        res.raise_for_status()
+    except Exception as exc:
+        print(f'There was a problem: {exc}')
+  #+end_src
+
+- Always call ~raise_for_status()~ after calling ~requests.get()~ before
+  continuing.
+
+* Save downloaded files
+
+- To save the file from the ~response~ object in Python to a file, use
+  the standard library functions ~open~ and ~write~:
+  1) ~open~ the file in ~write binary~ mode (parameter ~'wb'~) to maintain
+     the Unicode encoding of the text.
+  2) ~write~ the web page to a file using ~requests.Response.iter_content~:
+  #+begin_src python :results silent
+    import requests
+    url2 = 'https://www.gutenberg.org/files/177/177-0.txt'
+    res = requests.get(url2)
+    try:
+        res.raise_for_status()
+    except Exception as exc:
+        print(f'There was a problem: {exc}')
+
+    # open file in write binary mode
+    jamesFile = open('TheAmerican.txt','wb')
+
+    # write the web page to file
+    for chunk in res.iter_content(100000):
+        jamesFile.write(chunk, 'wb')
+        bytes_written = jamesFile.write(chunk)
+        print(f'Written {bytes_written} bytes')
+
+    # close the output stream to file
+    jamesFile.close()
+  #+end_src
+
+- The ~iter_content~ method returns chunks of the content on each
+  iteration. The chunks are of the ~bytes~ data type and the argument
+  specifies how many bytes a chunk can contain (100kB). This prevents
+  loading the entire file into memory at once. The ~close()~ function
+  flushes all data to disk and frees resources.
+
+- The ~requests~ module contains many more methods for users:
+  #+begin_src python
+    import requests
+    print(len(dir(requests)))
+    print(dir(requests))
+  #+end_src
+
+* HTML
+
+- HTML (HyperText Markup Language) files are plaintext ~.html~ files
+
+- Though tempting to the initiated, you cannot parse HTML using
+  regular expressions ([[https://i.imgur.com/gOPS2.png][see here]]) (which is why I left regex out).
+
+- Text in an HTML file is surrounded by /tags/, which are enclosed in
+  angle brackets:
+  #+begin_example
+    <strong>Hello</strong>, world!
+  #+end_example
+
+- You can open this code from within an HTML file with the ~webbrowser~
+  module - run this in IDLE as a file ~html.py~:
+  #+begin_src python :results silent
+    import webbrowser
+
+    # HTML content: whitespace is irrelevant here
+    html_content = '<strong>Hello</strong>, world!'
+
+    # Write HTML content to a file
+    with open('hello.html', 'w') as file:
+        file.write(html_content)
+
+    # Open the file in the web browser
+    webbrowser.open('hello.html')
+  #+end_src
+
+- Many tags have attributes within the angle brackets. For example,
+  open this page to an article on ~aeaweb.org~,
+  [[https://www.aeaweb.org/articles?id=10.1257/jel.20201482][aeaweb.org/articles?id=10.1257/jel.20201482]], right-click and select
+  ~view page source~ (CTRL + u): after some HTML comments (~<!-- ... -->~)
+  follows the ~<html>~ tag, which brackets the entire page: this tag has
+  a language attribute ~lang='en'~.
+
+- But you can see that most of the meta information about this paper
+  is contained within a page of ~<meta>~ tags with the attribute ~name~.
+
+- To see even more hidden information, you can right click and select
+  ~Inspect~ (or open the ~More tools > Developer tools~ browser menu).
+
+* Viewing HTML/CSS source: weather data
+
+- Why would you look at the developer tools?
+
+- Let's say you want to pull weather forecast data from
+  https://weather.gov/.
+
+- Enter the Batesville ZIP code ~72501~ in the search field at the top.
+  #+attr_latex: :width 400px
+  [[../img/weather1.png]]
+
+- Open the ~Inspect~ panel and after some searching, you'll find that
+  the current weather conditions for example are included in one ~<div>~
+  block:
+  #+attr_latex: :width 400px
+  [[../img/weather.png]]
+
+- You can copy any element with right-click and selecting ~Copy > Copy
+  Element~, and later use this information for scraping:
+  #+begin_example
+  <div id="current_conditions-summary" class="pull-left">
+            ...
+            <p class="myforecast-current">Fair</p>
+            <p class="myforecast-current-lrg">78°F</p>
+            <p class="myforecast-current-sm">26°C</p>
+        </div>
+  #+end_example
+
+* IN PROGRESS Parsing HTML with the ~bs4~ module
+
+- 'Beautiful Soup' is a module for extracting information from an HTML
+  page. The module's real name is ~bs4~ (version 4).
+
+- To install (if not in Colab or DataCamp, or on Python 3.11 which
+  comes with Beautiful Soup):
+  #+begin_example sh
+    pip install --user beautifulsoup4
+  #+end_example
+
+- Import the module (there should be no complaints):
+  #+begin_src python :results silent
+    import bs4
+  #+end_src
+
+- For our example, we'll use ~bs4~ to parse (i.e. analyze + identify the
+  parts of) a simple HTML file on the hard drive:
+  #+begin_example
+  <!-- This is the example.html file. -->
+  <html><head><title>The Website Title</title></head>
+  <body>
+    <p>Download the book <strong>The American</strong> from
+    <a href="https://www.gutenberg.org/files/177/177-0.txt">Project Gutenberg</a>.</p>
+    <p class="slogan">Read more 19th century fiction!</p>
+    <p>By <span id="author">Henry James</span></p>
+  </body></html>
+  #+end_example
+
+- Practice! Create and download the file yourself:
+  1) Use ~webbrowser~ to render the file in your browser as ~james.html~
+  2) Use ~requests~ to get the file and save it as ~james.html~
+
+* Solution:
+
+1) Use ~webbrowser~ to render the file in your browser as ~example.html~:
+   #+begin_src python :results silent
+     import webbrowser
+
+     # HTML content - whitespace is irrelevant
+     html_content = '  <!-- This is the example.html file. --> <html><head><title>The Website Title</title></head><body> <p>Download the book <strong>The American</strong> from <a href="https://www.gutenberg.org/files/177/177-0.txt">Project Gutenberg</a>.</p><p class="slogan">Read more 19th century fiction!</p> <p>By <span id="author">Henry James</span></p></body></html>'
+
+     # Write HTML content to a file
+     with open('example.html', 'w') as file:
+         file.write(html_content)
+
+     # Open the file in the web browser
+     webbrowser.open('example.html')
+   #+end_src
+
+2) Use ~requests~ to get the file from here and save it as ~example.html~:
+   #+begin_src python
+     url='file:///C:/Users/birkenkrahe/Documents/GitHub/py/org/example.html'
+   #+end_src
+
+
+
+* TODO Example: opening all search results
+* TODO Example: downloading all xkcd cartoons
+* TODO Controlling the browser with ~selenium~
 * References
 
 - Sweigart, A. (2019). Automate the Boring Stuff with
