@@ -11,7 +11,13 @@ if len(sys.argv) > 1:
     # Open the web browser with the constructed URL
     webbrowser.open('https://www.google.com/maps/place/' + address)
 
-# Print contents of sys.argv to the screen
-print("Contents of the `sys.argv` list:")
-for arg in sys.argv:
-    print(arg, end=' ')
+# Write sys.argv to a file and print to the screen
+filename = "address.txt"
+with open(filename, "w") as file:
+    print("Contents of sys.argv:")
+    for arg in sys.argv:
+        # Write each argument to the file
+        file.write(arg + "\n")
+
+# Print confirmation message
+print(f"sys.argv has been written to {filename}")
