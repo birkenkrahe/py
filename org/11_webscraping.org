@@ -432,11 +432,67 @@ This is what getting a map with or without Python has cost you:
      print(type(exampleSoup))
    #+end_src
 
-   #+RESULTS:
-   : <class 'bs4.BeautifulSoup'>
-
 - The ~html.parser~ comes with Python (there is a faster parser in the
   ~lxml~ module - [[https://lxml.de/parsing.html][see here]]).
+
+* Finding an element with ~select~
+#+attr_latex: :width 400px
+[[../img/css.png]]
+
+- The ~select~ function uses CSS selectors to match elements, like
+  classes, IDs etc. It returns a list of elements matching the
+  selector:
+  #+begin_src python
+    from bs4 import BeautifulSoup
+
+    html = """
+    <div class="container">
+        <p class="text">Hello</p>
+        <p id="special">World</p>
+    </div>
+    <p class="text">Outside</p>
+    """
+    soup = BeautifulSoup(html, 'html.parser')
+
+    elements = soup.select('.container .text') # 'text' in 'container'
+    for element in elements:
+        print(f'container text: {element.text}')  
+
+    elements = soup.select('.text') # elements named 'text'
+    for element in elements:
+        print(f"'text' element: {element.text}")
+
+    elements = soup.select('div')  # elements named 'div'
+    for element in elements:
+        print(f'div elements: {element.text}')
+
+    elements = soup.select('p')  # elements named 'p'
+    for element in elements:
+        print(f'p elements {element.text}')
+
+    elements = soup.select('p[id]')  # elements named 'p' w/id' value
+    for element in elements:
+        print(f"p elements with 'id' value: {element.text}")
+  #+end_src
+
+  #+RESULTS:
+  #+begin_example
+  container text: Hello
+  'text' element: Hello
+  'text' element: Outside
+  div elements: 
+  Hello
+  World
+
+  p elements Hello
+  p elements World
+  p elements Outside
+  p elements with 'id' value: World
+  #+end_example
+
+* TODO Tokenize text with ~nltk~
+
+Source: https://www.datacamp.com/tutorial/web-scraping-python-nlp
 
 * TODO Example: opening all search results
 * TODO Example: downloading all xkcd cartoons
