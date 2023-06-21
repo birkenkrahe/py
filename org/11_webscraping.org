@@ -676,7 +676,7 @@ This is what getting a map with or without Python has cost you:
 - Python has a built-in ~webbrowser~.
 - You can open URLs with the ~webbrowser.open~ function.
 - You can pass command line arguments as a ~sys.argv~ string
-- The function ~str.join~ allows you to create suitable strings
+- The function ~str.join~ concatenates strings and inserts ~str~
 
 ** Downloading web pages and files
 
@@ -687,6 +687,16 @@ This is what getting a map with or without Python has cost you:
   the download failed.
 - You can save a downloaded file to your hard drive with calls to the
   ~iter_content()~ method.
+
+** HTML and CSS
+
+- HTML files are text files that contain HTML and CSS elements and
+  JavaScript (or similar) for dynamic layout creation
+- For ~Response.select~ from ~requests~, you need to identify CSS
+  selectors like classes, attributes and attribute values
+- You can inspect the source code of a web page and copy code elements
+  or CSS selectors corresponding to the page elements that interest
+  you.
 
 ** Parsing web pages
 
@@ -700,6 +710,7 @@ This is what getting a map with or without Python has cost you:
 - You can get a CSS selector string from the browser's developer tools
   by right-clicking the element and selecting ~Copy CSS Path~.
 - The ~select()~ method will return a list of matching Element objects.
+
 
 * Project: opening all search results
 
@@ -834,7 +845,7 @@ This is what getting a map with or without Python has cost you:
   not done that so ~requests.get~ downloads the page without results.
   #+end_quote
 
-** Open web browsers for each result
+* Open web browsers for each result
 
 - Finally, we open web browsers for each result:
   1) loop over (at most 5 of) the list ~linkElements~.

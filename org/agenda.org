@@ -2339,7 +2339,7 @@ practice exercises on DataCamp and let myself be inspired.)
 - Using nested lists to simulate a grid
 - Wrapping around a grid with floored division
 
-* TODO Day 21: Web scraping (~request~, ~bs4~, ~selenium~)
+* DONE Day 21: Web scraping I (~webbrowswer~, ~requests~)
 #+attr_latex: :width 400px
 #+caption: Llyfrgell Genedlaethol Cymru / Redman's hairdressers (1957)
 [[../img/hairdressers.jpg]]
@@ -2350,8 +2350,35 @@ practice exercises on DataCamp and let myself be inspired.)
 [[../img/summary.jpg]]
 
 - [[https://drive.google.com/drive/folders/1IEkIHzieBJ_tS5GPigsCxRZcioanlPof?usp=sharing][See also the whiteboard photos from the class session in GDrive]].
+  
+*** Webbrowser
 
-* TODO Day 22: Spam filter (~pandas~, ~string~, ~nltk~)
+- Python has a built-in ~webbrowser~.
+- You can open URLs with the ~webbrowser.open~ function.
+- You can pass command line arguments as a ~sys.argv~ string
+- The function ~str.join~ concatenates strings and inserts ~str~
+
+*** Downloading web pages and files
+
+- The Requests module is a third-party module for downloading web
+  pages and files.
+- ~requests.get()~ returns a ~Response~ object.
+- The ~raise_for_status()~ Response method will raise an exception if
+  the download failed.
+- You can save a downloaded file to your hard drive with calls to the
+  ~iter_content()~ method.
+
+*** HTML and CSS
+
+- HTML files are text files that contain HTML and CSS elements and
+  JavaScript (or similar) for dynamic layout creation
+- For ~Response.select~ from ~requests~, you need to identify CSS
+  selectors like classes, attributes and attribute values
+- You can inspect the source code of a web page and copy code elements
+  or CSS selectors corresponding to the page elements that interest
+  you.
+
+* TODO Day 22: Web scraping II (~bs4~, ~selenium~)
 #+attr_latex: :width 400px
 #+caption: Group, Flickr.com
 [[../img/group1.jpg]]
