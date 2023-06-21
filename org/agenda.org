@@ -2383,6 +2383,26 @@ practice exercises on DataCamp and let myself be inspired.)
 #+caption: Group, Flickr.com
 [[../img/group1.jpg]]
 
+[[https://lyon.instructure.com/courses/1700/external_tools/163][Course evaluation link!]] (anonymous, by Sunday). I'm curious:
+
+1) What did you think of the *DataCamp assignments* - more of it? Less?
+   Should they be used more often in class? (I used them as an
+   additional dimension instead.)
+2) Was the number and level of *programming assignments* sufficient?
+   Would you have liked more ? Different type (more difficult?
+   Easier?)
+3) What did you think about having *projects* in an introductory course
+   (I've not done this before) - too much independence, too little
+   guidance?
+4) Remember what you said in the entrance survey: were your *hopes* for
+   this course met with what was offered? (Or just your fears?)
+5) Any comment on the *quizzes*? Too hard, too easy, too obscurely
+   worded, would have wanted more/fewer?
+6) Anything else that would help me improve the course, especially for
+   *high school students* (they'll get this next, in fall)?
+
+Thank you so much!
+
 * TODO Day 23: 3 project presentations
 #+attr_latex: :width 400px
 #+caption: Library of Virginia, family portrait.
