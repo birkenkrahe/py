@@ -309,7 +309,7 @@ This is what getting a map with or without Python has cost you:
   3) three ~p~ elements (new paragraph)
   4) one ~id~ attribute with the value ~special~ inside a ~p~ element
      (attributes can be linked to like ~#special~ or ~?id=special~)
-
+     
 - You can open this code from within an HTML file with the ~webbrowser~
   module - run this in IDLE as a file ~html.py~:
   #+begin_src python :results silent
@@ -339,7 +339,7 @@ This is what getting a map with or without Python has cost you:
 - To see even more hidden information, you can right click and select
   ~Inspect~ (or open the ~More tools > Developer tools~ browser menu).
 
-* Viewing HTML/CSS source: weather data
+* NEXT Viewing HTML/CSS source: weather data
 
 - Why would you look at the developer tools?
 
@@ -356,6 +356,11 @@ This is what getting a map with or without Python has cost you:
   #+attr_latex: :width 400px
   [[../img/weather.png]]
 
+- You can also right click and ~inspect~ any element and the inspector
+  will jump to the respective element:
+  #+attr_latex: :width 400px
+  [[../img/weather1.png]]
+  
 - You can copy any element with right-click and selecting ~Copy > Copy
   Element~, and later use this information for scraping:
   #+begin_example
@@ -366,6 +371,10 @@ This is what getting a map with or without Python has cost you:
             <p class="myforecast-current-sm">26°C</p>
         </div>
   #+end_example
+
+- You can also ~Copy selector~ directly, which will usually result in a
+  much longer string which you may have to analyze to get the element
+  and attribute or attribute value that you really want.
 
 * Parsing HTML with the ~bs4~ module
 
@@ -692,11 +701,7 @@ This is what getting a map with or without Python has cost you:
   by right-clicking the element and selecting ~Copy CSS Path~.
 - The ~select()~ method will return a list of matching Element objects.
 
-* IN PROGRESS Project: getting Amazon product prices
-
-- 
-
-* IN PROGRESS Project: opening all search results
+* Project: opening all search results
 
 - This script accepts a search term on the command line and opens a
   browser with the top search results in new tabs.
@@ -705,17 +710,23 @@ This is what getting a map with or without Python has cost you:
   https://pypi.org but you can adapt it to any website.
 
 - Program flow:
+  #+attr_latex: :width 400px
+  #+caption: BPMN model of the program flow for search & open
+  [[../img/search_bpmn.png]]
   1) Get search keywords from command line arguments.
   2) Retrieves the search results page.
   3) Opens a browser tab for each result.
 
 - Python script requirements:
+  #+attr_latex: :width 400px
+  #+caption: BPMN model of the program flow for searchpypi.py
+  [[../img/search_full_bpmn.png]]
   1) Read command line arguments from ~sys.argv~.
   2) Fetch the result page with the ~requests~ module.
   3) Find the links to each search result with ~bs4~.
   4) Call ~webbrowser.open~ to open the web browser.
 
-** Get cmd line arguments and request search page
+* Get cmd line arguments and request search page
 #+attr_latex: :width 400px
 #+caption: search string for a Google search at pypi.org for 'webscraping'
 [[../img/11_pypi_search.png]] [[../img/11_google_search.png]]
@@ -737,9 +748,7 @@ This is what getting a map with or without Python has cost you:
 
     # download search result page
     print('Searching...')
-    res = requests.get('https://google.com/search?q='
-                       'https://pypi.org/?q=' +
-                       ' '.join(sys.argv[1:]))
+    res = requests.get('https://pypi.org/?q='+' '.join(sys.argv[1:]))
     res.raise_for_status()
   #+end_src
 
@@ -753,16 +762,26 @@ This is what getting a map with or without Python has cost you:
     print(type(res.text))
   #+end_src
 
-- In ~' '.join('ab')~ works: ~' '~ is inserted between 'a' and 'b':
+- In ~'+'.join('ab')~, + is inserted between 'a' and 'b':
   #+begin_src python
-    print('URL1' 'URL2' + ' '.join('webscraping'))
+    print('http://pypi.org/search/?q=' + '+'.join('webscraping'))
   #+end_src
 
 - When the program is launched, the user specifies the search terms as
   command line arguments. These arguments will be stored as a list in
   ~sys.argv~.
 
-** Find all the results
+- Why do we start with the index 1 in ~sys.argv~? Because ~sys.argv[0]~
+  stores the name of the list: when you enter
+  #+begin_example sh
+    python myscript.py arg1  arg2 arg3~
+  #+end_example
+  the list will be:
+  #+begin_example python
+    ['myscript.py', 'arg1', 'arg2', 'arg3']
+  #+end_example
+
+* Find all the results
 
 - To apply ~select~ from ~Beautiful Soup~, you need to identify the right
   selector. But using the ~<a>~ tag element returns all links and not
@@ -771,8 +790,7 @@ This is what getting a map with or without Python has cost you:
 - You need to open the page inspector and find the pattern that all
   search results share: it is the CSS class ~.package-snippet~ in the
   ~<main id="content">~ block. The link itself is the value of the
-  ~'href'~ attribute. It helps that the inspector highlights the search
-  result in the sidebar for every line of HTML/CSS code:
+  ~'href'~ attribute:
   #+attr_latex: :width 400px
   [[../img/11_pypi_bs4.png]]
 
@@ -780,16 +798,18 @@ This is what getting a map with or without Python has cost you:
   does. You don't need to know how to write pages like these. You're
   only going to use it as a marker for the ~<a>~ element.
 
-- Add the code to the earlier block:
+- Add this code to the earlier block:
   #+name: soup
-  #+begin_src python
+  #+begin_src python :results silent
     <<request>>
 
-    # Retrieve top search result links
+    # Parse the search page HTML code from the Response object
     soup = bs4.BeautifulSoup(res.text, 'html.parser')
+    print(soup)
 
-    # Select link elements with the CSS clas 'package-snippet'
+    # Select link elements with the CSS class 'package-snippet'
     linkElements = soup.select('.package-snippet')
+    print(linkElements)
   #+end_src
 
 - If the PyPi website changes its layout, you may need to update the
@@ -835,7 +855,7 @@ This is what getting a map with or without Python has cost you:
 
 - The ~min~ function takes care of the possibility that our search
   resulted in fewer than 5 links: take 5 or whatever is smaller.
-
+  
 - The ~href~ attribute value does not have the full URL (you can only
   see this after looking at the inspector), which is why we add it.
 
@@ -851,11 +871,11 @@ This is what getting a map with or without Python has cost you:
   #+attr_latex: :width 400px
   [[../img/search_output.png]]
 
-- A search without search term and with a nonsense search term:
-  #+attr_latex: :width 400px
-  [[../img/search_output1.png]]
+- This Colab notebook contains the minimal code (no exception
+  handling): [[https://bit.ly/searchpypi][bit.ly/searchpypi]].
 
-- Here is the full program with exception handling for export:
+- Here is the full program with exception handling for export (you can
+  download it from GitHub in the ~py/src~ repository):
   #+begin_src python :tangle ../src/searchpypi.py
     #! python3
     # searchpypi.py - opens several search results
@@ -901,14 +921,20 @@ This is what getting a map with or without Python has cost you:
                 print("Error processing result", i, ":", str(e))
   #+end_src
 
+- A search without search term and with a nonsense search term is
+  covered by this code:
+  #+attr_latex: :width 400px
+  [[../img/search_output1.png]]
+
+* IN PROGRESS Project: getting Amazon product prices
 * TODO Extended example: downloading all xkcd cartoons
 * TODO Controlling the browser with ~selenium~
 
+* TODO Working with JSON APIs
 * TODO Tokenize text with ~nltk~
 
 Source: https://www.datacamp.com/tutorial/web-scraping-python-nlp
 
-* TODO Working with APIs
 * References
 
 - Sweigart, A. (2019). Automate the Boring Stuff with
