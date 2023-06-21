@@ -80,7 +80,7 @@
 
     # If there is at least one command line argument
     if len(sys.argv) > 1:
-       address = ' '.join(sys.argv[1:])
+       address = ' '.join(sys.argv[1:]) # ' ' is inserted between args
 
        # Open the web browser with the constructed URL
        webbrowser.open('https://www.google.com/maps/place/' + address)
@@ -442,12 +442,12 @@ This is what getting a map with or without Python has cost you:
 
 - Use ~requests~ to load the HTML file from your hard drive and pass a
   ~File~ object instead of a ~requests.Response~ to ~bs4.BeautifulSoup~:
-   #+begin_src python
-     import requests, bs4
-     exampleFile = open('example.html')
-     exampleSoup = bs4.BeautifulSoup(exampleFile, 'html.parser')
-     print(type(exampleSoup))
-   #+end_src
+  #+begin_src python
+    import requests, bs4
+    exampleFile = open('example.html')
+    exampleSoup = bs4.BeautifulSoup(exampleFile, 'html.parser')
+    print(type(exampleSoup))
+  #+end_src
 
 - The ~html.parser~ comes with Python (there is a faster parser in the
   ~lxml~ module - [[https://lxml.de/parsing.html][see here]]).
@@ -510,12 +510,12 @@ This is what getting a map with or without Python has cost you:
 
     elements = soup.select('.container .text') # 'text' in '.container' class
     for element in elements:
-        print(f'container text: {element.text}')  
+        print(f'container text: {element.text}')
 
     elements = soup.select('.text') # elements in the '.text' class
     for element in elements:
         print(f"'.text' element: {element.text}")
-        
+
     elements = soup.select('div')  # elements named 'div'
     for element in elements:
         print(f'div elements: {element.text}')
@@ -588,7 +588,7 @@ This is what getting a map with or without Python has cost you:
         </body>
   </html>
   #+end_example
-  
+
 - Pull the element with ~id="author"~ out of the example HTML:
   #+begin_src python
     import bs4
@@ -596,7 +596,7 @@ This is what getting a map with or without Python has cost you:
     # open the HTML file
     exampleFile = open('example.html')
 
-    # parse HTML from file 
+    # parse HTML from file
     exampleSoup = bs4.BeautifulSoup(exampleFile.read(), 'html.parser')
 
     # select all 'id' attributes with the value 'author':
@@ -605,7 +605,7 @@ This is what getting a map with or without Python has cost you:
     print(isinstance(elements,list))
     print(elements)     # Output: list
     print(len(elements))  # Output: 1
-    print(type(elements[0]))  # Output: bs4.element.Tag 
+    print(type(elements[0]))  # Output: bs4.element.Tag
 
     # the tag object as a string
     print(str(elements[0]))
@@ -635,7 +635,7 @@ This is what getting a map with or without Python has cost you:
     for i in range(3):
         print(pElements[i].getText())
         print(str(pElements[i]))
-  #+end_src  
+  #+end_src
 
 * Getting data from an element's attributes
 
@@ -648,7 +648,7 @@ This is what getting a map with or without Python has cost you:
     # open the HTML file
     exampleFile = open('example.html')
 
-    # parse HTML from file 
+    # parse HTML from file
     exampleSoup = bs4.BeautifulSoup(exampleFile.read(), 'html.parser')
 
     # select the first 'span' element
@@ -660,13 +660,247 @@ This is what getting a map with or without Python has cost you:
     print(spanElement.attrs)
   #+end_src
 
-  #+RESULTS:
-  : <span id="author">Henry James</span>
-  : author
-  : True
-  : {'id': 'author'}
+* Summary
 
-* TODO Extended example: opening all search results
+** Webbrowser
+
+- Python has a built-in ~webbrowser~.
+- You can open URLs with the ~webbrowser.open~ function.
+- You can pass command line arguments as a ~sys.argv~ string
+- The function ~str.join~ allows you to create suitable strings
+
+** Downloading web pages and files
+
+- The Requests module is a third-party module for downloading web
+  pages and files.
+- ~requests.get()~ returns a ~Response~ object.
+- The ~raise_for_status()~ Response method will raise an exception if
+  the download failed.
+- You can save a downloaded file to your hard drive with calls to the
+  ~iter_content()~ method.
+
+** Parsing web pages
+
+- Web pages are plaintext files formatted as HTML.
+- HTML can be parsed with the BeautifulSoup module.
+- BeautifulSoup is imported with the name ~bs4~.
+- Pass the string with the HTML to the ~bs4.BeautifulSoup()~ function to
+  get a ~Soup~ object.
+- The ~Soup~ object has a ~select()~ method that can be passed a string of
+  the CSS selector for an HTML tag.
+- You can get a CSS selector string from the browser's developer tools
+  by right-clicking the element and selecting ~Copy CSS Path~.
+- The ~select()~ method will return a list of matching Element objects.
+
+* IN PROGRESS Project: getting Amazon product prices
+
+- 
+
+* IN PROGRESS Project: opening all search results
+
+- This script accepts a search term on the command line and opens a
+  browser with the top search results in new tabs.
+
+- The script uses the URL for the Python Package Index at
+  https://pypi.org but you can adapt it to any website.
+
+- Program flow:
+  1) Get search keywords from command line arguments.
+  2) Retrieves the search results page.
+  3) Opens a browser tab for each result.
+
+- Python script requirements:
+  1) Read command line arguments from ~sys.argv~.
+  2) Fetch the result page with the ~requests~ module.
+  3) Find the links to each search result with ~bs4~.
+  4) Call ~webbrowser.open~ to open the web browser.
+
+** Get cmd line arguments and request search page
+#+attr_latex: :width 400px
+#+caption: search string for a Google search at pypi.org for 'webscraping'
+[[../img/11_pypi_search.png]] [[../img/11_google_search.png]]
+
+- The result page of a search at https://pypi.org has the URL format:
+#+begin_example
+  https://pypi.org/search/?q=[search_term]
+#+end_example
+
+- We use the trick from ~mapit.py~ to attach the command line argument
+  to the argument for ~requests.get~ with ~str.join~ and ~sys.argv~ :
+  #+name: request
+  #+begin_src python :results silent :tangle ../src/searchpypi.py
+    #! python3
+    # searchpypi.py - opens several search results
+
+    # import required modules
+    import requests, sys, webbrowser, bs4
+
+    # download search result page
+    print('Searching...')
+    res = requests.get('https://google.com/search?q='
+                       'https://pypi.org/?q=' +
+                       ' '.join(sys.argv[1:]))
+    res.raise_for_status()
+  #+end_src
+
+- Remember that ~res~ holds the return value from ~requests.get~, while
+  ~res.text~ is a string attribute holding the HTML text of that page.
+  #+begin_src python
+    <<request>>
+    print(res)  # return value from requests.get
+    print(type(res))
+    print(res.text)
+    print(type(res.text))
+  #+end_src
+
+- In ~' '.join('ab')~ works: ~' '~ is inserted between 'a' and 'b':
+  #+begin_src python
+    print('URL1' 'URL2' + ' '.join('webscraping'))
+  #+end_src
+
+- When the program is launched, the user specifies the search terms as
+  command line arguments. These arguments will be stored as a list in
+  ~sys.argv~.
+
+** Find all the results
+
+- To apply ~select~ from ~Beautiful Soup~, you need to identify the right
+  selector. But using the ~<a>~ tag element returns all links and not
+  just the search links.
+
+- You need to open the page inspector and find the pattern that all
+  search results share: it is the CSS class ~.package-snippet~ in the
+  ~<main id="content">~ block. The link itself is the value of the
+  ~'href'~ attribute. It helps that the inspector highlights the search
+  result in the sidebar for every line of HTML/CSS code:
+  #+attr_latex: :width 400px
+  [[../img/11_pypi_bs4.png]]
+
+- Nice: you don't have to know what this CSS class is or what it
+  does. You don't need to know how to write pages like these. You're
+  only going to use it as a marker for the ~<a>~ element.
+
+- Add the code to the earlier block:
+  #+name: soup
+  #+begin_src python
+    <<request>>
+
+    # Retrieve top search result links
+    soup = bs4.BeautifulSoup(res.text, 'html.parser')
+
+    # Select link elements with the CSS clas 'package-snippet'
+    linkElements = soup.select('.package-snippet')
+  #+end_src
+
+- If the PyPi website changes its layout, you may need to update the
+  script with the appropriate CSS selector string for ~soup.select~.
+
+- What about the content of ~linkElements~ and the element attributes?
+  #+begin_src python
+    <<soup>>
+    print(str(linkElements))
+    print(linkElements.attrs)
+  #+end_src
+
+  #+RESULTS:
+  : Searching...
+  : []
+
+- The last code block returns an empty list and raises an
+  ~AttributeError~ - can you think why?
+  #+begin_quote
+  Our search depends on passing a search term as a command line
+  argument to ~requests~ - but there's no default search term. We have
+  not done that so ~requests.get~ downloads the page without results.
+  #+end_quote
+
+** Open web browsers for each result
+
+- Finally, we open web browsers for each result:
+  1) loop over (at most 5 of) the list ~linkElements~.
+  2) build a URL string ~urlToOpen~ from the value of the ~href~ attribute
+     of each link element.
+  3) feed the URL ~urlToOpen~ to ~webbrowser.open~.
+  #+name: browser
+  #+begin_src python
+    <<soup>>
+    # We want at most 5 search results
+    numOpen = min(5, len(linkElements))
+
+    for i in range(numOpen):
+        urlToOpen = 'https://pypi.org' + linkElements[i].get('href')
+        print('Opening', urlToOpen)
+        webbrowser.open(urlToOpen)
+  #+end_src
+
+- The ~min~ function takes care of the possibility that our search
+  resulted in fewer than 5 links: take 5 or whatever is smaller.
+
+- The ~href~ attribute value does not have the full URL (you can only
+  see this after looking at the inspector), which is why we add it.
+
+- To run the program download ~searchpypi.py~ from GitHub's ~py/src/~ repo
+  and run it on a command line like a shell script or with ~python~:
+  #+begin_example
+    $ ./searchpypi webscraping  # run as script using the shebang line
+    $ python searchpypi.py webscraping   # run as python program
+  #+end_example
+
+- Sample output for command ~python searchpypi.py webscraping~
+  addition to 5 windows being opened):
+  #+attr_latex: :width 400px
+  [[../img/search_output.png]]
+
+- A search without search term and with a nonsense search term:
+  #+attr_latex: :width 400px
+  [[../img/search_output1.png]]
+
+- Here is the full program with exception handling for export:
+  #+begin_src python :tangle ../src/searchpypi.py
+    #! python3
+    # searchpypi.py - opens several search results
+
+    # import required modules
+    import requests, sys, webbrowser, bs4
+
+    # Check if argument is provided
+    if len(sys.argv) < 2:
+        print("Please provide a search term")
+        sys.exit()
+
+    # download search result page
+    print('Searching...')
+    res = requests.get('https://pypi.org/search/?q=' + '+'.join(sys.argv[1:]), headers={"User-Agent": "Mozilla/5.0"})
+    res.raise_for_status()
+
+    # Print the response text for debugging
+    #print(res.text)
+
+    # Retrieve top search result links
+    soup = bs4.BeautifulSoup(res.text, 'html.parser')
+
+    # Replace with the correct CSS selector for search results on PyPI
+    linkElements = soup.select('.package-snippet')  # This might need to be updated
+
+    # We want at most 5 search results
+    numOpen = min(5, len(linkElements))
+
+    if numOpen == 0:
+        print("No results found")
+    else:
+        for i in range(numOpen):
+            try:
+                href = linkElements[i].get('href')
+                if href:
+                    urlToOpen = 'https://pypi.org' + href
+                    print('Opening', urlToOpen)
+                    webbrowser.open(urlToOpen)
+                else:
+                    print("No href found for result", i)
+            except AttributeError as e:
+                print("Error processing result", i, ":", str(e))
+  #+end_src
+
 * TODO Extended example: downloading all xkcd cartoons
 * TODO Controlling the browser with ~selenium~
 
