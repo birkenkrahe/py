@@ -379,7 +379,7 @@ This is what getting a map with or without Python has cost you:
 * Parsing HTML with the ~bs4~ module
 
 - 'Beautiful Soup' is a module for extracting information from an HTML
-  page. The module's real name is ~bs4~ (version 4).
+  page. The module's real name is ~bs4~ (version 4). 
 
 - To install (if not in Colab or DataCamp, or on Python 3.11 which
   comes with Beautiful Soup):
@@ -393,7 +393,8 @@ This is what getting a map with or without Python has cost you:
   #+end_src
 
 - For our example, we'll use ~bs4~ to parse (i.e. analyze + identify the
-  parts of) a simple HTML file on the hard drive:
+  parts of) a simple HTML file on the hard drive. Get this file from
+  GitHub: [[https://bit.ly/beautifulBook][bit.ly/beautifulBook]].
   #+begin_example
   <!-- This is the example.html file. -->
   <html><head><title>The Website Title</title></head>
@@ -405,8 +406,10 @@ This is what getting a map with or without Python has cost you:
   </body></html>
   #+end_example
 
-- Use ~webbrowser~ to render the file in your browser as ~example.html~:
-  #+begin_src python :results silent
+- Use ~webbrowser~ to render the file in your browser as ~example.html~
+  (you'll have to do this on a Python console other than Colab,
+  e.g. IDLE):
+  #+begin_src python
     import webbrowser
 
     # HTML content - whitespace is irrelevant
@@ -416,17 +419,31 @@ This is what getting a map with or without Python has cost you:
     with open('example.html', 'w') as file:
         file.write(html_content)
 
+    # check if the file is there
+    import os
+    print(os.path.isfile('example.html'))
+
+    # check where you are - get current working directory
+    print(os.getcwd())
+
     # Open the file in the web browser
     webbrowser.open('example.html')
   #+end_src
 
+  #+RESULTS:
+  : True
+  : c:\Users\birkenkrahe\Documents\GitHub\py\org
+
+- Enter this in IDLE on the interactive shell/console and see if it
+  works.
+  
 * Creating a Beautiful Soup Object from HTML
 
 - The ~bs4.BeautifulSoup~ function is called with a string containing
   the HTML it will parse. It returns a ~BeautifulSoup~ object (on which
   various methods will work).
 
-- Example:
+- Example (you can do this in Colab):
   1) get a HTML page
   2) raise an status exception check
   3) pass response text to bs4.Beautiful Soup
@@ -436,26 +453,31 @@ This is what getting a map with or without Python has cost you:
 
     # download the main page from Project Gutenberg
     res = requests.get('https://gutenberg.org')
-    try:
-        res.raise_for_status()
-    except Exception as exc:
-        print(f'There was a problem: {exc}')
+    res.raise_for_status()   # check request status
+    res       # prints status
+    res.text   # prints downloaded text
 
     # Pass the text attribute of the response to bs4.BeautifulSoup
     gutenbergSoup = bs4.BeautifulSoup(res.text, 'html.parser')
     print(type(gutenbergSoup))
+    gutenbergSoup   # parsed HTML code
   #+end_src
 
-- Download ~example.html~ from here: [[https://bit.ly/beautifulBook][bit.ly/beautifulBook]] - in Colab,
-  you can upload it to the temporary directory.
+- Now download ~example.html~ from here: [[https://bit.ly/beautifulBook][bit.ly/beautifulBook]] - in
+  Colab, you can upload it to the temporary directory (see sidebar):
+  #+begin_example python
+     %cat example.html   # 'magic' command to display the file in Colab
+  #+end_example
 
 - Use ~requests~ to load the HTML file from your hard drive and pass a
   ~File~ object instead of a ~requests.Response~ to ~bs4.BeautifulSoup~:
   #+begin_src python
     import requests, bs4
-    exampleFile = open('example.html')
+
+    exampleFile = open('example.html')  # open file to stdio
     exampleSoup = bs4.BeautifulSoup(exampleFile, 'html.parser')
     print(type(exampleSoup))
+    exampleSoup
   #+end_src
 
 - The ~html.parser~ comes with Python (there is a faster parser in the
@@ -469,7 +491,7 @@ This is what getting a map with or without Python has cost you:
   like classes, IDs etc. It returns a list of elements matching the
   selector.
 
-- Try this yourself with this HTML code:
+- Try this yourself with this HTML code ([[https://gist.github.com/birkenkrahe/aae30292c9ee2866342456cf4b906dcb][Gist link]] - bit.ly/3qUy8nb ):
   #+begin_src python
     from bs4 import BeautifulSoup
 
@@ -703,14 +725,15 @@ This is what getting a map with or without Python has cost you:
 - Web pages are plaintext files formatted as HTML.
 - HTML can be parsed with the BeautifulSoup module.
 - BeautifulSoup is imported with the name ~bs4~.
-- Pass the string with the HTML to the ~bs4.BeautifulSoup()~ function to
+- Pass the string with the HTML to the ~bs4.BeautifulSoupx~ function to
   get a ~Soup~ object.
-- The ~Soup~ object has a ~select()~ method that can be passed a string of
+- The ~Soup~ object has a ~select~ method that can be passed a string of
   the CSS selector for an HTML tag.
 - You can get a CSS selector string from the browser's developer tools
   by right-clicking the element and selecting ~Copy CSS Path~.
-- The ~select()~ method will return a list of matching Element objects.
-
+- The ~select~ method will return a list of matching Element objects.
+- The simpler ~find~ method returns the first occurrence of a specific
+  element, e.g. ~soup.find('div')~, so you have to loop to find more.
 
 * Project: opening all search results
 
@@ -937,9 +960,96 @@ This is what getting a map with or without Python has cost you:
   #+attr_latex: :width 400px
   [[../img/search_output1.png]]
 
-* IN PROGRESS Project: getting Amazon product prices
-* TODO Extended example: downloading all xkcd cartoons
-* TODO Controlling the browser with ~selenium~
+* Ideas for similar programs
+
+- Open all the product pages after searching a shopping site such as
+  Amazon.
+- Open all the links to reviews for a single product.
+- Open the result links to photos after performing a search on a photo
+  site such as Flickr or Imgur.
+
+* IN PROGRESS Extended example: downloading all xkcd cartoons
+
+- [[https://www.crummy.com/software/BeautifulSoup/bs4/doc/][See bs4's online documentation]].
+
+- Code:
+  #+begin_src python
+    #! python3
+    # downloadXkcd.py - Downloads every single XKCD comic.
+    import requests, os, bs4
+    url = 'https://xkcd.com'               # starting url
+    os.makedirs('xkcd', exist_ok=True)    # store comics in ./xkcd
+    while not url.endswith('#'):
+       # Download the page.
+       print('Downloading page %s...' % url)
+       res = requests.get(url)
+       res.raise_for_status()
+       soup = bs4.BeautifulSoup(res.text, 'html.parser')
+    # Find the URL of the comic image.
+    comicElem = soup.select('#comic img')
+    if comicElem == []:
+       print('Could not find comic image.')
+    else:
+       comicUrl = 'https:' + comicElem[0].get('src')
+    # Download the image.
+    print('Downloading image %s...' % (comicUrl))
+    res = requests.get(comicUrl)
+    res.raise_for_status()
+    # Save the image to ./xkcd.
+    imageFile = open(os.path.join('xkcd', os.path.basename(comicUrl)),'wb')
+    for chunk in res.iter_content(100000):
+        imageFile.write(chunk)
+        imageFile.close()
+    # Get the Prev button's url.
+    prevLink = soup.select('a[rel="prev"]')[0]
+    url = 'https://xkcd.com' + prevLink.get('href')
+    print('Done.')        
+  #+end_src
+
+- Ideas for similar programs:
+  1) Back up an entire site by following all of its links.
+  2) Copy all the messages off a web forum.
+  3) Duplicate the catalog of items for sale on an online store.
+  
+* Controlling the browser with ~selenium~
+
+- The ~selenium~ module controls the browser by clicking links and
+  filling in login information.
+
+- To do this, a web browser must be launched, so ~selenium~ is slower
+  and harder to run in the background.
+
+- You must do this if your interaction with a web page depends on the
+  ~<script>~ JavaScript code that dynamically updates the page.
+
+- Commercial sites run security programs to stop people from
+  harvesting their information or creating multiple free
+  accounts. They change often and will break your non-~selenium~ Python
+  scripts.
+
+- Security programs identify you with a /user-agent/ string that is
+  served by the web browser and is included in all HTTP requests.
+
+- For example the user-agent string for Python's ~requests~ module
+  v.2.29 is ~Python-requests/2.29.0~. But for ~selenium~, user-agent is
+  the same as a regular browser (see [[https://www.whatsmyua.info/][whatsmyua.info]]) and it mimicks
+  the browser's traffic patterns (downloads, ads, cookies etc.).
+
+- Since ~selenium~ is not entirely undetectable, however, there are
+  sites which do not allow it to scrape their web pages.
+
+* IN PROGRESS Starting a ~selenium~ controlled browser
+
+- You can install ~selenium~ on the command line via ~pip~:
+  #+begin_example sh
+    pip install --user selenium
+  #+end_example
+
+- Check installation:
+  #+begin_src python :results silent
+    import selenium
+  #+end_src  
+  
 
 * TODO Working with JSON APIs
 * TODO Tokenize text with ~nltk~
