@@ -244,7 +244,7 @@ This is what getting a map with or without Python has cost you:
   the standard library functions ~open~ and ~write~:
   1) ~open~ the file in ~write binary~ mode (parameter ~'wb'~) to maintain
      the Unicode encoding of the text.
-  2) ~write~ the web page to a file using ~requests.Response.iter_content~:
+  2) ~write~ the web page to a file using ~requestsN.Response.iter_content~:
   #+begin_src python :results silent
     import requests
     url2 = 'https://www.gutenberg.org/files/177/177-0.txt'
@@ -259,7 +259,7 @@ This is what getting a map with or without Python has cost you:
 
     # write the web page to file
     for chunk in res.iter_content(100000):
-        jamesFile.write(chunk, 'wb')
+        jamesFile.write(chunk)
         bytes_written = jamesFile.write(chunk)
         print(f'Written {bytes_written} bytes')
 
