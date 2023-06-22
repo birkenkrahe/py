@@ -339,7 +339,7 @@ This is what getting a map with or without Python has cost you:
 - To see even more hidden information, you can right click and select
   ~Inspect~ (or open the ~More tools > Developer tools~ browser menu).
 
-* NEXT Viewing HTML/CSS source: weather data
+* Viewing HTML/CSS source: weather data
 
 - Why would you look at the developer tools?
 
@@ -504,12 +504,12 @@ This is what getting a map with or without Python has cost you:
     """
     soup = BeautifulSoup(html, 'html.parser')
 
-    # Example: all elements that use a CSS `class` attribute named `.container`
+    # Example: all elements that use a CSS `class` attribute named `.container and .text`
     elements = soup.select('.container .text')
     for element in elements:
         print(f'container text: {element.text}')
 
-    elements = soup.select('p')
+    elements = soup.select('p') # look for all paragraph elements
     for element in elements:
         print(f'p elements: {element.text}')
 
@@ -520,11 +520,19 @@ This is what getting a map with or without Python has cost you:
     print(type(elements))
   #+end_src
 
+  #+RESULTS:
+  : container text: Hello
+  : p elements: Hello
+  : p elements: World
+  : p elements: Outside
+  : [<p class="text">Hello</p>, <p id="special">World</p>, <p class="text">Outside</p>]
+  : <class 'bs4.element.ResultSet'>
+
 - Use this code to select the following elements:
-  1) Elements in the CSS class 'text'
+  1) Elements in the CSS class 'text' 
   2) Elements named 'div'
-  3) Elements named p with id value
-  4) Elements named p with id value 'special'
+  3) Elements named 'p' with 'id' value
+  4) Elements named 'p' with 'id' value 'special'
 
 - Solution:
   #+begin_src python
@@ -563,6 +571,22 @@ This is what getting a map with or without Python has cost you:
     for element in elements:
         print(f"p elements with 'class=special' value: {element.text}")
   #+end_src
+
+  #+RESULTS:
+  #+begin_example
+  container text: Hello
+  '.text' element: Hello
+  '.text' element: Outside
+  div elements: 
+  Hello
+  World
+
+  p elements Hello
+  p elements World
+  p elements Outside
+  p elements with 'id' value: World
+  p elements with 'class=special' value: World
+  #+end_example
 
 - Selector patterns can be combined to make sophisticated matches:
   this pattern will match any element that has an ~id~ attribute of
@@ -808,7 +832,7 @@ This is what getting a map with or without Python has cost you:
 - Why do we start with the index 1 in ~sys.argv~? Because ~sys.argv[0]~
   stores the name of the list: when you enter
   #+begin_example sh
-    python myscript.py arg1  arg2 arg3~
+    python myscript.py arg1  arg2 arg3
   #+end_example
   the list will be:
   #+begin_example python
@@ -829,7 +853,8 @@ This is what getting a map with or without Python has cost you:
   [[../img/11_pypi_bs4.png]]
 
 - Nice: you don't have to know what this CSS class is or what it
-  does. You don't need to know how to write pages like these. You're
+  does. You don't need to know h
+  ow to write pages like these. You're
   only going to use it as a marker for the ~<a>~ element.
 
 - Add this code to the earlier block:
@@ -906,10 +931,10 @@ This is what getting a map with or without Python has cost you:
   [[../img/search_output.png]]
 
 - This Colab notebook contains the minimal code (no exception
-  handling): [[https://bit.ly/searchpypi][bit.ly/searchpypi]].
+  handling): https://bit.ly/3NExnaC
 
 - Here is the full program with exception handling for export (you can
-  download it from GitHub in the ~py/src~ repository):
+  download it [[https://github.com/birkenkrahe/py/blob/main/src/searchpypi.py][from GitHub]] in the ~py/src~ repository):
   #+begin_src python :tangle ../src/searchpypi.py
     #! python3
     # searchpypi.py - opens several search results
@@ -968,49 +993,6 @@ This is what getting a map with or without Python has cost you:
 - Open the result links to photos after performing a search on a photo
   site such as Flickr or Imgur.
 
-* IN PROGRESS Extended example: downloading all xkcd cartoons
-
-- [[https://www.crummy.com/software/BeautifulSoup/bs4/doc/][See bs4's online documentation]].
-
-- Code:
-  #+begin_src python
-    #! python3
-    # downloadXkcd.py - Downloads every single XKCD comic.
-    import requests, os, bs4
-    url = 'https://xkcd.com'               # starting url
-    os.makedirs('xkcd', exist_ok=True)    # store comics in ./xkcd
-    while not url.endswith('#'):
-       # Download the page.
-       print('Downloading page %s...' % url)
-       res = requests.get(url)
-       res.raise_for_status()
-       soup = bs4.BeautifulSoup(res.text, 'html.parser')
-    # Find the URL of the comic image.
-    comicElem = soup.select('#comic img')
-    if comicElem == []:
-       print('Could not find comic image.')
-    else:
-       comicUrl = 'https:' + comicElem[0].get('src')
-    # Download the image.
-    print('Downloading image %s...' % (comicUrl))
-    res = requests.get(comicUrl)
-    res.raise_for_status()
-    # Save the image to ./xkcd.
-    imageFile = open(os.path.join('xkcd', os.path.basename(comicUrl)),'wb')
-    for chunk in res.iter_content(100000):
-        imageFile.write(chunk)
-        imageFile.close()
-    # Get the Prev button's url.
-    prevLink = soup.select('a[rel="prev"]')[0]
-    url = 'https://xkcd.com' + prevLink.get('href')
-    print('Done.')        
-  #+end_src
-
-- Ideas for similar programs:
-  1) Back up an entire site by following all of its links.
-  2) Copy all the messages off a web forum.
-  3) Duplicate the catalog of items for sale on an online store.
-  
 * Controlling the browser with ~selenium~
 
 - The ~selenium~ module controls the browser by clicking links and
@@ -1051,6 +1033,54 @@ This is what getting a map with or without Python has cost you:
   #+end_src  
   
 
+* IN PROGRESS Extended example: downloading all xkcd cartoons
+
+- [[https://www.crummy.com/software/BeautifulSoup/bs4/doc/][See bs4's online documentation]].
+
+- To do:
+  1) BPMN model of process
+  2) Sample session (check out Sweigart's demo at Udemy)
+  3) Colab notebook
+
+- Code:
+  #+begin_example python
+    #! python3
+    # downloadXkcd.py - Downloads every single XKCD comic.
+    import requests, os, bs4
+    url = 'https://xkcd.com'               # starting url
+    os.makedirs('../img/xkcd', exist_ok=True)    # store comics in ./xkcd
+    while not url.endswith('#'):
+       # Download the page.
+       print('Downloading page %s...' % url)
+       res = requests.get(url)
+       res.raise_for_status()
+       soup = bs4.BeautifulSoup(res.text, 'html.parser')
+    # Find the URL of the comic image.
+    comicElem = soup.select('#comic img')
+    if comicElem == []:
+       print('Could not find comic image.')
+    else:
+       comicUrl = 'https:' + comicElem[0].get('src')
+    # Download the image.
+    print('Downloading image %s...' % (comicUrl))
+    res = requests.get(comicUrl)
+    res.raise_for_status()
+    # Save the image to ./xkcd.
+    imageFile = open(os.path.join('xkcd', os.path.basename(comicUrl)),'wb')
+    for chunk in res.iter_content(100000):
+        imageFile.write(chunk)
+        imageFile.close()
+    # Get the Prev button's url.
+    prevLink = soup.select('a[rel="prev"]')[0]
+    url = 'https://xkcd.com' + prevLink.get('href')
+    print('Done.')        
+  #+end_example
+
+- Ideas for similar programs:
+  1) Back up an entire site by following all of its links.
+  2) Copy all the messages off a web forum.
+  3) Duplicate the catalog of items for sale on an online store.
+  
 * TODO Working with JSON APIs
 * TODO Tokenize text with ~nltk~
 
