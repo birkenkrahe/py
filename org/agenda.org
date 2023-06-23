@@ -2378,7 +2378,7 @@ practice exercises on DataCamp and let myself be inspired.)
   or CSS selectors corresponding to the page elements that interest
   you.
 
-* TODO Day 22: Web scraping II (~bs4~, ~selenium~)
+* DONE Day 22: Web scraping II (~bs4~, ~selenium~)
 #+attr_latex: :width 400px
 #+caption: Group, Flickr.com
 [[../img/group1.jpg]]
@@ -2403,18 +2403,64 @@ practice exercises on DataCamp and let myself be inspired.)
 
 Thank you so much!
 
-* TODO Day 23: 3 project presentations
+* DONE Day 23: 3 project presentations
 #+attr_latex: :width 400px
 #+caption: Library of Virginia, family portrait.
 [[../img/group2.jpg]]
+
+** Today's presentations:
+
+- Ryan Isbell: Average Adventure Game ([[https://colab.research.google.com/drive/1eCcI3XkRK98qctwlMkK1iP0e2emrR6fD?usp=sharing][colab]])
+- Lucia Birkenkrahe: Building a locally hosted website with Python ([[https://colab.research.google.com/drive/1CpIWEDXWOhyD5cSzpsqJqS7Q1RoPPBX3?usp=sharing][colab]])
+- Dr. Radek Szulga: Scrape American Economic Review website ([[https://colab.research.google.com/drive/1eEZ0uiCQAZ9bpPVRvscsxWGSLDDiY4FZ?usp=sharing][colab]])
+
 
 * TODO Day 24: 3 project presentations
 #+attr_latex: :width 400px
 #+caption: Whiteman group, LOC@Flickr.com
 [[../img/group3.jpg]]
 
+** Today's presentations:
+
+- Clifford Washington: Hangman game
+- Dr. Peter Staples: Data Scraping from Public Websites
+- Jonathan Tucker: Stable Diffusion Training Using Textual Inversion
+  with Webscraped Data Sets
+
+** Summary / Outlook
+#+attr_latex: :width 400px
+[[../img/outlook.png]]
+
+- From the entry survey: *what you wanted to learn*
+  1) learn a language that is relevant to data science
+  2) expand my capabilities as a programmer
+  3) grasp programming concepts
+  4) learn to script for network security applications
+
+- Mostly missing bits: *what we didn't get into*
+  1) text mining applications, natural language programming
+  2) machine learning applications, neural nets
+  3) visualization and animation, games
+  4) interfacing with (non)relational databases
+
+- Suggestions: *what to do next*
+  1) Watch CS50-Python and code along in Colab
+  2) Python programming: Eric Matthews, Python Crash Course
+  3) Algorithms with Python: Tuckfield (2021)
+  4) Data science: DataCamp courses and Vasiliev (2022)
+
+- Check out R for free: DataCamp or Matloff's "fasteR" (2023).
+- From novice to expert: write 36,500 lines of code per year.
+- AI coding assistants: use them carefully and only irregularly.
+- check out a visual coding language: Snap! (snap.berkeley.edu)
+
+
 * References
 
 - GetSmarter (2023). Communicating Data Through Storytelling. Online
   Short Course, MIT Management Executive Eduction. URL:
   [[https://mit-online.getsmarter.com/presentations/lp/mit-sloan-communicating-data-through-storytelling-online-short-course/?cid=17123097342&utm_contentid=595893184926&ef_id=c:595893184926_d:c_n:g_ti:kwd-1524496353808_p:_k:data%20story%20telling%20course_m:p_a:143061320144&gad=1&gclid=Cj0KCQjw1rqkBhCTARIsAAHz7K3WA1w8ZCtN93AdO2qkMGvpUKrgvLGJ9-AFq6jvece6oY5yvrGOzVcaAtdQEALw_wcB&gclsrc=aw.ds][mit-online.getsmarter.com]].
+- Matthews (2023). Python Crash Course (3e). NoStarch.
+- Tuckfield (2021). Dive into Algorithms. NoStarch.
+- Vasiliev (2022). Python for Data Science. NoStarch.
+ 
