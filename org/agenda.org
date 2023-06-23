@@ -2415,7 +2415,7 @@ Thank you so much!
 - Dr. Radek Szulga: Scrape American Economic Review website ([[https://colab.research.google.com/drive/1eEZ0uiCQAZ9bpPVRvscsxWGSLDDiY4FZ?usp=sharing][colab]])
 
 
-* TODO Day 24: 3 project presentations
+* TODO Day 24: 3 project presentations/summary/outlook
 #+attr_latex: :width 400px
 #+caption: Whiteman group, LOC@Flickr.com
 [[../img/group3.jpg]]
@@ -2449,11 +2449,13 @@ Thank you so much!
   3) Algorithms with Python: Tuckfield (2021)
   4) Data science: DataCamp courses and Vasiliev (2022)
 
-- Check out R for free: DataCamp or Matloff's "fasteR" (2023).
-- From novice to expert: write 36,500 lines of code per year.
-- AI coding assistants: use them carefully and only irregularly.
-- check out a visual coding language: Snap! (snap.berkeley.edu)
-
+- Miscellaneous: *what else comes to mind right now*
+  1) Check out R for free: DataCamp or Matloff's [[https://github.com/matloff/fasteR]["fasteR" (2023)]].
+  2) To use colab with R: [[https://colab.to/r][colab.to/r]] ([[https://colab.research.google.com/drive/16u37bAGQEhvAlMfwmSjmNdkCbKVp4zQc?usp=sharing][R Demo]])
+  3) To keep using DataCamp after July 6: write to me for access.
+  4) From novice to expert: write > 36,500 lines of code per year.
+  5) AI coding assistants: use them carefully and eclectically.
+  6) Check out a visual coding language: Snap! ([[https://snap.berkeley.edu][snap.berkeley.edu]])
 
 * References
 
