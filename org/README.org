@@ -15,6 +15,10 @@
   - Practice with interactive Jupyter notebooks (no images)
   - Assignments and solutions
   - Installation information
+  - *Note*: PDFs and Jupyter notebooks (ipynb) do not always render in
+    GitHub (perhaps dependent on size: and my files are large -
+    typical PDF lecture runs to 30 pages). Download the 'raw' file and
+    render it in Jupyter Lab or Google Colab.
 
 * How to use GitHub
 

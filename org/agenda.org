@@ -2415,7 +2415,7 @@ Thank you so much!
 - Dr. Radek Szulga: Scrape American Economic Review website ([[https://colab.research.google.com/drive/1eEZ0uiCQAZ9bpPVRvscsxWGSLDDiY4FZ?usp=sharing][colab]])
 
 
-* TODO Day 24: 3 project presentations/summary/outlook
+* Day 24: 3 project presentations/summary/outlook
 #+attr_latex: :width 400px
 #+caption: Whiteman group, LOC@Flickr.com
 [[../img/group3.jpg]]
@@ -2438,7 +2438,7 @@ Thank you so much!
   4) learn to script for network security applications
 
 - Mostly missing bits: *what we didn't get into*
-  1) text mining applications, natural language programming
+  1) text mining applications, natural language processing
   2) machine learning applications, neural nets
   3) visualization and animation, games
   4) interfacing with (non)relational databases
@@ -2457,12 +2457,15 @@ Thank you so much!
   5) AI coding assistants: use them carefully and eclectically.
   6) Check out a visual coding language: Snap! ([[https://snap.berkeley.edu][snap.berkeley.edu]])
 
+
 * References
 
 - GetSmarter (2023). Communicating Data Through Storytelling. Online
   Short Course, MIT Management Executive Eduction. URL:
   [[https://mit-online.getsmarter.com/presentations/lp/mit-sloan-communicating-data-through-storytelling-online-short-course/?cid=17123097342&utm_contentid=595893184926&ef_id=c:595893184926_d:c_n:g_ti:kwd-1524496353808_p:_k:data%20story%20telling%20course_m:p_a:143061320144&gad=1&gclid=Cj0KCQjw1rqkBhCTARIsAAHz7K3WA1w8ZCtN93AdO2qkMGvpUKrgvLGJ9-AFq6jvece6oY5yvrGOzVcaAtdQEALw_wcB&gclsrc=aw.ds][mit-online.getsmarter.com]].
-- Matthews (2023). Python Crash Course (3e). NoStarch.
-- Tuckfield (2021). Dive into Algorithms. NoStarch.
-- Vasiliev (2022). Python for Data Science. NoStarch.
+- Matthews (2023). Python Crash Course (3e). NoStarch. URL:
+  [[https://nostarch.com/python-crash-course-3rd-edition][nostarch.com]].
+- Tuckfield (2021). Dive into Algorithms. NoStarch. URL: [[https://nostarch.com/search/dive%20into%20algorithm][nostarch.com]].
+- Vasiliev (2022). Python for Data Science. NoStarch. URL:
+  [[https://nostarch.com/python-data-science][nostarch.com]].
  
