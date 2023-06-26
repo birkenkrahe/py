@@ -211,6 +211,9 @@ in the DataCamp course "Introduction to Python" ([[https://gist.github.com/birke
         print(i,end=' ')
   #+end_src
 
+  #+RESULTS:
+  : a b None 10 100 
+
 - Can you print this list using a ~for~ loop with ~range~?
   #+begin_src python
     List = ['a','b', None, 10,100]
