@@ -279,8 +279,7 @@
   #+name: step_1
   #+begin_src python :tangle ../src/step1.py
     print('hello world')
-    print('What is your name?')
-    name = input()
+    name = input('What is your name?' )
     print('Good to meet you,' + name)
     print('Your name has', len(name), 'characters')
   #+end_src
