@@ -310,7 +310,8 @@ My typical workflow looks like this:
 - All DataCamp assignments are due by Friday, June 23rd (so that I can
   grade them): Three courses to be completed in your own time.
 
-* Will you need to buy any books for this course?
+* Will you n
+eed to buy any books for this course?
 #+attr_latex: :width 400px
 #+caption: Python book titles
 [[../img/0_py_books.png]]

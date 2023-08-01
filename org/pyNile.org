@@ -1,0 +1,140 @@
+#+startup: overview hideblocks indent inlineimages
+#+options: toc:nil num:nil ^:nil
+#+property: header-args:R :results output :noweb yes :exports both
+#+property: header-args:python :results output :noweb yes :exports both
+* Download base R time series Nile as ASCII file
+
+- Nothing much to get, ~Nile~ is built-in:
+  #+begin_src R
+    head(Nile)
+    str(Nile)
+  #+end_src
+
+  #+RESULTS:
+  : [1] 1120 1160  963 1210 1160 1160
+  :  Time-Series [1:100] from 1871 to 1970: 1120 1160 963 1210 1160 1160 813 1230 1370 1140 ...
+
+- Download it to an ASCII file:
+  series:
+  #+begin_src R
+    write(Nile, file='Nile',ncolumns=1)
+    shell('head -5 Nile')
+  #+end_src
+
+  #+RESULTS:
+  : 1120
+  : 1160
+  : 963
+  : 1210
+  : 1160
+
+* Store ASCII file data in a Python list
+
+- Read the content of the file into a Python object ~Nile~:
+  #+name: getNile
+  #+begin_src python :results silent
+    file = open('Nile','r')
+    Nile = [int(line.strip()) for line in file]
+  #+end_src
+
+- Here, the second line stores the file data as a list ~Nile~ using a
+  /list comprehension/:
+  #+begin_example python
+  new_list = [expression for item in iterable if condition]
+  #+end_example
+  1) expression: ~strip~ leading/trailing whitespace/newline
+  2) item: each line
+  3) iterable: file with lines
+  4) no condition
+  For example, extract even numbers from a list of numbers:
+  #+begin_src python
+    numbers = [1,2,3,4,5,6,7,8,9,10]
+    even_numbers = [x for x in numbers if (x % 2 == 0)]
+    print(even_numbers)
+  #+end_src
+
+  #+RESULTS:
+  : [2, 4, 6, 8, 10]
+
+* Show a histogram of ~Nile~ in Python and in R
+
+- Back to the Nile! Show a histogram of ~Nile~:
+  #+begin_src python
+    <<getNile>>
+    import matplotlib.pyplot as plt
+    plt.hist(Nile,bins="auto",edgecolor="black")
+    plt.title('Histogram of Nile flow 1870-1970')
+    plt.xlabel('Flow volume [mio cubic meter]')
+    plt.ylabel('Frequency')
+    plt.grid('True')
+    plt.show()
+  #+end_src
+
+  #+attr_latex: :width 400px
+  [[../img/hist_Nile.png]]
+
+- Compare with R:
+  #+begin_src R :results graphics file :file ../img/histNileR.png
+    hist(Nile,
+         xlab='Flow volume [mio cubic meter]',
+         main='Histogram of Nile flow 1870-1970')
+  #+end_src
+
+  #+RESULTS:
+  [[file:../img/histNileR.png]]
+
+* Calling R from within Python with ~rpy2~
+
+- To install: ~pip install rpy2~.
+
+- R command:
+  #+begin_src R
+    mean(Nile)
+  #+end_src
+
+  #+RESULTS:
+  : [1] 919.35
+
+- To run in Python:
+  #+begin_src python
+    import rpy2.robjects as robj
+    from rpy2.robjects.packages import importr
+    base = importr('base')
+    mean = robj.r('mean(Nile')
+    print(mean)
+  #+end_src
+
+  #+RESULTS:
+
+- This package cannot find the base R installation - I don't know why.
+
+- Another attempt:
+  #+begin_src python
+    import ryp2.robjects as
+    from rpy2.robjects.packages import importr
+
+  #+end_src
+
+* Calling R in Python with ~pyper~
+
+- Install with ~pip install pyper~
+
+- Run R in Python with ~pyper~:
+  #+name: pyper
+  #+begin_src python :results silent
+    from pyper import R
+    r = R()
+    #print(r.run('mean(Nile)'))
+  #+end_src
+
+- This histogram will be saved in ~Rplots.pdf~:
+  #+begin_src python :results graphics
+    <<pyper>>
+
+    import matplotlib.pyplot as plt
+
+    r.run('data(Nile)')  # load data
+    r.run('hist(Nile)')  # plot data
+  #+end_src  
+
+* [[https://cloud.google.com/vertex-ai/docs/workbench/user-managed/r-python-same-notebook][Using R and Python in the same notebook]] with ~rpy2~
