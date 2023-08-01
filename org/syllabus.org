@@ -1,7 +1,7 @@
 #+title: Introduction to Programming with Python
 #+author: Marcus Birkenkrahe (birkenkrahe@lyon.edu)
-#+subtitle: Lyon College, Summer term I 2023, CSC 109
-#+subtitle: Derby Science Center Room 209, Mon-Fri 1pm-3pm
+#+subtitle: Batesville High, Fall 2023, CSC 109
+#+subtitle: TBD
 #+startup: overview hideblocks inlineimages indent
 #+options: toc:nil num:nil
 * General information
@@ -56,12 +56,12 @@ Canvas gradebook for the course.
 
 | REQUIREMENT           | UNITS | PPU | TOTAL | % of TOTAL |
 |-----------------------+-------+-----+-------+------------|
-| Home assignments      |    20 |   5 |   100 |        25. |
-| Class participation   |    20 |   5 |   100 |        25. |
-| Multiple-choice tests |     4 |  25 |   100 |        25. |
-| Capstone project      |     1 | 100 |   100 |        25. |
+| Home assignments      |    15 |  10 |   150 |        30. |
+| Class participation   |    15 |  10 |   150 |        30. |
+| Multiple-choice tests |    15 |  10 |   150 |        30. |
+| Capstone project      |     1 |  50 |    50 |        10. |
 |-----------------------+-------+-----+-------+------------|
-| TOTAL                 |       |     |   400 |       100. |
+| TOTAL                 |       |     |   500 |       100. |
 |-----------------------+-------+-----+-------+------------|
 #+TBLFM: @2$4=$2*$3::@2$5=(@2$4/@6$4)*100::@3$4=$2*$3::@3$5=(@3$4/@6$4)*100::@4$4=$2*$3::@4$5=(@4$4/@6$4)*100::@5$4=$2*$3::@5$5=(@5$4/@6$4)*100::@6$4=vsum(@2..@5)::@6$5=vsum(@2..@5)
 
