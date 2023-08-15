@@ -58,7 +58,7 @@ Canvas gradebook for the course.
 |---------+-----------------------------+--------|
 | Weekly  | DataCamp assignments        |    25% |
 | Monthly | Sprint review presentations |    25% |
-| Weekly  | Tests                       |    25% |
+| Weekly  | Multiple-choice tests       |    25% |
 | TBD     | Final exam                  |    25% |
 
 Notes:
