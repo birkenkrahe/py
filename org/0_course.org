@@ -6,7 +6,6 @@
 [[../img/cover.jpg]]
 * Who is your lecturer?
 #+attr_latex: :width 400px
-#+caption: Photo of Poppy as a puppy
 [[../img/monty_python.png]]
 
 - Monty Python used to be one of my favorite shows:
