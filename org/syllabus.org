@@ -1,8 +1,6 @@
 #+title: Introduction to Programming in Python
-#+author: Marcus Birkenkrahe (birkenkrahe@lyon.edu)
-#+subtitle: Batesville High School, Fall 2023, CSC 109
 #+startup: overview hideblocks inlineimages indent
-#+options: toc
+#+options: toc:nil
 * General information
 
 This course is designed to provide students with a comprehensive
@@ -12,8 +10,8 @@ and practical applications of the language.
 - Course title: Introduction to Programming in Python
 - Course number and section: CSC 109.01
 - Meeting Times: Mon-Wed-Fri from 13:00-13:50 am
-- Meeting place: Batesville High school (room TBD)
-- Professor: Marcus Birkenkrahe
+- Meeting place: Batesville High school (room 647)
+- Professor: Marcus Birkenkrahe (birkenkrahe@lyon.edu)
 - Professor's Office: Lyon College, Derby Science Building 210
 - Phone: (870) 307-7254 (office) / (501) 422-4725 (private)
 - Office hours: Mon/Wed 2-3pm, Tue 4-4.45pm, Thu 9.30-10:45am   
@@ -95,7 +93,8 @@ Notes:
 |   16 | Dec 04-Dec 08 | Final presentation            | 4th sprint review |
 
 - NO CLASSES: Aug 21, Oct 9 (Fall break), Nov 22 + 24
-  (Thanksgiving). See [[https://catalog.lyon.edu/202324-academic-calendar][2023-2024 academic calendar]].
+  (Thanksgiving). See [[https://catalog.lyon.edu/202324-academic-calendar][2023-2024 academic calendar]]
+  (catalog.lyon.edu/202324-academic-calendar).
 - ONLINE CLASSES: Sept 15 + 22.
 
 * Learning management system
@@ -112,12 +111,6 @@ Notes:
 The course includes a free subscription to the DataCamp classroom at
 [[https://datacamp.com/][datacamp.com]] for further study, and for the opportunity to earn
 certificates for three courses.
-
-* GitHub
-
-All course materials are available as ~ipynb~, ~org~ and ~pdf~ files in a
-GitHub repository ([[https://github.com/birkenkrahe/py][github.com/birkenkrahe/py]]). GitHub is the worldwide
-largest online platform for software development.
 
 * Textbooks
 
